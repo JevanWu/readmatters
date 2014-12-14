@@ -4,3 +4,12 @@
       | 让您有故事的书拥有更多故事
 .arrow
   = link_to fa_icon("chevron-down"), "#container"
+#container
+  - (1.. 10).each do |i|
+    .item
+      = image_tag "#{i}.jpg"
+  - (1.. 10).each do |i|
+    .item
+      = image_tag "#{i}.jpg"
+    
+    

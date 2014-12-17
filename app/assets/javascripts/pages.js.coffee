@@ -1,3 +1,11 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $(window).scroll ->
+    if $("#container").length
+      windowTop = $(window).scrollTop()
+      anchorTop = $("#container").offset().top
+      if windowTop >= anchorTop
+        if $(".feedback-bar").hasClass("showup") then return
+        $(".feedback-bar").addClass("showup")
+      else
+        if not $(".feedback-bar").hasClass("showup") then return
+        $(".feedback-bar").removeClass("showup")

@@ -1,9 +1,10 @@
 - if user_signed_in?
-  li
-    = link_to "#{ (current_user.name || current_user.email.match(/(.+)@/)[1]).titleize }", "#", remote: true
-  a(href = "#{destroy_user_session_path}" data-method = "delete" rel="nofollow" )
+  a(href = "#")
     li
-      = "Sign out"
+      = "#{ (current_user.name || current_user.email.match(/(.+)@/)[1]).titleize }"
+  /*a(href = "#{destroy_user_session_path}" data-method = "delete" rel="nofollow" )*/
+  /*  li*/
+  /*    = "Sign out"*/
 - else
   li
     = link_to "Sign in", new_user_session_path, class: "navbar-link"

@@ -10,9 +10,20 @@
     display: block
     .cover
       border-radius: 6px 6px 0px 0px
+      position: relative
       img
         border-radius: inherit
         width: 100%
+      .user-avatar
+        position: absolute
+        right: 8px
+        bottom: -16px
+        width: 32px
+        height: 32px
+        border-radius: 50%
+        img
+          width: inherit
+          height: inherit
     .title
       text-align: center
       font-size: 16px
@@ -20,10 +31,10 @@
     .description
       border-radius: 0px 0px 6px 6px
       font-size: 12px
-      padding: 2px 4px
+      padding: 2px 6px
       text-align: justify
     .social
-      padding: 2px 4px
+      padding: 2px 6px
       float: right
       font-size: 18px
       .fa

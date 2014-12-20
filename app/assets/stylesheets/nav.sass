@@ -4,19 +4,30 @@ nav
     color: #404040
   
   ul.navbar-right
-    li
+    button
+      padding: 10px 16px
+      margin: 5px 8px
+      color: #000000
+      border: 1px solid #000000
+      border-radius: 3px
+      transition: background 0.3s
+    button:hover
+      background-color: #404040
+      color: #ffffff
+      
+    .nav-sign 
       list-style: none
       float: left
       padding: 10px 16px
       margin: 5px 8px
       a
         text-decoration: none
-    li:last-child
+    .nav-sign:last-child
       color: #000000
       border: 1px solid #000000
       border-radius: 3px
       transition: background 0.3s
-    li:last-child:hover
+    .nav-sign:last-child:hover
       background-color: #404040
       color: #ffffff
 

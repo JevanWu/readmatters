@@ -1,13 +1,17 @@
 - if user_signed_in?
-  a(href = "#")
-    li
+  .dropdown
+    button.btn.btn-default.dropdown-toggle(type="button" id="userDropdownMenu" data-toggle="dropdown" aria-expanded="true")
       = "#{ (current_user.name || current_user.email.match(/(.+)@/)[1]).titleize }"
-  /*a(href = "#{destroy_user_session_path}" data-method = "delete" rel="nofollow" )*/
-  /*  li*/
-  /*    = "Sign out"*/
+      span.caret
+    ul.dropdown-menu(role="menu" aria-labelledby="userDropdownMenu")
+      li(role="presentation")
+        = link_to "Profile", "#", role: "menuitem", tabindex: "-1" 
+        = link_to "Publish Book", new_product_path, role: "menuitem", tabindex: "-1" 
+        = link_to "Sign out", destroy_user_session_path, method: :delete
+
 - else
-  li
+  li.nav-sign
     = link_to "Sign in", new_user_session_path, class: "navbar-link"
   a(href = "#{new_user_registration_path}" )
-    li
+    li.nav-sign
       = "Sign up"

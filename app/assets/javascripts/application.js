@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require masonry.pkgd.min
 //= require bootstrap/dropdown
+//= require nprogress
 //= require_tree .

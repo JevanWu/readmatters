@@ -17,3 +17,6 @@
 //= require bootstrap/dropdown
 //= require nprogress
 //= require_tree .
+
+NProgress.configure({ showSpinner: false, ease: 'ease', speed: 500 })
+

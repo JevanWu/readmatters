@@ -1,0 +1,17 @@
+.container
+  .sign-in-form
+    h2.text-center
+      | Hello
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name), wrapper: :sign_in_horizontal_form, html: {class: "col-sm-offset-3 col-sm-6 clear-fix"} ) do |f|
+      = f.input :email, required: false, autofocus: true, label: false, input_html: { class: "form-top" }
+      = f.input :password, required: false, label: false, input_html: { class: "form-bottom" }
+      .form-group
+        .col-sm-offset-2.col-sm-8
+          = f.button :submit, "Sign in", class: "btn-success form-submit"
+      .form-group
+        .col-sm-offset-2.col-sm-8
+          = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+
+      .form-group
+        .col-sm-offset-2.col-sm-8
+          = render "devise/shared/links" 

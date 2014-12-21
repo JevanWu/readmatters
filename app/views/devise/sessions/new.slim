@@ -3,8 +3,9 @@
     h2.text-center
       | Hello
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name), wrapper: :sign_in_horizontal_form, html: {class: "col-sm-offset-3 col-sm-6 clear-fix"} ) do |f|
-      = f.input :email, required: false, autofocus: true, label: false, input_html: { class: "form-top" }
-      = f.input :password, required: false, label: false, input_html: { class: "form-bottom" }
+      = f.error_notification 
+      = f.input :email, required: false, autofocus: true, label: false, input_html: { class: "form-top" }, placeholder: "Your email"
+      = f.input :password, required: false, label: false, input_html: { class: "form-bottom" }, placeholder: "Your password"
       .form-group
         .col-sm-offset-2.col-sm-8
           = f.button :submit, "Sign in", class: "btn-success form-submit"

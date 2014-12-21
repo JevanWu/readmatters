@@ -1,9 +1,7 @@
-masonryLoad = ->
-  msnry = new Masonry( "#container",
-        itemSelector: '.item'
-        isFitWidth: true
+$(document).on('ready page:load', ->
+  container = $("#container")
+  container.imagesLoaded( ->
+    container.masonry({ itemSelector: '.item', isFitWidth: true })
   )
+)
 
-$(window).on('load', masonryLoad)
-#$(document).ready(masonryLoad)
-$(document).on('page:load', masonryLoad)

@@ -7,6 +7,7 @@
       = f.error_notification 
 
       = f.input :email, required: true, autofocus: true, label: false, input_html: { class: "form-top" }, placeholder: "Your email"
+      = f.input :name, required: false, label: false, input_html: { class: "form-middle" }, placeholder: "Your name"
       = f.input :password, required: true,  label: false, input_html: { class: "form-middle" }, placeholder: "Your password"
       = f.input :password_confirmation, required: true, label: false, input_html: { class: "form-bottom" }, placeholder: "Password confirmation " + ("(#{@minimum_password_length} characters minimum )" if @validatable)
       .form-group

@@ -1,0 +1,17 @@
+.container
+  .sign-in-form
+    h2.text-center
+      | Sign up
+
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: :sign_in_horizontal_form, html: {class: "col-sm-offset-3 col-sm-6 clear-fix"} ) do |f| 
+      = f.error_notification 
+
+      = f.input :email, required: true, autofocus: true, label: false, input_html: { class: "form-top" }, placeholder: "Your email"
+      = f.input :password, required: true,  label: false, input_html: { class: "form-middle" }, placeholder: "Your password"
+      = f.input :password_confirmation, required: true, label: false, input_html: { class: "form-bottom" }, placeholder: "Password confirmation " + ("(#{@minimum_password_length} characters minimum )" if @validatable)
+      .form-group
+        .col-sm-offset-2.col-sm-8
+          = f.button :submit, "Sign up", class: "btn-success form-submit"
+      .form-group
+        .col-sm-offset-2.col-sm-8
+          = render "devise/shared/links" 

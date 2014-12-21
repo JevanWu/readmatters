@@ -5,7 +5,7 @@
       span.caret
     ul.dropdown-menu(role="menu" aria-labelledby="userDropdownMenu")
       li(role="presentation")
-        = link_to "Profile", "#", role: "menuitem", tabindex: "-1" 
+        = link_to "Profile", profile_path, role: "menuitem", tabindex: "-1" 
         = link_to "Publish Book", new_product_path, role: "menuitem", tabindex: "-1" 
         = link_to "Sign out", destroy_user_session_path, method: :delete
 

@@ -1,8 +1,14 @@
 = render "shared/jumbotron", content: "求真像"
+.profile-nav
+  ul
+    li
+      = link_to "时间轴", "#"
+    li 
+      = link_to "在售书籍", "#"
+    li 
+      = link_to "购买过的书籍", "#"
 .profile-container.container
   .avatar
     = image_tag "6.jpg"
     .name
       = "Jevan Wu"
-  h2
-    | profile page

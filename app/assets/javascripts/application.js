@@ -17,6 +17,7 @@
 //= require bootstrap/dropdown
 //= require nprogress
 //= require_tree .
+//= require timeline
 
 NProgress.configure({ showSpinner: false, ease: 'ease', speed: 500 })
 

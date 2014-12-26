@@ -7,7 +7,6 @@ $(document).ready( ->
       if (bottom_of_window > bottom_of_object)
         return $(this).addClass("active")
     )
-  
   timelineAnimate()
   return $(window).scroll( ->
     return timelineAnimate()

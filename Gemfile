@@ -1,5 +1,5 @@
-source "http://ruby.taobao.org"
-#source 'https://rubygems.org'
+#source "http://ruby.taobao.org"
+source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -47,10 +47,12 @@ gem 'devise'
 # Fontawesome
 gem 'font-awesome-rails'
 #
+gem 'nokogiri'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do 
   gem 'spring'
+  gem 'pry'
 end
 
 # Use ActiveModel has_secure_password

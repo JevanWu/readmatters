@@ -1,10 +1,9 @@
 .product-container
-  position: relative
   .product-cover
-    margin-left: 15px
-    position: absolute
-    top: -120px
     border-radius: 3px
+    width: 150px
+    margin-top: -170px
+    margin-left: 15px
     img
       border: 1px solid #404040
       height: 160px
@@ -15,11 +14,20 @@
       text-align: center
 
   .price-tag
-    position: absolute
-    top: -47px
-    right: 30px
+    position: relative
+    float: right
+    margin-top: -133px
+    margin-right: 15px
     font-size: 90px
     color: skyblue
+    text-align: center
+    .price
+      position: absolute
+      top: 50px
+      right: 12px
+      font-size: 16px
+      font-weight: 600
+      color: #ffffff
 
   .product-intro, .author-intro
     text-align: justify

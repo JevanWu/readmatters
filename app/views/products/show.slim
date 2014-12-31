@@ -7,7 +7,8 @@
         | 商业
 
     .price-tag
-      = fa_icon "bookmark" 
+      = fa_icon "bookmark", class: "pricemark"
+      = link_to "$20.0", "#", class: "price"
 
     .product-intro
       h3

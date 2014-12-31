@@ -1,9 +1,9 @@
-#require 'nokogiri'
+require 'nokogiri'
 
 class Product < ActiveRecord::Base
   belongs_to :user
   attr_accessor :book_link
-  #before_save :auto_generate_description
+  before_save :auto_generate_description
 
   private
   

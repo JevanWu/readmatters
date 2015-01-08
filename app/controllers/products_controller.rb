@@ -1,7 +1,7 @@
+require 'nokogiri'
 class ProductsController < ApplicationController
 
   def new
-    @product = Product.new
   end
 
   def create
@@ -13,9 +13,15 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def generate_book_info
+    # doc = Nokogiri::HTML(open(params[:douban_link]))
+    # @description = doc.css('#link-report .intro').last.content
+    @product = Product.new
+  end
+
   private
 
     def product_params
-      params.require(:product).permit(:name, :kind, :price, :description, :book_link)
+      params.require(:product).permit(:name, :kind, :price, :description)
     end
 end

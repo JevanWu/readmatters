@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :products
 
   get 'profile' => 'users#profile', as: :profile
+
+  post 'generate_book_info' => 'products#generate_book_info'
   # Example resource route with options:
   #   resources :products do
   #     member do

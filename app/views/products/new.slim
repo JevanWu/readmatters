@@ -1,12 +1,11 @@
 = render "shared/jumbotron", content: "发布您的书籍"
 .grey-division
   .container
-    = simple_form_for @product, html: { class: 'form-horizontal' } do |f|
-      = f.input :name
-      = f.input :kind
-      = f.input :price
-      = f.input :description
-      = f.input :book_link
+    = form_tag "/generate_book_info", class: "form-horizontal", remote: true do
+      .form-group
+        = label_tag "douban_link", nil, class: "control-label col-sm-2"
+        .col-md-10
+          = text_field_tag "douban_link", nil, class: "form-control"
       .form-group
         .col-sm-offset-2.col-sm-10
-          = f.submit "Submit", class: "btn btn-default"
+          = submit_tag "Next", class: "btn btn-default"

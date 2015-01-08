@@ -1,0 +1,8 @@
+= simple_form_for @product, html: { class: 'form-horizontal' } do |f|
+  = f.input :name
+  = f.input :kind
+  = f.input :price
+  = f.input :description
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit "Submit", class: "btn btn-default"

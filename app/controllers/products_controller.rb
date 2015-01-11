@@ -2,6 +2,11 @@ require 'nokogiri'
 class ProductsController < ApplicationController
 
   def new
+    @product = Product.new
+    respond_to do |format|
+      format.js { render "new", layout: false }
+      format.html { render "new" }
+    end
   end
 
   def create

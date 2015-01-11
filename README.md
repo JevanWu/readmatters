@@ -9,8 +9,8 @@ This file is used to record what I will do next.
 * 二手书搜索
 * 分类浏览
 
-#### 
-* 电商功能：订单、购物车、支付
+#### 电商功能
+* 订单、购物车、支付
 * 邮件服务
 
 #### 校园专区

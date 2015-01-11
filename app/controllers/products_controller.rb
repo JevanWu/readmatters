@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
   def generate_book_info
     # doc = Nokogiri::HTML(open(params[:douban_link]))
     # @description = doc.css('#link-report .intro').last.content
-    @product = Product.new
+    #@product = Product.new
   end
 
   private

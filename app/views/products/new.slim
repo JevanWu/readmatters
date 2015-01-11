@@ -1,7 +1,8 @@
 = render "shared/jumbotron", content: "发布您的书籍"
 .grey-division
   .container
-    = form_tag "/generate_book_info", class: "form-horizontal", remote: true do
+    = link_to "dada", generate_path, remote: true
+    = form_tag "/generate_book_info", class: "form-horizontal", method: :get, remote: true do
       .form-group
         = label_tag "douban_link", nil, class: "control-label col-sm-2"
         .col-md-10

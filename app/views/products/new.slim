@@ -8,4 +8,4 @@
           = text_field_tag "douban_link", nil, class: "form-control"
       .form-group
         .col-sm-offset-2.col-sm-10
-          = submit_tag "Next", class: "btn btn-default"
+          = submit_tag "Next", class: "btn btn-default", data: { disable_with: 'Processing...' }

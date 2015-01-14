@@ -2,7 +2,7 @@
   = f.input :name, input_html: { value: name }
   = f.input :kind, input_html: { value: kind }
   = f.input :price
-  = f.input :description, input_html: { value: description }
+  = f.input :description, input_html: { value: description, class: "summernote"}
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit "Submit", class: "btn btn-default"

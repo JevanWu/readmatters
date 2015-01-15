@@ -1,18 +1,19 @@
 = render "shared/jumbotron", content: "求真像"
-.profile-nav
-  ul
-    li
-      = link_to "历史书单", "#"
-    li 
-      = link_to "在售书籍", "#"
-    li 
-      = link_to "购买过的书籍", "#"
 .grey-division
   .profile-container.container
-    .avatar
-      = image_tag "6.jpg"
-      .name
-        = "Jevan Wu"
+    .profile-nav
+      .avatar
+        = image_tag "6.jpg"
+        .name
+          = "Jevan Wu"
+
+      ul.nav-list
+        li
+          = link_to "历史书单", "#"
+        li 
+          = link_to "在售书籍", "#"
+        li 
+          = link_to "购买过的书籍", "#"
 
     .timeline.animated
       .timeline-row

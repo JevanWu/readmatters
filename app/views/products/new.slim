@@ -1,11 +1,4 @@
 = render "shared/jumbotron", content: "发布您的书籍"
 .grey-division
   .container
-    = form_tag new_product_path, class: "form-horizontal", remote: true do
-      .form-group
-        = label_tag "douban_link", nil, class: "control-label col-sm-2"
-        .col-md-10
-          = text_field_tag "douban_link", nil, class: "form-control"
-      .form-group
-        .col-sm-offset-2.col-sm-10
-          = submit_tag "Next", class: "btn btn-default", data: { disable_with: 'Processing...' }
+    = render "form"

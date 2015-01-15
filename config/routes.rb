@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :products do
     collection do
-      post "new", as: :post_new
+      get "douban_link", as: :douban_link
     end
   end
 

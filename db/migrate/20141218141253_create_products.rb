@@ -6,6 +6,7 @@ class CreateProducts < ActiveRecord::Migration
       t.decimal :price
       t.text :description
       t.boolean :sold
+      t.attachment :cover
       t.references :user, index: true
 
       t.timestamps

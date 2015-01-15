@@ -1,13 +1,13 @@
-= render "shared/jumbotron", content: "Getting Real"
+= render "shared/jumbotron", content: @product.name
 
 .grey-division
   .container.product-container
 
     .product-show-nav
       .product-cover
-        = image_tag "7.jpg"
+        = image_tag @product.cover.url
         .name
-          | 商业
+          = @product.kind
       ul.nav-list
         li
           = link_to "书籍介绍", "#"
@@ -20,24 +20,8 @@
     .product-intro
       h3
         | Introduction 
-      p
-        | What is Getting Real?
-        Want to build a successful web app? Then it’s time to Get Real. Getting Real is a smaller, faster, better way to build software.
-        Getting Real is about skipping all the stuff that represents real (charts, graphs, boxes, arrows, schematics, wireframes, etc.) and actually building the real thing.
-        Getting real is less. Less mass, less software, less features, less paperwork, less of everything that’s not essential (and most of what you think is essential actually isn’t).
-        Getting Real is staying small and being agile.
-        Getting Real starts with the interface, the real screens that people are going to use. It begins with what the customer actually experiences and builds backwards from there.This lets you get the interface right before you get the software wrong.
-        Getting Real is about iterations and lowering the cost of change. Getting Real is all about launching, tweaking, and constantly improving which makes it a perfect approach for web-based software.
-        Getting Real delivers just what customers need and eliminates anything they don’t.
-        The benefits of Getting Real
-        Getting Real delivers better results because it forces you to deal with the actual problems you’re trying to solve instead of your ideas about those problems. It forces you to deal with reality.
-        2
-        Getting Real foregoes functional specs and other transitory documentation in favor of building real screens. A functional spec is make-believe, an illusion of agreement, while an actual web page is reality. That’s what your customers are going to see and use. That’s what matters. Getting Real gets you there faster.
-        And that means you’re making software decisions based on the real thing instead of abstract notions.
-        Finally, Getting Real is an approach ideally suited to web-based software. The old school model of shipping software in a box and then waiting a year or two to deliver an update is fading away. Unlike installed software, web apps can constantly evolve on a day-to-day basis. Getting Real leverages this advantage for all its worth.
-        How To Write Vigorous Software
-        Vigorous writing is concise.A sentence should contain no unnecessary words, a paragraph no unnecessary sentences, for the same reason that a drawing should have no unnecessary lines and a machine no unnecessary parts.This requires not that the writer make all sentences short or avoid all detail and treat subjects only in outline, but that every word tell.
-        From “The Elements of Style” by William Strunk Jr."  
+      p 
+        = @product.description
 
     .author-intro
       h3

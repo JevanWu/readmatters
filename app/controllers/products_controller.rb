@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     doc = Nokogiri::HTML(open(params[:douban_link]).read)
     @name = doc.css('h1 span').first.content
+    @cover_url = doc.css('.nbg img').first['src']
     @description = doc.css('#link-report .intro').last.content
     @kind = doc.css('#db-tags-section .indent a').first.content
   end
@@ -28,6 +29,6 @@ class ProductsController < ApplicationController
   private
 
     def product_params
-      params.require(:product).permit(:name, :kind, :cover, :price, :description)
+      params.require(:product).permit(:name, :kind, :cover_url, :price, :description)
     end
 end

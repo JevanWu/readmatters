@@ -3,39 +3,25 @@
   = link_to fa_icon("chevron-down"), "#container"
 .grey-division
   #container
-    - (1.. 10).each do |i|
+    - @products.each do |product|
       .item
         .cover
-          = image_tag "#{i}.jpg"
+          = image_tag product.cover.url(:medium)
           .user-avatar
             = image_tag "1.jpg"
+
         .title
-          = "Rework"
+          = product.name
         .description
-          = "大多数的企业管理的书籍都会告诉你：制定商业计划、分析竞争形势、寻找投资人等等。如果你要找的是那样的书，那么把这本书放回书架吧。 这本书呈现的是一种更好、更简单的经商成功之道。读完这本书，你就会明白为什么计划实际上百害而无一益，为什么你不需要外界投资人，为什么将竞争视而不见反倒会发展得更好。事实是你所需要的比你想象的少得多。你不必成为工作狂，你不必大量招兵买马，你不必把时间浪费在案头工作和会议上，你甚至不必拥有一间办公室。所有这些都仅仅是借口！".truncate(100)
-          = link_to "看不够", product_path(1), class: "frame-text"
+          = product.description.truncate(100)
+          br
+          = link_to "看不够", product_path(product), class: "frame-text"
         .social
           = fa_icon("wechat")
           = fa_icon("qq")
           = fa_icon("weibo")
           = fa_icon("renren")
           = fa_icon("linkedin")
-    - (1.. 10).each do |i|
-      .item
-        .cover
-          = image_tag "#{i}.jpg"
-          .user-avatar
-            = image_tag "1.jpg"
-        .title
-          = "Rework"
-        .description
-          = "大多数的企业管理的书籍都会告诉你：制定商业计划、分析竞争形势、寻找投资人等等。如果你要找的是那样的书，那么把这本书放回书架吧。 这本书呈现的是一种更好、更简单的经商成功之道。读完这本书，你就会明白为什么计划实际上百害而无一益，为什么你不需要外界投资人，为什么将竞争视而不见反倒会发展得更好。事实是你所需要的比你想象的少得多。你不必成为工作狂，你不必大量招兵买马，你不必把时间浪费在案头工作和会议上，你甚至不必拥有一间办公室。所有这些都仅仅是借口！".truncate(100)
-          = link_to "more", product_path(1), class: "frame-text"
-        .social
-          = fa_icon("wechat")
-          = fa_icon("qq")
-          = fa_icon("weibo")
-          = fa_icon("renren")
     
 .feedback-bar    
   = form_tag '/feedback' do

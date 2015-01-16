@@ -8,10 +8,18 @@ class ProductsController < ApplicationController
     
     @product = Product.new
     doc = Nokogiri::HTML(open(params[:douban_link]).read)
-    @name = doc.css('h1 span').first.content
-    @cover_url = doc.css('.nbg img').first['src']
-    @description = doc.css('#link-report .intro').last.content
-    @kind = doc.css('#db-tags-section .indent a').first.content
+    if params[:douban_link].match /read.douban.com/
+      @name = doc.css(".article-title").first.content
+      @cover_url = doc.css(".cover img").first['src']
+      @description = doc.css(".abstract-full .info p").map{|element| element.content}
+                                                      .inject{|sum, element| sum + "/n" + element}
+      @kind = "Instance"
+    elsif params[:douban_link].match /book.douban.com/
+      @name = doc.css('h1 span').first.content
+      @cover_url = doc.css('.nbg img').first['src']
+      @description = doc.css('#link-report .intro').last.content
+      @kind = doc.css('#db-tags-section .indent a').first.content
+    end
   end
 
   def create

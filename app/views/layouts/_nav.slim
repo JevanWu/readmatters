@@ -15,5 +15,9 @@ nav.navbar-fixed-top(role="navigation")
         li
           = link_to "关于我们", "#"
       ul.navbar-right
+        #trolly(data-toggle="popover" data-placement="bottom" title="Your cart" data-content="here is the content of your cart")
+          = fa_icon "shopping-cart"
+          .number-of-items
+            = "[0]"
         = render 'layouts/sign_in_partial'
                           

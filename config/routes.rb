@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :line_items
+
   get 'profile' => 'users#profile', as: :profile
 
   # Example resource route with options:

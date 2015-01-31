@@ -18,4 +18,12 @@ class Cart < ActiveRecord::Base
     end
     quantity
   end
+
+  def items_text
+    items_text = ""
+    line_items.each do |item|
+      items_text << "<p> #{item.product.name} * #{item.quantity} </p>"
+    end
+    items_text
+  end
 end

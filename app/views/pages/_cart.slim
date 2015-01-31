@@ -1,4 +1,4 @@
-#cart( data-toggle="popover" data-placement="bottom" title="Your cart" data-content="here is the content of your cart" )
+#cart( data-toggle="popover" data-placement="bottom" title="Your cart" data-content="#{cart.items_text}" )
   = fa_icon "shopping-cart"
   .number-of-items
     = "[#{cart.number_of_items}]"

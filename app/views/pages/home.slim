@@ -12,8 +12,8 @@
 
         .title
           = product.name
-        .description
-          = product.description.truncate(100)
+        /*.description*/
+        /*  = product.description.truncate(100)*/
           br
           = link_to "看不够", product_path(product), class: "frame-text"
           = button_to "add to cart", line_items_path(product_id: product.id), remote: true

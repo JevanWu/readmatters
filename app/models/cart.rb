@@ -11,6 +11,12 @@ class Cart < ActiveRecord::Base
     current_item
   end
 
+  def remove_product(product)
+    current_item = line_items.find_by(product_id: product.id)
+    return if current_item.nil?
+    current_item.delete
+  end
+
   def number_of_items
     quantity = 0
     line_items.each do |item|

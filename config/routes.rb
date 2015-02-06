@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :line_items
+  resources :carts, only: [:show]
+
+  resources :line_items
 
   get 'profile' => 'users#profile', as: :profile
 

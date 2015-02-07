@@ -4,4 +4,5 @@
   = item.quantity
   = button_to "increase quantity", line_items_path(product_id: item.product.id), remote: true
   = button_to "remove product", line_item_path(product_id: item.product.id), method: :delete, data: { confirm: "are you sure to remove the product? " }, remote: true
+  = link_to "place order", new_order_path
 

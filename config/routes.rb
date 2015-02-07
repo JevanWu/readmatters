@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :orders
+
   resources :carts, only: [:show]
 
   resources :line_items

@@ -11,7 +11,7 @@
             = image_tag "1.jpg"
 
         .title
-          = product.name
+          = link_to product.name, product_path(product)
         .description
           /*= product.description.truncate(100)*/
           /*br*/

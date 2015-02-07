@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://ruby.taobao.org/
   specs:
     actionmailer (4.1.8)
       actionpack (= 4.1.8)
@@ -34,6 +34,10 @@ GEM
     bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
     builder (3.2.2)
+    china_region_fu (0.0.6)
+      actionpack
+      activesupport
+      httparty
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.5)
@@ -60,6 +64,9 @@ GEM
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
     hike (1.2.3)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.11)
     jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
@@ -78,6 +85,7 @@ GEM
     mini_portile (0.6.1)
     minitest (5.5.0)
     multi_json (1.10.1)
+    multi_xml (0.5.5)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
@@ -167,6 +175,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass
+  china_region_fu
   codemirror-rails
   coffee-rails (~> 4.0.0)
   devise

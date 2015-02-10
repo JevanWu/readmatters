@@ -1,0 +1,7 @@
+= simple_form_for @order, html: { class: 'form-horizontal' } do |f|
+  = f.input :province, as: :region, collection: Province.select('id, name'), sub_region: :city
+  = f.input :city, as: :region, sub_region: :district
+  = f.input :district, as: :region
+  = f.input :address
+  = js_for_region_ajax
+  = f.submit :submit

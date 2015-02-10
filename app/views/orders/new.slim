@@ -1,3 +1,12 @@
-.container
-  = render "form"
+= render "shared/jumbotron", content: "下单中..."
+.grey-division
+  .container
+    .product-container
+      .product-show-nav
+        .product-cover
+          = image_tag(current_cart.line_items.first.product.cover.url)
+          .name
+    .order-form
+
+      = render "form"
 

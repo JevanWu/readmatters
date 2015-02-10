@@ -8,7 +8,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def name
-    name ||= email.match(/(.+)@/)[1]
-    name.titleize
+    if new_record?
+      super
+    else
+      name ||= email.match(/(.+)@/)[1]
+      name.titleize
+    end
   end
 end

@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   get 'profile' => 'users#profile', as: :profile
 
-  get 'checkout' => 'orders#checkout', as: :checkout
+  get 'checkout/:id' => 'orders#checkout', as: :checkout
 
   # Example resource route with options:
   #   resources :products do

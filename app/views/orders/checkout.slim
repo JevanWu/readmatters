@@ -1,1 +1,8 @@
-h1 Checkout
+= render "shared/jumbotron", content: "还差一步"
+.grey-division
+  .container.product-container
+    .product-show-nav
+      .product-cover
+        = image_tag(@order.line_items.first.product.cover.url)
+        .name
+          = "X #{@order.line_items.first.quantity}"

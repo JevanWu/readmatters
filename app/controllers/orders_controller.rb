@@ -6,16 +6,15 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.create(order_params)
-    binding.pry
     if clean_cart && set_buyer
-      redirect_to checkout_path
+      redirect_to checkout_path(@order)
     else
       redirect_to :back
     end
   end
 
   def checkout
-    
+    @order = Order.find(params[:id])
   end
 
   private

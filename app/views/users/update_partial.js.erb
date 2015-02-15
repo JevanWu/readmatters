@@ -1,0 +1,2 @@
+$(".profile-main").html("<%= j(render partial: @partial) %>")
+history.pushState({title: "<%= @partial %>"}, "", "<%= @partial %>")

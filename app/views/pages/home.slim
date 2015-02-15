@@ -12,16 +12,12 @@
 
         .title
           = link_to product.name, product_path(product)
-        .description
-          /*= product.description.truncate(100)*/
-          /*br*/
-          /*= link_to "看不够", product_path(product), class: "frame-text"*/
-          = button_to "add to cart", line_items_path(product_id: product.id), remote: true
+        .add-to-cart
+          = link_to fa_icon("cart-plus", text: "Add to cart"), line_items_path(product_id: product.id), remote: true, method: :post
         .social
           = fa_icon("wechat")
           = fa_icon("qq")
           = fa_icon("weibo")
-          = fa_icon("renren")
           = fa_icon("linkedin")
     
 .feedback-bar    

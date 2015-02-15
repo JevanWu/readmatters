@@ -6,8 +6,12 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.create(order_params)
-    if clean_cart && set_buyer
+    @order = current_user.orders.build(order_params)
+    @order.add_items_from_cart(current_cart)
+    @order.province_id = params[:order][:province]
+    @order.city_id = params[:order][:city]
+    @order.district_id = params[:order][:district]
+    if @order.save
       redirect_to checkout_path(@order)
     else
       redirect_to :back
@@ -20,19 +24,6 @@ class OrdersController < ApplicationController
 
   private
     def order_params
-      params.require(:order).permit(:receiver_name, :province_id, :city_id, :district_id, :street, :user)
-    end
-
-    def clean_cart
-      current_cart.line_items.each do |item|
-        item.order = @order
-        item.cart = nil
-        item.save
-      end
-    end
-
-    def set_buyer
-      @order.receiver_id = current_user.id
-      @order.save
+      params.require(:order).permit(:receiver_name, :street)
     end
 end

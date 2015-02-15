@@ -1,2 +1,4 @@
 h3
+  - current_user.orders.each do |order|
+    = image_tag order.line_items.first.product.cover.url
   | bought books

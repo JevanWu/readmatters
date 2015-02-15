@@ -1,12 +1,14 @@
 - if user_signed_in?
   .dropdown
-    button.btn.btn-default.user-dropdown.dropdown-toggle(type="button" id="userDropdownMenu" data-toggle="dropdown" aria-expanded="true")
-      = current_user.name
+    button.btn.btn-default.dropdown-toggle(type="button" id="userDropdownMenu" data-toggle="dropdown" aria-expanded="true")
+      = current_user.name  
       span.caret
     ul.dropdown-menu(role="menu" aria-labelledby="userDropdownMenu")
       li(role="presentation")
-        = link_to "Profile", profile_path, role: "menuitem", tabindex: "-1" 
+        = link_to "Profile", timeline_path, role: "menuitem", tabindex: "-1" 
+      li(role="presentation")
         = link_to "Publish Book", douban_link_products_path, role: "menuitem", tabindex: "-1" 
+      li(role="presentation")
         = link_to "Sign out", destroy_user_session_path, method: :delete
 
 - else

@@ -59,6 +59,9 @@ gem 'paperclip'
 # gem for china provinces and cities
 gem 'china_region_fu'
 
+#redis
+gem 'redis-rails'
+
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do 
   gem 'spring'

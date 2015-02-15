@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
 
   private
     def order_params
-      params.require(:order).permit(:receiver_name, :province, :city, :district, :street, :user)
+      params.require(:order).permit(:receiver_name, :province_id, :city_id, :district_id, :street, :user)
     end
 
     def clean_cart

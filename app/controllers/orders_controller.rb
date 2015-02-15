@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @order = current_user.orders.build if current_user.present?

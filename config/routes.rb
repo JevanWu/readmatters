@@ -25,7 +25,8 @@ Rails.application.routes.draw do
 
   resources :line_items
 
-  get 'profile' => 'users#profile', as: :profile
+  get 'timeline' => 'users#timeline', as: :timeline
+  get 'bought_books' => 'users#bought_books', as: :bought_books
 
   get 'checkout/:id' => 'orders#checkout', as: :checkout
 

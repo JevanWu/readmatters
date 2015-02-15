@@ -1,5 +1,18 @@
 class UsersController < ApplicationController
 
-  def profile
+  def timeline 
+    @partial = "timeline"
+    respond_to do |format|
+      format.html
+      format.js { render "update_partial", layout: false }
+    end
+  end
+
+  def bought_books
+    @partial = "bought_books"
+    respond_to do |format|
+      format.html
+      format.js { render "update_partial", layout: false }
+    end
   end
 end

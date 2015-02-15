@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 20150207141156) do
     t.integer  "district_id"
     t.string   "street"
     t.integer  "user_id"
-    t.integer  "receiver_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -78,7 +77,6 @@ ActiveRecord::Schema.define(version: 20150207141156) do
   add_index "orders", ["city_id"], name: "index_orders_on_city_id"
   add_index "orders", ["district_id"], name: "index_orders_on_district_id"
   add_index "orders", ["province_id"], name: "index_orders_on_province_id"
-  add_index "orders", ["receiver_id"], name: "index_orders_on_receiver_id"
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "products", force: true do |t|

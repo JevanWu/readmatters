@@ -8,7 +8,6 @@ class CreateOrders < ActiveRecord::Migration
       t.string :street
 
       t.references :user, index: true
-      t.references :receiver, index: true
 
       t.timestamps
     end

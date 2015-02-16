@@ -7,6 +7,8 @@ class Order < ActiveRecord::Base
 
   before_create :generate_oid
 
+  default_scope { order(created_at: :desc) }
+
   def add_items_from_cart(cart)
     cart.line_items.each do |item|
       item.cart_id = nil

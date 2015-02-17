@@ -4,7 +4,7 @@ h3
       .header 
         ul
           li
-            = order.oid 
+            = order.identifier
           li
             = "收件人：#{order.receiver_name} "
           li 
@@ -19,6 +19,6 @@ h3
             = 19.0
           - if index == 0
             td.state rowspan = order.line_items.length
-              | 等待发货
+              = order.state
             td.operation rowspan = order.line_items.length
               = link_to "确认收货", "#"

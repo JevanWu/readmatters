@@ -62,6 +62,8 @@ gem 'china_region_fu'
 #redis
 gem 'redis-rails'
 
+gem 'state_machine'
+
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do 
   gem 'spring'

@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   belongs_to :city
   belongs_to :district
 
-  before_create :generate_oid
+  before_create :generate_identifier
 
   default_scope { order(created_at: :desc) }
 
@@ -16,9 +16,9 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def generate_oid
+  def generate_identifier
     date_string = Time.now.strftime('%Y%m%d')
     uniq_num = "%05d" % $redis.incr("#{self.class.name}:#{date_string}")
-    self.oid = date_string + uniq_num
+    self.identifier = date_string + uniq_num
   end
 end

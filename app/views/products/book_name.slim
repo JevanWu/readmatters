@@ -1,11 +1,10 @@
 = render "shared/jumbotron", content: "发布您的书籍"
 .grey-division
   .container
-    = form_tag new_product_path, class: "form-horizontal", method: :get do
+    = form_tag new_product_path, class: "form-horizontal book-name", method: :get do
       .form-group
-        = label_tag "book_name", nil, class: "control-label col-sm-2"
-        .col-md-10
-          = text_field_tag "book_name", nil, class: "form-control"
+        .col-md-12
+          = text_field_tag "book_name", nil, class: "form-control", placeholder: "What's your book name"
       .form-group
-        .col-sm-offset-2.col-sm-10
-          = submit_tag "Next", class: "btn btn-default", data: { disable_with: 'Processing...' }
+        .col-md-12
+          = submit_tag "Submit book name", class: "btn btn-success col-md-12", data: { disable_with: 'Processing...' }

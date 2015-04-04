@@ -24,6 +24,15 @@ class Order < ActiveRecord::Base
       transition :wait_confirm => :success
     end
 
+    event :cancel do
+      transition :wait_pay => :cancelled
+      transition :wait_ship => :wait_refund
+    end
+
+    event :refund do
+      trnasition :wait_refund => :refunded
+    end
+
   end
 
   def add_items_from_cart(cart)

@@ -3,9 +3,9 @@
   .container
     = form_tag new_product_path, class: "form-horizontal", method: :get do
       .form-group
-        = label_tag "douban_link", nil, class: "control-label col-sm-2"
+        = label_tag "book_name", nil, class: "control-label col-sm-2"
         .col-md-10
-          = text_field_tag "douban_link", nil, class: "form-control"
+          = text_field_tag "book_name", nil, class: "form-control"
       .form-group
         .col-sm-offset-2.col-sm-10
           = submit_tag "Next", class: "btn btn-default", data: { disable_with: 'Processing...' }

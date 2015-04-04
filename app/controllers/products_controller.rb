@@ -4,7 +4,7 @@ require 'open-uri'
 class ProductsController < ApplicationController
 
   def new
-    redirect_to douban_link_products_path if params[:douban_link].nil?
+    redirect_to book_name_products_path if params[:douban_link].nil?
     
     @product = Product.new
     doc = Nokogiri::HTML(open(params[:douban_link]).read)
@@ -34,7 +34,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def douban_link
+  def book_name
+  end
   end
 
   private

@@ -1,7 +1,8 @@
-= render "shared/jumbotron", content: "发布您的书籍"
 .grey-division
   .container
     = form_tag new_product_path, class: "form-horizontal book-name", method: :get do
+      .hint
+        = "您要发布的书籍名字是？"
       .form-group
         .col-md-12
           = text_field_tag "book_name", nil, class: "form-control", placeholder: "What's your book name"

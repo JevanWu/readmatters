@@ -30,7 +30,7 @@ class Order < ActiveRecord::Base
     end
 
     event :refund do
-      trnasition :wait_refund => :refunded
+      transition :wait_refund => :refunded
     end
 
   end

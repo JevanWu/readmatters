@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'ostruct'
 
 class ProductsController < ApplicationController
 
@@ -36,6 +37,32 @@ class ProductsController < ApplicationController
 
   def book_name
   end
+
+  def book_links
+    redirect_to book_name_products_path if params[:book_name].nil?
+    @books = []
+    doc = Nokogiri::HTML(open(URI.escape("http://book.douban.com/subject_search?search_text=#{params[:book_name]}")).read)
+    items = doc.css(".subject-item")
+    items.each_with_index do |item, index|
+      book = OpenStruct.new
+      book.cover = item.css(".pic img").attribute("src").content
+      book.href = item.css(".info a").attribute("href").content
+      book.title = item.css(".info a").attribute("title").content
+      @books[index] = book
+    end
+
+    #record the number of items have been counted
+    counted = items.count
+
+    doc = Nokogiri::HTML(open(URI.escape("http://read.douban.com/search?q=#{params[:book_name]}")).read)
+    items = doc.css(".item")
+    items.each_with_index do |item, index|
+      book = OpenStruct.new
+      book.cover = item.css(".cover img").attribute("src").content
+      book.href = "http://read.douban.com" + item.css(".info .title a").attribute("href").content
+      book.title = item.css(".info .title a").text
+      @books[counted + index] = book
+    end
   end
 
   private

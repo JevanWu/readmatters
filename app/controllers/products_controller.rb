@@ -17,8 +17,8 @@ class ProductsController < ApplicationController
     elsif params[:douban_link].match /book.douban.com/
       @name = doc.css('h1 span').first.content
       @cover_url = doc.css('.nbg img').first['src']
-      @description = doc.css('#link-report .intro').last.content
-      @kind = doc.css('#db-tags-section .indent a').first.content
+      @description = doc.css('#link-report .intro').last.try(:content)
+      @kind = doc.css('#db-tags-section .indent a').first.try(:content)
     end
   end
 

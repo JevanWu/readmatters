@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :products do
     collection do
       get "book_name", as: :book_name
+      get "book_links", as: :book_links
     end
   end
 

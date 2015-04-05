@@ -1,0 +1,11 @@
+= render "shared/jumbotron", content: "请选择您的书籍封面"
+.grey-division
+  #container
+    - @books.each do |book|
+      .item
+        .cover
+          = image_tag book.cover
+        .title
+          = book.title
+        .action
+          = link_to "This is my book", new_product_path(douban_link: book.href), class: "btn btn-success col-md-12"

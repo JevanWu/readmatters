@@ -1,6 +1,6 @@
 module ApplicationHelper
   def render_footer
-    if params[:action] != "home"
+    unless %w(home book_links).include? params[:action]
       render 'layouts/footer'
     end
   end

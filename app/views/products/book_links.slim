@@ -8,4 +8,4 @@
         .title
           = book.title
         .action
-          = link_to "This is my book", new_product_path(douban_link: book.href), class: "btn btn-success col-md-12"
+          = link_to "This is my book", new_product_path(book_id: book.id), class: "btn btn-success col-md-12"

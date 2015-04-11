@@ -8,12 +8,13 @@ class ProductsController < ApplicationController
     redirect_to book_name_products_path if params[:book_id].nil?
     
     @product = Product.new
-    _response = RestClient.get("https://api.douban.com/v2/book/#{params[:book_id]}", params: { fields: "title,image,summary"})
+    _response = RestClient.get("https://api.douban.com/v2/book/#{params[:book_id]}", params: { fields: "title,image,summary,tags"})
     redirect_to book_name_products_path unless _response.code == 200
     response = JSON.parse _response
     @name = response["title"]
     @cover_url = response["image"]
     @description = response["summary"]
+    @tags = response["tags"].map { |tag| tag["title"] }
 
     # doc = Nokogiri::HTML(open(params[:douban_link]).read)
     # if params[:douban_link].match /read.douban.com/

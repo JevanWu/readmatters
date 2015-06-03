@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   get 'timeline' => 'users#timeline', as: :timeline
   get 'bought_books' => 'users#bought_books', as: :bought_books
+  get 'setting' => 'users#setting', as: :user_setting
 
   get 'checkout/:id' => 'orders#checkout', as: :checkout
 

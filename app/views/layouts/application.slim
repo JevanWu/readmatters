@@ -4,7 +4,11 @@ html
   head
     title = "BookPass"
     = stylesheet_link_tag 'application', 'data-turbolinks-track' => true 
+    - if content_for :page_css
+      = yield :page_css
     = javascript_include_tag 'application', 'data-turbolinks-track' => true 
+    - if content_for :page_js
+      = yield :page_js
     = csrf_meta_tags
         
   body

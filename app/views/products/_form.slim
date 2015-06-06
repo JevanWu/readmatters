@@ -1,4 +1,16 @@
+- content_for :page_js
+  = javascript_include_tag 'jquery.nouislider.all.min'
+- content_for :page_css
+  = stylesheet_link_tag 'jquery.nouislider.min'
+  = stylesheet_link_tag 'jquery.nouislider.pips.min'
+
 = simple_form_for @product, html: { class: 'form-horizontal' } do |f|
+  #value-input
+  .form-group
+    label.col-sm-2.control-label
+      | 新旧程度
+    .col-sm-offset-1.col-sm-4
+      #range
   = f.input :cover_url, input_html: { value: @cover_url }, as: :hidden
   = f.input :name, input_html: { value: @name }
   = f.input :kind, input_html: { value: @tags.join(", ") }
@@ -7,3 +19,31 @@
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit "Submit", class: "btn btn-default"
+
+javascript:
+  var range_all_sliders = {
+    'min': 0,
+    'max': 5
+  };
+
+  $('#range').noUiSlider({
+    // Support for non-linear ranges by adding intervals.
+    range: range_all_sliders,
+    start: 0,
+    connect: 'lower',
+    step: 1,
+
+    // Configure tapping, or make the selected range dragable.
+    behaviour: 'tap'
+                              
+  });
+
+  $("#range").noUiSlider_pips({
+    mode: 'steps',
+    density: 20 
+  });
+
+  $('#range').Link('lower').to($('#value-input'));
+
+
+

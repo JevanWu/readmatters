@@ -7,8 +7,8 @@
       .item
         .cover
           = image_tag product.cover.url(:medium)
-          .user-avatar
-            = image_tag product.user.avatar.url(:thumb)
+          /*.user-avatar*/
+          /*  = image_tag product.user.avatar.url(:thumb)*/
 
         .title
           = link_to product.name, product_path(product)

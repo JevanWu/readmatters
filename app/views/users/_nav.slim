@@ -1,8 +1,7 @@
 .profile-nav
   .avatar
-    = image_tag "6.jpg"
-    .name
-      = "Jevan Wu"
+    = image_tag current_user.avatar.url(:thumb)
+  input#user_avatar name="user[avatar]" type="file" style="display:none"
   ul.nav-list
     li
       = link_to "时间轴", timeline_path, remote: true
@@ -14,3 +13,22 @@
     /*  = link_to "历史书单", "#"*/
     li
       = link_to "设置", user_setting_path, remote: true
+
+
+javascript:
+  $(document).ready(function(){
+    $(".avatar").click(function(e){
+      $("#user_avatar").click();
+    });
+
+    $("#user_avatar").fileupload({
+      url: "http://localhost:3000/users/update_avatar",
+      dataType: "json",
+      method: "patch",
+      done: function(e, data) {
+        $(".avatar img").attr("src", data.result.image);
+      },
+      error: function(data) {
+      }
+    });
+  });

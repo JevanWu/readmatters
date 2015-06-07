@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
+gem "jquery-fileupload-rails"
+
 # Slim
 gem 'slim-rails'
 # Use bootstrap
@@ -37,7 +39,7 @@ gem 'autoprefixer-rails'
 gem 'simple_form'
 #
 # Admin console helper gem
-#gem 'activeadmin', github: 'activeadmin'
+# gem 'activeadmin', github: 'activeadmin'
 
 #gem 'ransack'
 #

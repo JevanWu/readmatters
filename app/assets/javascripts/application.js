@@ -24,6 +24,7 @@
 //= require codemirror
 //= require summernote
 //= require lang/summernote-ko-KR
+//= require jquery-fileupload/basic
 
 NProgress.configure({ showSpinner: false, ease: 'ease', speed: 500 })
 

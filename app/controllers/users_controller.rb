@@ -24,4 +24,11 @@ class UsersController < ApplicationController
       format.js { render "update_partial", layout: false }
     end
   end
+
+  def update_avatar
+    current_user.update_attribute(:avatar, params[:user][:avatar])
+    respond_to do |format|
+      format.json { render json: {image: current_user.avatar.url(:thumb)}, status: :ok }
+    end
+  end
 end

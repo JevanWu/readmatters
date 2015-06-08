@@ -39,7 +39,7 @@ gem 'autoprefixer-rails'
 gem 'simple_form'
 #
 # Admin console helper gem
-# gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin', '~> 1.0.0.pre1'
 
 #gem 'ransack'
 #

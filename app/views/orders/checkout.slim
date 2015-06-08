@@ -1,4 +1,4 @@
-= render "shared/jumbotron", content: "请选择支付方式"
+= render "shared/jumbotron", content: "扫码完成支付"
 .grey-division
   .container.product-container
     .product-show-nav
@@ -7,7 +7,7 @@
         .name
           = "X #{@order.line_items.first.quantity}"
 
-    .checkout-form
-      = button_to "", "#", class: "alipay pay-btn"
-      = button_to "", "#", class: "wechat pay-btn"
+    .checkout-container
+      .qrcode
+        = image_tag "qrcode.png"
       

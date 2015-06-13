@@ -6,7 +6,7 @@
     - @products.each do |product|
       .item
         .cover
-          = image_tag product.cover.url(:medium)
+          = link_to image_tag(product.cover.url(:medium)), product_path(product)
           /*.user-avatar*/
           /*  = image_tag product.user.avatar.url(:thumb)*/
 

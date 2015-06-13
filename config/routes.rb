@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     collection do
       get "book_name", as: :book_name
       get "book_links", as: :book_links
+      get "upload_image", as: :upload_image
+      post "create_image", as: :create_image
     end
   end
 

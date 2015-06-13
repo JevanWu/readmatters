@@ -39,6 +39,14 @@ class ProductsController < ApplicationController
     end
   end
 
+  def upload_image
+    
+  end
+
+  def create_image
+    
+  end
+
   def show
     @product = Product.find(params[:id])
   end

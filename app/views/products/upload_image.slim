@@ -1,0 +1,16 @@
+.grey-division
+  .container
+    .upload-image
+      .camera-icon
+        = fa_icon("camera")
+      .hint
+        | 添加图书真实照片
+      .hint-small
+        | 添加真实的书籍照片可以帮助买方更好的了解书籍的新旧程度和样貌
+      input#upload-image type="file" style="display: none"
+      button.btn.btn-success#add-image 添加照片
+
+javascript:
+  $("#add-image").click(function(){
+    $("#upload-image").click();
+  });

@@ -19,8 +19,10 @@ Rails.application.routes.draw do
     collection do
       get "book_name", as: :book_name
       get "book_links", as: :book_links
-      get "upload_photo", as: :upload_photo
       post "create_photo", as: :create_photo
+    end
+    member do
+      get "upload_photo", as: :upload_photo
     end
   end
 

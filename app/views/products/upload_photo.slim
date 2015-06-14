@@ -1,7 +1,7 @@
 .grey-division
   .container
-    input#upload-photo name="product[image]" type="file" style="display: none" data-product="#{@product.id}"
-    .upload-image 
+    input#upload-photo name="product[photo]" type="file" style="display: none" data-product="#{@product.id}"
+    .upload-photo style="#{ @product.photos.blank? ? 'display:block' : 'display:none'}"
       .camera-icon
         = fa_icon("camera")
       .hint
@@ -9,24 +9,14 @@
       .hint-small
         | 添加真实的书籍照片可以帮助买方更好的了解书籍的新旧程度和样貌
       button.btn.btn-success#add-photo 添加照片
-    .image-show.row
+      
+    .photo-show.row style="#{ @product.photos.blank? ? 'display:none' : 'display:block'}"
+      - @product.photos.each do |photo|
+        .col-md-3
+          .image-box
+            = image_tag photo.image.url
       .col-md-3
-        .image-box
-          = image_tag "https://z2.muscache.com/ac/pictures/86187719/e309c267_original.jpg?interpolation=lanczos-none&size=small&output-format=jpg&output-quality=70"
-      .col-md-3
-        .image-box
-          = image_tag "http://t12.baidu.com/it/u=4095575894,102452705&fm=32&s=A98AA55F526172A6F6A058E50300A060&w=623&h=799&img.JPEG"
-      .col-md-3
-        .image-box
-          = image_tag "hor.JPG"
-      .col-md-3
-        .image-box
-          = image_tag "ver.PNG"
-      .col-md-3
-        .image-box
-          = image_tag "http://t12.baidu.com/it/u=4095575894,102452705&fm=32&s=A98AA55F526172A6F6A058E50300A060&w=623&h=799&img.JPEG"
-      .col-md-3
-        .add-box
+        .add-box#more-photo
           = fa_icon("plus")
           p
             | 添加新照片

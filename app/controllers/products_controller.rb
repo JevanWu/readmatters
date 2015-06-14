@@ -36,15 +36,20 @@ class ProductsController < ApplicationController
     @product.user = current_user
     if @product.save
       # redirect_to product_path(@product)
-      redirect_to upload_image_products_path(@product)
+      redirect_to upload_photo_product_path(@product)
     end
   end
 
   def upload_photo
-    @product = Product.last
+    @product = Product.find params[:id]
   end
 
   def create_photo
+    product = Product.find params[:product_id]
+    photo = product.photos.create(image: params[:product][:photo])
+    respond_to do |format|
+      format.json { render json: { photo: photo.image.url }, status: :ok } 
+    end
   end
 
   def show

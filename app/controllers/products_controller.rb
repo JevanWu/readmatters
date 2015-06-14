@@ -35,16 +35,16 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user = current_user
     if @product.save
-      redirect_to product_path(@product)
+      # redirect_to product_path(@product)
+      redirect_to upload_image_products_path(@product)
     end
   end
 
-  def upload_image
-    
+  def upload_photo
+    @product = Product.last
   end
 
-  def create_image
-    
+  def create_photo
   end
 
   def show

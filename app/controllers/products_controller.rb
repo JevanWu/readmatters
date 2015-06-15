@@ -48,7 +48,16 @@ class ProductsController < ApplicationController
     product = Product.find params[:product_id]
     photo = product.photos.create(image: params[:product][:photo])
     respond_to do |format|
-      format.json { render json: { photo: photo.image.url }, status: :ok } 
+      format.json { render json: { id: photo.id, photo: photo.image.url }, status: :ok } 
+    end
+  end
+
+  def delete_photo
+    photo = Photo.find params[:photo_id]
+    respond_to do |format|
+      if photo.delete
+        format.json { render json: {}, status: :ok } 
+      end
     end
   end
 

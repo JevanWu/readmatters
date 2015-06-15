@@ -13,8 +13,9 @@
     .photo-show.row style="#{ @product.photos.blank? ? 'display:none' : 'display:block'}"
       - @product.photos.each do |photo|
         .col-md-3
-          .image-box
+          .image-box id="photo-#{photo.id}" data-photo="#{photo.id}"
             = image_tag photo.image.url
+            = fa_icon("trash-o")
       .col-md-3
         .add-box#more-photo
           = fa_icon("plus")

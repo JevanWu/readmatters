@@ -1,6 +1,19 @@
 = render "shared/jumbotron", content: @product.name
 .grey-division
-  .container
+  .container.product-container
+    .product-show-nav
+      .product-cover
+        = image_tag @product.cover.url
+        .name
+          = @product.kind
+      ul.nav-list
+        li
+          = link_to "书籍介绍", "#"
+        li 
+          = link_to "书籍实照", photos_product_path(@product)
+    br
+    br
+    br
     .photo-show.row style="#{ @product.photos.blank? ? 'display:none' : 'display:block'}"
       - @product.photos.each do |photo|
         .col-md-3

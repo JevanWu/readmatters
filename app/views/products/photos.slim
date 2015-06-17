@@ -8,9 +8,12 @@
           = @product.kind
       ul.nav-list
         li
-          = link_to "书籍介绍", "#"
+          = link_to "书籍介绍", product_path(@product)
         li 
           = link_to "书籍实照", photos_product_path(@product)
+      .price-tag
+        = link_to "￥20.0", "#", class: "btn btn-success price"
+
     br
     br
     br

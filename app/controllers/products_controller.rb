@@ -52,6 +52,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def photos
+    @product = Product.find params[:id]
+    @photos = @product.photos
+  end
+
   def delete_photo
     photo = Photo.find params[:photo_id]
     respond_to do |format|

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     end
     member do
       get "upload_photo", as: :upload_photo
+      get "photos", as: :photos
     end
   end
 

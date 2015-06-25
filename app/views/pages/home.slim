@@ -12,6 +12,8 @@
 
         .title
           = link_to product.name, product_path(product)
+        .price
+          | ￥61
         .add-to-cart
           = link_to fa_icon("cart-plus", text: "Cart"), line_items_path(product_id: product.id), remote: true, method: :post
         .social

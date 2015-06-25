@@ -15,6 +15,10 @@ nav.navbar-fixed-top(role="navigation")
         /*li*/
         /*  = link_to "关于我们", "#"*/
       ul.navbar-right
+        = form_tag "/search", class: "navbar-form navbar-left", role: "search"
+          .form-group
+            = text_field "key_word","book_name", class: "form-control", placeholder: "The book name"
+          = submit_tag "Search", class: "btn btn-default"
         = render 'pages/cart'
         = render 'layouts/sign_in_partial'
                           

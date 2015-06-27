@@ -11,11 +11,18 @@
       | 新旧程度
     .col-sm-offset-1.col-sm-4
       #range
-  = f.input :cover_url, input_html: { value: @cover_url }, as: :hidden
-  = f.input :name, input_html: { value: @name }
-  = f.input :kind, input_html: { value: @tags.join(", ") }
-  = f.input :price
-  = f.input :description, input_html: { value: @description, class: 'summernote'}
+  - if params[:action] == %(new)
+    = f.input :cover_url, input_html: { value: @cover_url }, as: :hidden
+    = f.input :name, input_html: { value: @name }
+    = f.input :kind, input_html: { value: @tags.join(", ") }
+    = f.input :price
+    = f.input :description, input_html: { value: @description, class: 'summernote'}
+  - else
+    = f.input :cover_url, as: :hidden
+    = f.input :name
+    = f.input :kind
+    = f.input :price
+    = f.input :description, input_html: { class: 'summernote'}
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit "Submit", class: "btn btn-default"

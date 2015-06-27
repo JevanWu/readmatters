@@ -31,6 +31,18 @@ class ProductsController < ApplicationController
     # end
   end
 
+  def edit
+    @product = Product.find params[:id]
+  end
+
+  def update
+    @product = Product.find params[:id]
+    if @product.update(product_params)
+      redirect_to product_path(@product)
+    else
+    end
+  end
+
   def create
     @product = Product.new(product_params)
     @product.user = current_user

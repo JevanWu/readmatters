@@ -25,7 +25,8 @@
 //= require lang/summernote-ko-KR
 //= require jquery-fileupload/basic
 //= require magnific-popup
-//= require_tree .
+//= require_directory ./products/
+//= require_directory .
 
 NProgress.configure({ showSpinner: false, ease: 'ease', speed: 500 })
 

@@ -25,6 +25,7 @@
 //= require summernote
 //= require lang/summernote-ko-KR
 //= require jquery-fileupload/basic
+//= require magnific-popup
 
 NProgress.configure({ showSpinner: false, ease: 'ease', speed: 500 })
 

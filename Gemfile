@@ -68,6 +68,9 @@ gem 'state_machine'
 
 gem 'rest_client'
 
+#for picture gallery
+gem 'magnific-popup-rails'
+
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do 
   gem 'spring'

@@ -20,6 +20,16 @@
     .photo-show.row style="#{ @product.photos.blank? ? 'display:none' : 'display:block'}"
       - @product.photos.each do |photo|
         .col-md-3
-          .image-box id="photo-#{photo.id}" data-photo="#{photo.id}"
+          /magnific popup require 'href' attribtue to work
+          .image-box id="photo-#{photo.id}" data-photo="#{photo.id}" href="#{photo.image.url}" 
             = image_tag photo.image.url
             = fa_icon("trash-o")
+
+javascript:
+  $(document).ready(function(){
+    $('.photo-show').magnificPopup({
+      delegate: '.image-box',
+      type: 'image',
+      gallery:{ enabled:true }
+    });
+  });

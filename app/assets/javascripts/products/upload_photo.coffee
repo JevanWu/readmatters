@@ -25,7 +25,7 @@ $ ->
     error: (data) ->
       return
   
-  $(".fa-trash-o").click ->
+  $(".fa-trash-o").click (e)->
     photo_id = $(this).parent().data("photo")
     if confirm("确认要删除吗？")
       $.ajax(
@@ -40,5 +40,6 @@ $ ->
         error: ->
           return
       )
+    e.stopPropagation()
 
 

@@ -1,24 +1,48 @@
-h3
+.timeline.animated
   - current_user.orders.each do |order|
-    table
-      .header 
-        ul
-          li
-            = order.identifier
-          li
-            = "收件人：#{order.receiver_name} "
-          li 
-            = order.created_at.to_date.to_formatted_s(:db)
-      - order.line_items.each_with_index do |item, index|
-        tr
-          td.cover
-            = image_tag item.product.cover.url
-          td.quantity
-            = item.quantity
-          td.price
-            = 19.0
-          - if index == 0
-            td.state rowspan = order.line_items.length
-              = order.state
-            td.operation rowspan = order.line_items.length
-              = link_to "确认收货", "#"
+    .timeline-row
+      .timeline-time
+        small
+          | it's a padding
+        = order.created_at.to_date.to_formatted_s(:db)
+      .timeline-icon
+        .bg-primary
+          i.fa.fa-bookmark
+      .panel.timeline-content
+        .panel-body
+          table
+            .header 
+              ul.row
+                li.col-sm-4
+                  = order.identifier
+                li.col-sm-4
+                  = order.state
+                  /= "收件人：#{order.receiver_name} "
+                li.col-sm-4
+                  = link_to "确认收货", "#"
+            - order.line_items.each_with_index do |item, index|
+              tr
+                td.cover
+                  = image_tag item.product.cover.url
+                td.quantity
+                  = item.product.name
+                td.price
+                  | ￥19.0
+          .pepole
+            | JevanWu
+  /.timeline-row
+  /  .timeline-time
+  /    small
+  /      | Oct 25
+  /    | 6:14 PM
+  /  .timeline-icon
+  /    .bg-warning
+  /      i.fa.fa-quote-right
+  /  .panel.timeline-content
+  /    .panel-body
+  /      blockquote
+  /        p
+  /          | Lorem ipsum velit ullamco anim pariatur proident eu deserunt laborum. Lorem ipsum ad in nostrud adipisicing cupidatat anim officia ad id cupidatat veniam quis elit ullamco.
+  /        small
+  /          | John Smith
+

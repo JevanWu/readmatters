@@ -1,0 +1,24 @@
+h3
+  - current_user.orders.each do |order|
+    table
+      .header 
+        ul
+          li
+            = order.identifier
+          li
+            = "收件人：#{order.receiver_name} "
+          li 
+            = order.created_at.to_date.to_formatted_s(:db)
+      - order.line_items.each_with_index do |item, index|
+        tr
+          td.cover
+            = image_tag item.product.cover.url
+          td.quantity
+            = item.quantity
+          td.price
+            = 19.0
+          - if index == 0
+            td.state rowspan = order.line_items.length
+              = order.state
+            td.operation rowspan = order.line_items.length
+              = link_to "确认收货", "#"

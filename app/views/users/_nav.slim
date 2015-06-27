@@ -3,8 +3,8 @@
     = image_tag current_user.avatar.url(:thumb)
   input#user_avatar name="user[avatar]" type="file" style="display:none"
   ul.nav-list
-    li
-      = link_to "时间轴", timeline_path, remote: true
+    /li
+    /  = link_to "时间轴", timeline_path, remote: true
     li
       = link_to "购买到的书籍", bought_books_path, remote: true
     li 

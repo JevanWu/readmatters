@@ -19,13 +19,13 @@
 //= require bootstrap/tooltip
 //= require bootstrap/popover
 //= require nprogress
-//= require_tree .
 //= require timeline
 //= require codemirror
 //= require summernote
 //= require lang/summernote-ko-KR
 //= require jquery-fileupload/basic
 //= require magnific-popup
+//= require_tree .
 
 NProgress.configure({ showSpinner: false, ease: 'ease', speed: 500 })
 

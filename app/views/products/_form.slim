@@ -5,12 +5,12 @@
   = stylesheet_link_tag 'jquery.nouislider.pips.min'
 
 = simple_form_for @product, html: { class: 'form-horizontal' } do |f|
-  #value-input
-  .form-group
-    label.col-sm-2.control-label
-      | 新旧程度
-    .col-sm-offset-1.col-sm-4
-      #range
+  /#value-input
+  /.form-group
+  /  label.col-sm-2.control-label
+  /    | 新旧程度
+  /  .col-sm-offset-1.col-sm-4
+  /    #range
   - if params[:action] == %(new)
     = f.input :cover_url, input_html: { value: @cover_url }, as: :hidden
     = f.input :name, input_html: { value: @name }

@@ -1,4 +1,12 @@
 = render "shared/jumbotron", content: "编辑您的书籍"
 .grey-division
-  .container
+  .container.product-container
+    .product-show-nav
+      .product-cover
+        = image_tag(@product.cover.url)
+      ul.nav-list
+        li
+          = link_to "编辑书籍内容", bought_books_path, remote: true
+        li 
+          = link_to "编辑书籍照片", selling_books_path, remote: true
     = render "form"

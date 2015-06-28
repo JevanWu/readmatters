@@ -1,0 +1,32 @@
+= render "shared/jumbotron", content: "编辑您的书籍"
+.grey-division
+  .container.product-container
+    .product-show-nav
+      .product-cover
+        = image_tag(@product.cover.url)
+      ul.nav-list
+        li
+          = link_to "编辑书籍内容", edit_product_path(@product)
+        li 
+          = link_to "编辑书籍照片", edit_photo_product_path(@product)
+    input#upload-photo name="product[photo]" type="file" style="display: none" data-product="#{@product.id}"
+    .upload-photo style="#{ @product.photos.blank? ? 'display:block' : 'display:none'}"
+      .camera-icon
+        = fa_icon("camera")
+      .hint
+        | 添加图书真实照片
+      .hint-small
+        | 添加真实的书籍照片可以帮助买方更好的了解书籍的新旧程度和样貌
+      button.btn.btn-success#add-photo 添加照片
+      
+    .photo-show.row style="#{ @product.photos.blank? ? 'display:none' : 'display:block'}"
+      - @product.photos.each do |photo|
+        .col-md-3
+          .image-box id="photo-#{photo.id}" data-photo="#{photo.id}"
+            = image_tag photo.image.url
+            = fa_icon("trash-o")
+      .col-md-3
+        .add-box#more-photo
+          = fa_icon("plus")
+          p
+            | 添加新照片

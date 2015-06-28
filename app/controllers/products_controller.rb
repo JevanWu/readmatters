@@ -56,6 +56,10 @@ class ProductsController < ApplicationController
     @product = Product.find params[:id]
   end
 
+  def edit_photo
+    @product = Product.find params[:id]
+  end
+
   def create_photo
     product = Product.find params[:product_id]
     photo = product.photos.create(image: params[:product][:photo])

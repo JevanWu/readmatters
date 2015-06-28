@@ -1,6 +1,8 @@
 .container
   .sign-in-form
-    h2.text-center
+    h2.logo-text.text-center
+      = link_to "流行书", root_path
+    h4.text-center
       | Sign up
 
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: :sign_in_horizontal_form, html: {class: "col-sm-offset-3 col-sm-6 clear-fix"} ) do |f| 

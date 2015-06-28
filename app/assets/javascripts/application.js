@@ -17,7 +17,6 @@
 //= require jquery.masonry.min
 //= require bootstrap/dropdown
 //= require bootstrap/tooltip
-//= require bootstrap/popover
 //= require nprogress
 //= require timeline
 //= require codemirror

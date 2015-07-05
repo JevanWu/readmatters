@@ -13,4 +13,8 @@ class Product < ActiveRecord::Base
   def cover_from_url
     self.cover = open(cover_url)
   end
+
+  def has_photos?
+    self.photos.count > 0
+  end
 end

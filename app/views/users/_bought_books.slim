@@ -16,7 +16,7 @@
                 li.col-sm-4
                   = order.identifier
                 li.col-sm-4
-                  = order.state
+                  = I18n.t "models.orders.state.#{order.state}"
                   /= "收件人：#{order.receiver_name} "
                 li.col-sm-4
                   = link_to "确认收货", "#"

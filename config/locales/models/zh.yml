@@ -1,0 +1,5 @@
+zh:
+  models:
+    orders:
+      state:
+        wait_pay: 等待付款 

@@ -1,6 +1,6 @@
 module ProductsHelper
 
-  def bought_order_trigger(order)
+  def bought_order_triggers(order)
     case order.state
     when %(wait_pay)
       link_to "去付款", checkout_path(order)

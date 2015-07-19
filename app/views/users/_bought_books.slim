@@ -19,7 +19,7 @@
                   = I18n.t "models.orders.state.#{order.state}"
                   /= "收件人：#{order.receiver_name} "
                 li.col-sm-4
-                  = bought_order_trigger(order)
+                  = bought_order_triggers(order)
             - order.line_items.each_with_index do |item, index|
               tr
                 td.cover

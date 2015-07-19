@@ -75,6 +75,7 @@ gem 'magnific-popup-rails'
 group :development do 
   gem 'spring'
   gem 'pry'
+  gem "letter_opener"
 end
 
 # Use ActiveModel has_secure_password

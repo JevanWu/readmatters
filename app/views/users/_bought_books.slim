@@ -19,7 +19,7 @@
                   = I18n.t "models.orders.state.#{order.state}"
                   /= "收件人：#{order.receiver_name} "
                 li.col-sm-4
-                  = link_to "确认收货", "#"
+                  = bought_order_trigger(order)
             - order.line_items.each_with_index do |item, index|
               tr
                 td.cover

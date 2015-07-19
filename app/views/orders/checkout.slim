@@ -10,4 +10,32 @@
     .checkout-container
       .qrcode
         = image_tag "qrcode.png"
-      
+.step-flow.row
+  .steps.col-md-3
+    .icon.text-center
+      = fa_icon("qrcode")
+    .title.text-center
+      | 第一步
+    .explanation.text-center
+      | 扫码支付金额给流行书, 提交审核
+  .steps.col-md-3
+    .icon.text-center
+      = fa_icon("shield")
+    .title.text-center
+      | 第二步
+    .explanation.text-center
+      | 流行书审核支付情况并通知卖者
+  .steps.col-md-3
+    .icon.text-center
+      = fa_icon("rocket")
+    .title.text-center
+      | 第三步
+    .explanation.text-center
+      | 卖者收到通知后会寄出书籍
+  .steps.col-md-3
+    .icon.text-center
+      = fa_icon("legal")
+    .title.text-center
+      | 第四步
+    .explanation.text-center
+      | 买者确认受到书籍后，流行书转款给卖者

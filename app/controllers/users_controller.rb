@@ -23,6 +23,14 @@ class UsersController < ApplicationController
       format.js { render "update_partial", layout: false }
     end
   end
+  
+  def sold_books
+    @partial = "sold_books"
+    respond_to do |format|
+      format.html
+      format.js { render "update_partial", layout: false }
+    end
+  end
 
   def setting
     @partial = "setting"

@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   # get 'timeline' => 'users#timeline', as: :timeline
   get 'bought_books' => 'users#bought_books', as: :bought_books
   get 'selling_books' => 'users#selling_books', as: :selling_books
+  get 'sold_books' => 'users#sold_books', as: :sold_books
   get 'setting' => 'users#setting', as: :user_setting
   patch 'users/update_avatar' => 'users#update_avatar', as: :update_avatar
 

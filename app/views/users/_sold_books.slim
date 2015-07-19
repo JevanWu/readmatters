@@ -1,0 +1,31 @@
+.timeline.animated
+  - current_user.orders.each do |order|
+    .timeline-row
+      .timeline-time
+        small
+          | it's a padding
+        = order.created_at.to_date.to_formatted_s(:db)
+      .timeline-icon
+        .bg-primary
+          i.fa.fa-bookmark
+      .panel.timeline-content
+        .panel-body
+          table
+            .header 
+              ul.row
+                li.col-sm-4
+                  = order.identifier
+                li.col-sm-4
+                  = I18n.t "models.orders.state.#{order.state}"
+                li.col-sm-4
+                  = sold_order_triggers(order)
+            - order.line_items.each_with_index do |item, index|
+              tr
+                td.cover
+                  = image_tag item.product.cover.url
+                td.quantity
+                  = item.product.name
+                td.price
+                  | ￥19.0
+          .pepole
+            | JevanWu

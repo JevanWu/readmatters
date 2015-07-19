@@ -2,12 +2,13 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @order = current_user.orders.build if current_user.present?
+    @order = current_user.bought_orders.build if current_user.present?
   end
 
   def create
-    @order = current_user.orders.build(order_params)
+    @order = current_user.bought_orders.build(order_params)
     @order.add_items_from_cart(current_cart)
+    @order.seller_id = current_cart.line_items.first.product.user.id
     @order.province_id = params[:order][:province]
     @order.city_id = params[:order][:city]
     @order.district_id = params[:order][:district]

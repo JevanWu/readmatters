@@ -16,7 +16,7 @@
             = link_to "书籍实照", photos_product_path(@product)
 
       .price-tag
-        = link_to "￥20.0", "#", class: "btn btn-success price"
+        = link_to "￥20.0", line_items_path(product_id: @product.id), method: :post, class: "btn btn-success price"
 
     .product-intro
       h3

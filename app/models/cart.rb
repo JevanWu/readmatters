@@ -17,6 +17,10 @@ class Cart < ActiveRecord::Base
     current_item.delete
   end
 
+  def clear
+    self.line_items.destroy_all
+  end
+
   def number_of_items
     quantity = 0
     line_items.each do |item|

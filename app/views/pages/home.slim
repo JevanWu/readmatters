@@ -17,7 +17,7 @@
         .add-to-cart
           = link_to fa_icon("cart-plus", text: "Cart"), line_items_path(product_id: product.id), remote: true, method: :post
         .social
-          = link_to fa_icon("share", text: "Share"), line_items_path(product_id: product.id), remote: true, method: :post
+          = link_to fa_icon("cart-plus", text: "Buy"), line_items_path(product_id: product.id), method: :post
 
           /*= fa_icon("wechat")*/
           /*= fa_icon("qq")*/

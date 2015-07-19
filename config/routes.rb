@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get 'sold_books' => 'users#sold_books', as: :sold_books
   get 'setting' => 'users#setting', as: :user_setting
   patch 'users/update_avatar' => 'users#update_avatar', as: :update_avatar
+  patch 'users/update_info' => 'users#update_info', as: :update_info
 
   get 'checkout/:id' => 'orders#checkout', as: :checkout
 

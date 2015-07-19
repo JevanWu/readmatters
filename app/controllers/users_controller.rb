@@ -41,10 +41,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_info
+    current_user.update(user_params)
+    redirect_to user_setting_path
+  end
+
   def update_avatar
     current_user.update_attribute(:avatar, params[:user][:avatar])
     respond_to do |format|
       format.json { render json: {image: current_user.avatar.url(:thumb)}, status: :ok }
     end
   end
+
+  private
+
+    def user_params
+      params.require(:user).permit(:name, :phone)
+    end
 end

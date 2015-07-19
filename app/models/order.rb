@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :buyer, class_name: "User", foreign_key: "user_id"
+  belongs_to :seller, class_name: "User", foreign_key: "seller_id"
   has_many :line_items
   belongs_to :province
   belongs_to :city

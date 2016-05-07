@@ -1,22 +1,23 @@
 = render "shared/jumbotron", content: "让有故事的书拥有更多故事"
 /*.arrow*/
 /*  = link_to fa_icon("chevron-down"), "#container"*/
-#container
-  - @products.each do |product|
-    .item
-      .cover
-        = link_to image_tag(product.cover.url(:medium)), product_path(product)
-        /*.user-avatar*/
-        /*  = image_tag product.user.avatar.url(:thumb)*/
+.grey-division
+  #container
+    - @products.each do |product|
+      .item
+        .cover
+          = link_to image_tag(product.cover.url(:medium)), product_path(product)
+          /*.user-avatar*/
+          /*  = image_tag product.user.avatar.url(:thumb)*/
 
-      .title
-        = link_to product.name, product_path(product)
-      .price
-        = product.price
-      .add-to-cart
-        = link_to fa_icon("info-circle", text: "Detail"), product_path(product)
-      .social
-        = link_to fa_icon("cart-plus", text: "Buy"), line_items_path(product_id: product.id), method: :post
+        .title
+          = link_to product.name, product_path(product)
+        .price
+          = product.price
+        .add-to-cart
+          = link_to fa_icon("info-circle", text: "Detail"), product_path(product)
+        .social
+          = link_to fa_icon("cart-plus", text: "Buy"), line_items_path(product_id: product.id), method: :post
 
           /*= fa_icon("wechat")*/
           /*= fa_icon("qq")*/

@@ -1,8 +1,8 @@
 - if user_signed_in?
   .dropdown
-    button.btn.btn-default.dropdown-toggle(type="button" id="userDropdownMenu" data-toggle="dropdown" aria-expanded="true")
-      = current_user.name  
-      span.caret
+    = link_to "发布书籍", book_name_products_path, class: "btn btn-default emphasis"
+    .fa.fa-user.dropdown-toggle(type="button" id="userDropdownMenu" data-toggle="dropdown" aria-expanded="true")
+      
     ul.dropdown-menu(role="menu" aria-labelledby="userDropdownMenu")
       li(role="presentation")
         = link_to "Profile", bought_books_path, role: "menuitem", tabindex: "-1" 

@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def search
-    @products = Product.where("name LIKE ?", params[:key_word][:book_name])
+    @products = Product.where("name LIKE ?", "%#{params[:key_word][:book_name]}%")
     render "home"
   end
   

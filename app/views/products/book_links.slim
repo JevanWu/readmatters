@@ -3,9 +3,9 @@
   #container
     - @books.each do |book|
       .item
+        .transparent-mask
+          = link_to "是这本书", new_product_path(book_id: book.id), class: "btn btn-theme col-md-12"
         .cover
           = image_tag book.cover
         .title
           = book.title
-        .action
-          = link_to "This is my book", new_product_path(book_id: book.id), class: "btn btn-success col-md-12"

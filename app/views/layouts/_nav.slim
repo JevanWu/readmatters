@@ -14,7 +14,7 @@ nav.navbar-fixed-top(role="navigation")
         /*  = link_to "校园传承", "#"*/
         /*li*/
         /*  = link_to "关于我们", "#"*/
-      ul.navbar-right
+      ul.navbar-right style="margin-right: 0px;"
         = form_tag "/search", class: "navbar-form navbar-left", role: "search"
           .form-group
             = text_field "key_word","book_name", class: "form-control", placeholder: "搜索书名"

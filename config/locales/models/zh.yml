@@ -3,3 +3,6 @@ zh:
     orders:
       state:
         wait_pay: 等待付款 
+        wait_ship: 等待卖者发货
+        wait_confirm: 等待买者确认
+        wait_refund: 等待退款

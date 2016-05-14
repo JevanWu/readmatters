@@ -13,7 +13,7 @@
         .title
           = link_to product.name, product_path(product)
         .price
-          = product.price
+          = number_to_currency(product.price, unit: "")
         /.add-to-cart
         /  = link_to fa_icon("info-circle", text: "Detail"), product_path(product)
         /.social

@@ -16,7 +16,7 @@
             = link_to "书籍实照", photos_product_path(@product)
 
       .price-tag
-        = link_to "￥#{@product.price}", line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme price"
+        = link_to number_to_currency(@product.price, unit: ""), line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme price"
 
     .product-intro
       h3

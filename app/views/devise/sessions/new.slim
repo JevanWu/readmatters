@@ -1,7 +1,7 @@
 .container
   .sign-in-form
     h2.logo-text.text-center
-      = link_to "流行书", root_path
+      = link_to "readfavour", root_path
     h4.text-center
       | Sign in
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name), wrapper: :sign_in_horizontal_form, html: {class: "col-sm-offset-3 col-sm-6 clear-fix"} ) do |f|
@@ -10,7 +10,7 @@
       = f.input :password, required: false, label: false, placeholder: "Your password"
       .form-group
         .col-sm-offset-2.col-sm-8
-          = f.button :submit, "Sign in", class: "btn-success form-submit"
+          = f.button :submit, "Sign in", class: "btn btn-theme form-submit"
       .form-group
         .col-sm-offset-2.col-sm-8
           = f.input :remember_me, as: :boolean if devise_mapping.rememberable?

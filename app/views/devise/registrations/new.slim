@@ -1,7 +1,7 @@
 .container
   .sign-in-form
     h2.logo-text.text-center
-      = link_to "流行书", root_path
+      = link_to "readfavour", root_path
     h4.text-center
       | Sign up
 
@@ -14,7 +14,7 @@
       = f.input :password_confirmation, required: true, label: false, placeholder: "Password confirmation " + ("(#{@minimum_password_length} characters minimum )" if @validatable)
       .form-group
         .col-sm-offset-2.col-sm-8
-          = f.button :submit, "Sign up", class: "btn-success form-submit"
+          = f.button :submit, "Sign up", class: "btn btn-theme form-submit"
       .form-group
         .col-sm-offset-2.col-sm-8
           = render "devise/shared/links" 

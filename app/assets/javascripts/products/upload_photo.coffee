@@ -25,7 +25,7 @@ $ ->
     error: (data) ->
       return
   
-  $(".fa-trash-o").click (e)->
+  $(".container").on "click", ".fa-trash-o", ->
     photo_id = $(this).parent().data("photo")
     if confirm("确认要删除吗？")
       $.ajax(

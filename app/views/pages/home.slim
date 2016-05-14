@@ -14,10 +14,10 @@
           = link_to product.name, product_path(product)
         .price
           = product.price
-        .add-to-cart
-          = link_to fa_icon("info-circle", text: "Detail"), product_path(product)
-        .social
-          = link_to fa_icon("cart-plus", text: "Buy"), line_items_path(product_id: product.id), method: :post
+        /.add-to-cart
+        /  = link_to fa_icon("info-circle", text: "Detail"), product_path(product)
+        /.social
+        /  = link_to fa_icon("cart-plus", text: "Buy"), line_items_path(product_id: product.id), method: :post
 
           /*= fa_icon("wechat")*/
           /*= fa_icon("qq")*/

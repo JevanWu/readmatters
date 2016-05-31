@@ -8,8 +8,12 @@
           = "X #{@order.line_items.first.quantity}"
 
     .checkout-container
+      .order-no.text-center
+        | 订单号：1235
       .qrcode
         = image_tag "qrcode.png"
+    .row.text-center style="margin-top: 50px;"
+      = link_to "已完成支付，看更多", root_path, class: "btn btn-theme"
 .step-flow.row
   .steps.col-md-3
     .icon.text-center

@@ -19,4 +19,4 @@
               td.quantity
                 = product.name
               td.price
-                | ￥19.0
+                = number_to_currency(product.price, unit: "")

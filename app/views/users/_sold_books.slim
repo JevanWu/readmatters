@@ -26,6 +26,6 @@
                 td.quantity
                   = item.product.name
                 td.price
-                  | ￥19.0
+                  = number_to_currency(item.product.price, unit: "")
           .pepole
             | JevanWu

@@ -4,4 +4,8 @@
     = render "nav"
 
     .profile-main
-      = render "bought_books"
+      - if current_user.bought_orders.present?
+        = render "bought_books"
+      - else
+        p
+          | 您还未购买过书籍

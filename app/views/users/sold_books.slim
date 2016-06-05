@@ -4,4 +4,8 @@
     = render "nav"
 
     .profile-main
-      = render "sold_books"
+      - if current_user.sold_orders.present?
+        = render "sold_books"
+      - else
+        p
+          | 您还未售出过书籍

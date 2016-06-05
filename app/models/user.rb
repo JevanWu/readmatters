@@ -8,8 +8,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :price, presence: true
-  has_attached_file :avatar, :styles => {:thumb => "200x200#" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => {:thumb => "200x200#" }, :default_url => ":style/default_avatar.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   def name

@@ -5,8 +5,9 @@ html
     title = "readfavor"
     = stylesheet_link_tag 'application', 'data-turbolinks-track' => true 
     = stylesheet_link_tag 'devise_layout', 'data-turbolinks-track' => true 
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true 
     = csrf_meta_tags
         
   body
-    = render "shared/alert"
+    = render 'layouts/nav'
     = yield

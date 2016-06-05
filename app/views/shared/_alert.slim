@@ -1,8 +1,11 @@
-.notice
-  = notice
-  .close
-    .fa.fa-times
-.alert
-  = alert 
-  .close
-    .fa.fa-times
+- if notice.present?
+  .notice
+    = notice
+    .close
+      .fa.fa-times
+
+- if alert.present?
+  .alert
+    = alert 
+    .close
+      .fa.fa-times

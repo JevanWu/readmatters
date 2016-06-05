@@ -15,3 +15,9 @@ $ ->
 $(document).on('page:fetch', ->  NProgress.start() )
 $(document).on('page:change', ->  NProgress.done() )
 $(document).on('page:restore', -> NProgress.remove() )
+
+$(document).on 'click', '.notice .close', ->
+  $(this).parent().hide()
+
+$(document).on 'click', '.alert .close', ->
+  $(this).parent().hide()

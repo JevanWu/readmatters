@@ -4,8 +4,8 @@
       = link_to "readfavor", root_path
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name), wrapper: :sign_in_horizontal_form, html: {class: "col-sm-offset-3 col-sm-6 clear-fix"} ) do |f|
       = f.error_notification 
-      = f.input :email, required: false, autofocus: true, label: false, placeholder: "Your email"
-      = f.input :password, required: false, label: false, placeholder: "Your password"
+      = f.input :email, required: false, autofocus: true, label: false, placeholder: t('.email_placeholder')
+      = f.input :password, required: false, label: false, placeholder: t('.password_placeholder')
       .form-group
         .col-sm-offset-2.col-sm-8
           = f.button :submit, t(:signin), class: "btn btn-theme form-submit"

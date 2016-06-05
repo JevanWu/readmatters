@@ -1,0 +1,12 @@
+en:
+  devise:
+    registrations:
+      new:
+        email_placeholder: Your email
+        name_placeholder: Your name
+        password_placeholder: Your password
+        password_confrimation_placeholder: "Password confirmation (%{minimum_password_length} characters minimum )" 
+      sessions:
+        new:
+          email_placeholder: Your email
+          password_placeholder: Your password

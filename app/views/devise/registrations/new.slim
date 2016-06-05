@@ -6,10 +6,10 @@
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: :sign_in_horizontal_form, html: {class: "col-sm-offset-3 col-sm-6 clear-fix"} ) do |f| 
       = f.error_notification 
 
-      = f.input :email, required: true, autofocus: true, label: false, placeholder: "Your email"
-      = f.input :name, required: false, label: false, placeholder: "Your name"
-      = f.input :password, required: true,  label: false, placeholder: "Your password"
-      = f.input :password_confirmation, required: true, label: false, placeholder: "Password confirmation " + ("(#{@minimum_password_length} characters minimum )" if @validatable)
+      = f.input :email, required: true, autofocus: true, label: false, placeholder: t('.email_placeholder')
+      = f.input :name, required: false, label: false, placeholder: t('.name_placeholder')
+      = f.input :password, required: true,  label: false, placeholder: t('.password_placeholder')
+      = f.input :password_confirmation, required: true, label: false, placeholder: t('.password_confrimation_placeholder', minimum_password_length: @minimum_password_length)
       .form-group
         .col-sm-offset-2.col-sm-8
           = f.button :submit, t(:signup), class: "btn btn-theme form-submit"

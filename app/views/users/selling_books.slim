@@ -4,8 +4,4 @@
     = render "nav"
 
     .profile-main
-      - if current_user.products.present?
-        = render "selling_books"
-      - else
-        p
-          | 书架上目前没有您的书哦
+      = render "selling_books"

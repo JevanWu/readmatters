@@ -1,26 +1,7 @@
 - if current_user.products.present?
   .timeline.animated
     - current_user.products.each do |product|
-      .timeline-row
-        .timeline-time
-          small
-            | it's a padding
-          = product.created_at.to_date.to_formatted_s(:db)
-          = " 出售中"
-        .timeline-icon
-          .bg-primary
-            a href="#{edit_product_path(product)}"
-              i.fa.fa-pencil
-        .panel.timeline-content
-          .panel-body
-            table
-              tr
-                td.cover
-                  = image_tag product.cover.url
-                td.quantity
-                  = product.name
-                td.price
-                  = number_to_currency(product.price, unit: "")
+      = render "selling_book_item", product: product
 - else
   p
     | 书架上目前没有您的书哦

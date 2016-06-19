@@ -455,7 +455,11 @@ label {
       .timeline .timeline-row .timeline-icon > div {
         border-radius: 50%;
         line-height: 34px;
-        font-size: 16px; }
+        font-size: 16px; 
+        a{
+          color: white;
+        }
+      }
     .timeline .timeline-row .timeline-content {
       margin-left: 40px;
       position: relative;

@@ -431,7 +431,7 @@ label {
       font-weight: 600; }
       .timeline .timeline-row .timeline-time small {
         display: block;
-        color: white;
+        color: #666666;
         text-transform: uppercase;
         opacity: 0.75;
         font-size: 11px;
@@ -504,6 +504,7 @@ label {
       padding-left: 0;
       padding-right: 50%; }
       .timeline .timeline-row:nth-child(odd) .timeline-time {
+        color: #666666;
         right: auto;
         left: 50%;
         text-align: left;

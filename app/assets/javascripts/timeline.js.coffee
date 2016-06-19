@@ -1,6 +1,5 @@
 $(document).ready( ->
-  timelineAnimate
-  timelineAnimate = (elem) ->
+  window.timelineAnimate = (elem) ->
     return $(".timeline.animated .timeline-row").each((i) ->
       bottom_of_object = $(this).position().top + $(this).outerHeight()
       bottom_of_window = $(window).scrollTop() + $(window).height()

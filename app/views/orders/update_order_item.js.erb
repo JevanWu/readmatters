@@ -1,0 +1,2 @@
+$("#order-<%= @order.identifier %>").replaceWith("<%= j(render 'users/book_item', order: @order) %>");
+$("#order-<%= @order.identifier %>").addClass("active");

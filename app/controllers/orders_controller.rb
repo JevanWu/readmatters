@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_order_owner, only: [:ship, :confirm]
 
   def new
     @order = current_user.bought_orders.build if current_user.present?
@@ -23,8 +24,29 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def ship
+    @order.ship if @order.present?
+    respond_to do |format|
+      format.html
+      format.js { render "update_order_item", layout: false }
+    end
+  end
+
+  def confirm
+    @order.confirm if @order.present?
+    respond_to do |format|
+      format.html
+      format.js { render "update_order_item", layout: false }
+    end
+  end
+
   private
     def order_params
       params.require(:order).permit(:receiver_name, :street)
+    end
+
+    def check_order_owner
+      @order = Order.find_by(identifier: params[:id])
+      return if current_user.blank? || current_user != @order.seller
     end
 end

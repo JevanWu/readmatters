@@ -29,7 +29,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :orders
+  resources :orders do
+    member do
+      post "ship", as: :ship
+      post "confirm", as: :confirm
+    end
+  end
 
   resources :carts, only: [:show]
 

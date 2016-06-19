@@ -11,8 +11,10 @@
           = link_to "书籍介绍", product_path(@product)
         li 
           = link_to "书籍实照", photos_product_path(@product)
-      .price-tag
-        = link_to "￥#{@product.price}", line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme price"
+
+      - if current_user != @product.user
+        .price-tag
+          = link_to "￥#{@product.price}", line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme price"
 
     br
     br

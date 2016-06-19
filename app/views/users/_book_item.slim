@@ -1,8 +1,8 @@
-.timeline-row
+.timeline-row id="order-#{order.identifier}"
   .timeline-time
     small
-      | it's a padding
-    = order.created_at.to_date.to_formatted_s(:db)
+      = order.created_at.strftime("%H:%M")
+    = order.created_at.strftime("%Y-%m-%d")
   .timeline-icon
     .bg-primary
       i.fa.fa-bookmark
@@ -15,9 +15,8 @@
               = order.identifier
             li.col-sm-4
               = I18n.t "models.orders.state.#{order.state}"
-              /= "收件人：#{order.receiver_name} "
             li.col-sm-4
-              = bought_order_triggers(order)
+              = order_triggers(order)
         - order.line_items.each_with_index do |item, index|
           tr
             td.cover
@@ -27,4 +26,4 @@
             td.price
               = number_to_currency(item.product.price, unit: "")
       .pepole
-        | From: #{order.seller.name}
+        = order_inscribe(order)

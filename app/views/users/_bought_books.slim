@@ -1,7 +1,7 @@
 - if current_user.bought_orders.present?
   .timeline.animated
     - current_user.bought_orders.each do |order|
-      = render "bought_book_item", order: order
+      = render "book_item", order: order
 - else
   p
     | 您还未购买过书籍

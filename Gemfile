@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 # source "https://ruby.taobao.org"
 # source 'https://gems.ruby-china.org'
 
+ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
@@ -71,6 +72,9 @@ gem 'rest_client'
 
 #for picture gallery
 gem 'magnific-popup-rails'
+
+# for heroku
+gem 'rails_12factor'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do 

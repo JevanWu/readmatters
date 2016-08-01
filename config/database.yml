@@ -1,7 +1,9 @@
 default: &default
-  adapter: postgres
+  adapter: postgresql
   encoding: unicode
   pool: 5
+  username:
+  password: 
   # timeout: 5000
 
 development:

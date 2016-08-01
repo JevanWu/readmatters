@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150719072037) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
     t.text     "body"
@@ -24,9 +27,9 @@ ActiveRecord::Schema.define(version: 20150719072037) do
     t.datetime "updated_at"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -43,8 +46,8 @@ ActiveRecord::Schema.define(version: 20150719072037) do
     t.datetime "updated_at"
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -62,12 +65,12 @@ ActiveRecord::Schema.define(version: 20150719072037) do
     t.datetime "updated_at"
   end
 
-  add_index "cities", ["level"], name: "index_cities_on_level"
-  add_index "cities", ["name"], name: "index_cities_on_name"
-  add_index "cities", ["pinyin"], name: "index_cities_on_pinyin"
-  add_index "cities", ["pinyin_abbr"], name: "index_cities_on_pinyin_abbr"
-  add_index "cities", ["province_id"], name: "index_cities_on_province_id"
-  add_index "cities", ["zip_code"], name: "index_cities_on_zip_code"
+  add_index "cities", ["level"], name: "index_cities_on_level", using: :btree
+  add_index "cities", ["name"], name: "index_cities_on_name", using: :btree
+  add_index "cities", ["pinyin"], name: "index_cities_on_pinyin", using: :btree
+  add_index "cities", ["pinyin_abbr"], name: "index_cities_on_pinyin_abbr", using: :btree
+  add_index "cities", ["province_id"], name: "index_cities_on_province_id", using: :btree
+  add_index "cities", ["zip_code"], name: "index_cities_on_zip_code", using: :btree
 
   create_table "districts", force: true do |t|
     t.string   "name"
@@ -78,10 +81,10 @@ ActiveRecord::Schema.define(version: 20150719072037) do
     t.datetime "updated_at"
   end
 
-  add_index "districts", ["city_id"], name: "index_districts_on_city_id"
-  add_index "districts", ["name"], name: "index_districts_on_name"
-  add_index "districts", ["pinyin"], name: "index_districts_on_pinyin"
-  add_index "districts", ["pinyin_abbr"], name: "index_districts_on_pinyin_abbr"
+  add_index "districts", ["city_id"], name: "index_districts_on_city_id", using: :btree
+  add_index "districts", ["name"], name: "index_districts_on_name", using: :btree
+  add_index "districts", ["pinyin"], name: "index_districts_on_pinyin", using: :btree
+  add_index "districts", ["pinyin_abbr"], name: "index_districts_on_pinyin_abbr", using: :btree
 
   create_table "line_items", force: true do |t|
     t.integer  "quantity",   default: 1
@@ -92,9 +95,9 @@ ActiveRecord::Schema.define(version: 20150719072037) do
     t.datetime "updated_at"
   end
 
-  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
-  add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
-  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
+  add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
+  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
   create_table "orders", force: true do |t|
     t.string   "identifier"
@@ -110,11 +113,11 @@ ActiveRecord::Schema.define(version: 20150719072037) do
     t.integer  "seller_id"
   end
 
-  add_index "orders", ["city_id"], name: "index_orders_on_city_id"
-  add_index "orders", ["district_id"], name: "index_orders_on_district_id"
-  add_index "orders", ["province_id"], name: "index_orders_on_province_id"
-  add_index "orders", ["seller_id"], name: "index_orders_on_seller_id"
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+  add_index "orders", ["city_id"], name: "index_orders_on_city_id", using: :btree
+  add_index "orders", ["district_id"], name: "index_orders_on_district_id", using: :btree
+  add_index "orders", ["province_id"], name: "index_orders_on_province_id", using: :btree
+  add_index "orders", ["seller_id"], name: "index_orders_on_seller_id", using: :btree
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "photos", force: true do |t|
     t.integer  "product_id"
@@ -127,7 +130,7 @@ ActiveRecord::Schema.define(version: 20150719072037) do
     t.datetime "updated_at"
   end
 
-  add_index "photos", ["product_id"], name: "index_photos_on_product_id"
+  add_index "photos", ["product_id"], name: "index_photos_on_product_id", using: :btree
 
   create_table "products", force: true do |t|
     t.string   "name"
@@ -144,7 +147,7 @@ ActiveRecord::Schema.define(version: 20150719072037) do
     t.datetime "updated_at"
   end
 
-  add_index "products", ["user_id"], name: "index_products_on_user_id"
+  add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
   create_table "provinces", force: true do |t|
     t.string   "name"
@@ -154,9 +157,9 @@ ActiveRecord::Schema.define(version: 20150719072037) do
     t.datetime "updated_at"
   end
 
-  add_index "provinces", ["name"], name: "index_provinces_on_name"
-  add_index "provinces", ["pinyin"], name: "index_provinces_on_pinyin"
-  add_index "provinces", ["pinyin_abbr"], name: "index_provinces_on_pinyin_abbr"
+  add_index "provinces", ["name"], name: "index_provinces_on_name", using: :btree
+  add_index "provinces", ["pinyin"], name: "index_provinces_on_pinyin", using: :btree
+  add_index "provinces", ["pinyin_abbr"], name: "index_provinces_on_pinyin_abbr", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -180,7 +183,7 @@ ActiveRecord::Schema.define(version: 20150719072037) do
     t.datetime "avatar_updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

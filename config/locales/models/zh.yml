@@ -1,4 +1,11 @@
 zh:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              too_short: "密码太短啦！"
   models:
     orders:
       state:

@@ -68,7 +68,7 @@ gem 'redis-rails'
 
 gem 'state_machine'
 
-gem 'rest_client'
+gem 'rest-client'
 
 #for picture gallery
 gem 'magnific-popup-rails'

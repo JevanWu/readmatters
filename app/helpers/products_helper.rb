@@ -20,7 +20,7 @@ module ProductsHelper
     when %(wait_ship)
       link_to "我已经发货", ship_order_path(order.identifier), remote: true, method: :post
     when %(wait_confirm)
-      "等待买家收货"
+      "等待买家确认"
     when %(wait_refund)
       "买家已申请退款"
     end

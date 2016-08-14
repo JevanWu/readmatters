@@ -7,7 +7,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    unless current_user.can_buy?(current_cart.line_items.first.product)
+    product = current_cart.line_items.first.product
+    unless current_user.can_buy?(product)
       return redirect_to :back, flash: { error: "您不能够购买自己发布的书籍"}
     end
     @order = current_user.bought_orders.build(order_params)
@@ -17,6 +18,8 @@ class OrdersController < ApplicationController
     @order.city_id = params[:order][:city]
     @order.district_id = params[:order][:district]
     if @order.save
+      # mark the product is sold
+      product.update(sold: true)
       redirect_to checkout_path(@order)
     else
       redirect_to :back

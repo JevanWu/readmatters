@@ -7,6 +7,9 @@ class OrdersController < ApplicationController
   end
 
   def create
+    unless current_user.can_buy?(current_cart.line_items.first.product)
+      return redirect_to :back, flash: { error: "您不能够购买自己发布的书籍"}
+    end
     @order = current_user.bought_orders.build(order_params)
     @order.add_items_from_cart(current_cart)
     @order.seller_id = current_cart.line_items.first.product.user.id

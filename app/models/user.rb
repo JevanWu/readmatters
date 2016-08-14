@@ -19,4 +19,8 @@ class User < ActiveRecord::Base
       name.titleize
     end
   end
+
+  def can_buy?(product)
+    self != product.user
+  end
 end

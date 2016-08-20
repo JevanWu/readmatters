@@ -134,6 +134,9 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    paperclip-qiniu (0.2.0)
+      paperclip
+      qiniu (~> 6.4.1)
     pg (0.18.4)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
@@ -141,6 +144,11 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    qiniu (6.4.1)
+      json (~> 1.7)
+      mime-types (~> 2.4.3)
+      rest-client (~> 1.6)
+      ruby-hmac (~> 0.4)
     rack (1.5.2)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -265,6 +273,7 @@ DEPENDENCIES
   magnific-popup-rails
   nokogiri
   paperclip
+  paperclip-qiniu
   pg
   pry
   rails (= 4.1.8)

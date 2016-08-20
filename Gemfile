@@ -59,6 +59,7 @@ gem 'codemirror-rails'
 gem 'nokogiri'
 
 gem 'paperclip'
+gem 'paperclip-qiniu'
 
 # gem for china provinces and cities
 gem 'china_region_fu'

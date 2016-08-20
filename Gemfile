@@ -76,6 +76,8 @@ gem 'magnific-popup-rails'
 # for heroku
 gem 'rails_12factor'
 
+# report bug tool
+gem 'rollbar'
 
 gem "figaro"
 

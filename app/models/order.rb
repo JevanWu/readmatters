@@ -45,7 +45,7 @@ class Order < ActiveRecord::Base
 
   def generate_identifier
     date_string = Time.now.strftime('%Y%m%d')
-    uniq_num = "%05d" % $redis.incr("#{self.class.name}:#{date_string}")
+    uniq_num = "%05d" % Redis.incr("#{self.class.name}:#{date_string}")
     self.identifier = date_string + uniq_num
   end
 end

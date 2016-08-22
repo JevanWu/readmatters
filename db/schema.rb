@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719072037) do
+ActiveRecord::Schema.define(version: 20160821041046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,9 +134,9 @@ ActiveRecord::Schema.define(version: 20150719072037) do
 
   create_table "products", force: true do |t|
     t.string   "name"
-    t.string   "kind"
+    t.string   "tags"
     t.decimal  "price"
-    t.text     "description"
+    t.text     "summary"
     t.boolean  "sold"
     t.string   "cover_file_name"
     t.string   "cover_content_type"
@@ -145,6 +145,14 @@ ActiveRecord::Schema.define(version: 20150719072037) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "isbn"
+    t.string   "original_cover"
+    t.string   "author"
+    t.text     "author_intro"
+    t.text     "catalog"
+    t.string   "publisher"
+    t.date     "published_date"
+    t.json     "raw_data"
   end
 
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree

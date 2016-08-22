@@ -1,12 +1,12 @@
 = render "shared/jumbotron", content: "请选择您的书籍封面"
 .grey-division
   #container
-    - @books.each do |book|
+    - @book_list.each do |book|
       .item
-        = link_to new_product_path(book_id: book.id), class: "transparent-mask" do
+        = link_to new_product_path(book_id: book["id"]), class: "transparent-mask" do
           .btn.btn-theme.col-md-12
             | 是这本书
         .cover
-          = image_tag book.cover
+          = image_tag book["image"]
         .title
-          = book.title
+          = book["title"]

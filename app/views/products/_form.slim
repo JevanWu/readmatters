@@ -14,15 +14,16 @@
   - if params[:action] == %(new)
     = f.input :cover_url, input_html: { value: @cover_url }, as: :hidden
     = f.input :name, input_html: { value: @name }
-    = f.input :kind, input_html: { value: @tags.join(", ") }
+    = f.input :tags, input_html: { value: @tags.join(", ") }
     = f.input :price
-    = f.input :description, input_html: { value: @description, class: 'summernote'}
+    = f.input :summary, input_html: { value: @summary, class: 'summernote'}
+    = f.input :book_id, as: :hidden, input_html: { value: @book_id}
   - else
     = f.input :cover_url, as: :hidden
     = f.input :name
-    = f.input :kind
+    = f.input :tags
     = f.input :price
-    = f.input :description, input_html: { class: 'summernote'}
+    = f.input :summary, input_html: { class: 'summernote'}
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit "确定提交", class: "btn btn-default btn-theme"

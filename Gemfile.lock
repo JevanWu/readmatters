@@ -189,6 +189,8 @@ GEM
     redis-activesupport (4.0.0)
       activesupport (~> 4)
       redis-store (~> 1.1.0)
+    redis-objects (1.0.1)
+      redis (>= 3.0.2)
     redis-rack (1.5.0)
       rack (~> 1.5)
       redis-store (~> 1.1.0)
@@ -278,6 +280,7 @@ DEPENDENCIES
   pry
   rails (= 4.1.8)
   rails_12factor
+  redis-objects
   redis-rails
   rest-client
   rollbar

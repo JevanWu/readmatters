@@ -26,6 +26,8 @@ class ProductsController < ApplicationController
     @cover_url = book["image"]
     @summary = book["summary"]
     @tags = book["tags"].map { |tag| tag["name"] }
+    @author_intro = book["author_intro"]
+    @catalog = book["catalog"]
   end
 
   def edit
@@ -46,12 +48,10 @@ class ProductsController < ApplicationController
     extra_params = {
       isbn: book["isbn13"] || book["isbn10"],
       original_cover: book["image"],
-      author: book["author"],
-      author_intro: book["author_intro"],
-      catalog: book["catalog"],
+      author: book["author"].split(", "),
       publisher: book["publisher"],
-      published_date: book["pubDate"].to_date,
-      data: book
+      published_date: book["pubdate"].to_date,
+      raw_data: book
     }
     @product = Product.new(product_params.merge(extra_params))
     @product.user = current_user
@@ -101,6 +101,6 @@ class ProductsController < ApplicationController
   private
 
     def product_params
-      params.require(:product).permit(:name, :tags, :cover_url, :price, :summary)
+      params.require(:product).permit(:name, :tags, :cover_url, :price, :summary, :author_intro, :catalog)
     end
 end

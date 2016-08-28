@@ -23,16 +23,20 @@
       h4
         = t(".introduction")
       p 
-        = @product.summary
+        = simple_format @product.summary
 
     .author-intro
       h4
         = t(".author_intro")
+      #show-author-intro
+        = t(".show")
       p
-        = @product.author_intro
+        = simple_format @product.author_intro
 
     .catalog
       h4 
         = t(".catalog")
+      #show-catalog
+        = t(".show")
       p
-        = @product.catalog
+        = simple_format @product.catalog

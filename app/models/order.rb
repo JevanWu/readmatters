@@ -13,6 +13,8 @@ class Order < ActiveRecord::Base
   #order_state (wait_pay, wait_ship, wait_confirm, success, void)
   state_machine :state, initial: :wait_pay do
 
+    after_transition :wait_pay => :wait_ship, :do => :change_product_to_sold
+
     event :pay do
       transition :wait_pay => :wait_ship
     end
@@ -48,4 +50,12 @@ class Order < ActiveRecord::Base
     uniq_num = "%05d" % Redis.incr("#{self.class.name}:#{date_string}")
     self.identifier = date_string + uniq_num
   end
+
+  private
+
+    def change_product_to_sold
+      self.line_items.each do |line_item|
+        line_item.product.update(sold: true)
+      end
+    end
 end

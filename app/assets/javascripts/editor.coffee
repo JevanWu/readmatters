@@ -13,9 +13,9 @@ $ ->
         theme: "solarized light"
 
     # to set code for summernote
-    summer_note.code summer_note.val()
+    # summer_note.code summer_note.val()
     
     # to get code for summernote
-    summer_note.closest('form').submit ->
-      summer_note.val summer_note.code()
-      true
+    # summer_note.closest('form').submit ->
+    #   summer_note.val summer_note.code()
+    #   true

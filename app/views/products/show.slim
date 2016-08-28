@@ -23,12 +23,15 @@
       h3
         | Introduction 
       p 
-        = @product.description
+        = @product.summary
+    .catalog
+      h3 
+        | Catalog
+      p
+        = @product.catalog
 
     .author-intro
       h3
         | Author Introduction
       p
-        | If this sounds like you, then this book is for you.
-        Note: While this book’s emphasis is on building a web app, a lot of these ideas are applicable to non-software activities too. The suggestions about small teams, rapid prototyping, expect- ing iterations, and many others presented here can serve as a guide whether you’re starting a business, writing a book, designing a web site, recording an album, or doing a variety
-        of other endeavors. Once you start Getting Real in one area of your life, you’ll see how these concepts can apply to a wide range of activities.
+        = @product.author_intro

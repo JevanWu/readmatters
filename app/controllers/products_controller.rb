@@ -44,16 +44,8 @@ class ProductsController < ApplicationController
 
   def create
     @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)
-    book = @book_list[params[:product][:book_id]]
-    extra_params = {
-      isbn: book["isbn13"] || book["isbn10"],
-      original_cover: book["image"],
-      author: book["author"].split(", "),
-      publisher: book["publisher"],
-      published_date: book["pubdate"].to_date,
-      raw_data: book
-    }
-    @product = Product.new(product_params.merge(extra_params))
+    @book = @book_list[params[:product][:book_id]]
+    @product = Product.new(product_params.merge(book_extra_params))
     @product.user = current_user
     if @product.save
       # redirect_to product_path(@product)
@@ -102,5 +94,16 @@ class ProductsController < ApplicationController
 
     def product_params
       params.require(:product).permit(:name, :tags, :cover_url, :price, :summary, :author_intro, :catalog)
+    end
+
+    def book_extra_params 
+      extra_params = {
+        isbn: @book["isbn13"] || book["isbn10"],
+        original_cover: @book["image"],
+        author: @book["author"].join(", "),
+        publisher: @book["publisher"],
+        published_date: @book["pubdate"].count("-") == 1 ? "#{@book["pubdate"]}-01".to_date : @book["pubdate"].to_date,
+        raw_data: @book
+      }
     end
 end

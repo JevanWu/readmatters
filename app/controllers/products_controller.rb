@@ -50,6 +50,8 @@ class ProductsController < ApplicationController
     if @product.save
       # redirect_to product_path(@product)
       redirect_to upload_photo_product_path(@product)
+    else
+      redirect_to :back, flash: { error: "failed" }
     end
   end
 

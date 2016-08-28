@@ -7,3 +7,7 @@ zh:
       start_searching: "正在搜索..."
     book_links:
       right_the_book: "是这本书"
+    show:
+      introduction: "书籍介绍"
+      catalog: "目录"
+      author_intro: "作者介绍"

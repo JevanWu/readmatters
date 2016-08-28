@@ -7,3 +7,8 @@ en:
       start_searching: "Searching the book..."
     book_links:
       right_the_book: "Right this book"
+    show:
+      introduction: "Introduction"
+      catalog: "Catalog"
+      author_intro: "Author Introduction"
+

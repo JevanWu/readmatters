@@ -20,18 +20,19 @@
           = link_to number_to_currency(@product.price, unit: ""), line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme price"
 
     .product-intro
-      h3
-        | Introduction 
+      h4
+        = t(".introduction")
       p 
         = @product.summary
-    .catalog
-      h3 
-        | Catalog
-      p
-        = @product.catalog
 
     .author-intro
-      h3
-        | Author Introduction
+      h4
+        = t(".author_intro")
       p
         = @product.author_intro
+
+    .catalog
+      h4 
+        = t(".catalog")
+      p
+        = @product.catalog

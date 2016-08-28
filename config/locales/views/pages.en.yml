@@ -1,1 +1,9 @@
 en:
+  products:
+    book_name:
+      title: "Please enter the name of your book"
+      book_name_placeholder: "What's your book name"
+      search: "Search the book"
+      start_searching: "Searching the book..."
+    book_links:
+      right_the_book: "Right this book"

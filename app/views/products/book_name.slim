@@ -2,10 +2,10 @@
   .container
     = form_tag book_links_products_path, class: "form-horizontal book-name", method: :get do
       .hint
-        = "您要发布的书籍名字是？"
+        = t(".title")
       .form-group
         .col-md-12
-          = text_field_tag "book_name", nil, class: "form-control", placeholder: "What's your book name"
+          = text_field_tag "book_name", nil, class: "form-control", placeholder: t(".book_name_placeholder")
       .form-group
         .col-md-12
-          = submit_tag "Submit book name", class: "btn btn-theme col-md-12", data: { disable_with: 'Grabbing books...' }
+          = submit_tag t(".search"), class: "btn btn-theme col-md-12", data: { disable_with: t(".start_searching")}

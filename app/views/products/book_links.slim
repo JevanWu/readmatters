@@ -5,7 +5,7 @@
       .item
         = link_to new_product_path(book_id: index), class: "transparent-mask" do
           .btn.btn-theme.col-md-12
-            | 是这本书
+            = t(".right_the_book")
         .cover
           = image_tag book["image"]
         .title

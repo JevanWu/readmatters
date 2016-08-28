@@ -17,7 +17,7 @@
         | 添加图书真实照片
       .hint-small
         | 添加真实的书籍照片可以帮助买方更好的了解书籍的新旧程度和样貌
-      button.btn.btn-success#add-photo 添加照片
+      button.btn.btn-theme#add-photo 添加照片
       
     .photo-show.row style="#{ @product.photos.blank? ? 'display:none' : 'display:block'}"
       - @product.photos.each do |photo|

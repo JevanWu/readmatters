@@ -25,6 +25,16 @@
       p 
         = simple_format @product.summary
 
+    .photos
+      h4 
+        = t(".book_photos")
+      .photo-show.row style="#{ @product.photos.blank? ? 'display:none' : 'display:block'}"
+        - @product.photos.each do |photo|
+          .col-md-3
+            /magnific popup require 'href' attribtue to work
+            .image-box id="photo-#{photo.id}" data-photo="#{photo.id}" href="#{photo.image.url}" 
+              = image_tag photo.image.url
+
     .author-intro
       h4
         = t(".author_intro")
@@ -40,3 +50,13 @@
         = t(".show")
       p
         = simple_format @product.catalog
+
+
+javascript:
+  $(document).ready(function(){
+    $('.photo-show').magnificPopup({
+      delegate: '.image-box',
+      type: 'image',
+      gallery:{ enabled:true }
+    });
+  });

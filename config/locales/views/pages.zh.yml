@@ -9,6 +9,7 @@ zh:
       right_the_book: "是这本书"
     show:
       introduction: "书籍介绍"
+      book_photos: "书籍照片"
       catalog: "目录"
       author_intro: "作者介绍"
       show: "显示"

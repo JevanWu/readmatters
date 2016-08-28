@@ -8,12 +8,12 @@
         = image_tag @product.cover.url
         /.name
           /= @product.kind
-      ul.nav-list
-        li
-          = link_to "书籍介绍", product_path(@product)
-        - if @product.has_photos?
-          li 
-            = link_to "书籍实照", photos_product_path(@product)
+      /ul.nav-list
+      /  li
+      /    = link_to "书籍介绍", product_path(@product)
+      /  - if @product.has_photos?
+      /    li 
+      /      = link_to "书籍实照", photos_product_path(@product)
 
       - if current_user != @product.user
         .price-tag

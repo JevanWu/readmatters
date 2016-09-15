@@ -20,9 +20,9 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
     if params[:book_id].blank?
     else
-      @product = Product.new
       @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)
       book = @book_list[params[:book_id]]
       @book_id = params[:book_id]

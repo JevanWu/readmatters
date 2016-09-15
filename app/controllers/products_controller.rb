@@ -5,29 +5,34 @@ require 'ostruct'
 class ProductsController < ApplicationController
 
   def book_links
-    redirect_to book_name_products_path if params[:book_name].nil?
-    _response = RestClient.get("https://api.douban.com/v2/book/search", params: { q: params[:book_name]}) # , fields: "title,url,id,image"
-    redirect_to book_name_products_path unless _response.code == 200
-    response = JSON.parse _response
-    book_count = Redis::Value.new("book_count_#{current_user.id}") 
-    book_count.value = response["count"]
-    @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)
-    @book_list.push(*response["books"])
+    begin
+      redirect_to book_name_products_path if params[:book_name].nil?
+      _response = RestClient.get("https://api.douban.com/v2/book/search", params: { q: params[:book_name]}) # , fields: "title,url,id,image"
+      redirect_to book_name_products_path unless _response.code == 200
+      response = JSON.parse _response
+      book_count = Redis::Value.new("book_count_#{current_user.id}") 
+      book_count.value = response["count"]
+      @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)
+      @book_list.push(*response["books"])
+    rescue
+      redirect_to new_product_path
+    end
   end
 
   def new
-    redirect_to book_name_products_path if params[:book_id].nil?
-    
-    @product = Product.new
-    @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)
-    book = @book_list[params[:book_id]]
-    @book_id = params[:book_id]
-    @name = book["title"]
-    @cover_url = book["image"]
-    @summary = book["summary"]
-    @tags = book["tags"].map { |tag| tag["name"] }
-    @author_intro = book["author_intro"]
-    @catalog = book["catalog"]
+    if params[:book_id].blank?
+    else
+      @product = Product.new
+      @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)
+      book = @book_list[params[:book_id]]
+      @book_id = params[:book_id]
+      @name = book["title"]
+      @cover_url = book["image"]
+      @summary = book["summary"]
+      @tags = book["tags"].map { |tag| tag["name"] }
+      @author_intro = book["author_intro"]
+      @catalog = book["catalog"]
+    end
   end
 
   def edit

@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :name) }
     end
 
+    def controller_translate(keyword)
+      I18n.t(keyword, scope: params[:controller])
+    end
+
   private
     def current_cart
       Cart.find(session[:card_id])

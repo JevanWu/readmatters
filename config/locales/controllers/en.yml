@@ -1,3 +1,5 @@
 en:
   orders:
     can_not_buy: "Sorry! You can't buy this book"
+  products:
+    fetch_occur_error: "Sorry! Fetching occurs error, you can write product information manually"

@@ -1,3 +1,5 @@
 zh:
   orders:
     can_not_buy: "您不能够购买该书籍"
+  products:
+    fetch_occur_error: "搜索出错，您可以选择自己填写要发布的书籍信息"

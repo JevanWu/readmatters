@@ -15,13 +15,14 @@ class ProductsController < ApplicationController
       @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)
       @book_list.push(*response["books"])
     rescue
-      redirect_to new_product_path
+      redirect_to new_product_path, flash: { notice: controller_translate("fetch_occur_error") }
     end
   end
 
   def new
     @product = Product.new
     if params[:book_id].blank?
+      @tags = []
     else
       @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)
       book = @book_list[params[:book_id]]

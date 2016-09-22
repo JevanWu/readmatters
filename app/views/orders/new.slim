@@ -4,8 +4,8 @@
     .product-show-nav
       .product-cover
         = image_tag(current_cart.line_items.first.product.cover.url)
-        .name
-          = "X #{current_cart.line_items.first.quantity}"
+        /.name
+        /  = "X #{current_cart.line_items.first.quantity}"
     .order-form
       = render "form"
 

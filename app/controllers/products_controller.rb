@@ -11,8 +11,10 @@ class ProductsController < ApplicationController
       redirect_to book_name_products_path unless _response.code == 200
       response = JSON.parse _response
       book_count = Redis::Value.new("book_count_#{current_user.id}") 
-      book_count.value = response["count"]
       @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)
+      book_count.clear
+      @book_list.clear
+      book_count.value = response["count"]
       @book_list.push(*response["books"])
     rescue
       redirect_to new_product_path, flash: { notice: controller_translate("fetch_occur_error") }

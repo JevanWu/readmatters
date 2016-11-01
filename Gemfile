@@ -83,10 +83,18 @@ gem 'rollbar'
 
 gem "figaro"
 
+gem "watir",  require: false
+
+gem "puma"
+
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do 
   gem 'spring'
   gem 'pry'
+  gem "capistrano", "~> 3.6"
+  gem "capistrano-rails", "~> 1.1"
+  gem 'capistrano-rvm'
+  gem 'capistrano3-puma'
 end
 
 # Use ActiveModel has_secure_password

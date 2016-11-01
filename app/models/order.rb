@@ -7,6 +7,7 @@ class Order < ActiveRecord::Base
   belongs_to :district
 
   before_create :generate_identifier
+  before_create :calculate_total_price
 
   default_scope { order(created_at: :desc) }
 
@@ -56,6 +57,13 @@ class Order < ActiveRecord::Base
     def change_product_to_sold
       self.line_items.each do |line_item|
         line_item.product.update(sold: true)
+      end
+    end
+
+    def calculate_total_price
+      self.total_price = 0.00
+      self.line_items.each do |item|
+        self.total_price += item.product.price
       end
     end
 end

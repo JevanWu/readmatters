@@ -1,7 +1,3 @@
-require 'nokogiri'
-require 'open-uri'
-require 'ostruct'
-
 class ProductsController < ApplicationController
 
   def book_links

@@ -46,6 +46,11 @@ class OrdersController < ApplicationController
     end
   end
 
+  def inspect
+    key_id, amount = params[:key_id], params[:amount]
+    OrderInspector.delay.inspect(key_id, amount)
+  end
+
   private
     def order_params
       params.require(:order).permit(:receiver_name, :street)

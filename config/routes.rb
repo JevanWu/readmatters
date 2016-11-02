@@ -34,6 +34,10 @@ Rails.application.routes.draw do
       post "ship", as: :ship
       post "confirm", as: :confirm
     end
+
+    collection do
+      post "inspect"
+    end
   end
 
   resources :carts, only: [:show]

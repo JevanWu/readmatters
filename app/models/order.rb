@@ -54,7 +54,7 @@ class Order < ActiveRecord::Base
 
   def generate_identifier
     date_string = Time.now.strftime('%Y%m%d')
-    uniq_num = "%05d" % Redis.incr("#{self.class.name}:#{date_string}")
+    uniq_num = "%05d" % Redis.current.incr("#{self.class.name}:#{date_string}")
     self.identifier = date_string + uniq_num
   end
 
@@ -75,10 +75,12 @@ class Order < ActiveRecord::Base
     end
 
     def generate_pay_code
+      pay_code = nil 
       loop do
         pay_code = SecureRandom.random_number(10000).to_s
         break if !Order.exists?(pay_code: pay_code)
       end
+      raise Exception.new("Pay code生成出错") if !pay_code.present?
       self.pay_code = pay_code
     end
 end

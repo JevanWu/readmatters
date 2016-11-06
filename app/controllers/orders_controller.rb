@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     end
     @order = current_user.bought_orders.build(order_params)
     @order.add_items_from_cart(current_cart, params[:order][:seller_id])
-    @order.seller_id = current_cart.line_items.first.product.user.id
+    @order.seller_id = params[:order][:seller_id]
     @order.province_id = params[:order][:province]
     @order.city_id = params[:order][:city]
     @order.district_id = params[:order][:district]

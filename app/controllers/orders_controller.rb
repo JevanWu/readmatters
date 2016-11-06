@@ -49,8 +49,8 @@ class OrdersController < ApplicationController
   end
 
   def inspect
-    key_id, amount = params[:key_id], params[:amount]
-    OrderInspector.delay.inspect(key_id, amount)
+    pay_code, amount = params[:pay_code], params[:amount]
+    OrderInspector.delay.inspect(pay_code, amount)
   end
 
   private

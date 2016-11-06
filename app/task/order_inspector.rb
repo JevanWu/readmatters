@@ -1,9 +1,10 @@
 class OrderInspector
 
-  def self.inspect(key_id, amount)
-    order = Order.find key_id
+  def self.inspect(pay_code, amount)
+    order = Order.find_by(pay_code: pay_code)
     if order.price == amount.to_f
       order.pay
+      order.update(pay_code: nil)
     end
   end
 end

@@ -8,6 +8,7 @@ class Order < ActiveRecord::Base
 
   before_create :generate_identifier
   before_create :calculate_total_price
+  before_create :generate_pay_code
 
   default_scope { order(created_at: :desc) }
 
@@ -71,5 +72,13 @@ class Order < ActiveRecord::Base
       products.each do |product|
         self.total_price += product.price
       end
+    end
+
+    def generate_pay_code
+      loop do
+        pay_code = SecureRandom.random_number(10000).to_s
+        break if !Order.exists?(pay_code: pay_code)
+      end
+      self.pay_code = pay_code
     end
 end

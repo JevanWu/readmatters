@@ -53,6 +53,10 @@ class OrdersController < ApplicationController
     OrderInspector.delay.inspect(pay_code, amount)
   end
 
+  def index 
+    @orders = current_user.bought_orders
+  end
+
   private
     def order_params
       params.require(:order).permit(:receiver_name, :street)

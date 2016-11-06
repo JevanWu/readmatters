@@ -61,7 +61,7 @@ class Order < ActiveRecord::Base
 
     def change_product_to_sold
       self.line_items.each do |line_item|
-        line_item.product.update(sold: true)
+        line_item.product.update(status: :sold)
       end
     end
 

@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
     @order.district_id = params[:order][:district]
     if @order.save
       # mark the product is sold
-      product.update(sold: true)
+      product.update(status: :sold)
       redirect_to checkout_path(@order)
     else
       redirect_to :back

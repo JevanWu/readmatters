@@ -39,8 +39,13 @@ class Order < ActiveRecord::Base
 
   end
 
-  def add_items_from_cart(cart)
-    cart.line_items.each do |item|
+  def add_items_from_cart(cart, seller_id=nil)
+    if seller_id.present?
+      items = cart.line_items.eager_load(:product).where("products.user_id = ?", seller_id)
+    else
+      items = cart.line_items
+    end
+    items.each do |item|
       item.cart_id = nil
       line_items << item
     end

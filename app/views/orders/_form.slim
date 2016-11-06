@@ -4,6 +4,7 @@
   = f.input :city, as: :region, sub_region: :district, input_html: { class: "form-control"}
   = f.input :district, as: :region, input_html: { class: "form-control"}
   = f.input :street
+  = f.input :seller_id, as: :hidden
   = js_for_region_ajax
   .form-group
     .col-sm-offset-2.col-sm-10

@@ -2,7 +2,7 @@
 .grey-division
   .container.product-container
     .product-show-nav
-      - current_cart.line_items.each do |item|
+      - @line_items.each do |item|
         .product-cover
           = image_tag(item.product.cover.url)
     .order-form

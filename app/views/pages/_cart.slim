@@ -1,4 +1,5 @@
-#cart( data-toggle="popover" data-placement="bottom" title="Your cart" data-content="#{current_cart.items_text}" )
-  = link_to fa_icon("shopping-cart"), cart_path(current_cart)
-  .number-of-items
-    = "#{current_cart.number_of_items}"
+= link_to cart_path(current_cart) do
+  #cart( data-toggle="popover" data-placement="bottom" title="Your cart" data-content="#{current_cart.items_text}" )
+    = fa_icon("shopping-cart")
+    .number-of-items
+      = "#{current_cart.number_of_items}"

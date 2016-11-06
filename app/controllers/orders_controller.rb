@@ -4,6 +4,8 @@ class OrdersController < ApplicationController
 
   def new
     @order = current_user.bought_orders.build if current_user.present?
+    @seller_id = params[:seller_id]
+    @line_items = current_cart.line_items.eager_load(:product).where("products.user_id = ?", @seller_id)
   end
 
   def create
@@ -12,14 +14,14 @@ class OrdersController < ApplicationController
       return redirect_to :back, flash: { error: controller_translate("can_not_buy") }
     end
     @order = current_user.bought_orders.build(order_params)
-    @order.add_items_from_cart(current_cart)
+    @order.add_items_from_cart(current_cart, params[:order][:seller_id])
     @order.seller_id = current_cart.line_items.first.product.user.id
     @order.province_id = params[:order][:province]
     @order.city_id = params[:order][:city]
     @order.district_id = params[:order][:district]
     if @order.save
       # mark the product is sold
-      product.update(sold: true)
+      product.update(status: :sold)
       redirect_to checkout_path(@order)
     else
       redirect_to :back

@@ -1,8 +1,42 @@
-- @cart.line_items.each do |item|
-  = image_tag item.product.cover.url
-  = item.product.name
-  = item.quantity
-  = button_to "increase quantity", line_items_path(product_id: item.product.id), remote: true
-  = button_to "remove product", line_item_path(product_id: item.product.id), method: :delete, data: { confirm: "are you sure to remove the product? " }, remote: true
-  = link_to "place order", new_order_path
+.container
+  .row
+
+    h3
+      = "请确认订单"
+    - @line_item_grouped_hash.each do |key, value|
+      - id, name = key.split(",")
+      table.table.table-striped.text-center
+        caption
+          = "正在购买的#{name}的书籍"
+        thead
+          tr
+            th.col-md-3.text-center
+              | 图书封面
+            th.col-md-3.text-center
+              | 书名 
+            th.col-md-3.text-center
+              | 小记
+            th.col-md-3.text-center
+              | 操作
+        tbody
+          - value.each do |item|
+            tr
+              td
+                = image_tag item.product.cover.url
+              td
+                = item.product.name
+              td
+                = item.product.price
+                /= item.quantity
+                /= button_to "increase quantity", line_items_path(product_id: item.product.id), remote: true
+              td
+                = link_to "remove product", line_item_path(product_id: item.product.id), method: :delete, data: { confirm: "are you sure to remove the product? " }, class: "btn"
+          tr
+            td
+            td
+            td
+              | 100 (合计)
+            td
+              = link_to "place order", new_order_path(seller_id: id), class: "btn"
+
 

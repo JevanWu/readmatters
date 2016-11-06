@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101022250) do
+ActiveRecord::Schema.define(version: 20161106095104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,10 @@ ActiveRecord::Schema.define(version: 20161101022250) do
   create_table "carts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
 
   create_table "cities", force: true do |t|
     t.string   "name"
@@ -138,7 +141,6 @@ ActiveRecord::Schema.define(version: 20161101022250) do
     t.string   "tags"
     t.decimal  "price"
     t.text     "summary"
-    t.boolean  "sold",               default: false
     t.string   "cover_file_name"
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
@@ -154,6 +156,7 @@ ActiveRecord::Schema.define(version: 20161101022250) do
     t.string   "publisher"
     t.date     "published_date"
     t.json     "raw_data"
+    t.string   "status",             default: "initial"
   end
 
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree

@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: https://ruby.taobao.org/
   specs:
     actionmailer (4.1.8)
       actionpack (= 4.1.8)
@@ -40,6 +40,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.5.0)
+      public_suffix (~> 2.0, >= 2.0.2)
     airbrussh (1.1.0)
       sshkit (>= 1.6.1, != 1.7.0)
     arbre (1.0.3)
@@ -205,6 +207,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    public_suffix (2.0.4)
     puma (3.4.0)
     qiniu (6.4.1)
       json (~> 1.7)

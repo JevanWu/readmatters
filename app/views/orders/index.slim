@@ -24,5 +24,9 @@
             td
               = order.total_price
             td
-              = image_tag(order.line_items.first.product.cover_url)
+              table
+                - order.line_items.each do |item|
+                  tr
+                    td
+                      = image_tag(item.product.cover.url)
 

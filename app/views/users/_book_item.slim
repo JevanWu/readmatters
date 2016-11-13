@@ -10,20 +10,20 @@
     .panel-body
       table
         .header 
-          ul.row
-            li.col-sm-4
-              = order.identifier
-            li.col-sm-4
-              = I18n.t "models.orders.state.#{order.state}"
-            li.col-sm-4
-              = order_triggers(order)
+          /ul.row
+          /  li.col-sm-4
+          /    = order.identifier
+          /  li.col-sm-4
+          /    = I18n.t "models.orders.state.#{order.state}"
+          /  li.col-sm-4
+          /    = order_triggers(order)
         - order.line_items.each_with_index do |item, index|
           tr
             td.cover
               = image_tag item.product.cover.url
             td.quantity
               = item.product.name
-            td.price
-              = number_to_currency(item.product.price, unit: "")
+            /td.price
+            /  = number_to_currency(item.product.price, unit: "")
       .pepole
         = order_inscribe(order)

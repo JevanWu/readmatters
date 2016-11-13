@@ -90,6 +90,9 @@ gem 'enumerize'
 
 gem 'letter_opener'
 
+# add sendcloud mailer
+gem 'sendcloud-mailer'
+
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do 
   gem 'spring'

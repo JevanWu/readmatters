@@ -1,6 +1,5 @@
 .container
   .row
-
     h3
       = "您的订单信息"
     table.table.table-striped.text-center
@@ -12,8 +11,10 @@
             | 订单状态
           th.col-md-2.text-center
             | 订单价格
-          th.col-md-6.text-center
+          th.col-md-4.text-center
             | 订单书籍
+          th.col-md-2.text-center
+            | 操作
       tbody
         - @orders.each do |order|
           tr
@@ -22,9 +23,10 @@
             td
               = I18n.t "models.orders.state.#{order.state}"
             td
-              = order.total_price
+              = number_to_currency(order.total_price, unit: "")
             td
               - order.line_items.each do |item|
-                .col-md-3
+                .col-md-4
                   = image_tag(item.product.cover.url)
-
+            td
+              = order_triggers(order)

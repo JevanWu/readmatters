@@ -53,8 +53,14 @@ class OrdersController < ApplicationController
     OrderInspector.delay.inspect(pay_code, amount)
   end
 
-  def index 
+  def bought_orders
     @orders = current_user.bought_orders
+    render "index"
+  end
+
+  def sold_orders
+    @orders = current_user.sold_orders
+    render "index"
   end
 
   private

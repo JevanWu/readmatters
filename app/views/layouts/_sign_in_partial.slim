@@ -8,7 +8,9 @@
       li(role="presentation")
         = link_to t(:profile), bought_books_path, role: "menuitem", tabindex: "-1" 
       li(role="presentation")
-        = link_to t(:order), orders_path, role: "menuitem", tabindex: "-1" 
+        = link_to t(:bought_orders), bought_orders_path, role: "menuitem", tabindex: "-1" 
+      li(role="presentation")
+        = link_to t(:sold_orders), sold_orders_path, role: "menuitem", tabindex: "-1" 
       li(role="presentation")
         = link_to t(:signout), destroy_user_session_path, method: :delete
 

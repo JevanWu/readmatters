@@ -7,4 +7,5 @@ en:
   forgot_password: "Forgot your password?"
   publish_book: "Publish books"
   profile: "Profile"
-  orders: "You order info"
+  bought_orders: "You bought order info"
+  sold_orders: "You sold order info"

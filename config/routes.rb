@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :orders do
+  resources :orders, except: [:index] do
     member do
       post "ship", as: :ship
       post "confirm", as: :confirm
@@ -39,6 +39,9 @@ Rails.application.routes.draw do
       post "inspect"
     end
   end
+
+  get "sold_orders", to: "orders#sold_orders"
+  get "bought_orders", to: "orders#bought_orders"
 
   resources :carts, only: [:show]
 

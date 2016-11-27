@@ -27,5 +27,7 @@ module RailsFoundation
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.i18n.available_locales = [:zh, :en]
     config.i18n.default_locale = :zh
+    config.generators.assets = false
+    config.generators.helper = false
   end
 end

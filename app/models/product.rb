@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
   before_create :cover_from_url
 
   belongs_to :user
+  belongs_to :book
   has_many :line_items
   has_many :photos
   
@@ -22,5 +23,9 @@ class Product < ActiveRecord::Base
 
   def has_photos?
     self.photos.count > 0
+  end
+
+  def name
+    book.name
   end
 end

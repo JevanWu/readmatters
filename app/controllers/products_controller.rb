@@ -13,7 +13,16 @@ class ProductsController < ApplicationController
       book_count.value = response["count"]
       @book_list.push(*response["books"])
     rescue
-      redirect_to new_product_path, flash: { notice: controller_translate("fetch_occur_error") }
+      # 从数据库查询结果
+      if books = Book.where(name: params[:book_name]) && books.present?
+        @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)
+        books.each do |book|
+          @book_list << {:id => book.id, :image => book.cover_url, :title => book.name, :summary => book.summary,
+                         :tags => book.tags, :author_intro => book.author_intro, :catalog => book.catalog }
+        end
+      else
+        redirect_to new_product_path, flash: { notice: controller_translate("fetch_occur_error") }
+      end
     end
   end
 

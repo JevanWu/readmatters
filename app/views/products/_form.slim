@@ -5,32 +5,17 @@
   = stylesheet_link_tag 'jquery.nouislider.pips.min'
 
 = simple_form_for @product, html: { class: 'form-horizontal' } do |f|
-  /#value-input
-  /.form-group
-  /  label.col-sm-2.control-label
-  /    | 新旧程度
-  /  .col-sm-offset-1.col-sm-4
-  /    #range
-  - if params[:action] == %(new)
-    = f.input :cover_url, input_html: { value: @cover_url }, as: :hidden
-    = f.input :name, input_html: { value: @name }
-    = f.input :tags, input_html: { value: @tags.join(", ") }
-    = f.input :price
-    = f.input :summary, input_html: { value: @summary, class: "summernote"}
-    = f.input :catalog, input_html: { value: @catalog, class: "summernote"}
-    = f.input :author_intro, input_html: { value: @author_intro, class: "summernote"}
-    = f.input :book_id, as: :hidden, input_html: { value: @book_id}
-  - else
-    = f.input :cover_url, as: :hidden
-    = f.input :name
-    = f.input :tags
-    = f.input :price
-    = f.input :summary, input_html: { class: 'summernote'}
-    = f.input :catalog, input_html: { class: 'summernote'}
-    = f.input :author_intro, input_html: { class: 'summernote'}
+  = f.input :cover_url, as: :hidden
+  /= f.input :name, input_html: { value: @name }
+  = f.input :tags, input_html: { value: @product.book_tags }
+  = f.input :price, required: false, input_html: { value: @product.book_price }
+  = f.input :summary, input_html: { class: "summernote", value: @product.book_summary }
+  = f.input :book_id, as: :hidden, input_html: { value: @product.book_id }
+  /= f.input :catalog, input_html: { value: @catalog, class: "summernote"}
+  /= f.input :author_intro, input_html: { value: @author_intro, class: "summernote"}
   .form-group
     .col-sm-offset-2.col-sm-10
-      = f.submit "确定提交", class: "btn btn-default btn-theme"
+      = f.submit t("submit"), class: "btn btn-default btn-theme"
 
 javascript:
   var range_all_sliders = {
@@ -47,12 +32,12 @@ javascript:
 
     // Configure tapping, or make the selected range dragable.
     behaviour: 'tap'
-                              
+
   });
 
   $("#range").noUiSlider_pips({
     mode: 'steps',
-    density: 20 
+    density: 20
   });
 
   $('#range').Link('lower').to($('#value-input'));

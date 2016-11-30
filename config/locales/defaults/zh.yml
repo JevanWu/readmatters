@@ -3,6 +3,7 @@ zh:
   signin: "登录"
   signup: "注册"
   signout: "退出"
+  submit: "确认提交"
   remember_me: "记住我"
   forgot_password: "忘记了密码？"
   publish_book: "发布书籍"

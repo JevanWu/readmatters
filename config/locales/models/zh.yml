@@ -7,9 +7,15 @@ zh:
             password:
               too_short: "密码太短啦！"
   models:
+
+  attributes:
+    product:
+      tags: 标签
+      price: 价格
+      summary: 简介
     orders:
       state:
-        wait_pay: 等待付款 
+        wait_pay: 等待付款
         wait_ship: 等待卖家发货
         wait_confirm: 等待买家收货
         wait_refund: 等待退款

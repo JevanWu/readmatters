@@ -12,7 +12,7 @@
       /  li
       /    = link_to "书籍介绍", product_path(@product)
       /  - if @product.has_photos?
-      /    li 
+      /    li
       /      = link_to "书籍实照", photos_product_path(@product)
 
       - if current_user != @product.user
@@ -22,17 +22,17 @@
     .product-intro
       h4
         = t(".introduction")
-      p 
-        = simple_format @product.summary
+      p
+        = simple_format @product.book_summary
 
     .photos
-      h4 
+      h4
         = t(".book_photos")
       .photo-show.row style="#{ @product.photos.blank? ? 'display:none' : 'display:block'}"
         - @product.photos.each do |photo|
           .col-md-3
             /magnific popup require 'href' attribtue to work
-            .image-box id="photo-#{photo.id}" data-photo="#{photo.id}" href="#{photo.image.url}" 
+            .image-box id="photo-#{photo.id}" data-photo="#{photo.id}" href="#{photo.image.url}"
               = image_tag photo.image.url
 
     .author-intro
@@ -44,7 +44,7 @@
         = simple_format @product.author_intro
 
     .catalog
-      h4 
+      h4
         = t(".catalog")
       #show-catalog
         = t(".show")

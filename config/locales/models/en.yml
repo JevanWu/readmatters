@@ -6,3 +6,8 @@ en:
           attributes:
             password:
               too_short: "Password is too short!"
+    attributes:
+      product:
+        tags: Tags
+        price: Price
+        summary: Summary

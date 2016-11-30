@@ -3,19 +3,21 @@ class Product < ActiveRecord::Base
   extend Enumerize
 
   attr_accessor :cover_url
-  before_create :cover_from_url
+  #before_create :cover_from_url
 
   belongs_to :user
   belongs_to :book
   has_many :line_items
   has_many :photos
-  
+
   validates :price, presence: true
 
-  enumerize :status, in: [:initial, :locked, :sold] 
+  enumerize :status, in: [:initial, :locked, :sold]
 
   has_attached_file :cover, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
+
+  delegate :author_intro, :catalog, to: :book
 
   def cover_from_url
     self.cover = open(cover_url)
@@ -27,5 +29,17 @@ class Product < ActiveRecord::Base
 
   def name
     book.name
+  end
+
+  def book_price
+    self.price || book.price
+  end
+
+  def book_summary
+    self.summary || book.summary
+  end
+
+  def book_tags
+    self.tags_before_type_cast || book.tags
   end
 end

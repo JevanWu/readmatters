@@ -101,7 +101,9 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = Product.available.find(params[:id])
+    #TODO change the page which notify user the product is not available or sold out
+    raise ActiveRecord::RecordNotFound if @product.blank?
   end
 
   def book_name

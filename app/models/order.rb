@@ -9,6 +9,7 @@ class Order < ActiveRecord::Base
   before_create :generate_identifier
   before_create :calculate_total_price
   before_create :generate_pay_code
+  after_create :lock_products
 
   default_scope { order(created_at: :desc) }
 
@@ -60,6 +61,12 @@ class Order < ActiveRecord::Base
 
   private
 
+    def lock_products
+      self.line_items.each do |line_item|
+        line_item.product.update(status: :locked)
+      end
+    end
+
     def change_product_to_sold
       self.line_items.each do |line_item|
         line_item.product.update(status: :sold)
@@ -75,7 +82,7 @@ class Order < ActiveRecord::Base
     end
 
     def generate_pay_code
-      pay_code = nil 
+      pay_code = nil
       loop do
         pay_code = SecureRandom.random_number(10000).to_s
         break if !Order.exists?(pay_code: pay_code)

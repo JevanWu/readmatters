@@ -12,12 +12,14 @@ class Product < ActiveRecord::Base
 
   validates :price, presence: true
 
-  enumerize :status, in: [:initial, :locked, :sold]
+  enumerize :status, in: [:normal, :locked, :sold], scope: true
 
   has_attached_file :cover, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
 
   delegate :author_intro, :catalog, to: :book
+
+  scope :available, -> { with_status(:normal) }
 
   def cover_from_url
     self.cover = open(cover_url)

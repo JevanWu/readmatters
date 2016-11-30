@@ -25,31 +25,34 @@
       p
         = simple_format @product.book_summary
 
-    .photos
-      h4
-        = t(".book_photos")
-      .photo-show.row style="#{ @product.photos.blank? ? 'display:none' : 'display:block'}"
-        - @product.photos.each do |photo|
-          .col-md-3
-            /magnific popup require 'href' attribtue to work
-            .image-box id="photo-#{photo.id}" data-photo="#{photo.id}" href="#{photo.image.url}"
-              = image_tag photo.image.url
+    - if @product.photos.present?
+      .photos
+        h4
+          = t(".book_photos")
+        .photo-show.row style="#{ @product.photos.blank? ? 'display:none' : 'display:block'}"
+          - @product.photos.each do |photo|
+            .col-md-3
+              /magnific popup require 'href' attribtue to work
+              .image-box id="photo-#{photo.id}" data-photo="#{photo.id}" href="#{photo.image.url}"
+                = image_tag photo.image.url
 
-    .author-intro
-      h4
-        = t(".author_intro")
-      #show-author-intro
-        = t(".show")
-      p
-        = simple_format @product.author_intro
+    - if @product.author_intro.present?
+      .author-intro
+        h4
+          = t(".author_intro")
+        #show-author-intro
+          = t(".show")
+        p
+          = simple_format @product.author_intro
 
-    .catalog
-      h4
-        = t(".catalog")
-      #show-catalog
-        = t(".show")
-      p
-        = simple_format @product.catalog
+    - if @product.catalog.present?
+      .catalog
+        h4
+          = t(".catalog")
+        #show-catalog
+          = t(".show")
+        p
+          = simple_format @product.catalog
 
 
 javascript:

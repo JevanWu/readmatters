@@ -21,12 +21,12 @@
         tbody
           - value.each do |item|
             tr
-              td style=("opacity: 0.5" if item.product.status.locked?)
+              td class=("locked-item" if item.product.status.locked?)
                 = image_tag item.product.cover.url
-              td style=("opacity: 0.5" if item.product.status.locked?)
+              td class=("locked-item" if item.product.status.locked?)
                 = item.product.name
               - if item.product.status.locked?
-                td
+                td.warning-text
                   | 这本书已被他人下单啦orz
                 td
                   = link_to "移除", line_item_path(product_id: item.product.id), method: :delete, data: { confirm: "are you sure to remove the product? " }

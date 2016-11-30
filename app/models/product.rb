@@ -20,6 +20,7 @@ class Product < ActiveRecord::Base
   delegate :author_intro, :catalog, to: :book
 
   scope :available, -> { with_status(:normal) }
+  scope :locked, -> { with_status(:locked) }
 
   def cover_from_url
     self.cover = open(cover_url)

@@ -10,6 +10,7 @@ class Order < ActiveRecord::Base
   before_create :calculate_total_price
   before_create :generate_pay_code
   after_create :lock_products
+  after_create :check_expiration
 
   default_scope { order(created_at: :desc) }
 
@@ -59,6 +60,17 @@ class Order < ActiveRecord::Base
     self.identifier = date_string + uniq_num
   end
 
+  # 10分钟没有付款就算过期订单
+  def expired?
+    created_at < 10.minutes.ago
+  end
+
+  def unlock_products
+    self.line_items.each do |line_item|
+      line_item.product.locked.update(status: :normal)
+    end
+  end
+
   private
 
     def lock_products
@@ -89,5 +101,9 @@ class Order < ActiveRecord::Base
       end
       raise Exception.new("Pay code生成出错") if !pay_code.present?
       self.pay_code = pay_code
+    end
+
+    def check_expiration
+      OrderExpirationChecker.perform_in(10.minutes, self.id)
     end
 end

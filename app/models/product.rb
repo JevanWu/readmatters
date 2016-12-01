@@ -35,6 +35,10 @@ class Product < ActiveRecord::Base
     book.name
   end
 
+  def valid?
+    self.status.normal?
+  end
+
   def book_price
     self.price || book.price
   end

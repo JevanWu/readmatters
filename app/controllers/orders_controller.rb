@@ -9,19 +9,16 @@ class OrdersController < ApplicationController
   end
 
   def create
-    product = current_cart.line_items.first.product
-    unless current_user.can_buy?(product)
-      return redirect_to :back, flash: { error: controller_translate("can_not_buy") }
-    end
     @order = current_user.bought_orders.build(order_params)
     @order.add_items_from_cart(current_cart, params[:order][:seller_id])
+    if @order.line_items.blank?
+      return redirect_to :back, flash: { error: controller_translate("can_not_buy") }
+    end
     @order.seller_id = params[:order][:seller_id]
     @order.province_id = params[:order][:province]
     @order.city_id = params[:order][:city]
     @order.district_id = params[:order][:district]
     if @order.save
-      # mark the product is sold
-      product.update(status: :sold)
       redirect_to checkout_path(@order)
     else
       redirect_to :back

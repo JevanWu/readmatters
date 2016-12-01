@@ -76,13 +76,17 @@ class Order < ActiveRecord::Base
 
     def lock_products
       self.line_items.each do |line_item|
+        product = line_item.product
+        next if !product.status.normal?
         line_item.product.update(status: :locked)
       end
     end
 
     def unlock_products
       self.line_items.each do |line_item|
-        line_item.product.locked.update(status: :normal)
+        product = line_item.product
+        next if !product.status.locked?
+        product.update(status: :normal)
       end
     end
 

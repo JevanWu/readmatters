@@ -25,11 +25,11 @@
         tbody
           - value.each do |item|
             tr
-              td class=("locked-item" if !item.product.valid?)
+              td class=("locked-item" if !item.product.available?)
                 = image_tag item.product.cover.url
-              td class=("locked-item" if !item.product.valid?)
+              td class=("locked-item" if !item.product.available?)
                 = item.product.name
-              - if !item.product.valid?
+              - if !item.product.available?
                 td.warning-text
                   | 这本书已被他人下单啦orz
                 td

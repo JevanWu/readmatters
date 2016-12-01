@@ -51,7 +51,7 @@ class Order < ActiveRecord::Base
     items.each do |item|
       item.cart_id = nil
       # 不有效的商品不加入订单
-      next if !item.product.valid?
+      next if !item.product.available?
       line_items << item
     end
   end

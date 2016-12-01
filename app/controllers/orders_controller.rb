@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   def new
     @order = current_user.bought_orders.build if current_user.present?
     @seller_id = params[:seller_id]
-    @line_items = current_cart.line_items.eager_load(:product).where("products.user_id = ?", @seller_id)
+    @line_items = current_cart.line_items.eager_load(:product).where("products.user_id = ? and products.status = ?", @seller_id, "normal")
   end
 
   def create

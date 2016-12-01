@@ -35,7 +35,7 @@ class Product < ActiveRecord::Base
     book.name
   end
 
-  def valid?
+  def available?
     self.status.normal?
   end
 

@@ -18,6 +18,7 @@ class Order < ActiveRecord::Base
   state_machine :state, initial: :wait_pay do
 
     after_transition :wait_pay => :wait_ship, :do => :change_product_to_sold
+    after_transition :wait_pay => :failure, :do => :unlock_products
 
     event :pay do
       transition :wait_pay => :wait_ship
@@ -29,6 +30,10 @@ class Order < ActiveRecord::Base
 
     event :confirm do
       transition :wait_confirm => :success
+    end
+
+    event :failure do
+      transition :wait_pay => :failure
     end
 
     event :cancel do
@@ -67,17 +72,17 @@ class Order < ActiveRecord::Base
     created_at < 10.minutes.ago
   end
 
-  def unlock_products
-    self.line_items.each do |line_item|
-      line_item.product.locked.update(status: :normal)
-    end
-  end
-
   private
 
     def lock_products
       self.line_items.each do |line_item|
         line_item.product.update(status: :locked)
+      end
+    end
+
+    def unlock_products
+      self.line_items.each do |line_item|
+        line_item.product.locked.update(status: :normal)
       end
     end
 

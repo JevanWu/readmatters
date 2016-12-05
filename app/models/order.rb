@@ -97,7 +97,7 @@ class Order < ActiveRecord::Base
 
     def calculate_total_price
       self.total_price = 0.00
-      products = Product.where(id: line_items.pluck(:product_id))
+      products = Product.where(id: line_items.map(&:product_id))
       products.each do |product|
         self.total_price += product.price
       end

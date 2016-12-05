@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :books
+
   resources :orders, except: [:index] do
     member do
       post "ship", as: :ship

@@ -12,3 +12,13 @@ zh:
         tags: 标签
         price: 价格
         summary: 简介
+      book:
+        name: 书名
+        tags: 标签
+        price: 价格
+        summary: 简介
+        author: 作者
+        author_intro: 作者介绍
+        catalog: 目录
+        publisher: 出版商
+        published_date: 出版日期

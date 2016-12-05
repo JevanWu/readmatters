@@ -14,7 +14,7 @@ class Order < ActiveRecord::Base
 
   default_scope { order(created_at: :desc) }
 
-  #order_state (wait_pay, wait_ship, wait_confirm, success, void)
+  #order_state (wait_pay, failure, wait_ship, wait_confirm, success, wait_refund, refunded)
   state_machine :state, initial: :wait_pay do
 
     after_transition :wait_pay => :wait_ship, :do => :change_product_to_sold
@@ -37,7 +37,6 @@ class Order < ActiveRecord::Base
     end
 
     event :cancel do
-      transition :wait_pay => :cancelled
       transition :wait_ship => :wait_refund
     end
 

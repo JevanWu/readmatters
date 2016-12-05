@@ -10,6 +10,12 @@ module ProductsHelper
       link_to "确认收货", confirm_order_path(order.identifier), remote: true, method: :post, class: "theme-link"
     when %(wait_refund)
       "退款已在处理中"
+    when %(failure)
+      "已失效"
+    when %(success)
+      "已完成交易"
+    when %(refunded)
+      "已退款"
     end
   end
 
@@ -22,7 +28,14 @@ module ProductsHelper
     when %(wait_confirm)
       "等待买家确认"
     when %(wait_refund)
-      "买家已申请退款"
+      link_to "已退款", "#"
+      #"买家已申请退款"
+    when %(failure)
+      "已失效"
+    when %(success)
+      "已完成交易"
+    when %(refunded)
+      "已退款"
     end
   end
 

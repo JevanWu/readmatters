@@ -27,6 +27,7 @@ class OrdersController < ApplicationController
 
   def checkout
     @order = Order.find(params[:id])
+    redirect_to :back if !@order.wait_pay?
   end
 
   def ship

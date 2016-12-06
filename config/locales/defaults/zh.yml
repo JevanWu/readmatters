@@ -10,3 +10,8 @@ zh:
   profile: "个人资料"
   bought_orders: "购买订单信息"
   sold_orders: "销售订单信息"
+  date:
+    order:
+      - :day
+      - :month
+      - :year

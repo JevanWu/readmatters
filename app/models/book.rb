@@ -9,6 +9,7 @@ class Book < ActiveRecord::Base
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
 
   def cover_from_url
+    return true if cover_url.blank?
     self.cover = open(cover_url)
   end
 end

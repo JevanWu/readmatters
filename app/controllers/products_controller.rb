@@ -27,7 +27,13 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
+    if params[:new_book_id].blank?
+      @product = Product.new
+    else
+      @book = Book.find params[:new_book_id]
+      @product = @book.products.build(price: @book.price, summary: @book.summary)
+    end
+
     if params[:book_id].blank?
       @tags = []
     else

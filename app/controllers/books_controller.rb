@@ -7,6 +7,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
+      redirect_to new_product_path(new_book_id: @book.id)
     else
       redirect_to :back, flash: { error: "failed" }
     end

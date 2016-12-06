@@ -10,3 +10,8 @@ en:
   profile: "Profile"
   bought_orders: "You bought order info"
   sold_orders: "You sold order info"
+  date:
+    order:
+      - :day
+      - :month
+      - :year

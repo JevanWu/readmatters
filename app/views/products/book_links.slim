@@ -1,4 +1,4 @@
-= render "shared/jumbotron", content: "请选择您的书籍封面"
+= render "shared/jumbotron", content: "请选择您想发布的书籍"
 .grey-division
   #container
     - @book_list.each_with_index do |book, index|
@@ -10,3 +10,5 @@
           = image_tag book["image"]
         .title
           = book["title"]
+  .link style="padding-top: 30px; text-align: center;"
+    = link_to "没有想要发布的书籍？尝试自己创建书籍吧!", new_book_path, class: "theme-link"

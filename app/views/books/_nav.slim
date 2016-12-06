@@ -1,0 +1,23 @@
+.profile-nav
+  .cover
+    = image_tag @book.cover.url(:thumb)
+  input#book_cover name="book[cover]" type="file" style="display:none"
+
+javascript:
+  $(document).ready(function(){
+    $(".cover").click(function(e){
+      $("#book_cover").click();
+    });
+
+    $("#book_cover").fileupload({
+      url: "http://localhost:3000/books/update_avatar",
+      data: { id: "#{@book.id}" },
+      dataType: "json",
+      method: "patch",
+      done: function(e, data) {
+        $(".avatar img").attr("src", data.result.image);
+      },
+      error: function(data) {
+      }
+    });
+  });

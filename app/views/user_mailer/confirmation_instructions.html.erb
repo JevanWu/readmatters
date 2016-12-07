@@ -1,0 +1,28 @@
+<tr>
+  <td style="padding-top: 50px; text-align: center; font-size: 20px;">
+    感谢您选择Readfavor！
+  </td>
+</tr>
+<tr>
+  <td>
+    <table style="padding-top: 40px; width: 100%; font-size: 14px;">
+      <tbody>
+        <tr>
+          <td style="line-height: 1.5">
+            您的用户名为:  <span style="color: #21b384">「jevanwu」</span>.
+          </td>
+        </tr>
+        <tr>
+          <td style="line-height: 1.5">
+            您可以通过点击以下链接激活您的账号
+          </td>
+        </tr>
+        <tr>
+          <td  style="padding-top: 20px;">
+            <a href="<%= root_path %>/users/confirmation?confirmation_token=<%= @token %>" style=" margin-top: 20px; display: block; height: 35px; width: 160px; background-color: #21b384; color: #ffffff; text-align: center; line-height: 35px; text-decoration: none; border-radius: 3px; margin: 0 auto;">立即激活账号</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>

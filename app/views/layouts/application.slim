@@ -3,14 +3,14 @@ doctype html
 html
   head
     title = "readfavor"
-    = stylesheet_link_tag 'application', 'data-turbolinks-track' => true 
+    = stylesheet_link_tag 'application', 'data-turbolinks-track' => true
     - if content_for :page_css
       = yield :page_css
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true 
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
     - if content_for :page_js
       = yield :page_js
     = csrf_meta_tags
-        
+
   body
     = render 'layouts/nav'
     .main
@@ -18,3 +18,4 @@ html
     = render_footer
 
   = render 'shared/ga'
+  = render 'shared/meiqia'

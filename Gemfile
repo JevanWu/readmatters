@@ -1,5 +1,5 @@
-# source 'https://rubygems.org'
-source "https://ruby.taobao.org"
+source 'https://rubygems.org'
+#source "https://ruby.taobao.org"
 # source 'https://gems.ruby-china.org'
 
 ruby '2.3.0'
@@ -32,7 +32,7 @@ gem "jquery-fileupload-rails"
 # Slim
 gem 'slim-rails'
 # Use bootstrap
-gem 'bootstrap-sass' 
+gem 'bootstrap-sass'
 #, '~> 3.2.0'
 #
 gem 'autoprefixer-rails'
@@ -46,7 +46,7 @@ gem 'activeadmin', '~> 1.0.0.pre1'
 #gem 'ransack'
 #
 #
-# Sign in/up helper 
+# Sign in/up helper
 gem 'devise'
 #
 # Fontawesome
@@ -94,7 +94,7 @@ gem 'letter_opener'
 gem 'sendcloud-mailer'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-group :development do 
+group :development do
   gem 'spring'
   gem 'pry'
   gem "capistrano", "~> 3.6"

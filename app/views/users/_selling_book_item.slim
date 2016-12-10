@@ -3,7 +3,7 @@
     small
       = product.created_at.strftime("%H:%M")
     = product.created_at.strftime("%Y-%m-%d")
-    = product.sold ? " 已售出" : " 出售中"
+    = product.status.sold? ? " 已售出" : " 出售中"
   .timeline-icon
     .bg-primary
       a href="#{edit_product_path(product)}"

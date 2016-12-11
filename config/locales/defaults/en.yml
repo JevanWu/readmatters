@@ -7,6 +7,7 @@ en:
   submit: "Submit"
   remember_me: "Remember me"
   forgot_password: "Forgot your password?"
+  not_receive_connfirmation_instruction: "Didn't receive confirmation instructions?"
   publish_book: "Publish books"
   profile: "Profile"
   bought_orders: "You bought order info"

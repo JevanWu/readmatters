@@ -7,6 +7,7 @@ zh:
   submit: "确认提交"
   remember_me: "记住我"
   forgot_password: "忘记了密码？"
+  not_receive_connfirmation_instruction: "没收到确认邮件？"
   publish_book: "发布书籍"
   profile: "个人资料"
   bought_orders: "购买订单信息"

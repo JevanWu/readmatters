@@ -14,7 +14,7 @@ class Product < ActiveRecord::Base
 
   enumerize :status, in: [:normal, :locked, :sold], default: :normal, scope: true
 
-  has_attached_file :cover, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :cover, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
 
   delegate :author_intro, :catalog, to: :book

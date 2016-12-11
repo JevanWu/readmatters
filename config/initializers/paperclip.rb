@@ -6,3 +6,10 @@ Paperclip::Attachment.default_options[:qiniu_credentials] = {
 Paperclip::Attachment.default_options[:bucket] = ENV["QINIU_BUCKET"]
 Paperclip::Attachment.default_options[:use_timestamp] = false
 Paperclip::Attachment.default_options[:qiniu_host] = 'http://oc6wjhyt0.bkt.clouddn.com'
+
+Paperclip.interpolates :image_timestamp do |style, attachment|
+
+  DateTime.now.strftime("%Y%m%d%H%M%S")
+  # Time.current.to_i
+end
+

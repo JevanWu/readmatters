@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  has_attached_file :avatar, :styles => {:thumb => "200x200#" }, :default_url => ":style/default_avatar.png"
+  has_attached_file :avatar, :styles => {:thumb => "200x200#" }, :default_url => ":style/default_avatar.png", :path => ":class/:attachment/:id_partition/:style/:filename"
     # qiniu server:     :path => ":class/:attachment/:id/:basename.:extension"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 

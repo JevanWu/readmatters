@@ -5,7 +5,7 @@ class Book < ActiveRecord::Base
 
   has_many :products
 
-  has_attached_file :cover, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :cover, :default_url => "/images/:style/missing.png", :path => ":class/:attachment/:id_partition/:style/:filename"
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
 
   def cover_from_url

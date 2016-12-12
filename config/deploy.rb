@@ -45,7 +45,7 @@ append :linked_files, 'config/database.yml', 'config/secrets.yml', 'config/appli
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 #puma config
-set :puma_threads, [0, 10]
+set :puma_threads, [0, 2]
 set :puma_workers, 1
 
 set :nginx_sites_available_path, "/usr/local/nginx/sites-available"

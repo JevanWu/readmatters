@@ -78,11 +78,12 @@ gem 'magnific-popup-rails'
 # report bug tool
 gem 'rollbar'
 
-gem "figaro"
+gem 'figaro'
 
-gem "watir",  require: false
+#gem "watir",  require: false
 
-gem "puma"
+gem 'puma', '3.4.0'
+gem 'puma_worker_killer', '0.0.7'
 
 gem 'sidekiq'
 

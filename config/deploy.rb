@@ -44,7 +44,9 @@ append :linked_files, 'config/database.yml', 'config/secrets.yml', 'config/appli
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
-# Default value for keep_releases is 5
-# set :keep_releases, 5
+#puma config
+set :puma_threads, [0, 10]
+set :puma_workers, 1
+
 set :nginx_sites_available_path, "/usr/local/nginx/sites-available"
 set :nginx_sites_enabled_path, "/usr/local/nginx/sites-enabled"

@@ -10,7 +10,8 @@ class Mailer < ActionMailer::Base
 
   #验证邮箱
   def confirm_email(user)
-    mail(to: user.email, subject: "")
+    @user = user
+    mail(to: @user.email, subject: "")
   end
 
   #欢迎注册

@@ -10,7 +10,8 @@ class Product < ActiveRecord::Base
   has_many :line_items
   has_many :photos
 
-  validates :price, presence: true
+  validates :price, :tags, :summary, presence: true
+  validates :price, numericality: { greater_than: 0 }
 
   enumerize :status, in: [:normal, :locked, :sold], default: :normal, scope: true
 

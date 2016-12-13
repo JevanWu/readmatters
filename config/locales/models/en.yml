@@ -7,6 +7,12 @@ en:
             password:
               too_short: "Password is too short!"
               blank: "Password cannot be blank"
+            email:
+              blank:
+              invalid:
+            name:
+              blank:
+              invalid:
     attributes:
       product:
         tags: Tags

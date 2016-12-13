@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
     # qiniu server:     :path => ":class/:attachment/:id/:basename.:extension"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  validates :name, :email, presence: true, on: :create
+  validates_format_of :name, with: /[^0-9]+/ , on: :create#/\A[\u4E00-\u9FA5]{1,4}\z/
+
   def name
     if new_record?
       super

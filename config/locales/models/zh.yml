@@ -7,6 +7,12 @@ zh:
             password:
               too_short: "密码至少需8位"
               blank: "密码不能够为空"
+            email:
+              blank: "邮箱不能为空"
+              invalid: "请填写正确格式的邮箱"
+            name:
+              blank: "姓名不能为空"
+              invalid: "请填写正确格式的姓名"
   models:
 
   attributes:

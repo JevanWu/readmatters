@@ -85,7 +85,7 @@ gem 'figaro'
 gem 'puma', '3.4.0'
 gem 'puma_worker_killer', '0.0.7'
 
-gem 'sidekiq'
+gem 'sidekiq', '~>4.2.7'
 
 gem 'enumerize'
 

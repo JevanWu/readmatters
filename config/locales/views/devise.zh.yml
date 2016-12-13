@@ -5,11 +5,15 @@ zh:
         email_placeholder: 您的邮箱
         name_placeholder: 您的姓名
         password_placeholder: 您的密码
-        password_confrimation_placeholder: "请确认密码 (至少%{minimum_password_length}个字符)" 
+        password_confrimation_placeholder: "请确认密码 (至少%{minimum_password_length}个字符)"
     sessions:
       new:
         email_placeholder: 您的邮箱
         password_placeholder: 您的密码
+    confirmations:
+      new:
+        email_placeholder: 您的邮箱
+        resend_confirmation: 重发确认邮件
 
-      
+
 

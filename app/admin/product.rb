@@ -13,6 +13,18 @@ ActiveAdmin.register Product do
   #   permitted << :other if resource.something?
   #   permitted
   # end
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :tags
+    column :summary
+    column :user do |product|
+      link_to "#{product.user.name} (#{product.user.email})", admin_user_path(product)
+    end
+    column :created_at
+    actions
+  end
 
 
 end

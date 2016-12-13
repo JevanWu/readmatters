@@ -17,3 +17,10 @@ en:
       - :day
       - :month
       - :year
+  time:
+    am: am
+    pm: pm
+    formats:
+      default: "%d-%b-%Y %I:%M %p"
+      short_date: "%d %b"
+      long: "%d-%b-%Y %I:%M"

@@ -17,3 +17,10 @@ zh:
       - :day
       - :month
       - :year
+  time:
+    am: am
+    pm: pm
+    formats:
+      default: "%Y.%m.%d %H:%M"
+      short_date: "%m月%d日"
+      long: "%Y.%m.%d %H:%M"

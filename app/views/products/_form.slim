@@ -7,9 +7,9 @@
 = simple_form_for @product, html: { class: 'form-horizontal' } do |f|
   = f.input :cover_url, as: :hidden
   /= f.input :name, input_html: { value: @name }
-  = f.input :tags, input_html: { value: @product.book_tags }
+  = f.input :tags, required: false, input_html: { value: @product.book_tags }
   = f.input :price, required: false, input_html: { value: @product.book_price }
-  = f.input :summary, input_html: { class: "summernote", value: @product.book_summary }
+  = f.input :summary, required: false, input_html: { class: "summernote", value: @product.book_summary }
   = f.input :book_id, as: :hidden, input_html: { value: @product.book_id }
   /= f.input :catalog, input_html: { value: @catalog, class: "summernote"}
   /= f.input :author_intro, input_html: { value: @author_intro, class: "summernote"}

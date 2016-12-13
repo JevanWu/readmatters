@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
     @order.province_id = params[:order][:province]
     @order.city_id = params[:order][:city]
     @order.district_id = params[:order][:district]
+    @order.calculate_total_price
     if @order.save
       redirect_to checkout_path(@order)
     else

@@ -1,9 +1,9 @@
 = simple_form_for @order, html: { class: 'form-horizontal' } do |f|
-  = f.input :receiver_name, input_html: { value: current_user.name }
+  = f.input :receiver_name, require: false, input_html: { value: current_user.name }
   = f.input :province, as: :region, collection: Province.select('id, name'), sub_region: :city, input_html: { class: "form-control"}
   = f.input :city, as: :region, sub_region: :district, input_html: { class: "form-control"}
   = f.input :district, as: :region, input_html: { class: "form-control"}
-  = f.input :street
+  = f.input :street, require: false
   = f.input :seller_id, as: :hidden, input_html: { value: @seller_id }
   = js_for_region_ajax
   .form-group

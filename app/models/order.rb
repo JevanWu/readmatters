@@ -10,7 +10,7 @@ class Order < ActiveRecord::Base
   before_create :calculate_total_price
   before_create :generate_pay_code
   after_create :lock_products
-  after_create :check_expiration
+  #after_create :check_expiration
 
   default_scope { order(created_at: :desc) }
 
@@ -74,6 +74,14 @@ class Order < ActiveRecord::Base
     created_at < 10.minutes.ago
   end
 
+  def calculate_total_price
+    self.total_price = 0.00
+    products = Product.where(id: line_items.map(&:product_id))
+    products.each do |product|
+      self.total_price += product.price
+    end
+  end
+
   private
 
     def lock_products
@@ -95,14 +103,6 @@ class Order < ActiveRecord::Base
     def change_product_to_sold
       self.line_items.each do |line_item|
         line_item.product.update(status: :sold)
-      end
-    end
-
-    def calculate_total_price
-      self.total_price = 0.00
-      products = Product.where(id: line_items.map(&:product_id))
-      products.each do |product|
-        self.total_price += product.price
       end
     end
 

@@ -28,6 +28,7 @@ class OrdersController < ApplicationController
 
   def checkout
     @order = Order.find(params[:id])
+    Rollbar.info("#{current_user.email}进入订单结算页面啦！Order ID: #{@order.id}")
     redirect_to :back if !@order.wait_pay?
   end
 

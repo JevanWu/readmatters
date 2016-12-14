@@ -44,9 +44,19 @@ Rollbar.configure do |config|
   # config.use_sucker_punch
 
   # Enable delayed reporting (using Sidekiq)
-  # config.use_sidekiq
+  config.use_sidekiq
   # You can supply custom Sidekiq options:
-  # config.use_sidekiq 'queue' => 'default'
+  config.use_sidekiq 'queue' => 'default'
+
+  # js configuration
+  config.js_enabled = true
+  config.js_options = {
+    accessToken: ENV['ROLLBAR_ACCESS_TOKEN'],
+    captureUncaught: true,
+    payload: {
+      environment: Rails.env
+    }
+  }
 
   # If you run your staging application instance in production environment then
   # you'll want to override the environment reported by `Rails.env` with an

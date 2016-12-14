@@ -2,12 +2,20 @@ doctype html
 
 html
   head
-    title = "readfavor"
-    = stylesheet_link_tag 'application', 'data-turbolinks-track' => true 
-    = stylesheet_link_tag 'devise_layout', 'data-turbolinks-track' => true 
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true 
+    - if content_for?(:title_tag)
+      = yield :title_tag
+    - else
+      title = t(".title_tag")
+    meta charset="UTF-8"
+    - if content_for?(:description_tag)
+      = yield :description_tag
+    - else
+      meta content=t(".description_tag") name="description"
+    = stylesheet_link_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'devise_layout', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-        
+
   body
     = render 'layouts/nav'
     = yield

@@ -1,4 +1,6 @@
 en:
+  title_tag: ""
+  description_tag: ""
   save: "Save"
   search: "Search"
   signin: "Sign in"

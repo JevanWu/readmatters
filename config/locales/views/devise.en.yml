@@ -14,3 +14,11 @@ en:
         new:
           email_placeholder: Your email
           resend_confirmation: "Resend confirmation instructions"
+      passwords:
+        new:
+          email_placeholder: Your email
+          send_me_reset_password_instruction: "Send me reset password instructions"
+        edit:
+          password_placeholder: 您的密码
+          password_confrimation_placeholder: "请确认密码 (至少%{minimum_password_length}个字符)"
+          change_password: Change my password

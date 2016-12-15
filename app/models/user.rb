@@ -15,15 +15,6 @@ class User < ActiveRecord::Base
   validates :name, :email, presence: true, on: :create
   validates_format_of :name, with: /[^0-9]+/ , on: :create#/\A[\u4E00-\u9FA5]{1,4}\z/
 
-  def name
-    if new_record?
-      super
-    else
-      name ||= email.match(/(.+)@/)[1]
-      name.titleize
-    end
-  end
-
   def can_buy?(product)
     self != product.user
   end

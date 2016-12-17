@@ -11,15 +11,20 @@
           label.decimal.optional.control-label for="product_price"
             | 售卖价格
             span.theme-text
-              | 《#{@book.name}》新书参考价为#{ number_to_currency(@product.book_price, unit: "¥") }, 建议填写3到6折的转手价格，即#{ number_to_currency(@product.book_price*0.3, unit: "¥") }～#{ number_to_currency(@product.book_price*0.6, unit: "¥") }
-          = f.input :price, required: false, label: false, input_html: { placeholder: "期望的转手价格"}
+              | 《#{@book.name}》新书参考价为#{ number_to_currency(@product.book_price, unit: "¥") }, 建议填写3到6折的转售价格，即#{ number_to_currency(@product.book_price*0.3, unit: "¥") }～#{ number_to_currency(@product.book_price*0.6, unit: "¥") }
+          .form-inline
+            .form-group.decimal.optional.product_price
+              .input-group
+                .input-group-addon
+                  | ¥
+                = text_field(:product, :price, class: "numeric decimal optional form-control", type: "number", placeholder:  "期望的转售价格")
 
         .form-group.text.optional.product_summary
           label.text.optional.control-label for="product_summary"
-            | 书籍推荐简介
-          #insert-summary.btn-theme.btn.btn-default data-summary="#{@product.book_summary}"
-            | 插入默认简介
-          = f.input :summary, required: false, label: false, input_html: { class: "summernote", placeholder: "hello, there" }
+            | 书籍简介
+            span.theme-text
+              | （您可自行对生成的书籍简介进行编辑）
+          = f.input :summary, required: false, label: false, input_html: { rows: 10, value: @product.book_summary }
 
         .form-group.string.optional.product_tags
           label.string.optional.control-label for="product_tags"

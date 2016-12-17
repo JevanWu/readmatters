@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to checkout_path(@order)
     else
-      redirect_to :back
+      redirect_to :back, flash: { alert: combine_error_message(@order.errors.messages, "order") }
     end
   end
 

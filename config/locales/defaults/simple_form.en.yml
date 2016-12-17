@@ -25,6 +25,12 @@ en:
         catalog: 目录
         publisher: 出版商
         published_date: 出版日期
+      order:
+        receiver_name: 收书人姓名
+        province: 省
+        city: 市
+        district: 区
+        street: 详细地址
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'

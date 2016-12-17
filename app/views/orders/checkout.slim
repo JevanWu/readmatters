@@ -8,13 +8,13 @@
 
     .checkout-container
       .order-no.text-center
-        | 请您支付
-        span style="color: #21b384"
+        | 请您支付：
+        span.theme-text
           = "#{number_to_currency(@order.total_price, unit: '¥')}"
-        /| 并在"备注"中附上订单号：
-        /br
-        /span
-        /  = @order.pay_code
+        br
+        | 请在"备注"中附上订单号：
+        span.theme-text
+          = @order.pay_code
       .qrcode
         = image_tag "qrcode.png"
     .row.text-center style="margin-top: 50px;"
@@ -33,14 +33,14 @@
     .title.text-center
       | 第二步
     .explanation.text-center
-      | Readfavor核查支付情况后会即刻通知卖者
+      | Readfavor核查支付情况后会即刻通知书籍拥有者
   .steps.col-md-3
     .icon.text-center
       = fa_icon("rocket")
     .title.text-center
       | 第三步
     .explanation.text-center
-      | 卖书者收到通知后会寄出书籍
+      | 拥有者收到通知后会尽快寄出书籍
   .steps.col-md-3
     .icon.text-center
       = fa_icon("legal")

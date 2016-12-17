@@ -12,9 +12,9 @@ zh:
         name: 姓名
         phone: 手机
       product:
-        tags: 标签
-        price: 价格
-        summary: 简介
+        tags: 书籍标签
+        price: 售卖价格
+        summary: 书籍简介
       book:
         name: 书名
         tags: 标签

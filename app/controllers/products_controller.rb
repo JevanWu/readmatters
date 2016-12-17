@@ -40,15 +40,15 @@ class ProductsController < ApplicationController
       @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)
       new_book = @book_list[params[:book_id]]
       isbn = new_book["isbn13"] || new_book["isbn10"]
-      book = Book.find_by(isbn: isbn)
-      if book.blank?
+      @book = Book.find_by(isbn: isbn)
+      if @book.blank?
         tags = new_book["tags"].map{ |tag| tag["name"] }.join(", ")
-        book = Book.create( isbn: isbn, name: new_book["title"], tags: tags, cover_url: new_book["image"],
+        @book = Book.create( isbn: isbn, name: new_book["title"], tags: tags, cover_url: new_book["image"],
                             price: new_book["price"], summary: new_book["summary"], author: new_book["author"].join(", "),
                             author_intro: new_book["author_intro"], catalog: new_book["catalog"], original_cover: new_book["image"],
                             publisher: new_book["publisher"], published_date: new_book["published_date"], raw_data: new_book)
       end
-      @product.book_id = book.id
+      @product.book_id = @book.id
       @book_id = params[:book_id]
     end
   end

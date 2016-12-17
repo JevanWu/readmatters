@@ -13,6 +13,15 @@ en:
             name:
               blank:
               invalid:
+        product:
+          attributes:
+            price:
+              blank: "价格不能够为空"
+              not_a_number: "价格需要是有效数字"
+            summary:
+              blank: "书籍简介不能为空"
+            tags:
+              blank: "书籍标签不能为空"
     attributes:
       product:
         tags: Tags

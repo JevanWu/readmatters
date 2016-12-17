@@ -72,7 +72,7 @@ class ProductsController < ApplicationController
       # redirect_to product_path(@product)
       redirect_to upload_photo_product_path(@product)
     else
-      redirect_to :back, flash: { error: "failed" }
+      redirect_to :back, flash: { alert: combine_error_message(@product.errors.messages, "product") }
     end
   end
 

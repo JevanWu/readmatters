@@ -13,13 +13,23 @@ zh:
             name:
               blank: "姓名不能为空"
               invalid: "请填写正确格式的姓名"
+        product:
+          attributes:
+            price:
+              blank: "价格不能为空"
+              not_a_number: "价格需要是有效数字"
+            summary:
+              blank: "书籍简介不能为空"
+            tags:
+              blank: "书籍标签不能为空"
+
   models:
 
   attributes:
     product:
-      tags: 标签
-      price: 价格
-      summary: 简介
+      tags: 书籍标签
+      price: 售卖价格
+      summary: 书籍简介
     orders:
       state:
         wait_pay: 等待付款

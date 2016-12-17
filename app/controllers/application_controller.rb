@@ -26,6 +26,14 @@ class ApplicationController < ActionController::Base
       I18n.t(keyword, scope: params[:controller])
     end
 
+    def combine_error_message(error_messages, model_name)
+      messages = []
+      error_messages.each_with_index do |message, index|
+        messages << "#{index+1}. #{I18n.t("attributes.#{model_name}.#{message.first}")}: #{message.last.join(", ")}"
+      end
+      messages.join("\n")
+    end
+
   private
     def current_cart
       if current_user.present?

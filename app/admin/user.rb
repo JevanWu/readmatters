@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-
+  actions :all, :except => [:destroy]
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -13,6 +13,18 @@ ActiveAdmin.register User do
   #   permitted << :other if resource.something?
   #   permitted
   # end
+  index do
+    id_column
+    column :name
+    column :email
+    column :created_at
+    column :updated_at
+    column :current_sign_in_at
+    column :last_sign_in_at
+    column :confirmed_at
+
+    actions
+  end
 
 
 end

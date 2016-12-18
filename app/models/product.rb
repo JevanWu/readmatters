@@ -11,7 +11,7 @@ class Product < ActiveRecord::Base
   has_many :photos
 
   validates :price, :tags, :summary, presence: true
-  validates :price, numericality: { greater_than: 0 }
+  validates :price, numericality: { greater_than_or_equal_to: 0 }
 
   enumerize :status, in: [:normal, :locked, :sold], default: :normal, scope: true
 

@@ -1,4 +1,5 @@
 ActiveAdmin.register Product do
+  actions :all, :except => [:destroy]
 
 
   # See permitted parameters documentation:

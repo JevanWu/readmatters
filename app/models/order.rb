@@ -15,7 +15,7 @@ class Order < ActiveRecord::Base
   default_scope { order(created_at: :desc) }
 
   validates :province_id, :city_id, :district_id, :street, :receiver_name, presence: true
-  validates :total_price, numericality: { greater_than: 0 }
+  validates :total_price, numericality: { greater_than_or_equal_to: 0 }
 
   #order_state (wait_pay, failure, wait_ship, wait_confirm, success, wait_refund, refunded)
   state_machine :state, initial: :wait_pay do

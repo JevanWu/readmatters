@@ -16,9 +16,10 @@ zh:
         price: 售卖价格
         summary: 书籍简介
       book:
+        cover: 图书封面
         name: 书名
         tags: 标签
-        price: 价格
+        price: 新书购入价格
         summary: 简介
         author: 作者
         author_intro: 作者介绍

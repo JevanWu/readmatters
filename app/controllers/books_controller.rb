@@ -9,7 +9,7 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to new_product_path(new_book_id: @book.id)
     else
-      redirect_to :back, flash: { error: "failed" }
+      redirect_to :back, flash: { alert: combine_error_message(@book.errors.messages, "book") }
     end
   end
 

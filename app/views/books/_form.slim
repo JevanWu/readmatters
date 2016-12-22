@@ -1,14 +1,10 @@
-= simple_form_for @book, html: { class: 'form-horizontal' } do |f|
-  = f.input :cover, as: :file, label_html: { class: "col-md-2"}
-  = f.input :name
-  = f.input :price
-  = f.input :author
-  = f.input :summary
-  = f.input :author_intro
-  = f.input :catalog
-  = f.input :publisher
-  = f.input :published_date
+= simple_form_for @book do |f|
+  = f.input :cover, as: :file
+  = f.input :name, input_html: { class: "short" }
+  = f.input :price, input_html: { class: "short" }
+  = f.input :author, input_html: { class: "short" }
+  = f.input :publisher, input_html: { class: "short" }
+  = f.input :summary, input_html: { rows: 5 }
   .form-group
-    .col-sm-offset-2.col-sm-10
-      = f.submit t("submit"), class: "btn btn-default btn-theme"
+    = f.submit t("submit"), class: "btn btn-default btn-theme"
 

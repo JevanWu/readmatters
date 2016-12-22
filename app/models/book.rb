@@ -5,6 +5,8 @@ class Book < ActiveRecord::Base
 
   has_many :products
 
+  validates :name, :price, :author, :summary, presence: true
+
   has_attached_file :cover, :default_url => "/images/:style/missing.png", :path => ":class/:attachment/:id_partition/:style/:filename"
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
 

@@ -16,6 +16,7 @@ en:
         price: Price
         summary: Summary
       book:
+        cover: 图书封面
         name: 书名
         tags: 标签
         price: 价格

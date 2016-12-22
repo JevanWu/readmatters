@@ -14,6 +14,8 @@
           = link_to product.name, product_path(product)
         .price
           = number_to_currency(product.price, unit: "")
+          span.warning-text style="text-decoration: line-through; margin-left: 5px;"
+            = number_to_currency(product.book.price, unit: "")
         /.add-to-cart
         /  = link_to fa_icon("info-circle", text: "Detail"), product_path(product)
         /.social

@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 
   def home
     @cart = current_cart
-    @products = Product.available
+    @products = Product.available.eager_load(:book)
   end
 
   def search

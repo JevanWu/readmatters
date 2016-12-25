@@ -28,7 +28,7 @@ zh:
         published_date: 出版日期
       order:
         receiver_name: 收书人姓名
-        province: 省
-        city: 市
-        district: 区
-        street: 详细地址
+        province: 所在省
+        city: 所在市
+        district: 所在区
+        street: 收书人详细地址

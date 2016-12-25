@@ -18,44 +18,64 @@
       /    li
       /      = link_to "书籍实照", photos_product_path(@product)
 
-      - if current_user != @product.user
-        .price-tag
-          = link_to number_to_currency(@product.price, unit: ""), line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme price"
+      /- if current_user != @product.user
+      /  .price-tag
+      /    = link_to number_to_currency(@product.price, unit: ""), line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme price"
 
-    .product-intro
-      h4
-        = t(".introduction")
-      p
-        = simple_format @product.book_summary
-
-    - if @product.photos.present?
-      .photos
+    .col-md-10 style="padding: 0px;"
+      .product-intro
         h4
-          = t(".book_photos")
-        .photo-show.row style="#{ @product.photos.blank? ? 'display:none' : 'display:block'}"
-          - @product.photos.each do |photo|
-            .col-md-3
-              /magnific popup require 'href' attribtue to work
-              .image-box id="photo-#{photo.id}" data-photo="#{photo.id}" href="#{photo.image.url}"
-                = image_tag photo.image.url
-
-    - if @product.author_intro.present?
-      .author-intro
-        h4
-          = t(".author_intro")
-        #show-author-intro
-          = t(".show")
+          = t(".introduction")
         p
-          = simple_format @product.author_intro
+          = simple_format @product.book_summary
 
-    - if @product.catalog.present?
-      .catalog
-        h4
-          = t(".catalog")
-        #show-catalog
-          = t(".show")
-        p
-          = simple_format @product.catalog
+      - if @product.photos.present?
+        .photos
+          h4
+            = t(".book_photos")
+          .photo-show.row style="#{ @product.photos.blank? ? 'display:none' : 'display:block'}"
+            - @product.photos.each do |photo|
+              .col-md-3
+                /magnific popup require 'href' attribtue to work
+                .image-box id="photo-#{photo.id}" data-photo="#{photo.id}" href="#{photo.image.url}"
+                  = image_tag photo.image.url
+
+      - if @product.author_intro.present?
+        .author-intro
+          h4
+            = t(".author_intro")
+          #show-author-intro
+            = t(".show")
+          p
+            = simple_format @product.author_intro
+
+      - if @product.catalog.present?
+        .catalog
+          h4
+            = t(".catalog")
+          #show-catalog
+            = t(".show")
+          p
+            = simple_format @product.catalog
+
+    .col-md-2 style="padding: 0px; margin-top: 42px;"
+      .js-buy-it
+        .price.text-center
+          = number_to_currency(@product.price, unit: "")
+          span.warning-text
+            = number_to_currency(@product.book.price, unit: "")
+        - if current_user != @product.user
+          .price-tag.text-center
+            = link_to "加入购物车", line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme price"
+        .shares
+          | 分享：
+          .row
+            .col-md-4.text-center
+              i.fa.fa-weibo
+            .col-md-4.text-center
+              i.fa.fa-wechat
+            .col-md-4.text-center
+              i.fa.fa-link
 
 
 javascript:
@@ -64,5 +84,13 @@ javascript:
       delegate: '.image-box',
       type: 'image',
       gallery:{ enabled:true }
+    });
+
+    $(document).scroll(function() {
+      if($(document).scrollTop() >= 310){
+        $(".js-buy-it").addClass("fixed");
+      }else{
+        $(".js-buy-it").removeClass("fixed");
+      }
     });
   });

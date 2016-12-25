@@ -1,4 +1,4 @@
-= render "shared/jumbotron", content: "请用支付宝完成支付哦"
+= render "shared/jumbotron", content: "请用支付宝完成支付"
 .grey-division
   .container.product-container
     .product-show-nav
@@ -49,7 +49,25 @@
     .explanation.text-center
       | 当您确认收到书籍后，Readfavor才会转款给卖者
 
-/javascript:
+.popup style="position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.6); z-index: 10000; "
+  .popup-main style="background-color: #fff; width: 600px; margin: 30px auto; min-height: 200px; border-radius: 3px;text-align: center; padding: 20px;"
+    .alipay-example style="width: 365px; margin: 0 auto; postion: relative;"
+      = image_tag("alipay_example.png", style: "width: 100%;")
+      .frame-1 style="position: absolute; top: 258px; width: 365px; height: 88px; border: 1px solid #21b384;"
+        .hint style="position: absolute; left: -100px; color: #21b384;"
+          = "此处填写支付金额"
+      .frame-2 style="position: absolute; top: 345px; width: 365px; height: 38px; border: 1px solid #21b384;"
+        .hint style="position: absolute; left: -100px; color: #21b384;"
+          = "此处填写支付号"
+    br
+    .actions
+      .btn.btn-theme.check_pay_code
+        = "知道了，查看支付号"
+
+javascript:
+  $(".check_pay_code").click(function(){
+    $(".popup").hide();
+  });
 /  function startTimer(duration, display) {
 /    var timer = duration, minutes, seconds;
 /    setInterval(function () {

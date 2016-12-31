@@ -2,7 +2,7 @@ ActiveAdmin.register Order do
   actions :all, :except => [:destroy]
 
   member_action :pay_order, method: :put do
-    return if current_admin_user.present?
+    return if current_admin_user.blank?
     resource.pay if resource.wait_pay?
     redirect_to resource_path, notice: "已标记为支付状态!"
   end

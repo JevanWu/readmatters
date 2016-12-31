@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
   def ship
     @order.ship if @order.present?
     respond_to do |format|
-      format.html
+      format.html { redirect_to sold_orders_path, flash: { notice: "状态更新成功"} }
       format.js { render "update_order_item", layout: false }
     end
   end
@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
   def confirm
     @order.confirm if @order.present?
     respond_to do |format|
-      format.html
+      format.html { redirect_to bought_orders_path, flash: { notice: "状态更新成功"} }
       format.js { render "update_order_item", layout: false }
     end
   end

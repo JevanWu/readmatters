@@ -18,6 +18,8 @@
       .qrcode
         = image_tag "qrcode.png"
     .row.text-center style="margin-top: 50px;"
+      .btn.btn-theme.help style="margin-right: 10px;"
+        | 支付帮助
       = link_to "完成支付", root_path, class: "btn btn-theme"
 .step-flow.row
   .steps.col-md-3
@@ -62,11 +64,15 @@
     br
     .actions
       .btn.btn-theme.check_pay_code
-        = "知道了，查看支付号"
+        = "查看支付号进行支付"
 
 javascript:
   $(".check_pay_code").click(function(){
     $(".popup").hide();
+  });
+
+  $(".help").click(function(){
+    $(".popup").show();
   });
 /  function startTimer(duration, display) {
 /    var timer = duration, minutes, seconds;

@@ -108,6 +108,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.available.find(params[:id])
+    flash[:notice] = "恭喜您发布书籍成功！您可以通过分享您的该书籍让更多人知道"
     #TODO change the page which notify user the product is not available or sold out
     raise ActiveRecord::RecordNotFound if @product.blank?
   end

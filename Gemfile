@@ -80,8 +80,6 @@ gem 'rollbar'
 
 gem 'figaro'
 
-#gem "watir",  require: false
-
 gem 'puma', '3.6.2'
 gem 'puma_worker_killer', '0.0.7'
 
@@ -103,6 +101,7 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano3-puma', "~>1.2"
   gem 'capistrano-sidekiq', "~>0.10"
+  gem "watir",  require: false
 end
 
 # Use ActiveModel has_secure_password

@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:inspect]
   before_action :check_order_owner, only: [:ship, :confirm]
+  skip_before_filter :verify_authenticity_token, only: [:inspect]
 
   def new
     @order = current_user.bought_orders.build if current_user.present?
@@ -50,7 +51,10 @@ class OrdersController < ApplicationController
 
   def inspect
     pay_code, amount = params[:pay_code], params[:amount]
-    OrderInspector.delay.inspect(pay_code, amount)
+    # OrderInspector.delay.inspect(pay_code, amount)
+    symbol, price = amount.split(" ")
+    puts "paycode: #{pay_code}, price: #{price} --------------------------------------"
+    render json: "ok", status: :ok
   end
 
   def bought_orders

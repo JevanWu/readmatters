@@ -23,6 +23,13 @@ class Order < ActiveRecord::Base
     after_transition :wait_pay => :wait_ship, :do => :change_product_to_sold
     after_transition :wait_pay => :failure, :do => :unlock_products
 
+    after_transition :wait_pay => :wait_ship, :do => :send_buyer_paid_notification
+    after_transition :wait_pay => :wait_ship, :do => :send_seller_ship_notification
+
+    after_transition :wait_ship => :wait_confirm, :do => :send_buyer_confirm_notification
+
+    after_transition :wait_confirm => :success, :do => :send_seller_success_notification
+
     event :pay do
       transition :wait_pay => :wait_ship
     end
@@ -118,5 +125,18 @@ class Order < ActiveRecord::Base
 
     def check_expiration
       OrderExpirationChecker.perform_in(10.minutes, self.id)
+    end
+
+    # 通知邮件
+    def send_buyer_paid_notification
+    end
+
+    def send_seller_ship_notification
+    end
+
+    def send_buyer_confirm_notification
+    end
+
+    def send_seller_success_notification
     end
 end

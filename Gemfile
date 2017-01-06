@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.7'
 # Use postgres as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -19,6 +19,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 4.2.1'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'jquery-turbolinks'
@@ -30,7 +31,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem "jquery-fileupload-rails"
 
 # Slim
-gem 'slim-rails'
+gem 'slim-rails', '~> 3.1.1'
 # Use bootstrap
 gem 'bootstrap-sass'
 #, '~> 3.2.0'
@@ -41,7 +42,7 @@ gem 'autoprefixer-rails'
 gem 'simple_form'
 #
 # Admin console helper gem
-gem 'activeadmin', '~> 1.0.0.pre1'
+gem 'activeadmin', '~> 1.0.0.pre4'
 
 #gem 'ransack'
 #
@@ -96,6 +97,7 @@ gem 'sendcloud-mailer'
 group :development do
   gem 'spring'
   gem 'pry'
+  gem 'web-console', '~> 2.0'
   gem "capistrano", "~>3.6"
   gem "capistrano-rails", "~>1.1"
   gem 'capistrano-rvm'

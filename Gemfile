@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 #source "https://ruby.taobao.org"
-# source 'https://gems.ruby-china.org'
+#source 'http://gems.ruby-china.org'
 
 ruby '2.3.0'
 
@@ -9,8 +9,7 @@ gem 'rails', '4.2.7'
 # Use postgres as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
-# Use Uglifier as compressor for JavaScript assets
+gem 'sass-rails', '~> 4.0.3' # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
@@ -48,7 +47,7 @@ gem 'activeadmin', '~> 1.0.0.pre4'
 #
 #
 # Sign in/up helper
-gem 'devise'
+gem 'devise', '~> 4.2.0'
 #
 # Fontawesome
 gem 'font-awesome-rails'
@@ -96,7 +95,7 @@ gem 'sendcloud-mailer'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do
   gem 'spring'
-  gem 'pry'
+  gem 'byebug', "~>9.0.6"
   gem 'web-console', '~> 2.0'
   gem "capistrano", "~>3.6"
   gem "capistrano-rails", "~>1.1"

@@ -1,5 +1,5 @@
 en:
-  devise:
+  users:
     registrations:
       new:
         email_placeholder: Your email

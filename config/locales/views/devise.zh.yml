@@ -1,5 +1,5 @@
 zh:
-  devise:
+  users:
     registrations:
       new:
         email_placeholder: 您的邮箱

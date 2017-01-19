@@ -2,8 +2,10 @@
   .sign-in-form
     h2.logo-text.text-center
       = link_to "readfavor", root_path
-    = simple_form_for(resource, as: resource_name, url: password_path(resource_name), wrapper: :sign_in_horizontal_form, html: {class: "col-sm-offset-3 col-sm-6 clear-fix"} ) do |f|
-      = f.error_notification
+    = simple_form_for(resource, as: resource_name, method: :put, url: password_path(resource_name), wrapper: :sign_in_horizontal_form, html: {class: "col-sm-offset-3 col-sm-6 clear-fix"} ) do |f|
+      = devise_error_messages!
+      = f.hidden_field :reset_password_token
+
       = f.input :password, required: true,  label: false, placeholder: t('.password_placeholder')
       = f.input :password_confirmation, required: true, label: false, placeholder: t('.password_confrimation_placeholder', minimum_password_length: @minimum_password_length)
       .form-group
@@ -12,4 +14,4 @@
 
       .form-group
         .col-sm-offset-2.col-sm-8
-          = render "devise/shared/links"
+          = render "/users/shared/links"

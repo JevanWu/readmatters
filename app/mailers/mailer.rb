@@ -9,35 +9,55 @@ class Mailer < ActionMailer::Base
   end
 
   #验证邮箱
-  def confirm_email(user)
-    @user = user
-    mail(to: @user.email, subject: "")
-  end
+  # def confirm_email(user)
+  #   @user = user
+  #   mail(to: @user.email, subject: "")
+  # end
 
   #欢迎注册
 
+  #支付成功
+  def buyer_paid_success_notification(user, order, book_names)
+    @user = user
+    @order = order
+    @book_names = order.book_names.map{|book| "《#{book}》"}.join("，")
+    mail(to: @user.email, subject: "支付成功！")
+  end
+
   #等待发货
-  def order_wait_ship_notification(user)
-    mail(to: user.email, subject: "")
+  def seller_order_ship_notification(user, order, book_names)
+    @user = user
+    @order = order
+    @book_names = order.book_names.map{|book| "《#{book}》"}.join("，")
+    mail(to: @user.email, subject: "请及时发货并更新状态 ")
   end
 
   #等待买家确认
-  def order_wait_confirm_notification(user)
-    mail(to: user.email, subject: "")
+  def buyer_order_confirm_notification(user, order, book_names)
+    @user = user
+    @order = order
+    @book_names = order.book_names.map{|book| "《#{book}》"}.join("，")
+    mail(to: @user.email, subject: "请及时查收并确认")
   end
 
   #订单交易成功（可能需要两封）
-  def order_success_notification(user)
-    mail(to: user.email, subject: "")
+  def buyer_order_success_notification(user)
+    @user = user
+    mail(to: @user.email, subject: "交易完成！感谢您")
+  end
+
+  def seller_order_success_notification(user)
+    @user = user
+    mail(to: @user.email, subject: "交易完成！感谢您")
   end
 
   #等待退款
-  def order_wait_refund_notification(user)
-    mail(to: user.email, subject: "")
-  end
+  # def order_wait_refund_notification(user)
+  #   mail(to: user.email, subject: "")
+  # end
 
   #已退款
-  def order_refunded_notification(user)
-    mail(to: user.email, subject: "")
-  end
+  # def order_refunded_notification(user)
+  #   mail(to: user.email, subject: "")
+  # end
 end

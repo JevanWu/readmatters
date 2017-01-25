@@ -1,62 +1,115 @@
-nav 
-  background-color: #ffffff
-  height: 50px
-  .navbar-brand
-    color: $theme-color
-  a
-    color: #404040
-
-  .dropdown
-    .dropdown-menu
-      top: 30px
-  
-  ul.navbar-right
-    #key_word_book_name
-      margin-right: 5px
-
-    .emphasis
-      cursor: pointer
-      padding: 10px 16px
-      margin: 4px 0px
-      color: $theme-color 
-      border: 1px solid $theme-color !important
-      border-radius: 3px
-      transition: background 0.3s
-    .emphasis:hover
-      background-color: $theme-color
-      color: #ffffff
-      
-    #cart, .dropdown
-      display: inline
-
-    #cart
-      cursor: pointer
-      font-size: 18px
-      margin-right: 10px
-      .number-of-items
-        padding-left: 2px
-        display: inline
-        font-size: 13px
-        color: $theme-color
-        &:after
-          content: "本书"
-          color: #333333
-
-    .nav-sign 
-      display: inline-block
-      height: 44px
-      list-style: none
-      padding: 10px 16px
-      margin: 4px 8px
-      a
-        text-decoration: none
-    .nav-sign:last-child
+// pc端样式
+@media (min-width: 768px)
+  nav
+    background-color: #ffffff
+    height: 50px
+    .navbar-brand
+      font-size: 20px
       color: $theme-color
-      border: 1px solid $theme-color
-      border-radius: 3px
-      transition: background 0.3s
-    .nav-sign:last-child:hover
-      background-color: $theme-color
-      color: #ffffff
+    a
+      color: #404040
 
+    .dropdown
+      .dropdown-menu
+        top: 30px
 
+    ul.navbar-right
+      #key_word_book_name
+        margin-right: 5px
+
+      .emphasis
+        cursor: pointer
+        padding: 10px 16px
+        margin: 4px 0px
+        color: $theme-color
+        border: 1px solid $theme-color !important
+        border-radius: 3px
+        transition: background 0.3s
+      .emphasis:hover
+        background-color: $theme-color
+        color: #ffffff
+
+      #cart, .dropdown
+        display: inline
+
+      #cart
+        cursor: pointer
+        font-size: 18px
+        margin-right: 10px
+        .number-of-items
+          padding-left: 2px
+          display: inline
+          font-size: 13px
+          color: $theme-color
+          &:after
+            content: "本书"
+            color: #333333
+
+      .publish-action
+        display: inline-block
+
+      .nav-sign
+        display: inline-block
+        height: 44px
+        list-style: none
+        padding: 10px 16px
+        margin: 4px 8px
+        a
+          text-decoration: none
+      .nav-sign:last-child
+        color: $theme-color
+        border: 1px solid $theme-color
+        border-radius: 3px
+        transition: background 0.3s
+      .nav-sign:last-child:hover
+        background-color: $theme-color
+        color: #ffffff
+
+// 移动端样式
+@media (max-width: 767px)
+  nav
+    background-color: #ffffff
+    height: 50px
+    .navbar-brand
+      font-size: 22px
+      color: $theme-color
+    #rf-nav
+      position: fixed
+      top: 50px
+      left: 0
+      right: 0
+      bottom: 0
+      background-color: #fff
+      max-height: none
+      overflow: auto
+      ul
+        padding: 0px 15px
+        list-style: none
+        margin: 0px
+        .navbar-form
+          margin: 0px
+          padding: 0px
+          input[type="submit"]
+            width: 100%
+        .publish-action
+          a
+            font-weight: normal
+            border: none !important
+        li, .cart-item
+          margin: 10px 0px
+          font-size: 16px
+          color: $theme-color
+          a
+            font-size: 16px
+            color: $theme-color
+            padding-left: 0px
+
+      ul.dropdown-menu
+        position: static
+        float: none
+        width: auto
+        margin-top: 0
+        background-color: transparent
+        border: 0
+        -webkit-box-shadow: none
+        box-shadow: none

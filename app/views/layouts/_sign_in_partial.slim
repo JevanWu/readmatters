@@ -1,17 +1,20 @@
 - if user_signed_in?
-  = link_to t(:publish_book), book_name_products_path, class: "btn btn-default emphasis"
-  .dropdown
-    .btn.control.dropdown-toggle(type="button" id="userDropdownMenu" data-toggle="dropdown" aria-expanded="true" style="height: 34px; line-height: 34px; padding: 0px 10px; margin-left: 15px;")
+  li.publish-action
+    = link_to t(:publish_book), book_name_products_path, class: "btn btn-default emphasis"
+  li.dropdown
+    .btn.control.dropdown-toggle.hidden-xs(type="button" id="userDropdownMenu" data-toggle="dropdown" aria-expanded="true" style="height: 34px; line-height: 34px; padding: 0px 10px; margin-left: 15px;")
       .fa.fa-navicon
-
-    ul.dropdown-menu(role="menu" aria-labelledby="userDropdownMenu")
-      li(role="presentation")
-        = link_to t(:bought_orders), bought_orders_path, role: "menuitem", tabindex: "-1"
-      li(role="presentation")
-        = link_to t(:sold_orders), sold_orders_path, role: "menuitem", tabindex: "-1"
-      li(role="presentation")
-        = link_to t(:profile), bought_books_path, role: "menuitem", tabindex: "-1"
-      li(role="presentation")
+    a href="#" class="dropdown-toggle visible-xs" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+      = "更多操作"
+      span.caret
+    ul.dropdown-menu
+      li
+        = link_to t(:bought_orders), bought_orders_path
+      li
+        = link_to t(:sold_orders), sold_orders_path
+      li
+        = link_to t(:profile), bought_books_path
+      li
         = link_to t(:signout), destroy_user_session_path, method: :delete
 
 - else

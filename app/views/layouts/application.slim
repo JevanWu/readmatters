@@ -27,4 +27,5 @@ html
     = render_footer
 
   = render 'shared/ga'
-  = render 'shared/meiqia'
+  - unless content_for?(:get_ride_of_customer_service)
+    = render 'shared/meiqia'

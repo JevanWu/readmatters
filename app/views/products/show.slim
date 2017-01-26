@@ -1,6 +1,10 @@
 - content_for :title_tag
   title
     = "#{@product.name} | Readfavor"
+
+- content_for :get_ride_of_customer_service
+  .yes
+
 = render "shared/jumbotron", content: @product.name
 
 .grey-division
@@ -59,7 +63,9 @@
             = simple_format @product.catalog
 
     .col-md-2 style="padding: 0px; margin-top: 42px;"
-      .js-buy-it
+      .js-buy-it-mobile.visible-xs
+        = link_to "加入购物车", line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme", remote: true
+      .js-buy-it.hidden-xs
         .price.text-center
           = number_to_currency(@product.price, unit: "")
           span.warning-text

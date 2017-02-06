@@ -103,6 +103,7 @@ group :development do
   gem 'capistrano3-puma', "~>1.2"
   gem 'capistrano-sidekiq', "~>0.10"
   gem "watir",  require: false
+  gem "rubycritic", :require => false
 end
 
 # Use ActiveModel has_secure_password

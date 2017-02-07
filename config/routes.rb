@@ -63,6 +63,8 @@ Rails.application.routes.draw do
   get 'checkout/:id' => 'orders#checkout', as: :checkout
 
   post '/search' => 'pages#search', as: :search
+  get '/owner/:id' => 'pages#owner', as: :owner
+
 
   # Example resource route with options:
   #   resources :products do

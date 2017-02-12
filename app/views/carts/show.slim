@@ -4,14 +4,14 @@
     .col-md-8
       h3
         = "请确认订单"
-    .col-md-4.text-right
-      = link_to "继续添加", root_path, class: "btn btn-theme"
 
     - @line_item_grouped_hash.each_with_index do |(key, value), index|
       - id, name = key.split(",")
       table.table.table-striped.text-center
         caption
           = "正在购买的#{name}的书籍"
+          = " "
+          = link_to "查看该书友发布的书籍", owner_path(id), class: "theme-link"
         thead
           tr
             th.col-md-3.text-center
@@ -33,14 +33,14 @@
                 td.warning-text
                   | 这本书已被他人下单啦orz
                 td
-                  = link_to "移除", line_item_path(product_id: item.product.id), method: :delete, data: { confirm: "are you sure to remove the product? " }, class: "warning-text"
+                  = link_to "移除", line_item_path(product_id: item.product.id), method: :delete, data: { confirm: "确认移除该书籍吗？" }, class: "warning-text"
               - else
                 td
                   = item.product.price
                   /= item.quantity
                   /= button_to "increase quantity", line_items_path(product_id: item.product.id), remote: true
                 td
-                  = link_to "移除", line_item_path(product_id: item.product.id), method: :delete, data: { confirm: "are you sure to remove the product? " }, class: "warning-text"
+                  = link_to "移除", line_item_path(product_id: item.product.id), method: :delete, data: { confirm: "确认移除该书籍吗？" }, class: "warning-text"
           tr
             td
             td

@@ -7,7 +7,7 @@ module ProductsHelper
     when %(wait_ship)
       "卖家正在发货..."
     when %(wait_confirm)
-      link_to "标记为已收货", confirm_order_path(order.identifier), method: :post, class: "theme-link"
+      link_to "确认已收货", confirm_order_path(order.identifier), method: :post, class: "theme-link"
     when %(wait_refund)
       "退款已在处理中"
     when %(failure)

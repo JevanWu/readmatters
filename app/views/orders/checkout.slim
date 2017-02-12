@@ -12,7 +12,7 @@
         span.theme-text
           = "#{number_to_currency(@order.total_price, unit: '¥')}"
         br
-        | 请在"备注"中附上订单号：
+        | 并在"备注"中附上支付号：
         span.theme-text
           = @order.pay_code
       .qrcode

@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 #source "https://ruby.taobao.org"
 #source 'http://gems.ruby-china.org'
 
@@ -91,6 +91,8 @@ gem 'letter_opener'
 
 # add sendcloud mailer
 gem 'sendcloud-mailer'
+
+gem "slack-notifier"
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do

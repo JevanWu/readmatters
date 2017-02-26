@@ -1,6 +1,6 @@
 nav.navbar.navbar-fixed-top(role="navigation")
   = render "shared/alert"
-  .container-fluid
+  .container-fluid.white-bg
     .navbar-header
       button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false" data-target="#rf-nav"
         span.sr-only Toggle navigation
@@ -12,7 +12,7 @@ nav.navbar.navbar-fixed-top(role="navigation")
       ul.nav.navbar-nav
         li
           = link_to "首页", root_path
-      ul.navbar-right style="margin-right: 0px;"
+      ul.navbar-right style="margin-right: 0px; margin-bottom: 0px;"
         = form_tag "/search", class: "navbar-form navbar-left", role: "search"
           .form-group
             = text_field "key_word","book_name", class: "form-control", placeholder: "搜索书名"

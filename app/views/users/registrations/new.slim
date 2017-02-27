@@ -1,11 +1,11 @@
 - content_for :title_tag
   title
-    = "#{t("signup")} | Readfavor"
+    = "#{t("signup")} | Readmatters"
 
 .container
   .sign-in-form
     h2.logo-text.text-center
-      = link_to "readfavor", root_path
+      = link_to "readmatters", root_path
 
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: :sign_in_horizontal_form, html: {class: "col-sm-offset-3 col-sm-6 clear-fix"} ) do |f|
       = f.error_notification

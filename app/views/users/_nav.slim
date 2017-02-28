@@ -1,7 +1,4 @@
 .profile-nav
-  .avatar
-    = image_tag current_user.avatar.url(:thumb)
-  input#user_avatar name="user[avatar]" type="file" style="display:none"
   ul.nav-list
     /li
     /  = link_to "时间轴", timeline_path, remote: true

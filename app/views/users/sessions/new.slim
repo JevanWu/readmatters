@@ -4,8 +4,8 @@
 
 .container
   .sign-in-form
-    h2.logo-text.text-center
-      = link_to "Readmatters", root_path
+    .logo-text.text-center.mb20
+      = link_to image_tag("readmatters.png"), root_path, class: "logo"
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name), wrapper: :sign_in_horizontal_form, html: {class: "col-sm-offset-3 col-sm-6 clear-fix"} ) do |f|
       = f.error_notification
       = f.input :email, required: false, autofocus: true, label: false, placeholder: t('.email_placeholder')

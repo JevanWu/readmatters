@@ -7,7 +7,10 @@ class Book < ActiveRecord::Base
 
   validates :name, :price, :author, :summary, presence: true
 
-  has_attached_file :cover, :default_url => "/images/:style/missing.png", :path => ":class/:attachment/:id_partition/:style/:filename"
+  has_attached_file :cover, :default_url => "/images/:style/missing.png",
+                            :path => Figaro.env.paperclip_storage_path,
+                            :url => Figaro.env.paperclip_storage_path
+
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
 
   def cover_from_url

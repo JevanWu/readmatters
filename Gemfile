@@ -68,7 +68,7 @@ gem 'china_region_fu'
 gem 'redis-rails'
 gem 'redis-objects'
 
-gem 'state_machine'
+gem 'state_machines'
 
 gem 'rest-client'
 

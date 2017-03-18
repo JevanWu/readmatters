@@ -11,7 +11,7 @@
           label.decimal.optional.control-label for="product_price"
             | 售卖价格
             span.theme-text
-              | 《#{@book.name}》新书参考价为#{ number_to_currency(@product.book_price, unit: "¥") }, 建议填写3到6折的转售价格，即#{ number_to_currency(@product.book_price*0.3, unit: "¥") }～#{ number_to_currency(@product.book_price*0.6, unit: "¥") }
+              = price_hint(@product)
           .form-inline
             .form-group.decimal.optional.product_price
               .input-group

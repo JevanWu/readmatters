@@ -1,4 +1,8 @@
 zh:
+  pages:
+    more_info:
+      want_know_more: "我们还希望更加了解您..."
+      submit: "开始选书"
   products:
     book_name:
       title: "您要发布的书籍名字是？"

@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :check_infomation_completeness, only: [:show]
 
   def book_links
     begin

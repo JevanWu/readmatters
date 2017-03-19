@@ -13,6 +13,12 @@ zh:
             name:
               blank: "姓名不能为空"
               invalid: "请填写正确格式的姓名"
+            current_location:
+              blank: "所在地不能为空"
+              invalid: "请选择正确格式的所在地"
+            phone:
+              blank: "手机不能为空"
+              invalid: "请填写正确格式的手机"
         product:
           attributes:
             price:
@@ -26,6 +32,10 @@ zh:
   models:
 
   attributes:
+    user:
+      name: 姓名
+      current_location: 所在地
+      phone: 手机
     product:
       tags: 书籍标签
       price: 售卖价格

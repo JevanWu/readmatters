@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207140608) do
+ActiveRecord::Schema.define(version: 20170319134240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "active_admin_comments", force: true do |t|
-    t.string   "namespace"
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace",     limit: 255
     t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
+    t.string   "resource_id",   limit: 255, null: false
+    t.string   "resource_type", limit: 255, null: false
     t.integer  "author_id"
-    t.string   "author_type"
+    t.string   "author_type",   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,17 +31,17 @@ ActiveRecord::Schema.define(version: 20161207140608) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
-  create_table "admin_users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "admin_users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,20 +49,20 @@ ActiveRecord::Schema.define(version: 20161207140608) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "books", force: true do |t|
-    t.string   "isbn"
-    t.string   "name"
-    t.string   "tags"
+  create_table "books", force: :cascade do |t|
+    t.string   "isbn",               limit: 255
+    t.string   "name",               limit: 255
+    t.string   "tags",               limit: 255
     t.decimal  "price"
     t.text     "summary"
-    t.string   "author"
+    t.string   "author",             limit: 255
     t.text     "author_intro"
     t.text     "catalog"
-    t.string   "original_cover"
-    t.string   "publisher"
+    t.string   "original_cover",     limit: 255
+    t.string   "publisher",          limit: 255
     t.date     "published_date"
-    t.string   "cover_file_name"
-    t.string   "cover_content_type"
+    t.string   "cover_file_name",    limit: 255
+    t.string   "cover_content_type", limit: 255
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
     t.json     "raw_data"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20161207140608) do
     t.datetime "updated_at"
   end
 
-  create_table "carts", force: true do |t|
+  create_table "carts", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
@@ -78,13 +78,13 @@ ActiveRecord::Schema.define(version: 20161207140608) do
 
   add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
 
-  create_table "cities", force: true do |t|
-    t.string   "name"
+  create_table "cities", force: :cascade do |t|
+    t.string   "name",        limit: 255
     t.integer  "province_id"
     t.integer  "level"
-    t.string   "zip_code"
-    t.string   "pinyin"
-    t.string   "pinyin_abbr"
+    t.string   "zip_code",    limit: 255
+    t.string   "pinyin",      limit: 255
+    t.string   "pinyin_abbr", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -96,11 +96,11 @@ ActiveRecord::Schema.define(version: 20161207140608) do
   add_index "cities", ["province_id"], name: "index_cities_on_province_id", using: :btree
   add_index "cities", ["zip_code"], name: "index_cities_on_zip_code", using: :btree
 
-  create_table "districts", force: true do |t|
-    t.string   "name"
+  create_table "districts", force: :cascade do |t|
+    t.string   "name",        limit: 255
     t.integer  "city_id"
-    t.string   "pinyin"
-    t.string   "pinyin_abbr"
+    t.string   "pinyin",      limit: 255
+    t.string   "pinyin_abbr", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 20161207140608) do
   add_index "districts", ["pinyin"], name: "index_districts_on_pinyin", using: :btree
   add_index "districts", ["pinyin_abbr"], name: "index_districts_on_pinyin_abbr", using: :btree
 
-  create_table "line_items", force: true do |t|
+  create_table "line_items", force: :cascade do |t|
     t.integer  "quantity",   default: 1
     t.integer  "order_id"
     t.integer  "cart_id"
@@ -123,20 +123,20 @@ ActiveRecord::Schema.define(version: 20161207140608) do
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
-  create_table "orders", force: true do |t|
-    t.string   "identifier"
-    t.string   "state"
+  create_table "orders", force: :cascade do |t|
+    t.string   "identifier",    limit: 255
+    t.string   "state",         limit: 255
     t.integer  "province_id"
     t.integer  "city_id"
     t.integer  "district_id"
-    t.string   "street"
-    t.string   "receiver_name"
+    t.string   "street",        limit: 255
+    t.string   "receiver_name", limit: 255
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "seller_id"
     t.decimal  "total_price"
-    t.string   "pay_code"
+    t.string   "pay_code",      limit: 255
   end
 
   add_index "orders", ["city_id"], name: "index_orders_on_city_id", using: :btree
@@ -145,11 +145,11 @@ ActiveRecord::Schema.define(version: 20161207140608) do
   add_index "orders", ["seller_id"], name: "index_orders_on_seller_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
-  create_table "photos", force: true do |t|
+  create_table "photos", force: :cascade do |t|
     t.integer  "product_id"
     t.text     "description"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.datetime "created_at"
@@ -158,28 +158,28 @@ ActiveRecord::Schema.define(version: 20161207140608) do
 
   add_index "photos", ["product_id"], name: "index_photos_on_product_id", using: :btree
 
-  create_table "products", force: true do |t|
-    t.string   "tags"
+  create_table "products", force: :cascade do |t|
+    t.string   "tags",               limit: 255
     t.decimal  "price"
     t.text     "summary"
-    t.string   "cover_file_name"
-    t.string   "cover_content_type"
+    t.string   "cover_file_name",    limit: 255
+    t.string   "cover_content_type", limit: 255
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status",             default: "initial"
+    t.string   "status",             limit: 255, default: "initial"
     t.integer  "book_id"
   end
 
   add_index "products", ["book_id"], name: "index_products_on_book_id", using: :btree
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
-  create_table "provinces", force: true do |t|
-    t.string   "name"
-    t.string   "pinyin"
-    t.string   "pinyin_abbr"
+  create_table "provinces", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "pinyin",      limit: 255
+    t.string   "pinyin_abbr", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -188,30 +188,31 @@ ActiveRecord::Schema.define(version: 20161207140608) do
   add_index "provinces", ["pinyin"], name: "index_provinces_on_pinyin", using: :btree
   add_index "provinces", ["pinyin_abbr"], name: "index_provinces_on_pinyin_abbr", using: :btree
 
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "occupation"
-    t.integer  "phone"
+  create_table "users", force: :cascade do |t|
+    t.string   "name",                   limit: 255
+    t.string   "occupation",             limit: 255
+    t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "avatar_file_name",       limit: 255
+    t.string   "avatar_content_type",    limit: 255
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "confirmation_token"
+    t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
+    t.string   "unconfirmed_email",      limit: 255
+    t.string   "current_location"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

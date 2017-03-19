@@ -8,12 +8,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  has_attached_file :avatar, :styles => {:thumb => "130x130#" }, :default_url => ":style/default_avatar.png", :path => ":class/:attachment/:id_partition/:style/:filename"
+  has_attached_file :avatar, :styles => {:thumb => "260x260#" },
+                             :default_url => ":style/default_avatar.png",
+                             :path => Figaro.env.paperclip_storage_path,
+                             :url => Figaro.env.paperclip_storage_url
     # qiniu server:     :path => ":class/:attachment/:id/:basename.:extension"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-  validates :name, :email, presence: true, on: :create
-  validates_format_of :name, with: /[^0-9]+/ , on: :create#/\A[\u4E00-\u9FA5]{1,4}\z/
+  validates :email, presence: true, on: :create
+  validates :name, :current_location, :phone, presence: true, on: :more_info
+  validates_format_of :name, with: /[^0-9]+/, on: :more_info #/\A[\u4E00-\u9FA5]{1,4}\z/
 
   def can_buy?(product)
     self != product.user

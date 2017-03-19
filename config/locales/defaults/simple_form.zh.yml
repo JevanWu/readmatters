@@ -10,6 +10,7 @@ zh:
     labels:
       user:
         name: 姓名
+        current_location: 现在所在地
         phone: 手机
       product:
         tags: 书籍标签

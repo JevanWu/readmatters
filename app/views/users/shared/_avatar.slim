@@ -1,4 +1,26 @@
 .jumbotron
   .slogan
+    - if title.present?
+      .title-upon-avatar
+        = title
     .avatar
-      = image_tag current_user.avatar.url(:thumb)
+      = image_tag(current_user.avatar.url(:thumb))
+input#user_avatar.hidden name="user[avatar]" type="file"
+
+javascript:
+  $(document).ready(function(){
+    $(".avatar").click(function(e){
+      $("#user_avatar").click();
+    });
+
+    $("#user_avatar").fileupload({
+      url: "/users/update_avatar",
+      dataType: "json",
+      method: "patch",
+      done: function(e, data) {
+        $(".avatar img").attr("src", data.result.image);
+      },
+      error: function(data) {
+      }
+    });
+  });

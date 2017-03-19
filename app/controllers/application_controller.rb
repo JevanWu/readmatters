@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   protected
 
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :name])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password])
     end
 
     def controller_translate(keyword)
@@ -34,6 +34,9 @@ class ApplicationController < ActionController::Base
       messages.join("\n")
     end
 
+    def check_infomation_completeness
+      redirect_to more_info_path if !current_user&.valid?(:more_info)
+    end
   private
     def current_cart
       if current_user.present?

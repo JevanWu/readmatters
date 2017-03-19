@@ -10,6 +10,7 @@ en:
     labels:
       user:
         name: 姓名
+        current_location: Current Location
         phone: 手机
       product:
         tags: Tags

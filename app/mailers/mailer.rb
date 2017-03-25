@@ -17,37 +17,46 @@ class Mailer < ActionMailer::Base
   #欢迎注册
 
   #支付成功
-  def buyer_paid_success_notification(user, order, book_names)
+  def buyer_paid_success_notification(user, order)
     @user = user
     @order = order
     @book_names = order.book_names.map{|book| "《#{book}》"}.join("，")
+    @cta_url = bought_orders_url
     mail(to: @user.email, subject: "支付成功！")
   end
 
   #等待发货
-  def seller_order_ship_notification(user, order, book_names)
+  def seller_order_ship_notification(user, order)
     @user = user
     @order = order
     @book_names = order.book_names.map{|book| "《#{book}》"}.join("，")
+    @cta_url = sold_orders_url
     mail(to: @user.email, subject: "请及时发货并更新状态 ")
   end
 
   #等待买家确认
-  def buyer_order_confirm_notification(user, order, book_names)
+  def buyer_order_confirm_notification(user, order)
     @user = user
     @order = order
     @book_names = order.book_names.map{|book| "《#{book}》"}.join("，")
+    @cta_url = bought_orders_url
     mail(to: @user.email, subject: "请及时查收并确认")
   end
 
   #订单交易成功（可能需要两封）
-  def buyer_order_success_notification(user)
+  def buyer_order_success_notification(user, order)
     @user = user
+    @order = order
+    @book_names = order.book_names.map{|book| "《#{book}》"}.join("，")
+    @cta_url = root_url
     mail(to: @user.email, subject: "交易完成！感谢您")
   end
 
-  def seller_order_success_notification(user)
+  def seller_order_success_notification(user, order)
     @user = user
+    @order = order
+    @book_names = order.book_names.map{|book| "《#{book}》"}.join("，")
+    @cta_url = root_url
     mail(to: @user.email, subject: "交易完成！感谢您")
   end
 

@@ -9,22 +9,47 @@
       <tbody>
         <tr>
           <td style="line-height: 1.5">
-            买家已购买您的<%= @book_names %>并已付款成功，请尽快寄出您的书籍。
+            您好：
           </td>
         </tr>
         <tr>
           <td style="line-height: 1.5">
-            买家详情信息请点击以下按钮查看订单。
+            已有用户购买了您的<span style="color: #21b384"><%= @book_names %></span>且已成功支付所需金额。
           </td>
         </tr>
         <tr>
           <td style="line-height: 1.5">
-            发货后，请及时更新订单状态。
+            请您尽快寄出您的书籍。
           </td>
         </tr>
         <tr>
-          <td  style="padding-top: 20px;">
-            <a href="/" style=" margin-top: 20px; display: block; height: 35px; width: 160px; background-color: #21b384; color: #ffffff; text-align: center; line-height: 35px; text-decoration: none; border-radius: 3px; margin: 0 auto;">查看订单</a>
+          <td style="line-height: 1.5">
+            所需邮寄信息：
+          </td>
+        </tr>
+        <tr>
+          <td style="line-height: 1.5">
+            目标地址：<span style="color: #21b384"><%= @order.address %></span>
+          </td>
+        </tr>
+        <tr>
+          <td style="line-height: 1.5">
+            收件人为：<span style="color: #21b384"><%= @order.receiver_name %></span>
+          </td>
+        </tr>
+        <tr>
+          <td style="line-height: 1.5">
+            订单详情请点击一下按钮查看
+          </td>
+        </tr>
+        <tr>
+          <td  style="padding-top: 20px; padding-bottom: 20px;">
+            <a href=<%= @cta_url %> style="margin-top: 20px; display: block; height: 35px; width: 160px; background-color: #21b384; color: #ffffff; text-align: center; line-height: 35px; text-decoration: none; border-radius: 3px; margin: 0 auto;">查看订单详情</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: #e97174">
+            需知：发货后，请及时更新订单状态，以便流程正常进行！
           </td>
         </tr>
       </tbody>

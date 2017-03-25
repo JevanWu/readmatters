@@ -93,6 +93,16 @@ class Order < ActiveRecord::Base
     self.line_items.map(&:product).map(&:book).map(&:name)
   end
 
+  def address
+    province_name = self.province.name
+    city_name = self.city.name
+    if province_name == city_name
+      "#{self.province.name}#{self.street}"
+    else
+      "#{self.province.name}#{self.city.name}#{self.street}"
+    end
+  end
+
   private
 
     def lock_products

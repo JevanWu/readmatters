@@ -8,13 +8,28 @@
     <table style="padding-top: 35px; width: 100%; font-size: 14px;">
       <tbody>
         <tr>
-          <td style="line-height: 1.5">
-            恭喜您，本次交易成功完成啦。如果您还有更多的书籍要分享，请点击以下按钮。
+          <td>
+            您好，
           </td>
         </tr>
         <tr>
-          <td  style="padding-top: 20px;">
-            <a href="/" style=" margin-top: 20px; display: block; height: 35px; width: 160px; background-color: #21b384; color: #ffffff; text-align: center; line-height: 35px; text-decoration: none; border-radius: 3px; margin: 0 auto;">继续分享书籍</a>
+          <td style="line-height: 1.5">
+            订单号为<span style="color: #21b384"><%= @order.identifier %></span>的交易已成功完成。
+          </td>
+        </tr>
+        <tr>
+          <td style="line-height: 1.5">
+            您本次售出的书籍为：<span style="color: #21b384"><%= @book_names %></span>
+          </td>
+        </tr>
+        <tr>
+          <td  style="padding-top: 20px; padding-bottom: 20px;">
+            <a href="/" style=" margin-top: 20px; display: block; height: 35px; width: 160px; background-color: #21b384; color: #ffffff; text-align: center; line-height: 35px; text-decoration: none; border-radius: 3px; margin: 0 auto;">继续售书</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: #e97174">
+            在使用过程中，有发现需要改进的地方？请在网站上提出建议
           </td>
         </tr>
       </tbody>

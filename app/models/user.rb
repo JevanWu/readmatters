@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  extend Enumerize
   has_many :products
   has_many :bought_orders, class_name: "Order", foreign_key: "user_id"
   has_many :sold_orders, class_name: "Order", foreign_key: "seller_id"
@@ -7,6 +8,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
+
+  enumerize :current_location, in: [:shanghai, :hangzhou, :chengdu, :shenzhen, :beijing]
 
   has_attached_file :avatar, :styles => {:thumb => "260x260#" },
                              :default_url => ":style/default_avatar.png",

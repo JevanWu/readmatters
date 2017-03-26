@@ -16,8 +16,8 @@
         span.theme-text
           = @order.pay_code
       .qrcode
-        = image_tag "qrcode.png"
-    .row.text-center style="margin-top: 50px;"
+        = image_tag "alipay_qrcode.jpg"
+    .row.text-center style="margin-top: 30px;"
       .btn.btn-theme.help style="margin-right: 10px;"
         | 支付帮助
       = link_to "完成支付", root_path, class: "btn btn-theme"
@@ -52,19 +52,15 @@
       | 当您确认收到书籍后，Readmatters才会转款给卖者
 
 .popup style="position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.6); z-index: 10000; "
-  .popup-main style="background-color: #fff; width: 600px; margin: 30px auto; min-height: 200px; border-radius: 3px;text-align: center; padding: 20px;"
-    .alipay-example style="width: 365px; margin: 0 auto; postion: relative;"
-      = image_tag("alipay_example.png", style: "width: 100%;")
-      .frame-1 style="position: absolute; top: 258px; width: 365px; height: 88px; border: 1px solid #21b384;"
-        .hint style="position: absolute; left: -100px; color: #21b384;"
-          = "此处填写支付金额"
-      .frame-2 style="position: absolute; top: 345px; width: 365px; height: 38px; border: 1px solid #21b384;"
-        .hint style="position: absolute; left: -100px; color: #21b384;"
-          = "此处填写支付号"
+  .popup-main style="background-color: #fff; width: 600px; margin: 30px auto; min-height: 200px; height: calc(100% - 60px);; border-radius: 3px; text-align: center; padding: 20px;"
+    .title style="font-size: 18px; margin-bottom: 20px;"
+      = "支付宝支付指导"
+    .alipay-example style="height: calc(100% - 130px); margin: 0 auto; position: relative;"
+      = image_tag("alipay_example.jpg", style: "height: 100%;")
     br
-    .actions
+    .actions style="height: 32px;"
       .btn.btn-theme.check_pay_code
-        = "查看支付号进行支付"
+        = "知道了，查看支付号进行支付"
 
 javascript:
   $(".check_pay_code").click(function(){

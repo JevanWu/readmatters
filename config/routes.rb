@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
   #
   get "more_info", to: "pages#more_info", as: :more_info
+  get "about_us", to: "pages#about_us", as: :about_us
   patch "update_more_info", to: "pages#update_more_info", as: :update_more_info
 
   # Example resource route (maps HTTP verbs to controller actions automatically):

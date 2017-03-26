@@ -41,6 +41,10 @@ zh:
       price: 售卖价格
       summary: 书籍简介
     orders:
+      province_id: 省份
+      city_id: 城市
+      receiver_name: 收书人姓名
+      receiver_phone: 收书人手机
       state:
         wait_pay: 等待付款
         wait_ship: 等待卖家发货

@@ -29,6 +29,7 @@ en:
         published_date: 出版日期
       order:
         receiver_name: 收书人姓名
+        receiver_phone: 收书人手机
         province: 省
         city: 市
         district: 区

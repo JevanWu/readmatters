@@ -1,5 +1,6 @@
 = simple_form_for @order do |f|
   = f.input :receiver_name, required: false, input_html: { value: current_user.name }
+  = f.input :receiver_phone, required: false, input_html: { value: current_user.phone }
   .row
     .col-md-4
       = f.input :province, as: :region, collection: Province.select('id, name'), sub_region: :city, input_html: { class: "form-control"}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170319134240) do
+ActiveRecord::Schema.define(version: 20170326120646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,19 +124,20 @@ ActiveRecord::Schema.define(version: 20170319134240) do
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
-    t.string   "identifier",    limit: 255
-    t.string   "state",         limit: 255
+    t.string   "identifier",     limit: 255
+    t.string   "state",          limit: 255
     t.integer  "province_id"
     t.integer  "city_id"
     t.integer  "district_id"
-    t.string   "street",        limit: 255
-    t.string   "receiver_name", limit: 255
+    t.string   "street",         limit: 255
+    t.string   "receiver_name",  limit: 255
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "seller_id"
     t.decimal  "total_price"
-    t.string   "pay_code",      limit: 255
+    t.string   "pay_code",       limit: 255
+    t.string   "receiver_phone"
   end
 
   add_index "orders", ["city_id"], name: "index_orders_on_city_id", using: :btree

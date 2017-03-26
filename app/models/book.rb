@@ -9,7 +9,7 @@ class Book < ActiveRecord::Base
 
   has_attached_file :cover, :default_url => "/images/:style/missing.png",
                             :path => Figaro.env.paperclip_storage_path,
-                            :url => Figaro.env.paperclip_storage_path
+                            :url => Figaro.env.paperclip_storage_url
 
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
 

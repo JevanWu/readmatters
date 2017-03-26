@@ -72,7 +72,7 @@
             = number_to_currency(@product.book.price, unit: "")
         - if current_user != @product.user
           .price-tag.text-center
-            = link_to "加入购物车", line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme", remote: true
+            = link_to "加入购物车", line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme"
         .shares
           | 分享：
           .row

@@ -2,7 +2,7 @@
 lock '3.7.1'
 
 set :application, 'readfavor'
-set :repo_url, 'git@bitbucket.org:readfavor/readfavor.git'
+set :repo_url, 'git@bitbucket.org:readmatters/readmatters.git'
 
 set :rails_env, 'production'
 

@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   enumerize :current_location, in: [:shanghai, :hangzhou, :chengdu, :shenzhen, :beijing]
 
   has_attached_file :avatar, :styles => {:thumb => "260x260#" },
-                             :default_url => ":style/default_avatar.png",
+                             :default_url => "default_image.png",
                              :path => Figaro.env.paperclip_storage_path,
                              :url => Figaro.env.paperclip_storage_url
     # qiniu server:     :path => ":class/:attachment/:id/:basename.:extension"

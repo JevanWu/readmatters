@@ -35,7 +35,9 @@ class ApplicationController < ActionController::Base
     end
 
     def check_infomation_completeness
-      redirect_to more_info_path if !current_user&.valid?(:more_info)
+      if current_user.present? && !current_user.valid?(:more_info)
+        redirect_to more_info_path and return
+      end
     end
   private
     def current_cart

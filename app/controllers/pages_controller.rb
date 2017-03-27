@@ -4,7 +4,11 @@ class PagesController < ApplicationController
 
   def home
     @cart = current_cart
-    @products = Product.available.eager_load(:book).eager_load(:user).where.not(user_id: current_user.id)
+    if current_user.present?
+      @products = Product.available.eager_load(:book).eager_load(:user).where.not(user_id: current_user.id)
+    else
+      @products = Product.available.eager_load(:book)
+    end
     #@products = Product.available.eager_load(:book).eager_load(:user).where("users.current_location = ?", current_user.current_location).where.not(user_id: current_user.id)
   end
 

@@ -99,7 +99,7 @@ group :development do
   gem 'spring'
   gem 'byebug', "~>9.0.6"
   gem 'web-console', '~> 2.0'
-  gem "capistrano", "~>3.6"
+  gem "capistrano", "~>3.8"
   gem "capistrano-rails", "~>1.1"
   gem 'capistrano-rvm'
   gem 'capistrano3-puma', "~>1.2"

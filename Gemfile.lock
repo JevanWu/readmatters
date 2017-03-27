@@ -415,7 +415,7 @@ DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass
   byebug (~> 9.0.6)
-  capistrano (~> 3.6)
+  capistrano (~> 3.8)
   capistrano-rails (~> 1.1)
   capistrano-rvm
   capistrano-sidekiq (~> 0.10)

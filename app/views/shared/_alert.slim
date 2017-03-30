@@ -9,3 +9,9 @@
     = alert
     .close
       .fa.fa-times
+
+- if flash[:error].present?
+  .alert
+    = flash[:error]
+    .close
+      .fa.fa-times

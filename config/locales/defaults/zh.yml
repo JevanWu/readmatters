@@ -1,4 +1,35 @@
 zh:
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      model_invalid: "验证失败：%{errors}"
+      inclusion: "is not included in the list"
+      exclusion: "is reserved"
+      invalid: "是无效的内容"
+      confirmation: "doesn't match %{attribute}"
+      accepted: "必须接受"
+      empty: "不能够为空"
+      blank: "不能够为空"
+      present: "必须为空"
+      too_long:
+        one: "太长了"
+        other: "太长了（最多为%{count}个字）"
+      too_short:
+        one: "太短了"
+        other: "太短了（最多为%{count}个字）"
+      wrong_length:
+        one: "is the wrong length (should be 1 character)"
+        other: "is the wrong length (should be %{count} characters)"
+      not_a_number: "必须填写数字"
+      not_an_integer: "必须填写正整数"
+      greater_than: "必须大于%{count}"
+      greater_than_or_equal_to: "必须大于或等于%{count}"
+      equal_to: "必须等于%{count}"
+      less_than: "必须小于%{count}"
+      less_than_or_equal_to: "必须小于或等于%{count}"
+      other_than: "must be other than %{count}"
+      odd: "必须为奇数"
+      even: "必须为偶数"
   title_tag: "二手书交易与分享，从现在开始 | Readmatters"
   description_tag: "一个分享和交易二手书的社区，旨在提高用户二手书买卖成交率和体验。您可以让看过的二手书为您盈利，同时也能帮助他人以更优惠的价格获取知识"
   save: "保存"

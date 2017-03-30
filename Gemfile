@@ -94,6 +94,8 @@ gem 'sendcloud-mailer'
 
 gem "slack-notifier"
 
+gem 'rqrcode', '~>0.10'
+
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do
   gem 'spring'

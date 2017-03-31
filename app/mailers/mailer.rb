@@ -60,6 +60,11 @@ class Mailer < ActionMailer::Base
     mail(to: @user.email, subject: "交易完成！感谢您")
   end
 
+  def new_user_report(emails, count)
+    @emails = emails
+    mail(to: 'jevan@readmatters.com', subject: "新注册用户#{count}个")
+  end
+
   #等待退款
   # def order_wait_refund_notification(user)
   #   mail(to: user.email, subject: "")

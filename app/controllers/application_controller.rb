@@ -42,18 +42,7 @@ class ApplicationController < ActionController::Base
   private
     def current_cart
       if current_user.present?
-        cart = Cart.find_by(user_id: current_user.id)
-        return cart if cart.present?
-        if cookies[:_c_id].present?
-          cart = Cart.find(cookies[:_c_id])
-          cart.update(user_id: current_user.id)
-          cookies[:_c_id] = nil
-        else
-          cart = Cart.create(user_id: current_user.id)
-        end
-        cart
-      # else
-        #Cart.find(cookies[:_c_id])
+        cart = Cart.find_or_create_by(user_id: current_user.id)
       end
     rescue ActiveRecord::RecordNotFound
       # cart = Cart.create

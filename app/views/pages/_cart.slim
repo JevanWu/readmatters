@@ -1,7 +1,8 @@
-= link_to cart_path(current_cart) do
-  #cart.hidden-xs data-toggle="popover" data-placement="bottom" title="Your cart" data-content="#{current_cart.items_text}"
-    = fa_icon("shopping-cart")
-    .number-of-items
-      = "#{current_cart.number_of_items}"
-  .visible-xs.cart-item
-    = "购物车"
+- if current_cart.present?
+  = link_to cart_path(current_cart) do
+    #cart.hidden-xs data-toggle="popover" data-placement="bottom" title="Your cart" data-content="#{current_cart.items_text}"
+      = fa_icon("shopping-cart")
+      .number-of-items
+        = "#{current_cart.number_of_items}"
+    .visible-xs.cart-item
+      = "购物车"

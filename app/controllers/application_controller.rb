@@ -52,13 +52,13 @@ class ApplicationController < ActionController::Base
           cart = Cart.create(user_id: current_user.id)
         end
         cart
-      else
-        Cart.find(cookies[:_c_id])
+      # else
+        #Cart.find(cookies[:_c_id])
       end
     rescue ActiveRecord::RecordNotFound
-      cart = Cart.create
-      cookies[:_c_id] = cart.id
-      cart
+      # cart = Cart.create
+      # cookies[:_c_id] = cart.id
+      # cart
     end
 
     def set_current_cart

@@ -1,6 +1,6 @@
 .jumbotron
   .slogan
-    - if title.present?
+    - if title ||= nil
       .title-upon-avatar
         = title
     .avatar

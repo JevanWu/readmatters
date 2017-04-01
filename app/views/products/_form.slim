@@ -1,48 +1,33 @@
-/- content_for :page_js
-/  = javascript_include_tag 'jquery.nouislider.all.min'
-/- content_for :page_css
-/  = stylesheet_link_tag 'jquery.nouislider.min'
-/  = stylesheet_link_tag 'jquery.nouislider.pips.min'
-
 = simple_form_for @product do |f|
   = f.input :cover_url, as: :hidden
-  /= f.input :name, input_html: { value: @name }
-  = f.input :tags, required: false, input_html: { value: @product.book_tags }
-  = f.input :price, required: false, input_html: { value: @product.book_price }
-  = f.input :summary, required: false, input_html: { class: "summernote", value: @product.book_summary }
+  .form-group.decimal.optional.product_price
+    label.decimal.optional.control-label for="product_price"
+      | 售卖价格
+      span.theme-text
+        = price_hint(@product)
+    .form-inline
+      .form-group.decimal.optional.product_price
+        .input-group
+          .input-group-addon
+            | ¥
+          = text_field(:product, :price, class: "numeric decimal optional form-control", type: "number", placeholder:  "期望的转售价格")
+
+  .form-group.text.optional.product_summary
+    label.text.optional.control-label for="product_summary"
+      | 书籍简介
+      span.theme-text
+        | （您可自行对生成的书籍简介进行编辑）
+    = f.input :summary, required: false, label: false, input_html: { rows: 10, value: @product.book_summary }
+
+  .form-group.string.optional.product_tags
+    label.string.optional.control-label for="product_tags"
+      | 书籍标签
+      span.theme-text
+        | （您可自行对生成的标签进行编辑）
+    = f.input :tags, required: false, label: false, input_html: { value: @product.book_tags }
   = f.input :book_id, as: :hidden, input_html: { value: @product.book_id }
-  /= f.input :catalog, input_html: { value: @catalog, class: "summernote"}
-  /= f.input :author_intro, input_html: { value: @author_intro, class: "summernote"}
   .form-group
-    .col-sm-offset-2.col-sm-10
-      = f.submit t("submit"), class: "btn btn-default btn-theme"
-
     = f.submit t("submit"), class: "btn btn-default btn-theme"
-
-/javascript:
-/  var range_all_sliders = {
-/    'min': 0,
-/    'max': 5
-/  };
-/
-/  $('#range').noUiSlider({
-/    // Support for non-linear ranges by adding intervals.
-/    range: range_all_sliders,
-/    start: 0,
-/    connect: 'lower',
-/    step: 1,
-/
-/    // Configure tapping, or make the selected range dragable.
-/    behaviour: 'tap'
-/
-/  });
-/
-/  $("#range").noUiSlider_pips({
-/    mode: 'steps',
-/    density: 20
-/  });
-/
-/  $('#range').Link('lower').to($('#value-input'));
 
 
 

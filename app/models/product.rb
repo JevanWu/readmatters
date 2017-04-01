@@ -41,14 +41,14 @@ class Product < ActiveRecord::Base
   end
 
   def book_price
-    self.price || book.price
+    self.price || book&.price
   end
 
   def book_summary
-    self.summary || book.summary
+    self.summary || book&.summary
   end
 
   def book_tags
-    self.tags_before_type_cast || book.tags
+    self.tags_before_type_cast || book&.tags
   end
 end

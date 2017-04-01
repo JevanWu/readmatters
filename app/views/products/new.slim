@@ -1,9 +1,10 @@
-= render "shared/jumbotron", content: "发布您的《#{@book.name}》"
+= render "shared/jumbotron", content: (@book.present? ? "发布您的《#{@book&.name}》" : "发布您的书籍")
 .grey-division
   .container.product-container
     .product-show-nav
-      .product-cover
-        = image_tag(@book.cover.url)
+      - if @book&.cover&.present?
+        .product-cover
+          = image_tag(@book.cover.url)
     .product-form
       = simple_form_for @product do |f|
         = f.input :cover_url, as: :hidden

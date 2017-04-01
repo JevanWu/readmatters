@@ -5,7 +5,7 @@
       - if @book&.cover&.present?
         .product-cover
           = image_tag(@book.cover.url)
-    .product-form
+    .product-form.with-cover
       = simple_form_for @product do |f|
         = f.input :cover_url, as: :hidden
         .form-group.decimal.optional.product_price

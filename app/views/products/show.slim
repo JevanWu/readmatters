@@ -64,14 +64,19 @@
 
     .col-md-2 style="padding: 0px; margin-top: 42px;"
       .js-buy-it-mobile.visible-xs
-        = link_to "加入购物车", line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme", remote: true
+        - if @product.owner == current_user
+          = link_to "修改信息", edit_product_path, class: "btn btn-theme"
+        - else
+          = link_to "加入购物车", line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme"
       .js-buy-it.hidden-xs
         .price.text-center
           = number_to_currency(@product.price, unit: "")
           span.warning-text
             = number_to_currency(@product.book.price, unit: "")
-        - if current_user != @product.user
-          .price-tag.text-center
+        .price-tag.text-center
+          - if @product.owner == current_user
+            = link_to "修改信息", edit_product_path, class: "btn btn-theme"
+          - else
             = link_to "加入购物车", line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme"
         .shares
           | 分享：

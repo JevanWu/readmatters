@@ -1,4 +1,7 @@
 en:
+  layouts:
+    sign_in_partial:
+      my_books: "My books"
   products:
     book_name:
       title: "Please enter the name of your book"

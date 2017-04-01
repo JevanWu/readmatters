@@ -13,7 +13,9 @@
       li
         = link_to t(:sold_orders), sold_orders_path
       li
-        = link_to t(:profile), bought_books_path
+        = link_to t(".my_books"), my_books_path
+      /li
+      /  = link_to t(:profile), bought_books_path
       li
         = link_to t(:signout), destroy_user_session_path, method: :delete
 

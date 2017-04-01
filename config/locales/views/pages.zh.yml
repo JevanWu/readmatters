@@ -1,4 +1,7 @@
 zh:
+  layouts:
+    sign_in_partial:
+      my_books: "我的书籍"
   pages:
     more_info:
       want_know_more: "我们还希望更加了解您..."

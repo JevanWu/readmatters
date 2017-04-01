@@ -12,6 +12,11 @@ class PagesController < ApplicationController
     #@products = Product.available.eager_load(:book).eager_load(:user).where("users.current_location = ?", current_user.current_location).where.not(user_id: current_user.id)
   end
 
+  def my_books
+    @products = Product.available.eager_load(:book).where(user_id: current_user.id)
+    render "home"
+  end
+
   def search
     book_name = params[:key_word][:book_name]
     @products = Product.available.eager_load(:book).where("lower(books.name) LIKE ?", "%#{book_name.downcase}%")

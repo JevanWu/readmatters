@@ -6,7 +6,7 @@ $ ->
     $("#upload-photo").click()
 
   $("#upload-photo").fileupload
-    url: "http://localhost:3000/products/create_photo"
+    url: "/products/create_photo"
     dataType: "json"
     method: "post"
     add: (e, data) ->
@@ -24,7 +24,7 @@ $ ->
       return
     error: (data) ->
       return
-  
+
   $(".container").on "click", ".fa-trash-o", ->
     photo_id = $(this).parent().data("photo")
     if confirm("确认要删除吗？")

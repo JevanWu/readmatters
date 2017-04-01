@@ -15,7 +15,7 @@ class Product < ActiveRecord::Base
   validates :price, :tags, :summary, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
 
-  enumerize :status, in: [:normal, :locked, :sold], default: :normal, scope: true
+  enumerize :status, in: [:normal, :locked, :sold, :withdrawn], default: :normal, scope: true
 
   # has_attached_file :cover, :default_url => "/images/:style/missing.png"
   # validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/

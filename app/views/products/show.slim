@@ -76,6 +76,8 @@
         .price-tag.text-center
           - if @product.owner == current_user
             = link_to "修改信息", edit_product_path, class: "btn btn-theme"
+            .mt5
+            = link_to "下架书籍", withdraw_product_path, class: "btn btn-theme", data: { confirm: "确定要下架该本书籍吗？" }
           - else
             = link_to "加入购物车", line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme"
         .shares

@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       get "upload_photo", as: :upload_photo
       get "edit_photo", as: :edit_photo
       get "photos", as: :photos
+      get "withdraw", as: :withdraw
     end
   end
 

@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   before_action :check_infomation_completeness, only: [:show]
+  before_action :set_product, except: [:book_links, :new, :create]
+  before_action :authenticate_owner, only: [:edit, :withdraw]
 
   def book_links
     begin
@@ -55,11 +57,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find params[:id]
   end
 
   def update
-    @product = Product.find params[:id]
     if @product.update(product_params)
       redirect_to product_path(@product)
     else
@@ -78,11 +78,9 @@ class ProductsController < ApplicationController
   end
 
   def upload_photo
-    @product = Product.find params[:id]
   end
 
   def edit_photo
-    @product = Product.find params[:id]
   end
 
   def create_photo
@@ -94,7 +92,6 @@ class ProductsController < ApplicationController
   end
 
   def photos
-    @product = Product.find params[:id]
     @photos = @product.photos
   end
 
@@ -108,7 +105,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.available.find(params[:id])
     if params[:published]
       flash[:notice] = "恭喜您发布书籍成功！您可以通过分享您的该书籍让更多人知道"
     end
@@ -119,7 +115,20 @@ class ProductsController < ApplicationController
   def book_name
   end
 
+  def withdraw
+    @product.update(status: "withdrawn")
+    redirect_to my_books_path, flash: { notice: "《#{@product.name}》下架成功" }
+  end
+
   private
+
+    def authenticate_owner
+      redirect_to :back if @product.owner != current_user
+    end
+
+    def set_product
+      @product = Product.find(params[:id]) if params[:id].present?
+    end
 
     def product_params
       params.require(:product).permit(:tags, :cover_url, :price, :summary, :book_id)

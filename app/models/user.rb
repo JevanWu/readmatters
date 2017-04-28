@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  enumerize :current_location, in: [:shanghai, :hangzhou, :chengdu, :shenzhen, :beijing]
+  enumerize :current_location, in: [:shanghai, :hangzhou, :chengdu, :shenzhen, :guangzhou, :beijing]
 
   has_attached_file :avatar, :styles => {:thumb => "260x260#" },
                              :default_url => "default_image.png",

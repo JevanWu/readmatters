@@ -1,0 +1,10 @@
+en:
+  enumerize:
+    user:
+      current_location:
+        beijing: "北京"
+        shanghai: "上海"
+        hangzhou: "杭州"
+        guangzhou: "广州"
+        shenzhen: "深圳"
+        chengdu: "成都"

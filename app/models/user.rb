@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  enumerize :current_location, in: [:shanghai, :hangzhou, :chengdu, :shenzhen, :guangzhou, :beijing]
+  enumerize :current_location, in: [:beijing, :shanghai, :shenzhen, :guangzhou, :hangzhou, :chengdu]
 
   has_attached_file :avatar, :styles => {:thumb => "260x260#" },
                              :default_url => "default_image.png",
@@ -20,7 +20,9 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, on: :create
   validates :name, :current_location, :phone, presence: true, on: :more_info
-  validates_format_of :name, with: /[^0-9]+/, on: :more_info #/\A[\u4E00-\u9FA5]{1,4}\z/
+  validates_format_of :name, with: /[^0-9]+/ #/\A[\u4E00-\u9FA5]{1,4}\z/
+  validates_format_of :phone, with: /\A[0-9]{11}\z/
+
 
   def can_buy?(product)
     self != product.user

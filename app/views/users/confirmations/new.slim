@@ -1,7 +1,7 @@
 .container
   .sign-in-form
     h2.logo-text.text-center
-      = link_to "readmatters", root_path
+      = link_to image_tag("readmatters.png"), root_path, class: "logo"
   = simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), wrapper: :sign_in_horizontal_form, html: {class: "col-sm-offset-3 col-sm-6 clear-fix"} ) do |f|
     = f.error_notification
     /= f.full_error :confirmation_token

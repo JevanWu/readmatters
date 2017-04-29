@@ -83,16 +83,16 @@
         .shares
           | 分享：
           .row
-            .col-md-4.text-center.social
-              = link_to "http://service.weibo.com/share/share.php?url=#{request.original_url}&title=#{social_share_summary(@product.name, @product.book_summary)}&pic=#{@product.cover.url}", target: "_blank", ref: "nofollow" do
+            = link_to "http://service.weibo.com/share/share.php?url=#{request.original_url}&title=#{social_share_summary(@product.name, @product.book_summary)}&pic=#{@product.cover.url}", target: "_blank", ref: "nofollow" do
+              .col-md-4.text-center.social
                 i.fa.fa-weibo
             .col-md-4.text-center.social#wechat
               i.fa.fa-wechat
                - @qr = RQRCode::QRCode.new(request.original_url, :size => 4, :level => :h )
               .qrcode
                 = raw @qr.as_html
-            .col-md-4.text-center.social
-              = link_to "https://www.linkedin.com/shareArticle?url=#{request.original_url}&title=#{social_share_title(@product.name)}&source=#{social_share_source}&summary=#{social_share_summary(@product.name, @product.book_summary)}&mini=true", target: "_blank", ref: "nofollow" do
+            = link_to "https://www.linkedin.com/shareArticle?url=#{request.original_url}&title=#{social_share_title(@product.name)}&source=#{social_share_source}&summary=#{social_share_summary(@product.name, @product.book_summary)}&mini=true", target: "_blank", ref: "nofollow" do
+              .col-md-4.text-center.social
                 i.fa.fa-linkedin
 
 

@@ -20,8 +20,8 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, on: :create
   validates :name, :current_location, :phone, presence: true, on: :more_info
-  validates_format_of :name, with: /[^0-9]+/ #/\A[\u4E00-\u9FA5]{1,4}\z/
-  validates_format_of :phone, with: /\A[0-9]{11}\z/
+  validates_format_of :name, with: /[^0-9]+/, on: :more_info #/\A[\u4E00-\u9FA5]{1,4}\z/
+  validates_format_of :phone, with: /\A[0-9]{11}\z/, on: :more_info
 
 
   def can_buy?(product)

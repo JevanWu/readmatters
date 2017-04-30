@@ -143,23 +143,19 @@ class Order < ActiveRecord::Base
 
     # 通知邮件
     def send_buyer_paid_notification
-      book_names = self.book_names
-      Mailer.buyer_paid_success_notification(self.buyer, self, book_names).deliver_later
+      Mailer.buyer_paid_success_notification(self.buyer, self).deliver_later
     end
 
     def send_seller_ship_notification
-      book_names = self.book_names
-      Mailer.seller_order_ship_notification(self.seller, self, book_names).deliver_later
+      Mailer.seller_order_ship_notification(self.seller, self).deliver_later
     end
 
     def send_buyer_confirm_notification
-      book_names = self.book_names
-      Mailer.buyer_order_confirm_notification(self.buyer, self, book_names).deliver_later
+      Mailer.buyer_order_confirm_notification(self.buyer, self).deliver_later
     end
 
     def send_seller_success_notification
-      book_names = self.book_names
-      Mailer.buyer_order_success_notification(self.buyer).deliver_later
-      Mailer.seller_order_success_notification(self.seller).deliver_later
+      Mailer.buyer_order_success_notification(self.buyer, self).deliver_later
+      Mailer.seller_order_success_notification(self.seller, self).deliver_later
     end
 end

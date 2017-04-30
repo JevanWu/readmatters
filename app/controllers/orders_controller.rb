@@ -69,7 +69,7 @@ class OrdersController < ApplicationController
 
   private
     def order_params
-      params.require(:order).permit(:receiver_name, :street)
+      params.require(:order).permit(:receiver_name, :receiver_phone, :street)
     end
 
     def check_order_owner

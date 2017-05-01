@@ -3,8 +3,10 @@ class MessagesController < ApplicationController
     @conversation = Conversation.includes(:recipient).find(params[:conversation_id])
     @message = @conversation.messages.create(message_params)
 
+    message_html = render_to_string(partial: 'messages/message', locals: { message: @message, user: current_user })
+
     respond_to do |format|
-      format.js
+      format.json { render json: { message_html: message_html }, status: :ok }
     end
   end
 

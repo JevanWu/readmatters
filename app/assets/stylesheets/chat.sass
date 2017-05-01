@@ -20,6 +20,8 @@
         .message
           display: block
           color: #fff
+        .talk
+          max-width: 400px
         .message-sent
           padding: 10px
           background-color: $theme-color
@@ -65,3 +67,28 @@
           line-height: 45px
           width: 90px
           top: 5px
+
+.recipient-panel
+  box-shadow: 0 5px 40px rgba(0,0,0,.16)
+  border-radius: 4px
+  .recipient-header
+    padding: 10px
+    border-top-left-radius: 4px
+    border-top-right-radius: 4px
+    background-color: $theme-color
+    color: #fff
+    text-align: center
+  .recipient-list
+    background-color: #fff
+    height: calc(60vh + 55px)
+    overflow-y: scroll
+    .recipient
+      padding: 10px 20px
+      cursor: pointer
+      img
+        width: 40px
+        height: 40px
+        border-radius: 20px
+        margin-right: 10px
+      &:hover
+        background-color: #f7f7f7

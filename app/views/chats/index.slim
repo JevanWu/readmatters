@@ -6,7 +6,45 @@
           - @conversations.each do |conversation|
             = render 'conversations/conversation', conversation: conversation, user: current_user
       .col-md-3
-        - user = User.find 3
-        .recipient-list
-          .recipient
-            = link_to user.email, conversations_path(user_id: user), remote: true, method: :post
+        .recipient-panel
+          .recipient-header
+            = "联系人"
+          .recipient-list
+            - @conversations.each do |conversation|
+              - user = conversation.recipient
+              .recipient data-conversation_id=conversation.id
+                = image_tag(user.avatar.url)
+                = user.name
+              .recipient data-conversation_id=conversation.id
+                = user.avatar.url
+                = user.name
+              .recipient data-conversation_id=conversation.id
+                = user.avatar.url
+                = user.name
+              .recipient data-conversation_id=conversation.id
+                = user.avatar.url
+                = user.name
+              .recipient data-conversation_id=conversation.id
+                = user.avatar.url
+                = user.name
+              .recipient data-conversation_id=conversation.id
+                = user.avatar.url
+                = user.name
+              .recipient data-conversation_id=conversation.id
+                = image_tag(user.avatar.url)
+                = user.name
+              .recipient data-conversation_id=conversation.id
+                = user.avatar.url
+                = user.name
+              .recipient data-conversation_id=conversation.id
+                = user.avatar.url
+                = user.name
+              .recipient data-conversation_id=conversation.id
+                = user.avatar.url
+                = user.name
+              .recipient data-conversation_id=conversation.id
+                = user.avatar.url
+                = user.name
+              .recipient data-conversation_id=conversation.id
+                = user.avatar.url
+                = user.name

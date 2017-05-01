@@ -1,6 +1,6 @@
 .conversation-panel data-conversation-id="#{conversation.id}"
   .panel-heading
-    = conversation.opposed_user(user).email
+    = "与#{conversation.opposed_user(user).name}聊天中"
     /= link_to "x", '', class: "btn btn-default btn-xs pull-right"
 
   .panel-body
@@ -11,5 +11,3 @@
       = text_area(:message, :body, class: "form-control")
       .btn.btn-send.btn-theme data-user_id="#{user.id}" data-conversation_id="#{conversation.id}"
         = "发送"
-      /= form_for [conversation, conversation.messages.new], remote: true do |f|
-      /  = f.hidden_field :user_id, value: user.id

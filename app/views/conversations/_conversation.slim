@@ -10,5 +10,6 @@
     form
       = text_area(:message, :body, class: "form-control")
       .btn.btn-send.btn-theme data-user_id="#{user.id}" data-conversation_id="#{conversation.id}"
+        = "发送"
       /= form_for [conversation, conversation.messages.new], remote: true do |f|
       /  = f.hidden_field :user_id, value: user.id

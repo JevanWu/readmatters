@@ -1,0 +1,12 @@
+.grey-division
+  .container
+    .row
+      .col-md-9
+        #conversations-list
+          - @conversations.each do |conversation|
+            = render 'conversations/conversation', conversation: conversation, user: current_user
+      .col-md-3
+        - user = User.find 3
+        .recipient-list
+          .recipient
+            = link_to user.email, conversations_path(user_id: user), remote: true, method: :post

@@ -1,0 +1,14 @@
+.conversation-panel data-conversation-id="#{conversation.id}"
+  .panel-heading
+    = conversation.opposed_user(user).email
+    /= link_to "x", '', class: "btn btn-default btn-xs pull-right"
+
+  .panel-body
+    .message-list
+      = render 'conversations/conversation_content', messages: conversation.messages, user: user
+  .panel-footer
+    form
+      = text_area(:message, :body, class: "form-control")
+      .btn.btn-send.btn-theme data-user_id="#{user.id}" data-conversation_id="#{conversation.id}"
+      /= form_for [conversation, conversation.messages.new], remote: true do |f|
+      /  = f.hidden_field :user_id, value: user.id

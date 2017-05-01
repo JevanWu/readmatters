@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326120646) do
+ActiveRecord::Schema.define(version: 20170501021657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,17 @@ ActiveRecord::Schema.define(version: 20170326120646) do
   add_index "cities", ["province_id"], name: "index_cities_on_province_id", using: :btree
   add_index "cities", ["zip_code"], name: "index_cities_on_zip_code", using: :btree
 
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "recipient_id"
+    t.integer  "sender_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "conversations", ["recipient_id", "sender_id"], name: "index_conversations_on_recipient_id_and_sender_id", unique: true, using: :btree
+  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
+  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
+
   create_table "districts", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.integer  "city_id"
@@ -122,6 +133,17 @@ ActiveRecord::Schema.define(version: 20170326120646) do
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.string   "identifier",     limit: 255
@@ -219,4 +241,6 @@ ActiveRecord::Schema.define(version: 20170326120646) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
 end

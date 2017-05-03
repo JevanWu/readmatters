@@ -22,7 +22,6 @@
 //= require timeline
 //= require codemirror
 //= require summernote
-//= require lang/summernote-ko-KR
 //= require jquery-fileupload/basic
 //= require magnific-popup
 //= require_directory ./products/

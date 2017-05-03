@@ -52,10 +52,6 @@ gem 'devise', '~> 4.2.0'
 # Fontawesome
 gem 'font-awesome-rails'
 
-# This is the right gem to use summernote editor in Rails projects.
-gem 'summernote-rails'
-gem 'codemirror-rails'
-
 gem 'nokogiri'
 
 gem 'paperclip'

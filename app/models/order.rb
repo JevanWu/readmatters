@@ -1,4 +1,4 @@
-class Order < ActiveRecord::Base
+class Order < ApplicationRecord
   belongs_to :buyer, class_name: "User", foreign_key: "user_id"
   belongs_to :seller, class_name: "User", foreign_key: "seller_id"
   has_many :line_items

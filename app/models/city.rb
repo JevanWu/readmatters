@@ -1,5 +1,5 @@
 # coding: utf-8
-class City < ActiveRecord::Base
+class City < ApplicationRecord
   belongs_to :province
   has_many :districts, dependent: :destroy
   has_one :order

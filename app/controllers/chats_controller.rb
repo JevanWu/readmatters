@@ -1,7 +1,8 @@
 class ChatsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
-    @conversations = current_user.conversations
+    @conversations = Conversation.fetch(current_user.id)
   end
 
 end

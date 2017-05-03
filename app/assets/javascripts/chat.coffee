@@ -1,4 +1,9 @@
 $ ->
+  $(".recipient-list").on "click", ".recipient", ->
+    conversation_id = $(this).data("conversation_id")
+    $(".conversation-panel").hide()
+    $("#" + conversation_id).show()
+
   $("#conversations-list").on "click", ".btn-send", ->
     conversation_id = $(this).data("conversation_id")
     user_id = $(this).data("user_id")

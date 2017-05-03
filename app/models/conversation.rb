@@ -5,6 +5,7 @@ class Conversation < ActiveRecord::Base
 
   validates :sender_id, uniqueness: { scope: :recipient_id }
 
+  scope :fetch, -> (user_id) { where("sender_id = ? or recipient_id = ?", user_id)}
   scope :between, -> (sender_id, recipient_id) do
     where(sender_id: sender_id, recipient_id: recipient_id).or(
       where(sender_id: recipient_id, recipient_id: sender_id)

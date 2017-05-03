@@ -1,4 +1,4 @@
-.conversation-panel data-conversation-id="#{conversation.id}"
+.conversation-panel id="conversation_#{conversation.id}" data-conversation-id="#{conversation.id}" class=("hidden" if index > 0)
   .panel-heading
     = "与#{conversation.opposed_user(user).name}聊天中"
     /= link_to "x", '', class: "btn btn-default btn-xs pull-right"

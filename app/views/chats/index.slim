@@ -3,8 +3,8 @@
     .row
       .col-md-9
         #conversations-list
-          - @conversations.each do |conversation|
-            = render 'conversations/conversation', conversation: conversation, user: current_user
+          - @conversations.each_with_index do |conversation, index|
+            = render 'conversations/conversation', conversation: conversation, user: current_user, index: index
       .col-md-3
         .recipient-panel
           .recipient-header

@@ -22,4 +22,20 @@ class Conversation < ActiveRecord::Base
   def opposed_user(user)
     user == recipient ? sender : recipient
   end
+
+  def send_message(user, message)
+    self.messages.create(user: user)
+  end
+
+  def send_order_info(order)
+    message = "订单号#{order.identifier}:\n"
+    message << "<div>"
+    order.books.each do |book|
+      message << "<img src=#{book.cover.url}></img>"
+    end
+    message << "</div>\n"
+    message << "价格为: ¥#{order.total_price}"
+
+    send_message(order.buyer, message)
+  end
 end

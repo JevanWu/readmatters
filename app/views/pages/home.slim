@@ -1,6 +1,4 @@
 = render "shared/jumbotron", content: @title || "让有故事的书籍拥有更多故事"
-/*.arrow*/
-/*  = link_to fa_icon("chevron-down"), "#container"*/
 .grey-division
   #container
     - @products.each do |product|
@@ -16,19 +14,7 @@
           = number_to_currency(product.price, unit: "")
           span.warning-text style="text-decoration: line-through; margin-left: 5px;"
             = number_to_currency(product.book.price, unit: "")
-        /.add-to-cart
-        /  = link_to fa_icon("info-circle", text: "Detail"), product_path(product)
-        /.social
-        /  = link_to fa_icon("cart-plus", text: "Buy"), line_items_path(product_id: product.id), method: :post
 
-          /*= fa_icon("wechat")*/
-          /*= fa_icon("qq")*/
-          /*= fa_icon("weibo")*/
-          /*= fa_icon("linkedin")*/
-
-/*.feedback-bar    */
-/*  = form_tag '/feedback' do*/
-/*    = text_field_tag "feedback", nil, placeholder: "帮助我们成长吧！此地欢迎吐槽！"*/
-/*    = submit_tag "建(吐)议(槽)"*/
-
-
+- content_for :page_css
+  = stylesheet_link_tag "pages/home"
+  = stylesheet_link_tag "pages/masonry-boxes"

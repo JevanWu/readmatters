@@ -8,7 +8,7 @@ zh:
       submit: "开始选书"
   products:
     book_name:
-      title: "您要发布的书籍名字是？"
+      title: "您要发布的书籍名称是？"
       book_name_placeholder: "请输入要发布的书籍名称"
       search: "搜素该书籍"
       start_searching: "正在搜索..."

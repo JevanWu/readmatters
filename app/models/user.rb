@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   extend Enumerize
   has_many :products
   has_many :bought_orders, class_name: "Order", foreign_key: "user_id"

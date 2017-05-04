@@ -5,7 +5,7 @@ class Conversation < ActiveRecord::Base
 
   validates :sender_id, uniqueness: { scope: :recipient_id }
 
-  scope :fetch, -> (user_id) { where("sender_id = ? or recipient_id = ?", user_id)}
+  scope :fetch, -> (user_id) { where("sender_id = ? or recipient_id = ?", user_id, user_id)}
   scope :between, -> (sender_id, recipient_id) do
     where(sender_id: sender_id, recipient_id: recipient_id).or(
       where(sender_id: recipient_id, recipient_id: sender_id)
@@ -24,7 +24,7 @@ class Conversation < ActiveRecord::Base
   end
 
   def send_message(user, message)
-    self.messages.create(user: user)
+    self.messages.create(user: user, body: message)
   end
 
   def send_order_info(order)

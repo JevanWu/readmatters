@@ -5,9 +5,9 @@ class PagesController < ApplicationController
   def home
     @cart = current_cart
     if current_user.present?
-      @products = Product.available.eager_load(:book).eager_load(:user).where.not(user_id: current_user.id)
+      @products = Product.available.eager_load(:book).eager_load(:user).where.not(user_id: current_user.id, book_id: nil)
     else
-      @products = Product.available.eager_load(:book)
+      @products = Product.available.eager_load(:book).where.not(book_id: nil)
     end
     #@products = Product.available.eager_load(:book).eager_load(:user).where("users.current_location = ?", current_user.current_location).where.not(user_id: current_user.id)
   end

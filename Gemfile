@@ -59,7 +59,7 @@ gem 'paperclip'
 gem 'paperclip-qiniu'
 
 # gem for china provinces and cities
-gem 'china_region_fu'
+gem 'china_region_fu', '~> 0.1'
 
 #redis
 gem 'redis-rails'

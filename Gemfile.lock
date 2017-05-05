@@ -443,7 +443,7 @@ DEPENDENCIES
   capistrano-rvm
   capistrano-sidekiq (~> 0.10)
   capistrano3-puma (~> 1.2)
-  china_region_fu
+  china_region_fu (~> 0.1)
   coffee-rails
   devise (~> 4.2.1)
   enumerize

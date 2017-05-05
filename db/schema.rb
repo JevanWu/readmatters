@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -25,11 +24,10 @@ ActiveRecord::Schema.define(version: 20170501021657) do
     t.string   "author_type",   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
   end
-
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -44,10 +42,9 @@ ActiveRecord::Schema.define(version: 20170501021657) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "books", force: :cascade do |t|
     t.string   "isbn",               limit: 255
@@ -74,9 +71,8 @@ ActiveRecord::Schema.define(version: 20170501021657) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.index ["user_id"], name: "index_carts_on_user_id", using: :btree
   end
-
-  add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -87,25 +83,23 @@ ActiveRecord::Schema.define(version: 20170501021657) do
     t.string   "pinyin_abbr", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["level"], name: "index_cities_on_level", using: :btree
+    t.index ["name"], name: "index_cities_on_name", using: :btree
+    t.index ["pinyin"], name: "index_cities_on_pinyin", using: :btree
+    t.index ["pinyin_abbr"], name: "index_cities_on_pinyin_abbr", using: :btree
+    t.index ["province_id"], name: "index_cities_on_province_id", using: :btree
+    t.index ["zip_code"], name: "index_cities_on_zip_code", using: :btree
   end
-
-  add_index "cities", ["level"], name: "index_cities_on_level", using: :btree
-  add_index "cities", ["name"], name: "index_cities_on_name", using: :btree
-  add_index "cities", ["pinyin"], name: "index_cities_on_pinyin", using: :btree
-  add_index "cities", ["pinyin_abbr"], name: "index_cities_on_pinyin_abbr", using: :btree
-  add_index "cities", ["province_id"], name: "index_cities_on_province_id", using: :btree
-  add_index "cities", ["zip_code"], name: "index_cities_on_zip_code", using: :btree
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "recipient_id"
     t.integer  "sender_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["recipient_id", "sender_id"], name: "index_conversations_on_recipient_id_and_sender_id", unique: true, using: :btree
+    t.index ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
+    t.index ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
   end
-
-  add_index "conversations", ["recipient_id", "sender_id"], name: "index_conversations_on_recipient_id_and_sender_id", unique: true, using: :btree
-  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
-  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
 
   create_table "districts", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -114,12 +108,11 @@ ActiveRecord::Schema.define(version: 20170501021657) do
     t.string   "pinyin_abbr", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["city_id"], name: "index_districts_on_city_id", using: :btree
+    t.index ["name"], name: "index_districts_on_name", using: :btree
+    t.index ["pinyin"], name: "index_districts_on_pinyin", using: :btree
+    t.index ["pinyin_abbr"], name: "index_districts_on_pinyin_abbr", using: :btree
   end
-
-  add_index "districts", ["city_id"], name: "index_districts_on_city_id", using: :btree
-  add_index "districts", ["name"], name: "index_districts_on_name", using: :btree
-  add_index "districts", ["pinyin"], name: "index_districts_on_pinyin", using: :btree
-  add_index "districts", ["pinyin_abbr"], name: "index_districts_on_pinyin_abbr", using: :btree
 
   create_table "line_items", force: :cascade do |t|
     t.integer  "quantity",   default: 1
@@ -128,22 +121,21 @@ ActiveRecord::Schema.define(version: 20170501021657) do
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
+    t.index ["order_id"], name: "index_line_items_on_order_id", using: :btree
+    t.index ["product_id"], name: "index_line_items_on_product_id", using: :btree
   end
-
-  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
-  add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
-  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.text     "body"
+    t.datetime "read_at"
     t.integer  "user_id"
     t.integer  "conversation_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
-
-  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.string   "identifier",     limit: 255
@@ -160,13 +152,12 @@ ActiveRecord::Schema.define(version: 20170501021657) do
     t.decimal  "total_price"
     t.string   "pay_code",       limit: 255
     t.string   "receiver_phone"
+    t.index ["city_id"], name: "index_orders_on_city_id", using: :btree
+    t.index ["district_id"], name: "index_orders_on_district_id", using: :btree
+    t.index ["province_id"], name: "index_orders_on_province_id", using: :btree
+    t.index ["seller_id"], name: "index_orders_on_seller_id", using: :btree
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
-
-  add_index "orders", ["city_id"], name: "index_orders_on_city_id", using: :btree
-  add_index "orders", ["district_id"], name: "index_orders_on_district_id", using: :btree
-  add_index "orders", ["province_id"], name: "index_orders_on_province_id", using: :btree
-  add_index "orders", ["seller_id"], name: "index_orders_on_seller_id", using: :btree
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.integer  "product_id"
@@ -177,9 +168,8 @@ ActiveRecord::Schema.define(version: 20170501021657) do
     t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["product_id"], name: "index_photos_on_product_id", using: :btree
   end
-
-  add_index "photos", ["product_id"], name: "index_photos_on_product_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "tags",               limit: 255
@@ -194,10 +184,9 @@ ActiveRecord::Schema.define(version: 20170501021657) do
     t.datetime "updated_at"
     t.string   "status",             limit: 255, default: "initial"
     t.integer  "book_id"
+    t.index ["book_id"], name: "index_products_on_book_id", using: :btree
+    t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
-
-  add_index "products", ["book_id"], name: "index_products_on_book_id", using: :btree
-  add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
   create_table "provinces", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -205,11 +194,10 @@ ActiveRecord::Schema.define(version: 20170501021657) do
     t.string   "pinyin_abbr", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["name"], name: "index_provinces_on_name", using: :btree
+    t.index ["pinyin"], name: "index_provinces_on_pinyin", using: :btree
+    t.index ["pinyin_abbr"], name: "index_provinces_on_pinyin_abbr", using: :btree
   end
-
-  add_index "provinces", ["name"], name: "index_provinces_on_name", using: :btree
-  add_index "provinces", ["pinyin"], name: "index_provinces_on_pinyin", using: :btree
-  add_index "provinces", ["pinyin_abbr"], name: "index_provinces_on_pinyin_abbr", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -236,10 +224,9 @@ ActiveRecord::Schema.define(version: 20170501021657) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email",      limit: 255
     t.string   "current_location"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"

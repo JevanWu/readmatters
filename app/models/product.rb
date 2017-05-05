@@ -1,5 +1,5 @@
 require "open-uri"
-class Product < ActiveRecord::Base
+class Product < ApplicationRecord
   extend Enumerize
 
   attr_accessor :cover_url

@@ -15,3 +15,9 @@
               .recipient data-conversation_id=conversation.id
                 = image_tag(user.avatar.url)
                 = user.name
+
+- content_for :page_css
+  = stylesheet_link_tag "pages/chat"
+
+- content_for :page_js
+  = javascript_include_tag "pages/chat"

@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
       @book_list.clear
       book_count.value = response["count"]
       @book_list.push(*response["books"])
-    rescue
+    rescue => e
       # 从数据库查询结果
       if books = Book.where(name: params[:book_name]) && books.present?
         @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)

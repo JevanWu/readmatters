@@ -4,10 +4,14 @@
   li.dropdown
     .btn.control.dropdown-toggle.hidden-xs(type="button" id="userDropdownMenu" data-toggle="dropdown" aria-expanded="true" style="height: 34px; line-height: 34px; padding: 0px 10px; margin-left: 15px;")
       .fa.fa-navicon
+        .message-pop
     a href="#" class="dropdown-toggle visible-xs" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
       = "更多操作"
       span.caret
     ul.dropdown-menu
+      - if current_user.conversations.present?
+        li
+          = link_to t(".message"), chat_path
       - if current_user.bought_orders.present?
         li
           = link_to t(:bought_orders), bought_orders_path

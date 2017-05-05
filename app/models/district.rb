@@ -1,5 +1,5 @@
 # coding: utf-8
-class District < ActiveRecord::Base
+class District < ApplicationRecord
   belongs_to :city
   has_one :province, through: :city
   has_one :order

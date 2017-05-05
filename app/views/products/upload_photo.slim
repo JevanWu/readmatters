@@ -28,3 +28,6 @@
     br
     .row.text-center
       = link_to "完成", product_path(@product, published: true), class: "btn btn-theme"
+
+- content_for :page_css
+  = stylesheet_link_tag "products/upload_photo"

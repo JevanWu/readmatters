@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   post "conversation", to: "chats#conversation", as: :conversation
 
   resources :conversations, only: [:create] do
+    collection do
+      get "fetch"
+    end
     resources :messages, only: [:create]
   end
 

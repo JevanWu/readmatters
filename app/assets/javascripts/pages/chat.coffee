@@ -1,9 +1,20 @@
 $ ->
   $(".recipient-list").on "click", ".recipient", ->
-    conversation_id = $(this).data("conversation_id")
-    $(".conversation-panel").hide()
-    $("#conversation_" + conversation_id).show()
+    friend_id = $(this).data("friend_id")
+    $.ajax(
+      url: "/conversations/fetch"
+      dataType: "json"
+      method: "get"
+      data:
+        friend_id: friend_id,
+      success: (ret) ->
+        $("#conversations-list").html(ret.conversation_html)
+        return
+      error: ->
+        return
+    )
 
+  # send message
   $("#conversations-list").on "click", ".btn-send", ->
     conversation_id = $(this).data("conversation_id")
     user_id = $(this).data("user_id")

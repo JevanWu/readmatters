@@ -3,18 +3,16 @@
     .row
       .col-md-9
         #conversations-list
-          - @conversations.each_with_index do |conversation, index|
-            = render 'conversations/conversation', conversation: conversation, user: current_user, index: index
+          = render 'conversations/conversation', conversation: @conversation, user: current_user
       .col-md-3
         .recipient-panel
           .recipient-header
             = "联系人"
           .recipient-list
-            - @conversations.each do |conversation|
-              - user = conversation.recipient
-              .recipient data-conversation_id=conversation.id
-                = image_tag(user.avatar.url)
-                = user.name
+            - @friends.each do |friend|
+              .recipient data-friend_id=friend.id
+                = image_tag(friend.avatar.url)
+                = friend.name
 
 - content_for :page_css
   = stylesheet_link_tag "pages/chat"

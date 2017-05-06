@@ -1,4 +1,4 @@
-$ ->
+document.addEventListener("turbolinks:load", ->
   $(".recipient-list").on "click", ".recipient", ->
     friend_id = $(this).data("friend_id")
     $ele = $(this)
@@ -38,7 +38,9 @@ $ ->
       error: ->
         return
     )
+)
 
+$ ->
   scroll_last_message = ->
     panel_body = $('#conversations-list .panel-body')
     height = panel_body[0].scrollHeight

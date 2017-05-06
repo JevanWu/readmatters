@@ -25,5 +25,3 @@
 //= require_directory ./products/
 //= require_directory .
 
-NProgress.configure({ showSpinner: false, ease: 'ease', speed: 500 })
-

@@ -11,4 +11,8 @@ module ApplicationHelper
     file_path.gsub!("views", "assets/stylesheets")
     css_file = "#{file_path}/#{file_name}"
   end
+
+  def unread_count
+    current_user.unread_message_count
+  end
 end

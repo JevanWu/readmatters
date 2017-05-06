@@ -23,6 +23,10 @@ class Conversation < ActiveRecord::Base
     user == recipient ? sender : recipient
   end
 
+  def unread_count(user)
+    self.messages.where(read_at: nil).where.not(user_id: user.id).count
+  end
+
   def send_message(user, message)
     self.messages.create(user: user, body: message)
   end
@@ -37,5 +41,9 @@ class Conversation < ActiveRecord::Base
     message << "价格为: ¥#{order.total_price}"
 
     send_message(order.buyer, message)
+  end
+
+  def mark_read
+    self.message.update_all(read_at: Time.current)
   end
 end

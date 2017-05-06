@@ -1,6 +1,7 @@
 $ ->
   $(".recipient-list").on "click", ".recipient", ->
     friend_id = $(this).data("friend_id")
+    $ele = $(this)
     $.ajax(
       url: "/conversations/fetch"
       dataType: "json"
@@ -9,6 +10,7 @@ $ ->
         friend_id: friend_id,
       success: (ret) ->
         $("#conversations-list").html(ret.conversation_html)
+        $ele.find(".unread-count").remove()
         return
       error: ->
         return

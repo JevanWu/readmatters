@@ -44,6 +44,6 @@ class Conversation < ActiveRecord::Base
   end
 
   def mark_read
-    self.message.update_all(read_at: Time.current)
+    self.messages.update_all(read_at: Time.current)
   end
 end

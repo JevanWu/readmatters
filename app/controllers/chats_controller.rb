@@ -4,7 +4,7 @@ class ChatsController < ApplicationController
   def index
     @conversations = current_user.conversations
     @conversation = @conversations.first
-    @comversation.mark_read
+    @conversation.mark_read
     # @friends = User.where(id: @conversations.pluck(:sender_id).uniq + @conversations.pluck(:recipient_id).uniq).where.not(id: current_user.id)
     # @orders = current_user.orders
     # order_ids = (@orders.pluck(:seller_id) + @orders.pluck(:user_id)).uniq

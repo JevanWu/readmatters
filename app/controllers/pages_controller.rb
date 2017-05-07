@@ -13,7 +13,7 @@ class PagesController < ApplicationController
   end
 
   def my_books
-    @products = Product.available.eager_load(:book).where(user_id: current_user.id)
+    @products = Product.available.eager_load(:book).where(user_id: current_user.id).where.not(book_id: nil)
     render "home"
   end
 

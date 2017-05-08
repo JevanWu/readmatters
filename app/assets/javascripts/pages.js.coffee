@@ -1,4 +1,4 @@
-$ ->
+$(document).on('ready page:load', ->
   # $(window).scroll ->
   #   if $("#container").length
   #     windowTop = $(window).scrollTop()
@@ -12,12 +12,9 @@ $ ->
 
   # $('#cart').popover('hide')
 
-$(document).on('page:fetch', ->  NProgress.start() )
-$(document).on('page:change', ->  NProgress.done() )
-$(document).on('page:restore', -> NProgress.remove() )
+  $(document).on 'click', '.notice .close', ->
+    $(this).parent().hide()
 
-$(document).on 'click', '.notice .close', ->
-  $(this).parent().hide()
-
-$(document).on 'click', '.alert .close', ->
-  $(this).parent().hide()
+  $(document).on 'click', '.alert .close', ->
+    $(this).parent().hide()
+)

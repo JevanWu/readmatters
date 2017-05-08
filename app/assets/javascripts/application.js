@@ -18,12 +18,9 @@
 //= require bootstrap/dropdown
 //= require bootstrap/tooltip
 //= require bootstrap/collapse
-//= require nprogress
 //= require timeline
 //= require jquery-fileupload/basic
 //= require magnific-popup
 //= require_directory ./products/
 //= require_directory .
-
-NProgress.configure({ showSpinner: false, ease: 'ease', speed: 500 })
 

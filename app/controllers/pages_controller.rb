@@ -26,7 +26,7 @@ class PagesController < ApplicationController
 
   def owner
     user = User.find(params[:id])
-    @products = user.products.available.eager_load(:book)
+    @products = user.products.available.eager_load(:book).where.not(book_id: nil)
     @title = "#{user.name}的书籍"
     render "home"
   end

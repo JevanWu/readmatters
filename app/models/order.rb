@@ -55,6 +55,10 @@ class Order < ApplicationRecord
       transition :wait_refund => :refunded
     end
 
+    event :switch_to_self_driven do
+      transition :wait_pay => :self_driven
+    end
+
   end
 
   def add_items_from_cart(cart, seller_id=nil)

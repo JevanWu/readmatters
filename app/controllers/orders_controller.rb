@@ -10,18 +10,29 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = current_user.bought_orders.build(order_params)
-    @order.add_items_from_cart(current_cart, params[:order][:seller_id])
-    if @order.line_items.blank?
+    if current_cart.line_items.blank?
       return redirect_to :back, flash: { error: controller_translate("can_not_buy") }
     end
+    get_method = params[:get_method]
+    @order = current_user.bought_orders.build(order_params)
     @order.seller_id = params[:order][:seller_id]
     @order.province_id = params[:order][:province]
     @order.city_id = params[:order][:city]
     @order.district_id = params[:order][:district]
     @order.calculate_total_price
+    if get_method.blank?
+      error_message = {:get_method =>["不能为空"]}
+      return redirect_to :back, flash: { alert: combine_error_message(error_message, "order") }
+    end
+
     if @order.save
-      redirect_to checkout_path(@order)
+      @order.add_items_from_cart(current_cart, params[:order][:seller_id])
+      if get_method == "self_driven"
+        @order.switch_to_self_driven
+        redirect_to chat_path
+      else
+        redirect_to checkout_path(@order)
+      end
     else
       redirect_to :back, flash: { alert: combine_error_message(@order.errors.messages, "order") }
     end

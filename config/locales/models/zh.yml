@@ -47,6 +47,7 @@ zh:
       street: 详细地址
       receiver_name: 收书人姓名
       receiver_phone: 收书人手机
+      get_method: 获取方式
       state:
         wait_pay: 等待付款
         wait_ship: 等待卖家发货

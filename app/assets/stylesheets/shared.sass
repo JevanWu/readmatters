@@ -7,6 +7,23 @@
     top: 50%
     transform: translateY(-50%)
     text-align: center
+    .avatar
+      position: relative
+      .upload-frame
+        display: none
+        position: absolute
+        top: 0px
+        width: 130px
+        height: 130px
+        line-height: 130px
+        text-align: center
+        color: #fff
+        background-color: rgba(0,0,0,0.4)
+        border-radius: 50%
+        font-size: 18px
+      &:hover
+        .upload-frame
+          display: block
 
 .clear-fix
   overflow: auto

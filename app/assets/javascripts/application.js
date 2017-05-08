@@ -18,7 +18,6 @@
 //= require bootstrap/dropdown
 //= require bootstrap/tooltip
 //= require bootstrap/collapse
-//= require nprogress
 //= require timeline
 //= require jquery-fileupload/basic
 //= require magnific-popup

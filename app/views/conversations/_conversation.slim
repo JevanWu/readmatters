@@ -1,0 +1,13 @@
+.conversation-panel id="conversation_#{conversation.id}" data-conversation-id="#{conversation.id}"
+  .panel-heading
+    = "与#{conversation.opposed_user(user).name}联系中"
+    /= link_to "x", '', class: "btn btn-default btn-xs pull-right"
+
+  .panel-body
+    .message-list
+      = render 'conversations/conversation_content', messages: conversation.messages, user: user
+  .panel-footer
+    form
+      = text_area(:message, :body, class: "form-control")
+      .btn.btn-send.btn-theme data-user_id="#{user.id}" data-conversation_id="#{conversation.id}"
+        = "发送"

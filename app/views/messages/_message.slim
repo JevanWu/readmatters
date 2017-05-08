@@ -1,0 +1,4 @@
+.message
+  .talk class=(user.id == message.user_id ? 'message-sent' : 'message-received')
+    = sanitize message.body
+  .clear

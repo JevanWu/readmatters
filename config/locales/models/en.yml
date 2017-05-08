@@ -28,6 +28,7 @@ en:
         price: Price
         summary: Summary
     orders:
+      get_method: 获取方式
       state:
         wait_pay: 等待付款
         wait_ship: 等待卖家发货

@@ -1,6 +1,7 @@
 zh:
   layouts:
     sign_in_partial:
+      message: "消息"
       my_books: "我的书籍"
   pages:
     more_info:

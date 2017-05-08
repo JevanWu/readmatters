@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   belongs_to :buyer, class_name: "User", foreign_key: "user_id"
   belongs_to :seller, class_name: "User", foreign_key: "seller_id"
   has_many :line_items
+  has_many :products, through: :line_items
   belongs_to :province
   belongs_to :city
   belongs_to :district
@@ -54,6 +55,10 @@ class Order < ApplicationRecord
       transition :wait_refund => :refunded
     end
 
+    event :switch_to_self_driven do
+      transition :wait_pay => :self_driven
+    end
+
   end
 
   def add_items_from_cart(cart, seller_id=nil)
@@ -89,8 +94,12 @@ class Order < ApplicationRecord
     end
   end
 
+  def books
+    Book.where(id: self.products.pluck(:book_id))
+  end
+
   def book_names
-    self.line_items.map(&:product).map(&:book).map(&:name)
+    self.books.map(&:name)
   end
 
   def address

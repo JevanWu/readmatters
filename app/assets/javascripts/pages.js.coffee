@@ -1,4 +1,4 @@
-$(document).on('ready page:load', ->
+document.addEventListener("turbolinks:load", ->
   # $(window).scroll ->
   #   if $("#container").length
   #     windowTop = $(window).scrollTop()

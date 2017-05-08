@@ -1,3 +1,5 @@
+@import shared/color_mixin
+
 .order-form
   margin-top: 158px
   form
@@ -5,3 +7,17 @@
     margin: 0 auto
     select
       -webkit-appearance: initial
+    .get-options
+      .options
+        .option
+          display: inline-block
+          padding: 6px 12px
+          border-radius: 3px
+          margin-right: 10px
+          color: $theme-color
+          border: 1px solid $theme-color
+          cursor: pointer
+          &.selected
+            color: #fff
+            background-color: $theme-color
+

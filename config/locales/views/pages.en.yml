@@ -1,6 +1,7 @@
 en:
   layouts:
     sign_in_partial:
+      message: "Message"
       my_books: "My books"
   products:
     book_name:

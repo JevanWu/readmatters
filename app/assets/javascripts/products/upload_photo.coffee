@@ -1,12 +1,10 @@
-document.addEventListener("turbolinks:load", ->
-  $("#add-photo").click ->
-    $("#upload-photo").click()
-
-  $("#more-photo").click ->
-    $("#upload-photo").click()
-)
-
 $ ->
+  $(document).on "click", "#add-photo", ->
+    $("#upload-photo").click()
+
+  $(document).on "click", "#more-photo", ->
+    $("#upload-photo").click()
+
   $("#upload-photo").fileupload
     url: "/products/create_photo"
     dataType: "json"

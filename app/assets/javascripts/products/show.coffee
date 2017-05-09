@@ -1,9 +1,8 @@
-document.addEventListener("turbolinks:load", ->
-  $("#show-author-intro").click ->
+$ ->
+  $(document).on "click", "#show-author-intro", ->
     $(".author-intro p").show()
     $(this).hide()
 
-  $("#show-catalog").click ->
+  $(document).on "click", "#show-catalog", ->
     $(".catalog p").show()
     $(this).hide()
-)

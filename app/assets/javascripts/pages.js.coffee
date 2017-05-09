@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", ->
+$ ->
   # $(window).scroll ->
   #   if $("#container").length
   #     windowTop = $(window).scrollTop()
@@ -17,4 +17,3 @@ document.addEventListener("turbolinks:load", ->
 
   $(document).on 'click', '.alert .close', ->
     $(this).parent().hide()
-)

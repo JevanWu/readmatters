@@ -1,5 +1,5 @@
-document.addEventListener("turbolinks:load", ->
-  $(".recipient-list").on "click", ".recipient", ->
+$ ->
+  $(document).on "click", ".recipient-list .recipient", ->
     friend_id = $(this).data("friend_id")
     $ele = $(this)
     $.ajax(
@@ -17,7 +17,7 @@ document.addEventListener("turbolinks:load", ->
     )
 
   # send message
-  $("#conversations-list").on "click", ".btn-send", ->
+  $(document).on "click", "#conversations-list .btn-send", ->
     conversation_id = $(this).data("conversation_id")
     user_id = $(this).data("user_id")
     body = $(this).siblings("textarea").val()
@@ -38,9 +38,7 @@ document.addEventListener("turbolinks:load", ->
       error: ->
         return
     )
-)
 
-$ ->
   scroll_last_message = ->
     panel_body = $('#conversations-list .panel-body')
     height = panel_body[0].scrollHeight

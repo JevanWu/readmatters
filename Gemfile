@@ -108,6 +108,11 @@ group :development do
   gem "mechanize", "~>2.7"
 end
 
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'faker'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -68,6 +68,9 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    if duplicated?(@product)
+      return redirect_to :back, flash: { alert: "您已经发布过该书籍" }
+    end
     check_duplication(@product)
     @product.user = current_user
     if @product.save
@@ -123,11 +126,9 @@ class ProductsController < ApplicationController
 
   private
 
-    def check_duplication(product)
+    def duplicated?(product)
       book_ids = current_user.products.pluck(:book_id).uniq
-      if book_ids.include?(product.book_id)
-        return redirect_to :back, flash: { alert: "您已经发布过该书籍" }
-      end
+      book_ids.include?(product.book_id)
     end
 
     def authenticate_owner

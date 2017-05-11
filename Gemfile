@@ -95,8 +95,6 @@ gem 'rqrcode', '~>0.10'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do
-  gem 'spring'
-  gem 'byebug', "~>9.0.6"
   gem 'web-console', '~> 2.0'
   gem "capistrano", "~>3.8"
   gem "capistrano-rails", "~>1.1"
@@ -111,6 +109,8 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'byebug', "~>9.0.6"
+  gem 'spring'
 end
 
 # Use ActiveModel has_secure_password

@@ -24,11 +24,12 @@ class Cart < ApplicationRecord
   end
 
   def number_of_items
-    quantity = 0
-    line_items.each do |item|
-      quantity += item.quantity
-    end
-    quantity
+    self.line_items.count
+    # quantity = 0
+    # line_items.each do |item|
+    #   quantity += item.quantity
+    # end
+    # quantity
   end
 
   def items_text

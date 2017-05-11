@@ -3,7 +3,7 @@
     = link_to cart_path(current_cart) do
       #cart.hidden-xs data-toggle="popover" data-placement="bottom" title="Your cart"
         = fa_icon("shopping-cart")
-        .number-of-items
+        .number-of-items#cart-counter data-turbolinks-permanent=""
           = "#{current_cart.number_of_items}"
       .visible-xs.cart-item
         = "购物车"

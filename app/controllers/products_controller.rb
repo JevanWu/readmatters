@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :check_infomation_completeness, only: [:show]
-  before_action :set_product, except: [:book_links, :new, :create]
+  before_action :set_product, except: [:book_links, :new, :create, :show]
   before_action :authenticate_owner, only: [:edit, :withdraw]
 
   def book_links
@@ -112,6 +112,8 @@ class ProductsController < ApplicationController
     if params[:published]
       flash[:notice] = "恭喜您发布书籍成功！您可以通过分享您的该书籍让更多人知道"
     end
+    @product = Product.where(id: params[:id]).includes(:book, :photos).take
+
     #TODO change the page which notify user the product is not available or sold out
     raise ActiveRecord::RecordNotFound if @product.blank?
   end

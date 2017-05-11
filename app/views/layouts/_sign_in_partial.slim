@@ -1,4 +1,5 @@
 - if user_signed_in?
+
   li.publish-action
     = link_to t(:publish_book), book_name_products_path, class: "btn btn-default emphasis"
   li.dropdown
@@ -10,16 +11,17 @@
       = "更多操作"
       span.caret
     ul.dropdown-menu
-      - if current_user.conversations.present?
-        li
-          = link_to chat_path do
-            = t(".message")
-            - if unread_count > 0
-              .unread-count
-                - if unread_count >= 100
-                  = "···"
-                - else
-                  = unread_count
+      - cache "unread_message_#{current_user.id}_#{unread_count}"
+        - if current_user.conversations.count > 0
+          li
+            = link_to chat_path do
+              = t(".message")
+              - if unread_count > 0
+                .unread-count
+                  - if unread_count >= 100
+                    = "···"
+                  - else
+                    = unread_count
       - if current_user.bought_orders.present?
         li
           = link_to t(:bought_orders), bought_orders_path

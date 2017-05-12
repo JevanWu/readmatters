@@ -37,5 +37,9 @@ class User < ApplicationRecord
     Message.where(conversation_id: self.conversations.pluck(:id), read_at: nil).where.not(user_id: self.id).count
   end
 
+  def mark_read(conversation)
+    self.messages.where(conversation_id: conversation.id).update_all(read_at: Time.current)
+  end
+
 
 end

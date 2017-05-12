@@ -30,8 +30,4 @@ class Conversation < ActiveRecord::Base
   def send_message(user, message)
     self.messages.create(user: user, body: message)
   end
-
-  def mark_read
-    self.messages.where(user_id: current_user.id).update_all(read_at: Time.current)
-  end
 end

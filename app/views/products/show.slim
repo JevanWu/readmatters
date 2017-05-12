@@ -7,93 +7,94 @@
 
 = render "shared/jumbotron", content: @product.name
 
-.grey-division
-  .container.product-container
+- cache @product do
+  .grey-division
+    .container.product-container
 
-    .product-show-nav
-      .product-cover
-        = image_tag @product.cover.url
-        /.name
-          /= @product.kind
-      /ul.nav-list
-      /  li
-      /    = link_to "书籍介绍", product_path(@product)
-      /  - if @product.has_photos?
-      /    li
-      /      = link_to "书籍实照", photos_product_path(@product)
+      .product-show-nav
+        .product-cover
+          = image_tag @product.cover.url
+          /.name
+            /= @product.kind
+        /ul.nav-list
+        /  li
+        /    = link_to "书籍介绍", product_path(@product)
+        /  - if @product.has_photos?
+        /    li
+        /      = link_to "书籍实照", photos_product_path(@product)
 
-      /- if current_user != @product.user
-      /  .price-tag
-      /    = link_to number_to_currency(@product.price, unit: ""), line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme price"
+        /- if current_user != @product.user
+        /  .price-tag
+        /    = link_to number_to_currency(@product.price, unit: ""), line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme price"
 
-    .col-md-10 style="padding: 0px;"
-      .product-intro
-        h4
-          = t(".introduction")
-        p
-          = simple_format @product.book_summary
-
-      - if @product.photos.present?
-        .photos
+      .col-md-10 style="padding: 0px;"
+        .product-intro
           h4
-            = t(".book_photos")
-          .photo-show.row style="#{ @product.photos.blank? ? 'display:none' : 'display:block'}"
-            - @product.photos.each do |photo|
-              .col-md-3
-                /magnific popup require 'href' attribtue to work
-                .image-box id="photo-#{photo.id}" data-photo="#{photo.id}" href="#{photo.image.url}"
-                  = image_tag photo.image.url
-
-      - if @product.author_intro.present?
-        .author-intro
-          h4
-            = t(".author_intro")
-          #show-author-intro
-            = t(".show")
+            = t(".introduction")
           p
-            = simple_format @product.author_intro
+            = simple_format @product.book_summary
 
-      - if @product.catalog.present?
-        .catalog
-          h4
-            = t(".catalog")
-          #show-catalog
-            = t(".show")
-          p
-            = simple_format @product.catalog
+        - if @product.photos.present?
+          .photos
+            h4
+              = t(".book_photos")
+            .photo-show.row style="#{ @product.photos.blank? ? 'display:none' : 'display:block'}"
+              - @product.photos.each do |photo|
+                .col-md-3
+                  /magnific popup require 'href' attribtue to work
+                  .image-box id="photo-#{photo.id}" data-photo="#{photo.id}" href="#{photo.image.url}"
+                    = image_tag photo.image.url
 
-    .col-md-2 style="padding: 0px; margin-top: 42px;"
-      .js-buy-it-mobile.visible-xs
-        - if @product.user_id == current_user.id
-          = link_to "修改信息", edit_product_path, class: "btn btn-theme"
-        - else
-          = link_to "加入购物车", line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme"
-      .js-buy-it.hidden-xs
-        .price.text-center
-          = number_to_currency(@product.price, unit: "")
-          span.warning-text
-            = number_to_currency(@product.book.price, unit: "")
-        .price-tag.text-center
+        - if @product.author_intro.present?
+          .author-intro
+            h4
+              = t(".author_intro")
+            #show-author-intro
+              = t(".show")
+            p
+              = simple_format @product.author_intro
+
+        - if @product.catalog.present?
+          .catalog
+            h4
+              = t(".catalog")
+            #show-catalog
+              = t(".show")
+            p
+              = simple_format @product.catalog
+
+      .col-md-2 style="padding: 0px; margin-top: 42px;"
+        .js-buy-it-mobile.visible-xs
           - if @product.user_id == current_user.id
             = link_to "修改信息", edit_product_path, class: "btn btn-theme"
-            .mt5
-            = link_to "下架书籍", withdraw_product_path, class: "btn btn-theme", data: { confirm: "确定要下架该本书籍吗？" }
           - else
             = link_to "加入购物车", line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme"
-        .shares
-          | 分享：
-          .row
-            = link_to "http://service.weibo.com/share/share.php?url=#{request.original_url}&title=#{social_share_summary(@product)}&pic=#{@product.cover.url}", target: "_blank", ref: "nofollow" do
-              .col-md-4.text-center.social
-                i.fa.fa-weibo
-            .col-md-4.text-center.social#wechat
-              i.fa.fa-wechat
-               - @qr = RQRCode::QRCode.new("#{request.base_url}#{request.path}", :size => 4, :level => :h )
-              .qrcode
-                = raw @qr.as_html
-            = link_to "https://www.linkedin.com/shareArticle?url=#{request.original_url}&title=#{social_share_title(@product)}&source=#{social_share_source}&summary=#{social_share_summary(@product)}&mini=true", target: "_blank", ref: "nofollow" do
-              .col-md-4.text-center.social
-                i.fa.fa-linkedin
+        .js-buy-it.hidden-xs
+          .price.text-center
+            = number_to_currency(@product.price, unit: "")
+            span.warning-text
+              = number_to_currency(@product.book.price, unit: "")
+          .price-tag.text-center
+            - if @product.user_id == current_user.id
+              = link_to "修改信息", edit_product_path, class: "btn btn-theme"
+              .mt5
+              = link_to "下架书籍", withdraw_product_path, class: "btn btn-theme", data: { confirm: "确定要下架该本书籍吗？" }
+            - else
+              = link_to "加入购物车", line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme"
+          .shares
+            | 分享：
+            .row
+              = link_to "http://service.weibo.com/share/share.php?url=#{request.original_url}&title=#{social_share_summary(@product)}&pic=#{@product.cover.url}", target: "_blank", ref: "nofollow" do
+                .col-md-4.text-center.social
+                  i.fa.fa-weibo
+              .col-md-4.text-center.social#wechat
+                i.fa.fa-wechat
+                 - @qr = RQRCode::QRCode.new("#{request.base_url}#{request.path}", :size => 4, :level => :h )
+                .qrcode
+                  = raw @qr.as_html
+              = link_to "https://www.linkedin.com/shareArticle?url=#{request.original_url}&title=#{social_share_title(@product)}&source=#{social_share_source}&summary=#{social_share_summary(@product)}&mini=true", target: "_blank", ref: "nofollow" do
+                .col-md-4.text-center.social
+                  i.fa.fa-linkedin
 
 - content_for :page_css
   = stylesheet_link_tag "products/show"

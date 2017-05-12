@@ -1,13 +1,11 @@
 p
   = "Hi, #{order.seller.name}: "
-p style="margin-bottom: 5px"
+p
   = "我对你发布的#{order.line_items.count}本书籍非常感兴趣。"
 .books
   - order.books.each do |book|
     = image_tag book.cover.url, class: "mg3"
-    = image_tag book.cover.url, class: "mg3"
-    = image_tag book.cover.url, class: "mg3"
-p style="margin-top: 5px"
+p
   = "我已生成订单，你可在"
   = link_to "订单列表", "/orders/#{order.identifier}"
   = "中查询到相应的信息，请确认。"

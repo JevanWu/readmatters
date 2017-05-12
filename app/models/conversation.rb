@@ -12,7 +12,7 @@ class Conversation < ActiveRecord::Base
     )
   end
 
-  def self.get(sender_id, recipient_id)
+  def self.fetch_or_create(sender_id, recipient_id)
     conversation = between(sender_id, recipient_id).first
     return conversation if conversation.present?
 
@@ -29,18 +29,6 @@ class Conversation < ActiveRecord::Base
 
   def send_message(user, message)
     self.messages.create(user: user, body: message)
-  end
-
-  def send_order_info(order)
-    message = "订单号#{order.identifier}:\n"
-    message << "<div>"
-    order.books.each do |book|
-      message << "<img src=#{book.cover.url}></img>"
-    end
-    message << "</div>\n"
-    message << "价格为: ¥#{order.total_price}"
-
-    send_message(order.buyer, message)
   end
 
   def mark_read

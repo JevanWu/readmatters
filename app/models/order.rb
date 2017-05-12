@@ -112,6 +112,20 @@ class Order < ApplicationRecord
     end
   end
 
+  def send_order_info_message
+    # build order message
+    message = "订单号#{order.identifier}:\n"
+    message << "<div>"
+    self.books.each do |book|
+      message << "<img src=#{book.cover.url}></img>"
+    end
+    message << "</div>\n"
+    message << "价格为: ¥#{order.total_price}"
+
+    conversation = Conversation.fetch_or_create(self.seller, self.buyer)
+    conversation.send_message(self.buyer, message)
+  end
+
   private
 
     def lock_products

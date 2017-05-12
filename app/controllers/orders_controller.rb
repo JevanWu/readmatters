@@ -29,6 +29,7 @@ class OrdersController < ApplicationController
       @order.add_items_from_cart(current_cart, params[:order][:seller_id])
       if get_method == "self_driven"
         @order.switch_to_self_driven
+        @order.send_order_info_message
         redirect_to chat_path
       else
         redirect_to checkout_path(@order)

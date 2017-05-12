@@ -21,7 +21,7 @@ class Order < ApplicationRecord
   #order_state (wait_pay, failure, wait_ship, wait_confirm, success, wait_refund, refunded)
   state_machine :state, initial: :wait_pay do
 
-    after_transition :wait_pay => :wait_ship, :do => :change_product_to_sold
+    after_transition [:wait_pay, :self_driven] => :wait_ship, :do => :change_product_to_sold
     after_transition :wait_pay => :failure, :do => :unlock_products
 
     after_transition :wait_pay => :wait_ship, :do => :send_buyer_paid_notification
@@ -32,7 +32,7 @@ class Order < ApplicationRecord
     after_transition :wait_confirm => :success, :do => :send_seller_success_notification
 
     event :pay do
-      transition :wait_pay => :wait_ship
+      transition [:wait_pay, :self_driven] => :wait_ship
     end
 
     event :ship do

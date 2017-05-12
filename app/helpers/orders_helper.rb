@@ -1,4 +1,4 @@
-module ProductsHelper
+module OrdersHelper
 
   def bought_order_triggers(order)
     case order.state
@@ -16,6 +16,8 @@ module ProductsHelper
       "已完成交易"
     when %(refunded)
       "已退款"
+    when %(self_driven)
+      link_to "委托交易并付款", checkout_path(order), class: "btn btn-theme"
     end
   end
 
@@ -36,6 +38,8 @@ module ProductsHelper
       "已完成交易"
     when %(refunded)
       "已退款"
+    when %(self_driven)
+      "买方稍后会联系您"
     end
   end
 

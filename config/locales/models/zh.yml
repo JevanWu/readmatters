@@ -56,3 +56,4 @@ zh:
         failure: 订单已失效
         wait_refund: 等待退款
         refunded: 已退款
+        self_driven: 自行联系

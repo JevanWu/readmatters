@@ -33,6 +33,8 @@ en:
         wait_pay: 等待付款
         wait_ship: 等待卖家发货
         wait_confirm: 等待买家收货
-        wait_refund: 等待退款
         success: 成功完成交易
         failure: 订单已失效
+        wait_refund: 等待退款
+        refunded: 已退款
+        self_driven: 自行联系

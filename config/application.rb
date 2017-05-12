@@ -22,5 +22,17 @@ module RailsFoundation
     config.i18n.default_locale = :zh
     config.generators.assets = false
     config.generators.helper = false
+
+    # Redis config
+    config.cache_store = :redis_store, {
+      host: "localhost",
+      port: 6379,
+      db: 0,
+      namespace: "cache",
+
+      expires_in: 24.hours,
+      compress: true,
+      #compress_threshold: 32.kilobytes,
+    }
   end
 end

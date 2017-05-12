@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:inspect]
   before_action :check_order_owner, only: [:ship, :confirm]
+  before_action :set_order, only: [:show]
   skip_before_filter :verify_authenticity_token, only: [:inspect]
 
   def new
@@ -29,8 +30,8 @@ class OrdersController < ApplicationController
       @order.add_items_from_cart(current_cart, params[:order][:seller_id])
       if get_method == "self_driven"
         @order.switch_to_self_driven
-        @order.send_order_info_message
-        redirect_to chat_path
+        conversation = @order.send_order_info_message
+        redirect_to chat_path(chat_id: conversation.id)
       else
         redirect_to checkout_path(@order)
       end
@@ -79,13 +80,28 @@ class OrdersController < ApplicationController
     render "index"
   end
 
+  def show
+    if @order.seller_id == current_user.id
+      redirect_to sold_orders_path
+    elsif @order.buyer_id == current_user.id
+      redirect_to bought_orders_path
+    end
+  end
+
   private
+
     def order_params
       params.require(:order).permit(:receiver_name, :receiver_phone, :street)
     end
 
+    def set_order
+      @order = Order.find_by(identifier: params[:id])
+    end
+
     def check_order_owner
       @order = Order.find_by(identifier: params[:id])
-      return if current_user.blank? || current_user != @order.seller
+      if current_user.blank? || (current_user.id != @order.seller_id && current_user.id != @order.buyer_id)
+        redirect_to bought_orders_path, flash: { alert: "无权操作" }
+      end
     end
 end

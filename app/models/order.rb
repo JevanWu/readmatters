@@ -12,6 +12,8 @@ class Order < ApplicationRecord
   before_create :generate_pay_code
   after_create :lock_products
   #after_create :check_expiration
+  #
+  alias_attribute :buyer_id, :user_id
 
   default_scope { order(created_at: :desc) }
 
@@ -114,16 +116,13 @@ class Order < ApplicationRecord
 
   def send_order_info_message
     # build order message
-    message = "订单号#{order.identifier}:\n"
-    message << "<div>"
-    self.books.each do |book|
-      message << "<img src=#{book.cover.url}></img>"
-    end
-    message << "</div>\n"
-    message << "价格为: ¥#{order.total_price}"
-
+    message = ApplicationController.new.render_to_string(partial: "messages/order_message_partial", locals: { order: self })
     conversation = Conversation.fetch_or_create(self.seller, self.buyer)
     conversation.send_message(self.buyer, message)
+    conversation
+  end
+
+  def test
   end
 
   private

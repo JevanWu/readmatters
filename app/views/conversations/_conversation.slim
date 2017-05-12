@@ -5,7 +5,7 @@
 
   .panel-body
     .message-list
-      = render 'conversations/conversation_content', messages: conversation.messages, user: user
+      = render 'conversations/conversation_content', messages: conversation.messages.order_by_time, user: user
   .panel-footer
     form
       = text_area(:message, :body, class: "form-control")

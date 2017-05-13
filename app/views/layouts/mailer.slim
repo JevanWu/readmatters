@@ -15,3 +15,7 @@ html
                     span style="margin-left: 20px; font-size: 18px; color: #666666;"
                       = "让有故事的书籍拥有更多故事"
                   = yield
+      tbody style="text-align: center;"
+        tr
+          td style="padding-top: 50px;"
+            = link_to t(".cancel_subscription"), "%unsubscribe_url%", style: "color: #5a5a5a; font-size: 12px;", target: "_blank"

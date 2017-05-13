@@ -3,6 +3,8 @@ en:
     sign_in_partial:
       message: "Message"
       my_books: "My books"
+    mailer:
+      cancel_subscription: "Unsubscribe"
   products:
     book_name:
       title: "Please enter the name of your book"

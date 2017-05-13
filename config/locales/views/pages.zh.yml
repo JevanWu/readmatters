@@ -3,6 +3,8 @@ zh:
     sign_in_partial:
       message: "消息"
       my_books: "我的书籍"
+    mailer:
+      cancel_subscription: "取消所有邮件通知？"
   pages:
     more_info:
       want_know_more: "我们还希望更加了解您..."

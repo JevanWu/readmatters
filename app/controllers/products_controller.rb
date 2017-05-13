@@ -23,8 +23,9 @@ class ProductsController < ApplicationController
           @book_list << {:image => book.cover_url, :title => book.name, :summary => book.summary,
                          :tags => book.tags, :author_intro => book.author_intro, :catalog => book.catalog }
         end
-        # else
-        #   redirect_to new_product_path, flash: { notice: controller_translate("fetch_occur_error") }
+      else
+        redirect_to :back, flash: { alert: "搜索出错啦，请重试" }
+        # redirect_to new_product_path, flash: { notice: controller_translate("fetch_occur_error") }
       end
     end
   end

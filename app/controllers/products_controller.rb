@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
                          :tags => book.tags, :author_intro => book.author_intro, :catalog => book.catalog }
         end
       else
-        redirect_to :back, flash: { alert: "搜索出错啦，请重试" }
+        redirect_to :back, flash: { alert: "搜索不到该书籍，请联系我们解决" }
         # redirect_to new_product_path, flash: { notice: controller_translate("fetch_occur_error") }
       end
     end

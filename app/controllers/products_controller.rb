@@ -31,6 +31,7 @@ class ProductsController < ApplicationController
   end
 
   def new
+    # 新建图书
     if params[:new_book_id].blank?
       @product = Product.new
     else
@@ -38,6 +39,7 @@ class ProductsController < ApplicationController
       @product = @book.products.build(price: @book.price, summary: @book.summary)
     end
 
+    # 新建产品
     if params[:book_id].blank?
       @tags = []
     else

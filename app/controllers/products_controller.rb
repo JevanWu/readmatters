@@ -74,7 +74,6 @@ class ProductsController < ApplicationController
     if duplicated?(@product)
       return redirect_to :back, flash: { alert: "您已经发布过该书籍" }
     end
-    check_duplication(@product)
     @product.user = current_user
     if @product.save
       # redirect_to product_path(@product)

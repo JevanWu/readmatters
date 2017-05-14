@@ -15,28 +15,32 @@ class OrdersController < ApplicationController
       return redirect_to :back, flash: { error: controller_translate("can_not_buy") }
     end
     get_method = params[:get_method]
-    @order = current_user.bought_orders.build(order_params)
-    @order.seller_id = params[:order][:seller_id]
-    @order.province_id = params[:order][:province]
-    @order.city_id = params[:order][:city]
-    @order.district_id = params[:order][:district]
-    @order.calculate_total_price
-    if get_method.blank?
-      error_message = {:get_method =>["不能为空"]}
-      return redirect_to :back, flash: { alert: combine_error_message(error_message, "order") }
-    end
-
-    if @order.save
+    ActiveRecord::Base.transaction do
+      @order = current_user.bought_orders.build(order_params)
+      @order.seller_id = params[:order][:seller_id]
+      @order.province_id = params[:order][:province]
+      @order.city_id = params[:order][:city]
+      @order.district_id = params[:order][:district]
+      # 加入商品
       @order.add_items_from_cart(current_cart, params[:order][:seller_id])
-      if get_method == "self_driven"
-        @order.switch_to_self_driven
-        conversation = @order.send_order_info_message
-        redirect_to chat_path(chat_id: conversation.id)
-      else
-        redirect_to checkout_path(@order)
+      # 计算价格
+      @order.calculate_total_price
+      if get_method.blank?
+        error_message = {:get_method =>["不能为空"]}
+        return redirect_to :back, flash: { alert: combine_error_message(error_message, "order") }
       end
-    else
-      redirect_to :back, flash: { alert: combine_error_message(@order.errors.messages, "order") }
+
+      if @order.save
+        if get_method == "self_driven"
+          @order.switch_to_self_driven
+          conversation = @order.send_order_info_message
+          redirect_to chat_path(chat_id: conversation.id)
+        else
+          redirect_to checkout_path(@order)
+        end
+      else
+        redirect_to :back, flash: { alert: combine_error_message(@order.errors.messages, "order") }
+      end
     end
   end
 

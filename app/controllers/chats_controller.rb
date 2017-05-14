@@ -4,7 +4,7 @@ class ChatsController < ApplicationController
   def index
     @conversations = current_user.conversations
     if params[:chat_id].present?
-      @conversation = @conversations.find(id: params[:chat_id])
+      @conversation = @conversations.find(params[:chat_id])
     else
       @conversation = @conversations.first
     end

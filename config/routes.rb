@@ -65,7 +65,7 @@ Rails.application.routes.draw do
 
   resources :carts, only: [:show]
 
-  resources :line_items
+  resources :line_items, only: [:create, :destroy]
 
   # get 'timeline' => 'users#timeline', as: :timeline
   get 'bought_books' => 'users#bought_books', as: :bought_books

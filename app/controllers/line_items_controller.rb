@@ -24,7 +24,7 @@ class LineItemsController < ApplicationController
   end
 
   def destroy
-    product = Product.find(params[:product_id])
+    product = Product.find(params[:id])
     current_cart.remove_product(product)
 
     respond_to do |format|

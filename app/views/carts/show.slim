@@ -33,14 +33,14 @@
                 td.warning-text
                   | 这本书已被他人下单啦orz
                 td
-                  = link_to "移除", line_item_path(product_id: item.product.id), method: :delete, data: { confirm: "确认移除该书籍吗？" }, class: "warning-text"
+                  = link_to "移除", line_item_path(id: item.product.id), method: :delete, data: { confirm: "确认移除该书籍吗？" }, class: "warning-text"
               - else
                 td
                   = item.product.price
                   /= item.quantity
                   /= button_to "increase quantity", line_items_path(product_id: item.product.id), remote: true
                 td
-                  = link_to "移除", line_item_path(product_id: item.product.id), method: :delete, data: { confirm: "确认移除该书籍吗？" }, class: "warning-text"
+                  = link_to "移除", line_item_path(id: item.product.id), method: :delete, data: { confirm: "确认移除该书籍吗？" }, class: "warning-text"
           tr
             td
             td

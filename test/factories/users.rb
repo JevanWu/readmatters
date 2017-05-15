@@ -9,6 +9,11 @@ FactoryGirl.define do
 
   factory :complete_user, parent: :user do
     current_location User.current_location.values.sample
-    phone "18512341234"
+    phone "18511111111"
+  end
+
+  factory :seller, parent: :user do
+    current_location User.current_location.values.sample
+    phone "18522222222"
   end
 end

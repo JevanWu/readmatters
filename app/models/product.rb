@@ -35,7 +35,7 @@ class Product < ApplicationRecord
   end
 
   def name
-    book.name
+    book.name if book.present?
   end
 
   def available?

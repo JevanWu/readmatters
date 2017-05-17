@@ -65,7 +65,9 @@
 
       .col-md-2 style="padding: 0px; margin-top: 42px;"
         .js-buy-it-mobile.visible-xs
-          - if @product.user_id == current_user.id
+          - if current_user.blank?
+            = link_to "开始选书", new_user_registration_path, class: "btn btn-theme"
+          - elsif @product.user_id == current_user.id
             = link_to "修改信息", edit_product_path, class: "btn btn-theme"
           - else
             = link_to "加入购物车", line_items_path(product_id: @product.id), method: :post, class: "btn btn-theme"
@@ -75,7 +77,9 @@
             span.warning-text
               = number_to_currency(@product.book.price, unit: "")
           .price-tag.text-center
-            - if @product.user_id == current_user.id
+            - if current_user.blank?
+              = link_to "开始选书", new_user_registration_path, class: "btn btn-theme"
+            - elsif @product.user_id == current_user.id
               = link_to "修改信息", edit_product_path, class: "btn btn-theme"
               .mt5
               = link_to "下架书籍", withdraw_product_path, class: "btn btn-theme", data: { confirm: "确定要下架该本书籍吗？" }

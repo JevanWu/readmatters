@@ -26,6 +26,8 @@ html
       = yield
     = render_footer
 
-  = render 'shared/ga'
+  - if Rails.env.production?
+    = render 'shared/ga'
+    = render 'shared/zhuge_io'
   - unless content_for?(:get_ride_of_customer_service)
     = render 'shared/meiqia'

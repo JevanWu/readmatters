@@ -17,3 +17,6 @@ $ ->
 
   $(document).on 'click', '.alert .close', ->
     $(this).parent().hide()
+
+  $(document).on 'click', '.publish-action', ->
+    zhuge.track('Publish book')

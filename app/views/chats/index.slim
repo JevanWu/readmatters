@@ -10,7 +10,7 @@
             = "联系人"
           .recipient-list
             - @conversations.each do |conversation|
-              - friend = conversation.sender_id = current_user.id ? conversation.recipient : conversation.sender
+              - friend = conversation.sender_id == current_user.id ? conversation.recipient : conversation.sender
               - unread_count = conversation.unread_count(current_user)
               .recipient data-friend_id=friend.id
                 = image_tag(friend.avatar.url)

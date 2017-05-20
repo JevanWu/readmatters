@@ -8,7 +8,7 @@ class ChatsController < ApplicationController
     else
       @conversation = @conversations.first
     end
-    current_user.mark_read(@conversation)
+    current_user.read_message(@conversation)
     # @friends = User.where(id: @conversations.pluck(:sender_id).uniq + @conversations.pluck(:recipient_id).uniq).where.not(id: current_user.id)
     # @orders = current_user.orders
     # order_ids = (@orders.pluck(:seller_id) + @orders.pluck(:user_id)).uniq

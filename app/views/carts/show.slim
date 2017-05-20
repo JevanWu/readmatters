@@ -19,7 +19,7 @@
             th.col-md-3.text-center
               | 书名
             th.col-md-3.text-center
-              | 小记
+              | 单价
             th.col-md-3.text-center
               | 操作
         tbody
@@ -47,6 +47,7 @@
             td
               = "#{@total_prices[index]} (合计)"
             td
-              = link_to "确认订单", new_order_path(seller_id: id), class: "btn btn-theme"
+              = link_to "自行联系持书人", create_free_orders_path(seller_id: id), class: "btn btn-theme", method: :post
+              = link_to "直接去下单", new_order_path(seller_id: id), class: "btn theme-link"
 
 

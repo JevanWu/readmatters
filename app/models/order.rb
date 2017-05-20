@@ -63,7 +63,7 @@ class Order < ApplicationRecord
 
   end
 
-  def add_items_from_cart(cart, seller_id=nil)
+  def add_items_from_cart(cart, seller_id=self.seller_id)
     if seller_id.present?
       items = cart.line_items.eager_load(:product).where("products.user_id = ?", seller_id)
     else

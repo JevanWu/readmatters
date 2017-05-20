@@ -57,6 +57,7 @@ Rails.application.routes.draw do
 
     collection do
       post "inspect"
+      post "create_free", as: :create_free
     end
   end
 

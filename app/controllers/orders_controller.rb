@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:inspect]
   before_action :check_order_owner, only: [:ship, :confirm]
   before_action :set_order, only: [:show]
-  skip_before_filter :verify_authenticity_token, only: [:inspect]
+  skip_before_action :verify_authenticity_token, only: [:inspect]
 
   def new
     @order = current_user.bought_orders.build if current_user.present?

@@ -32,10 +32,10 @@ zh:
   models:
 
   attributes:
-    user:
-      name: 姓名
-      current_location: 所在地
-      phone: 手机
+    # user:
+    #   name: 姓名
+    #   current_location: 所在地
+    #   phone: 手机
     product:
       tags: 书籍标签
       price: 售卖价格
@@ -56,4 +56,4 @@ zh:
         failure: 订单已失效
         wait_refund: 等待退款
         refunded: 已退款
-        self_driven: 自行联系
+        free: 自行联系

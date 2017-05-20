@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
   before_action :set_current_cart, except: [:inspect]
+  before_action :set_user_cookie
 
   layout :proper_layout
 
@@ -56,6 +57,19 @@ class ApplicationController < ActionController::Base
 
     def set_locale
       I18n.locale = params[:locale] || I18n.default_locale
+    end
+
+    def set_user_cookie
+      info = cookies[:e21fa6e62141ca2d]
+      if current_user.present?
+        if info != "6023#{current_user.id}"
+          cookies[:e21fa6e62141ca2d] = "6023#{current_user.id}"
+        end
+      else
+        if info != request.remote_ip
+          cookies[:e21fa6e62141ca2d] = request.remote_ip
+        end
+      end
     end
 
 end

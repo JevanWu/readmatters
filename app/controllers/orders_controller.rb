@@ -10,11 +10,26 @@ class OrdersController < ApplicationController
     @line_items = current_cart.line_items.eager_load(:product).where("products.user_id = ? and products.status = ?", @seller_id, "normal")
   end
 
+  def create_free
+    ActiveRecord::Base.transaction do
+      @order = current_user.bought_orders.new(seller_id: params[:seller_id])
+      # 加入商品
+      @order.add_items_from_cart(current_cart)
+      # 计算价格
+      @order.calculate_total_price
+
+      @order.switch_to_free
+      conversation = @order.send_order_info_message
+      if @order.save
+        redirect_to chat_path(chat_id: conversation.id)
+      end
+    end
+  end
+
   def create
     if current_cart.line_items.blank?
       return redirect_to :back, flash: { error: controller_translate("can_not_buy") }
     end
-    get_method = params[:get_method]
     ActiveRecord::Base.transaction do
       @order = current_user.bought_orders.build(order_params)
       @order.seller_id = params[:order][:seller_id]
@@ -22,22 +37,11 @@ class OrdersController < ApplicationController
       @order.city_id = params[:order][:city]
       @order.district_id = params[:order][:district]
       # 加入商品
-      @order.add_items_from_cart(current_cart, params[:order][:seller_id])
+      @order.add_items_from_cart(current_cart)
       # 计算价格
       @order.calculate_total_price
-      if get_method.blank?
-        error_message = {:get_method =>["不能为空"]}
-        return redirect_to :back, flash: { alert: combine_error_message(error_message, "order") }
-      end
-
       if @order.save
-        if get_method == "self_driven"
-          @order.switch_to_self_driven
-          conversation = @order.send_order_info_message
-          redirect_to chat_path(chat_id: conversation.id)
-        else
-          redirect_to checkout_path(@order)
-        end
+        redirect_to checkout_path(@order)
       else
         redirect_to :back, flash: { alert: combine_error_message(@order.errors.messages, "order") }
       end
@@ -47,7 +51,7 @@ class OrdersController < ApplicationController
   def checkout
     @order = Order.find(params[:id])
     Rollbar.info("#{current_user.email}进入订单结算页面啦！Order ID: #{@order.id}. 可在#{admin_order_url(@order)}查看")
-    redirect_to :back if !%(wait_pay self_driven).include?(@order.state)
+    redirect_to :back if !%(wait_pay free).include?(@order.state)
   end
 
   def ship

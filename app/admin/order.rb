@@ -3,7 +3,7 @@ ActiveAdmin.register Order do
 
   member_action :pay_order, method: :put do
     return if current_admin_user.blank?
-    resource.pay if resource.wait_pay? || resource.self_driven?
+    resource.pay if resource.wait_pay? || resource.free?
     redirect_to resource_path, notice: "已标记为支付状态!"
   end
 

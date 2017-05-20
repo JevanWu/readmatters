@@ -5,7 +5,7 @@ source 'http://rubygems.org'
 ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.0.2'
+gem 'rails', '5.1.1'
 # Use postgres as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -13,7 +13,7 @@ gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails'
+gem 'coffee-rails', '~> 4.2'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
@@ -48,7 +48,7 @@ gem 'activeadmin', '~> 1.0.0'
 #
 #
 # Sign in/up helper
-gem 'devise', '~> 4.2.1'
+gem 'devise', '~> 4.3'
 #
 # Fontawesome
 gem 'font-awesome-rails'

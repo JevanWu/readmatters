@@ -32,10 +32,10 @@ zh:
   models:
 
   attributes:
-    user:
-      name: 姓名
-      current_location: 所在地
-      phone: 手机
+    # user:
+    #   name: 姓名
+    #   current_location: 所在地
+    #   phone: 手机
     product:
       tags: 书籍标签
       price: 售卖价格

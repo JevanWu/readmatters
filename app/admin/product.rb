@@ -21,7 +21,7 @@ ActiveAdmin.register Product do
     column :tags
     column :summary
     column :user do |product|
-      link_to "#{product.user.name} (#{product.user.email})", admin_user_path(product)
+      link_to "#{product.user.name} (#{product.user.email})", admin_user_path(product.user)
     end
     column :created_at
     actions

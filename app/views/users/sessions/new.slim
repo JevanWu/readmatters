@@ -12,7 +12,7 @@
       = f.input :password, required: false, label: false, placeholder: t('.password_placeholder')
       .form-group
         .col-sm-offset-2.col-sm-8
-          = f.button :submit, t(:signin), class: "btn btn-theme form-submit"
+          = f.button :submit, t(:signin), class: "btn btn-theme form-submit", id: "signin"
       .form-group
         .col-sm-offset-2.col-sm-8
           = f.input :remember_me, label: t(:remember_me), as: :boolean, label_html: {style: "font-size: 14px; line-height: 21px;"} if devise_mapping.rememberable?

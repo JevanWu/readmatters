@@ -25,3 +25,5 @@ db/seeds.rb
 /config/application.yml
 
 .byebug_history
+
+node_modules

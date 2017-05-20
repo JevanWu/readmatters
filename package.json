@@ -1,0 +1,11 @@
+{
+  "name": "readmatters",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@bitbucket.org:readmatters/readmatters.git",
+  "author": "Jevan Wu <jevanwu@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jquery.cookie": "^1.4.1"
+  }
+}

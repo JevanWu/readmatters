@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.turbolinks
+//= require jquery.cookie.js
 //= require turbolinks
 //= require jquery.masonry.min
 //= require bootstrap/dropdown

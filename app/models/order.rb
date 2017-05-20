@@ -12,18 +12,18 @@ class Order < ApplicationRecord
   before_create :generate_pay_code
   after_create :lock_products
   #after_create :check_expiration
-  #
+
   alias_attribute :buyer_id, :user_id
 
   default_scope { order(created_at: :desc) }
 
-  validates :province_id, :city_id, :district_id, :street, :receiver_name, :receiver_phone, presence: true
+  validates :province_id, :city_id, :district_id, :street, :receiver_name, :receiver_phone, presence: true, if: Proc.new{ !self.free? }
   validates :total_price, numericality: { greater_than_or_equal_to: 0 }
 
   #order_state (wait_pay, failure, wait_ship, wait_confirm, success, wait_refund, refunded)
   state_machine :state, initial: :wait_pay do
 
-    after_transition [:wait_pay, :self_driven] => :wait_ship, :do => :change_product_to_sold
+    after_transition [:wait_pay, :free] => :wait_ship, :do => :change_product_to_sold
     after_transition :wait_pay => :failure, :do => :unlock_products
 
     after_transition :wait_pay => :wait_ship, :do => :send_buyer_paid_notification
@@ -34,7 +34,7 @@ class Order < ApplicationRecord
     after_transition :wait_confirm => :success, :do => :send_seller_success_notification
 
     event :pay do
-      transition [:wait_pay, :self_driven] => :wait_ship
+      transition [:wait_pay, :free] => :wait_ship
     end
 
     event :ship do
@@ -57,8 +57,8 @@ class Order < ApplicationRecord
       transition :wait_refund => :refunded
     end
 
-    event :switch_to_self_driven do
-      transition :wait_pay => :self_driven
+    event :switch_to_free do
+      transition :wait_pay => :free
     end
 
   end

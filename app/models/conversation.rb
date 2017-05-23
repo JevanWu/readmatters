@@ -24,7 +24,7 @@ class Conversation < ActiveRecord::Base
   end
 
   def unread_count(user)
-    self.messages.where(read_at: nil).where.not(user_id: user.id).count
+    self.messages.unread.where.not(user_id: user.id).count
   end
 
   def send_message(user, message)

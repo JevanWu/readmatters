@@ -30,4 +30,11 @@ class MailerPreview < ActionMailer::Preview
     order = Order.first
     Mailer.seller_order_success_notification(user, order)
   end
+
+  def unread_message_notification
+    user = User.first
+    message_content = "你好啊"
+    sender = User.last
+    Mailer. unread_message_notification(user, sender, message_content)
+  end
 end

@@ -8,11 +8,14 @@ class Mailer < ActionMailer::Base
     mail(to: "84135180@qq.com", subject: 'Welcome to My Awesome Site')
   end
 
-  #验证邮箱
-  # def confirm_email(user)
-  #   @user = user
-  #   mail(to: @user.email, subject: "")
-  # end
+  #未读消息提醒
+  def unread_message_notification(user, sender, message_content)
+    @user = user
+    @sender = sender
+    @message_content = message_content
+    @cta_url = chat_url
+    mail(to: @user.email, subject: "#{@sender.name}一天前给您发送了一条消息，请及时查看")
+  end
 
   #欢迎注册
 

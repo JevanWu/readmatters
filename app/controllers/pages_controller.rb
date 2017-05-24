@@ -19,9 +19,9 @@ class PagesController < ApplicationController
   end
 
   def search
-    book_name = params[:key_word][:book_name]
-    @products = Product.available.eager_load(:book).where("lower(books.name) LIKE ?", "%#{book_name.downcase}%")
-    @title = "关键字：#{book_name}"
+    keyword = params[:keyword]
+    @products = Product.available.eager_load(:book).where("lower(books.name) LIKE :keyword or lower(books.author) LIKE :keyword", keyword: "%#{keyword.downcase}%")
+    @title = "关键字：#{keyword}"
     render "home"
   end
 

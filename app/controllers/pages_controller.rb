@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     @cart = current_cart
     if current_user.present?
       @products = Product.available.eager_load(:book).eager_load(:user).where.not(user_id: current_user.id, book_id: nil)
-      @products.sort_by!{|product| product.user.current_location == current_user.current_location ? -1 : 1}
+      @products = @products.sort_by{|product| product.user.current_location == current_user.current_location ? -1 : 1}
     else
       @products = Product.available.eager_load(:book).where.not(book_id: nil)
     end

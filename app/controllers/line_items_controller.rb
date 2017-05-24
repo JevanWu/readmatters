@@ -6,12 +6,6 @@ class LineItemsController < ApplicationController
 
     @line_item = current_cart.add_product(product)
 
-    # if @line_item.save
-    #   redirect_to new_order_path
-    # else
-    #   redirect_to root_path
-    # end
-
     respond_to do |format|
       if @line_item.save
         @current_item = @line_item

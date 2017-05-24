@@ -3,9 +3,9 @@ class Order < ApplicationRecord
   belongs_to :seller, class_name: "User", foreign_key: "seller_id"
   has_many :line_items
   has_many :products, through: :line_items
-  belongs_to :province
-  belongs_to :city
-  belongs_to :district
+  belongs_to :province, optional: true
+  belongs_to :city, optional: true
+  belongs_to :district, optional: true
 
   before_create :generate_identifier
   before_create :calculate_total_price

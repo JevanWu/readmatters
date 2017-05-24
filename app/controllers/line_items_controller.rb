@@ -10,7 +10,7 @@ class LineItemsController < ApplicationController
       if @line_item.save
         @current_item = @line_item
         format.js { render "create", layout: false }
-        format.html { redirect_to cart_path(current_cart) }
+        format.html { redirect_to cart_path }
       else
         format.html { redirect_to root_path }
       end

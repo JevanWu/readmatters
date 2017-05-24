@@ -64,7 +64,7 @@ Rails.application.routes.draw do
   get "sold_orders", to: "orders#sold_orders"
   get "bought_orders", to: "orders#bought_orders"
 
-  resources :carts, only: [:show]
+  get "cart", to: "carts#show", as: :cart
 
   resources :line_items, only: [:create, :destroy]
 

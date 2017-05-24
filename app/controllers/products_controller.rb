@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
   before_action :check_infomation_completeness, only: [:show]
   before_action :set_product, except: [:book_links, :new, :create, :show]
   before_action :authenticate_owner, only: [:edit, :withdraw]

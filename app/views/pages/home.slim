@@ -1,22 +1,23 @@
 = render "shared/jumbotron", content: @title || "让有故事的书籍拥有更多故事"
 .grey-division
-  #container
-    - @products.each do |product|
-      .item
-        .cover
-          = link_to image_tag(product.cover.url), product_path(product)
-          - if current_user.present? && current_user.current_location == product.user.current_location
-            .city.tag
-              = "同城"
-          /*.user-avatar*/
-          /*  = image_tag product.user.avatar.url(:thumb)*/
+  .container
+    #container
+      - @products.each do |product|
+        .item
+          .cover
+            = link_to image_tag(product.cover.url), product_path(product)
+            - if current_user.present? && current_user.current_location == product.user.current_location
+              .city.tag
+                = "同城"
+            /*.user-avatar*/
+            /*  = image_tag product.user.avatar.url(:thumb)*/
 
-        .title
-          = link_to product.name, product_path(product)
-        .price
-          = number_to_currency(product.price, unit: "")
-          span.warning-text style="text-decoration: line-through; margin-left: 5px;"
-            = number_to_currency(product.book.price, unit: "")
+          .title
+            = link_to product.name, product_path(product)
+          .price
+            = number_to_currency(product.price, unit: "")
+            span.warning-text style="text-decoration: line-through; margin-left: 5px;"
+              = number_to_currency(product.book.price, unit: "")
 
 - content_for :page_css
   = stylesheet_link_tag "pages/home"

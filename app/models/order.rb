@@ -122,7 +122,8 @@ class Order < ApplicationRecord
     conversation
   end
 
-  def test
+  def state_text
+    I18n.t("activerecord.state_machines.#{self.class.to_s.downcase}.states.#{self.state}")
   end
 
   private

@@ -22,19 +22,33 @@ en:
               blank: "书籍简介不能为空"
             tags:
               blank: "书籍标签不能为空"
-    attributes:
-      product:
-        tags: Tags
-        price: Price
-        summary: Summary
-    orders:
+
+    state_machines:
+      order:
+        states:
+          wait_pay: 等待付款
+          wait_ship: 等待卖家发货
+          wait_confirm: 等待买家收货
+          success: 成功完成交易
+          failure: 订单已失效
+          wait_refund: 等待退款
+          refunded: 已退款
+          free: 自行联系
+
+  attributes:
+    user:
+      name: 姓名
+      current_location: 所在地
+      phone: 手机
+    product:
+      tags: 书籍标签
+      price: 售卖价格
+      summary: 书籍简介
+    order:
+      province_id: 所在省
+      city_id: 所在市
+      district_id: 所在区
+      street: 详细地址
+      receiver_name: 收书人姓名
+      receiver_phone: 收书人手机
       get_method: 获取方式
-      state:
-        wait_pay: 等待付款
-        wait_ship: 等待卖家发货
-        wait_confirm: 等待买家收货
-        success: 成功完成交易
-        failure: 订单已失效
-        wait_refund: 等待退款
-        refunded: 已退款
-        free: 自行联系

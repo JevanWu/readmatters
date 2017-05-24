@@ -35,20 +35,25 @@ en:
           refunded: 已退款
           free: 自行联系
 
-  attributes:
-    user:
-      name: 姓名
-      current_location: 所在地
-      phone: 手机
-    product:
-      tags: 书籍标签
-      price: 售卖价格
-      summary: 书籍简介
-    order:
-      province_id: 所在省
-      city_id: 所在市
-      district_id: 所在区
-      street: 详细地址
-      receiver_name: 收书人姓名
-      receiver_phone: 收书人手机
-      get_method: 获取方式
+    models:
+      user: 用户
+      product: 商品
+      order: 订单
+
+    attributes:
+      user:
+        name: 姓名
+        current_location: 所在地
+        phone: 手机
+      product:
+        tags: 书籍标签
+        price: 售卖价格
+        summary: 书籍简介
+      order:
+        province_id: 所在省
+        city_id: 所在市
+        district_id: 所在区
+        street: 详细地址
+        receiver_name: 收书人姓名
+        receiver_phone: 收书人手机
+        get_method: 获取方式

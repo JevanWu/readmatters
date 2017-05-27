@@ -1,6 +1,6 @@
 class Book < ApplicationRecord
 
-  attr_accessor :cover_url
+  # attr_accessor :cover_url
   # before_create :cover_from_url
 
   has_many :products

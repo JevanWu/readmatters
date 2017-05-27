@@ -18,10 +18,10 @@ class ProductsController < ApplicationController
       @book_list.push(*response["books"])
     rescue => e
       # 从数据库查询结果
-      if books = Book.where(name: params[:book_name]) && books.present?
+      if books = Book.where(name: params[:book_name])
         @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)
         books.each do |book|
-          @book_list << {:image => book.cover_url, :title => book.name, :summary => book.summary,
+          @book_list << {:image => book.original_cover, :title => book.name, :summary => book.summary,
                          :tags => book.tags, :author_intro => book.author_intro, :catalog => book.catalog }
         end
       else
@@ -63,6 +63,7 @@ class ProductsController < ApplicationController
                             publisher: new_book["publisher"],
                             published_date: new_book["published_date"],
                             raw_data: new_book,
+                            # 暂时不自己保存图片了
                             # cover_url: new_book["image"],
                            )
       end
@@ -156,7 +157,7 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:tags, :cover_url, :price, :summary, :book_id)
+      params.require(:product).permit(:tags, :price, :summary, :book_id)
     end
 
     def book_extra_params

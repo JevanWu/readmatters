@@ -18,10 +18,10 @@ class ProductsController < ApplicationController
       @book_list.push(*response["books"])
     rescue => e
       # 从数据库查询结果
-      if books = Book.where(name: params[:book_name]) && books.present?
+      if books = Book.where(name: params[:book_name])
         @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)
         books.each do |book|
-          @book_list << {:image => book.cover_url, :title => book.name, :summary => book.summary,
+          @book_list << {:image => book.original_cover, :title => book.name, :summary => book.summary,
                          :tags => book.tags, :author_intro => book.author_intro, :catalog => book.catalog }
         end
       else
@@ -47,14 +47,27 @@ class ProductsController < ApplicationController
       @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)
       new_book = @book_list[params[:book_id]]
       isbn = new_book["isbn13"] || new_book["isbn10"]
-      @book = Book.find_by(isbn: isbn)
-      if @book.blank?
-        tags = new_book["tags"].map{ |tag| tag["name"] }.join(", ")
-        @book = Book.create( isbn: isbn, name: new_book["title"], tags: tags, cover_url: new_book["image"],
-                            price: new_book["price"], summary: new_book["summary"], author: new_book["author"].join(", "),
-                            author_intro: new_book["author_intro"], catalog: new_book["catalog"], original_cover: new_book["image"],
-                            publisher: new_book["publisher"], published_date: new_book["published_date"], raw_data: new_book)
-      end
+      @book = Book.find_or_create_by(isbn: isbn)
+      tags = new_book["tags"].map{ |tag| tag["name"] }.join(", ")
+      @book.update(
+                    isbn: isbn,
+                    name: new_book["title"],
+                    tags: tags,
+                    price: new_book["price"],
+                    summary: new_book["summary"],
+                    author: new_book["author"].join(", "),
+                    author_intro: new_book["author_intro"],
+                    catalog: new_book["catalog"],
+                    original_cover: new_book["image"],
+                    hq_cover: new_book["images"]["large"],
+                    publisher: new_book["publisher"],
+                    published_date: new_book["published_date"],
+                    rating: new_book["rating"]["average"],
+                    num_of_raters: new_book["rating"]["numRaters"],
+                    raw_data: new_book,
+                    # 暂时不自己保存图片了
+                    # cover_url: new_book["image"],
+                  )
       @product.book_id = @book.id
       @book_id = params[:book_id]
     end
@@ -145,7 +158,7 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:tags, :cover_url, :price, :summary, :book_id)
+      params.require(:product).permit(:tags, :price, :summary, :book_id)
     end
 
     def book_extra_params

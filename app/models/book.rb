@@ -1,11 +1,11 @@
 class Book < ApplicationRecord
 
-  attr_accessor :cover_url
-  before_create :cover_from_url
+  # attr_accessor :cover_url
+  # before_create :cover_from_url
 
   has_many :products
 
-  validates :name, :price, :author, :summary, presence: true
+  validates :name, :price, :author, :summary, :original_cover, presence: true
 
   has_attached_file :cover, :default_url => "/images/:style/missing.png",
                             :path => Figaro.env.paperclip_storage_path,

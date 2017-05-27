@@ -2,7 +2,7 @@ require "open-uri"
 class Product < ApplicationRecord
   extend Enumerize
 
-  attr_accessor :cover_url
+  #attr_accessor :cover_url
   #before_create :cover_from_url
 
   belongs_to :user
@@ -22,6 +22,7 @@ class Product < ApplicationRecord
 
   delegate :author_intro, :catalog, to: :book
   delegate :cover, to: :book
+  delegate :original_cover, to: :book
 
   scope :available, -> { with_status(:normal) }
   scope :locked, -> { with_status(:locked) }
@@ -52,5 +53,13 @@ class Product < ApplicationRecord
 
   def book_tags
     self.tags_before_type_cast || book&.tags
+  end
+
+  def cover_url
+    begin
+      self.original_cover || "books/missing_cover.jpg"
+    rescue
+      "books/missing_cover.jpg"
+    end
   end
 end

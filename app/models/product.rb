@@ -22,6 +22,7 @@ class Product < ApplicationRecord
 
   delegate :author_intro, :catalog, to: :book
   delegate :cover, to: :book
+  delegate :original_cover, to: :book
 
   scope :available, -> { with_status(:normal) }
   scope :locked, -> { with_status(:locked) }

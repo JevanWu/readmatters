@@ -68,7 +68,6 @@ class ProductsController < ApplicationController
                     # 暂时不自己保存图片了
                     # cover_url: new_book["image"],
                   )
-      end
       @product.book_id = @book.id
       @book_id = params[:book_id]
     end

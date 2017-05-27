@@ -62,6 +62,9 @@ class ProductsController < ApplicationController
                             original_cover: new_book["image"],
                             publisher: new_book["publisher"],
                             published_date: new_book["published_date"],
+                            rating: new_book["rating"]["average"],
+                            num_of_raters: new_book["rating"]["numRaters"],
+                            hq_cover: new_book["images"]["large"],
                             raw_data: new_book,
                             # 暂时不自己保存图片了
                             # cover_url: new_book["image"],

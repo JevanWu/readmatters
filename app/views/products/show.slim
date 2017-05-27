@@ -92,7 +92,7 @@
                 i.fa.fa-weibo
             .col-md-4.text-center.social#wechat
               i.fa.fa-wechat
-               - @qr = RQRCode::QRCode.new("#{request.base_url}#{request.path}", :size => 4, :level => :h )
+                - @qr = RQRCode::QRCode.new("#{request.base_url}#{request.path}", :size => 8, :level => :h )
               .qrcode
                 = raw @qr.as_html
             = link_to "https://www.linkedin.com/shareArticle?url=#{request.original_url}&title=#{social_share_title(@product)}&source=#{social_share_source}&summary=#{social_share_summary(@product)}&mini=true", target: "_blank", ref: "nofollow" do

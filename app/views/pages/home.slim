@@ -1,4 +1,14 @@
-= render "shared/jumbotron", content: @title || "让有故事的书籍拥有更多故事"
+/= render "shared/jumbotron", content: @title || "让有故事的书籍拥有更多故事"
+.jumbotron
+  .slogan
+    - if current_user.present?
+      h1
+        = "让有故事的书籍拥有更多故事"
+    - else
+      h1
+        = "现在开始发布你的书籍"
+      .publish-action#publish-book
+        = link_to t(:publish_book), book_name_products_path, class: "btn btn-default emphasis-btn"
 .grey-division
   .container
     #container

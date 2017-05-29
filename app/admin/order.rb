@@ -31,7 +31,7 @@ ActiveAdmin.register Order do
     column :updated_at
     column :total_price
     column :state do |order|
-      I18n.t("attributes.orders.state.#{order.state}")
+      order.state_text
     end
     column :pay_code
 

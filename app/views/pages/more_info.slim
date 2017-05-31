@@ -1,7 +1,7 @@
 = render "users/shared/avatar", title: t(".want_know_more")
 .grey-division
   .container
-    .narrow-form.mg-auto
+    .narrow-form.mg-auto.mt20
       = simple_form_for @user, url: update_more_info_url do |f|
         = f.input :name
         = f.input :current_location

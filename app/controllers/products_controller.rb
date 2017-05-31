@@ -89,6 +89,9 @@ class ProductsController < ApplicationController
       return redirect_to :back, flash: { alert: "您已经发布过该书籍" }
     end
     @product.user = current_user
+    book = @product.book
+    book.category_list = params[:category_list]
+    book.save
     if @product.save
       # redirect_to product_path(@product)
       redirect_to upload_photo_product_path(@product)

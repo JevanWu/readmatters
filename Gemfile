@@ -94,6 +94,8 @@ gem 'rqrcode', '~>0.10'
 
 gem 'whenever', :require => false
 
+gem 'acts-as-taggable-on', '~> 4.0'
+
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do
   gem 'web-console', '~> 2.0'

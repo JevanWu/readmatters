@@ -139,7 +139,7 @@ class ProductsController < ApplicationController
 
   def withdraw
     @product.update(status: "withdrawn")
-    redirect_to my_books_path, flash: { notice: "《#{@product.name}》下架成功" }
+    redirect_to personal_books_path, flash: { notice: "《#{@product.name}》下架成功" }
   end
 
   private

@@ -20,6 +20,8 @@ class User < ApplicationRecord
     # qiniu server:     :path => ":class/:attachment/:id/:basename.:extension"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  before_create :set_personal_link
+
   validates :email, presence: true, on: :create
   validates :name, :current_location, :phone, presence: true, on: :more_info
   validates_format_of :name, with: /[^0-9]+/, on: :more_info #/\A[\u4E00-\u9FA5]{1,4}\z/
@@ -40,5 +42,13 @@ class User < ApplicationRecord
   def read_message(conversation)
     sender = conversation.opposed_user(self)
     conversation.messages.where(user: sender).update_all(read_at: Time.current)
+  end
+
+  def set_personal_link
+    self.personal_link = Pinyin.t(self.name, splitter: '-')
+  end
+
+  def to_param
+    personal_link
   end
 end

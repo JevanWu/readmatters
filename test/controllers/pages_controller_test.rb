@@ -14,11 +14,8 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to more_info_path
   end
 
-  test "should get my_books" do
-    get my_books_path
-    assert_redirected_to new_user_session_path
-    sign_in @user
-    get my_books_path
+  test "should get personal_books" do
+    get personal_books_path(@user)
     assert_response :success
   end
 

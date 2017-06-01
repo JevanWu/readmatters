@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   #
   get "more_info", to: "pages#more_info", as: :more_info
   get "about_us", to: "pages#about_us", as: :about_us
-  get "my_books", to: "pages#my_books", as: :my_books
+  get "/people/:personal_link/books", to: "pages#personal_books", as: :personal_books
   patch "update_more_info", to: "pages#update_more_info", as: :update_more_info
   get "chat", to: "chats#index", as: :chat
   post "conversation", to: "chats#conversation", as: :conversation

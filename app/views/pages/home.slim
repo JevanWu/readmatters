@@ -1,4 +1,10 @@
 /= render "shared/jumbotron", content: @title || "让有故事的书籍拥有更多故事"
+
+- if params[:action] == "personal_books"
+  - content_for :title_tag
+    title
+      = "#{t("books_of", name: user.name, scope: :page_title)} | Readmatters"
+
 .jumbotron
   .slogan
     - if current_user.present?

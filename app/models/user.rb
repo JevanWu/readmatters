@@ -20,7 +20,7 @@ class User < ApplicationRecord
     # qiniu server:     :path => ":class/:attachment/:id/:basename.:extension"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-  before_create :set_personal_link
+  before_save :set_personal_link
 
   validates :email, presence: true, on: :create
   validates :name, :current_location, :phone, presence: true, on: :more_info
@@ -45,17 +45,17 @@ class User < ApplicationRecord
   end
 
   def set_personal_link
-    return self.personal_link if self.personal_link.present?
-
-    link = Pinyin.t(self.name, splitter: '-')
-    index = 0
-    final_link = link
-    loop do
-      break if !User.exists?(personal_link: final_link)
-      index += 1
-      final_link = "#{link}-%02d" % [index]
+    if self.personal_link.blank?
+      link = Pinyin.t(self.name, splitter: '-')
+      index = 0
+      final_link = link
+      loop do
+        break if !User.exists?(personal_link: final_link)
+        index += 1
+        final_link = "#{link}-%02d" % [index]
+      end
+      self.personal_link = final_link
     end
-    self.personal_link = final_link
   end
 
   def to_param

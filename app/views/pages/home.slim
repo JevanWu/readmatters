@@ -3,7 +3,7 @@
 - if params[:action] == "personal_books"
   - content_for :title_tag
     title
-      = "#{t("books_of", name: user.name, scope: :page_title)} | Readmatters"
+      = "#{t("books_of", name: @user.name, scope: :page_title)} | Readmatters"
 
 .jumbotron
   .slogan

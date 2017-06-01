@@ -34,7 +34,7 @@ SitemapGenerator::Sitemap.create do
     add product_path(product), priority: 0.9
   end
 
-  User.find_each do |user|
+  User.where.not(personal_link: nil).find_each do |user|
     add personal_books_path(user), priority: 0.9
   end
 end

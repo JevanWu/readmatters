@@ -24,9 +24,13 @@ SitemapGenerator::Sitemap.create do
   #   Article.find_each do |article|
   #     add article_path(article), :lastmod => article.updated_at
   #   end
-  Add '/users/sign_in', priority: 1
+  add '/users/sign_in', priority: 1
 
-  Add '/users/sign_up', priority: 1
+  add '/users/sign_up', priority: 1
 
-  Add '/about_us', priority: 1
+  add '/about_us', priority: 1
+
+  Product.find_each do |product|
+    add product_path(product), priority: 0.9
+  end
 end

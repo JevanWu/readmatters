@@ -33,4 +33,8 @@ SitemapGenerator::Sitemap.create do
   Product.find_each do |product|
     add product_path(product), priority: 0.9
   end
+
+  User.find_each do |user|
+    add personal_books_path(user), priority: 0.9
+  end
 end

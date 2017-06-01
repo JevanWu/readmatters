@@ -370,6 +370,8 @@ GEM
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
+    sitemap_generator (5.3.1)
+      builder (~> 3.0)
     slack-notifier (2.1.0)
     slim (3.0.8)
       temple (>= 0.7.6, < 0.9)
@@ -480,6 +482,7 @@ DEPENDENCIES
   sendcloud-mailer
   sidekiq (~> 4.2.7)
   simple_form
+  sitemap_generator
   slack-notifier
   slim-rails (~> 3.1.1)
   spring

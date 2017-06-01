@@ -96,6 +96,8 @@ gem 'whenever', :require => false
 
 gem 'chinese_pinyin'
 
+gem 'sitemap_generator'
+
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do
   gem 'web-console', '~> 2.0'

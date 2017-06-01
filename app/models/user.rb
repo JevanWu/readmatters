@@ -45,7 +45,17 @@ class User < ApplicationRecord
   end
 
   def set_personal_link
-    self.personal_link = Pinyin.t(self.name, splitter: '-')
+    return self.personal_link if self.personal_link.present?
+
+    link = Pinyin.t(self.name, splitter: '-')
+    index = 0
+    final_link = link
+    loop do
+      break if !User.exists?(personal_link: final_link)
+      index += 1
+      final_link = "#{link}-%02d" % [index]
+    end
+    self.personal_link = final_link
   end
 
   def to_param

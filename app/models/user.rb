@@ -45,7 +45,7 @@ class User < ApplicationRecord
   end
 
   def set_personal_link
-    if self.personal_link.blank?
+    if self.name.present? && self.personal_link.blank?
       link = Pinyin.t(self.name, splitter: '-')
       index = 0
       final_link = link

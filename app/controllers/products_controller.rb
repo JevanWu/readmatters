@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
                          :tags => book.tags, :author_intro => book.author_intro, :catalog => book.catalog }
         end
       else
-        redirect_to :back, flash: { alert: "搜索不到该书籍，请联系我们解决" }
+        redirect_back(fallback_location: book_name_products_url, flash: { alert: "搜索不到该书籍，请联系我们解决" })
         # redirect_to new_product_path, flash: { notice: controller_translate("fetch_occur_error") }
       end
     end
@@ -86,14 +86,14 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if duplicated?(@product)
-      return redirect_to :back, flash: { alert: "您已经发布过该书籍" }
+      return redirect_back(fallback_location: root_url, flash: { alert: "您已经发布过该书籍" })
     end
     @product.user = current_user
     if @product.save
       # redirect_to product_path(@product)
       redirect_to upload_photo_product_path(@product)
     else
-      redirect_to :back, flash: { alert: combine_error_message(@product.errors.messages, "product") }
+      redirect_back(fallback_location: new_product_url, flash: { alert: combine_error_message(@product.errors.messages, "product") })
     end
   end
 
@@ -150,7 +150,7 @@ class ProductsController < ApplicationController
     end
 
     def authenticate_owner
-      redirect_to :back if @product.owner != current_user
+      redirect_back(fallback_location: root_url, flash: { alert: "不好意思，您没有该操作的权利" }) if @product.owner != current_user
     end
 
     def set_product

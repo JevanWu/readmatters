@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
 
   def create
     if current_cart.line_items.blank?
-      return redirect_to :back, flash: { error: controller_translate("can_not_buy") }
+      return redirect_back(fallback_location: root_url, flash: { error: controller_translate("can_not_buy") })
     end
     ActiveRecord::Base.transaction do
       @order = current_user.bought_orders.build(order_params)
@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
       if @order.save
         redirect_to checkout_path(@order)
       else
-        redirect_to :back, flash: { alert: combine_error_message(@order.errors.messages, "order") }
+        redirect_back(fallback_location: root_url, flash: { alert: combine_error_message(@order.errors.messages, "order") })
       end
     end
   end
@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
   def checkout
     @order = Order.find(params[:id])
     SlackNotifier.ping("#{current_user.email}进入订单结算页面啦！Order ID: #{@order.id}. 可在#{admin_order_url(@order)}查看")
-    redirect_to :back if !%(wait_pay free).include?(@order.state)
+    redirect_back(fallback_location: root_url) if !%(wait_pay free).include?(@order.state)
   end
 
   def ship

@@ -43,7 +43,7 @@ class PagesController < ApplicationController
     if @user.save(context: :more_info)
       redirect_to root_path
     else
-      redirect_to :back, flash: { alert: combine_error_message(@user.errors.messages, "user") }
+      redirect_back(fallback_location: root_url, flash: { alert: combine_error_message(@user.errors.messages, "user") })
     end
   end
 

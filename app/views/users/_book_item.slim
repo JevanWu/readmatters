@@ -9,7 +9,7 @@
   .panel.timeline-content
     .panel-body
       table
-        .header 
+        .header
           /ul.row
           /  li.col-sm-4
           /    = order.identifier
@@ -20,7 +20,7 @@
         - order.line_items.each_with_index do |item, index|
           tr
             td.cover
-              = image_tag item.product.cover.url
+              = image_tag item.product.cover_url
             td.quantity
               = item.product.name
             /td.price

@@ -78,7 +78,7 @@ Rails.application.routes.draw do
 
   get 'checkout/:id' => 'orders#checkout', as: :checkout
 
-  post '/search' => 'pages#search', as: :search
+  get '/search' => 'pages#search', as: :search
   get '/owner/:id' => 'pages#owner', as: :owner
 
 

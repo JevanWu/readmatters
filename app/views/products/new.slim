@@ -27,6 +27,14 @@
               | （您可自行对生成的书籍简介进行编辑）
           = f.input :summary, required: false, label: false, input_html: { rows: 10, value: @product.book_summary }
 
+        .form-group.string.optional.category-tags
+          label.string.optional.control-label for="category_tags"
+            | 书籍分类
+            span.theme-text
+              | （精准的书籍分类标签能更有效地帮您找到买家）
+          .category-input
+            = text_field_tag 'category_list', nil, value: "Amsterdam,Washington", data: {role: "tagsinput"}, class: "form-control"
+
         .form-group.string.optional.product_tags
           label.string.optional.control-label for="product_tags"
             | 书籍标签
@@ -40,3 +48,10 @@
 - content_for :page_css
   = stylesheet_link_tag "products/new"
   = stylesheet_link_tag "products/show"
+  = stylesheet_link_tag 'bootstrap-tagsinput/dist/bootstrap-tagsinput', 'data-turbolinks-track' => false
+
+- content_for :page_js
+  = javascript_include_tag 'bootstrap-tagsinput/dist/bootstrap-tagsinput.min', 'data-turbolinks-track' => false
+  = javascript_include_tag 'typeahead.js/dist/typeahead.jquery.min', 'data-turbolinks-track' => false
+  = javascript_include_tag 'typeahead.js/dist/bloodhound.min', 'data-turbolinks-track' => false
+  = javascript_include_tag 'products/new', 'data-turbolinks-track' => false

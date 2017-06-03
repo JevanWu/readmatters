@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       get "book_links", as: :book_links
       post "create_photo", as: :create_photo
       delete "delete_photo", as: :delete_photo
+      get "fetch_category_tags"
     end
     member do
       get "upload_photo", as: :upload_photo

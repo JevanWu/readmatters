@@ -89,11 +89,12 @@ class ProductsController < ApplicationController
       return redirect_to :back, flash: { alert: "您已经发布过该书籍" }
     end
     @product.user = current_user
-    book = @product.book
-    book.category_list = params[:category_list]
-    book.save
     if @product.save
       # redirect_to product_path(@product)
+      book = @product.book
+      if params[:category_list].present?
+        book.category_list.add(params[:category_list], parse: true)
+      end
       redirect_to upload_photo_product_path(@product)
     else
       redirect_to :back, flash: { alert: combine_error_message(@product.errors.messages, "product") }
@@ -143,6 +144,12 @@ class ProductsController < ApplicationController
   def withdraw
     @product.update(status: "withdrawn")
     redirect_to my_books_path, flash: { notice: "《#{@product.name}》下架成功" }
+  end
+
+  def fetch_category_tags
+    a = [{"tag": "hello"}, {"tag": "world"}, {"tag": "test"}, {"tag": "why"}]
+    byebug
+    render json: a, status: :ok
   end
 
   private

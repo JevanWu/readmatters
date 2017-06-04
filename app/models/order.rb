@@ -117,7 +117,7 @@ class Order < ApplicationRecord
   def send_order_info_message
     # build order message
     message = ApplicationController.new.render_to_string(partial: "messages/order_message_partial", locals: { order: self })
-    conversation = Conversation.fetch_or_create(self.seller, self.buyer)
+    conversation = Conversation.fetch_or_create(self.seller.id, self.buyer.id)
     conversation.send_message(self.buyer, message)
     conversation
   end

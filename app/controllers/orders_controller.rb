@@ -18,10 +18,11 @@ class OrdersController < ApplicationController
       # 计算价格
       @order.calculate_total_price
 
-      @order.switch_to_free
-      conversation = @order.send_order_info_message
-      if @order.save
+      if @order.switch_to_free
+        conversation = @order.send_order_info_message
         redirect_to chat_path(chat_id: conversation.id)
+      else
+        redirect_back(fallback_location: cart_path, flash: { alert: combine_error_message(@order.errors.messages, "order")})
       end
     end
   end

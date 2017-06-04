@@ -8,6 +8,6 @@
       = render 'conversations/conversation_content', messages: conversation.messages.order_by_time, user: user
   .panel-footer
     form
-      = text_area(:message, :body, class: "form-control")
+      = text_area(:message, :body, class: "form-control", placeholder: "请输入您的消息")
       .btn.btn-send.btn-theme data-user_id="#{user.id}" data-conversation_id="#{conversation.id}"
         = "发送"

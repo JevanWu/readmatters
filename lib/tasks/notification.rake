@@ -5,7 +5,7 @@ namespace :notification do
     Message.unread.where(created_at: 2.days.ago..1.days.ago).each do |message|
       sender = message.user
       recipient = message.conversation.opposed_user(sender)
-      unread_message_notification(recipient, sender, message.body)
+      Mailer.unread_message_notification(recipient, sender, message.body).deliver_later
     end
   end
 end

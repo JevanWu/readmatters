@@ -4,7 +4,7 @@
     .product-show-nav
       - @line_items.each do |item|
         .product-cover
-          = image_tag(item.product.cover.url)
+          = image_tag(item.product.cover_url)
     .order-form
       = render "form"
 

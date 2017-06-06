@@ -3,13 +3,13 @@
   .container.product-container
     .product-show-nav
       .product-cover
-        = image_tag @product.cover.url
+        = image_tag @product.cover_url
         /.name
         /  = @product.kind
       ul.nav-list
         li
           = link_to "书籍介绍", product_path(@product)
-        li 
+        li
           = link_to "书籍实照", photos_product_path(@product)
 
       - if current_user != @product.user
@@ -23,7 +23,7 @@
       - @product.photos.each do |photo|
         .col-md-3
           /magnific popup require 'href' attribtue to work
-          .image-box id="photo-#{photo.id}" data-photo="#{photo.id}" href="#{photo.image.url}" 
+          .image-box id="photo-#{photo.id}" data-photo="#{photo.id}" href="#{photo.image.url}"
             = image_tag photo.image.url
             = fa_icon("trash-o")
 

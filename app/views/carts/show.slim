@@ -26,7 +26,7 @@
           - value.each do |item|
             tr
               td class=("locked-item" if !item.product.available?)
-                = image_tag item.product.cover.url
+                = image_tag item.product.cover_url
               td class=("locked-item" if !item.product.available?)
                 = item.product.name
               - if !item.product.available?

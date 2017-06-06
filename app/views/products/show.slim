@@ -91,7 +91,7 @@
         .shares
           | 分享：
           .row
-            = link_to "http://service.weibo.com/share/share.php?url=#{request.original_url}&title=#{social_share_summary(@product)}&pic=#{@product.cover.url}", target: "_blank", ref: "nofollow" do
+            = link_to "http://service.weibo.com/share/share.php?url=#{request.original_url}&title=#{social_share_summary(@product)}&pic=#{@product.cover_url}", target: "_blank", ref: "nofollow" do
               .col-md-4.text-center.social
                 i.fa.fa-weibo
             .col-md-4.text-center.social#wechat
@@ -104,7 +104,7 @@
                 i.fa.fa-linkedin
       .owner-frame
         .owner-image
-          = image_tag @product.user.avatar.url
+          = image_tag @product.user.avatar.url(:thumb)
         .owner-info
           .owner-name
             = @product.user.name

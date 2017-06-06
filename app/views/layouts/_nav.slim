@@ -13,7 +13,7 @@ nav.navbar.navbar-fixed-top role="navigation"
         li
           = link_to "首页", root_path
       ul.navbar-right style="margin-right: 0px; margin-bottom: 0px;"
-        = form_tag "/search", class: "navbar-form navbar-left", role: "search"
+        = form_tag "/search", class: "navbar-form navbar-left", method: :get, role: "search"
           .form-group
             = text_field_tag "keyword", nil, class: "form-control", placeholder: "搜索书名、作者"
           = submit_tag t("search"), class: "btn btn-theme"

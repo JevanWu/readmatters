@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_action :check_infomation_completeness, except: [:more_info, :update_more_info]
-  before_action :authenticate_user!, only: [:more_info, :my_books]
+  before_action :authenticate_user!, only: [:more_info]
 
   def home
     @cart = current_cart
@@ -13,8 +13,9 @@ class PagesController < ApplicationController
     #@products = Product.available.eager_load(:book).eager_load(:user).where("users.current_location = ?", current_user.current_location).where.not(user_id: current_user.id)
   end
 
-  def my_books
-    @products = Product.available.eager_load(:book).where(user_id: current_user.id).where.not(book_id: nil)
+  def personal_books
+    @user = User.find_by(personal_link: params[:personal_link])
+    @products = Product.available.eager_load(:book).where(user_id: @user.id).where.not(book_id: nil)
     render "home"
   end
 
@@ -42,7 +43,7 @@ class PagesController < ApplicationController
     if @user.save(context: :more_info)
       redirect_to root_path
     else
-      redirect_to :back, flash: { alert: combine_error_message(@user.errors.messages, "user") }
+      redirect_back(fallback_location: root_url, flash: { alert: combine_error_message(@user.errors.messages, "user") })
     end
   end
 

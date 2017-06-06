@@ -104,6 +104,7 @@ GEM
     china_region_fu (0.1.0)
       activesupport (>= 4.0)
       httparty (~> 0.14.0)
+    chinese_pinyin (0.6.1.1)
     chronic (0.10.2)
     chunky_png (1.3.8)
     climate_control (0.2.0)
@@ -371,6 +372,8 @@ GEM
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
+    sitemap_generator (5.3.1)
+      builder (~> 3.0)
     slack-notifier (2.1.0)
     slim (3.0.8)
       temple (>= 0.7.6, < 0.9)
@@ -449,6 +452,7 @@ DEPENDENCIES
   capistrano-sidekiq (~> 0.10)
   capistrano3-puma (~> 1.2)
   china_region_fu (~> 0.1)
+  chinese_pinyin
   coffee-rails (~> 4.2)
   devise (~> 4.3)
   enumerize
@@ -481,6 +485,7 @@ DEPENDENCIES
   sendcloud-mailer
   sidekiq (~> 4.2.7)
   simple_form
+  sitemap_generator
   slack-notifier
   slim-rails (~> 3.1.1)
   spring

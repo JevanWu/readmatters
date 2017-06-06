@@ -2,9 +2,9 @@
 .grey-division
   .container.product-container
     .product-show-nav
-      - if @book&.cover&.present?
+      - if @book.original_cover.present?
         .product-cover
-          = image_tag(@book.cover.url)
+          = image_tag(@book.original_cover)
     .product-form.with-cover
       = simple_form_for @product do |f|
         /= f.input :cover_url, as: :hidden

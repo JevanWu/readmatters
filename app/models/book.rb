@@ -6,7 +6,7 @@ class Book < ApplicationRecord
 
   has_many :products
 
-  validates :name, :price, :author, :summary, :original_cover, :category_list, presence: true
+  validates :name, :price, :author, :summary, :original_cover, presence: true
 
   has_attached_file :cover, :default_url => "/images/:style/missing.png",
                             :path => Figaro.env.paperclip_storage_path,

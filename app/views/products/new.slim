@@ -33,14 +33,14 @@
             span.theme-text
               | （精准的书籍分类标签能更有效地帮您找到买家）
           .category-input
-            = text_field_tag 'category_list', nil, value: "Amsterdam,Washington", data: {role: "tagsinput"}, class: "form-control"
+            = text_field_tag 'category_list', nil, data: {role: "tagsinput"}, class: "form-control"
 
-        .form-group.string.optional.product_tags
-          label.string.optional.control-label for="product_tags"
-            | 书籍标签
-            span.theme-text
-              | （您可自行对生成的标签进行编辑）
-          = f.input :tags, required: false, label: false, input_html: { value: @product.book_tags }
+        /.form-group.string.optional.product_tags
+        /  label.string.optional.control-label for="product_tags"
+        /    | 书籍标签
+        /    span.theme-text
+        /      | （您可自行对生成的标签进行编辑）
+        /  = f.input :tags, required: false, label: false, input_html: { value: @product.book_tags }
         = f.input :book_id, as: :hidden, input_html: { value: @product.book_id }
         .form-group
           = f.submit t("submit"), class: "btn btn-default btn-theme", id: "create-product"
@@ -48,10 +48,10 @@
 - content_for :page_css
   = stylesheet_link_tag "products/new"
   = stylesheet_link_tag "products/show"
-  = stylesheet_link_tag 'bootstrap-tagsinput/dist/bootstrap-tagsinput', 'data-turbolinks-track' => false
+  = stylesheet_link_tag 'bootstrap-tagsinput/dist/bootstrap-tagsinput'
 
 - content_for :page_js
-  = javascript_include_tag 'bootstrap-tagsinput/dist/bootstrap-tagsinput.min', 'data-turbolinks-track' => false
-  = javascript_include_tag 'typeahead.js/dist/typeahead.jquery.min', 'data-turbolinks-track' => false
-  = javascript_include_tag 'typeahead.js/dist/bloodhound.min', 'data-turbolinks-track' => false
-  = javascript_include_tag 'products/new', 'data-turbolinks-track' => false
+  = javascript_include_tag 'bootstrap-tagsinput/dist/bootstrap-tagsinput.min'
+  = javascript_include_tag 'typeahead.js/dist/typeahead.jquery.min'
+  = javascript_include_tag 'typeahead.js/dist/bloodhound.min'
+  = javascript_include_tag 'products/new'

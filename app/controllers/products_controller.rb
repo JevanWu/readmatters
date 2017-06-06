@@ -146,10 +146,22 @@ class ProductsController < ApplicationController
     redirect_to my_books_path, flash: { notice: "《#{@product.name}》下架成功" }
   end
 
+  def prefetch_category_tags
+    ret = []
+    prefetch_tags.each do |tag|
+      ret << { "tag": tag }
+    end
+    render json: ret, status: :ok
+  end
+
   def fetch_category_tags
-    a = [{"tag": "hello"}, {"tag": "world"}, {"tag": "test"}, {"tag": "why"}]
-    byebug
-    render json: a, status: :ok
+    keyword = params[:keyword]
+    tags = ActsAsTaggableOn::Tag.where("name like ?", "%#{keyword}%")
+    ret = []
+    tags.each do |tag|
+      ret << { "tag": tag.name }
+    end
+    render json: ret, status: :ok
   end
 
   private
@@ -180,5 +192,9 @@ class ProductsController < ApplicationController
         published_date: @book["pubdate"].count("-") == 1 ? "#{@book["pubdate"]}-01".to_date : @book["pubdate"].to_date,
         raw_data: @book
       }
+    end
+
+    def prefetch_tags
+      %w(互联网 程序员)
     end
 end

@@ -1,3 +1,5 @@
+@import shared/color_mixin
+
 .book-name
   padding-top: 80px
   width: 300px
@@ -24,4 +26,50 @@
         margin-left: 10px
         vertical-align: text-bottom
         font-size: 14px
+      .category-input
+        .bootstrap-tagsinput
+          width: 100%
+        .label
+          padding: .2em .6em .3em
+          font-size: 14px
+          border-radius: 2px
+          &.label-info
+            background-color: $theme-color
+            font-weight: 600
+      .twitter-typeahead
+        .tt-input
+          width: 400px
+        .tt-menu
+          position: absolute
+          top: 100%
+          left: 0
+          z-index: 1000
+          display: none
+          float: left
+          min-width: 160px
+          padding: 5px 0
+          margin: 2px 0 0
+          list-style: none
+          font-size: 14px
+          background-color: #ffffff
+          border: 1px solid #cccccc
+          border: 1px solid rgba(0, 0, 0, 0.15)
+          border-radius: 4px
+          -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175)
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175)
+          background-clip: padding-box
+          cursor: pointer
+          .tt-suggestion
+            display: block
+            padding: 3px 20px
+            clear: both
+            font-weight: normal
+            line-height: 1.428571429
+            color: #333333
+            white-space: nowrap
+            &:hover
+              color: #ffffff
+              text-decoration: none
+              outline: 0
+              background-color: #428bca
 

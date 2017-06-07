@@ -2,6 +2,7 @@ class Book < ApplicationRecord
 
   # attr_accessor :cover_url
   # before_create :cover_from_url
+  acts_as_taggable_on :categories
 
   has_many :products
 

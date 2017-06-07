@@ -89,11 +89,26 @@ class ProductsController < ApplicationController
       return redirect_back(fallback_location: root_url, flash: { alert: "您已经发布过该书籍" })
     end
     @product.user = current_user
-    if @product.save
+
+    @product.valid?
+
+    book = @product.book
+    if book.present?
+      if params[:category_list].present?
+        book.category_list.add(params[:category_list], parse: true)
+      else
+        @product.errors.add(:category_list, :blank)
+      end
+    end
+
+    error_messages = @product.errors.messages
+
+    if error_messages.blank?
+      @product.save
       # redirect_to product_path(@product)
       redirect_to upload_photo_product_path(@product)
     else
-      redirect_back(fallback_location: new_product_url, flash: { alert: combine_error_message(@product.errors.messages, "product") })
+      redirect_back(fallback_location: new_product_url, flash: { alert: combine_error_message(error_messages, "product") })
     end
   end
 
@@ -142,6 +157,24 @@ class ProductsController < ApplicationController
     redirect_to personal_books_path(current_user), flash: { notice: "《#{@product.name}》下架成功" }
   end
 
+  def prefetch_category_tags
+    ret = []
+    prefetch_tags.each do |tag|
+      ret << { "tag": tag }
+    end
+    render json: ret, status: :ok
+  end
+
+  def fetch_category_tags
+    keyword = params[:keyword]
+    tags = ActsAsTaggableOn::Tag.where("name like ?", "%#{keyword}%")
+    ret = []
+    tags.each do |tag|
+      ret << { "tag": tag.name }
+    end
+    render json: ret, status: :ok
+  end
+
   private
 
     def duplicated?(product)
@@ -170,5 +203,9 @@ class ProductsController < ApplicationController
         published_date: @book["pubdate"].count("-") == 1 ? "#{@book["pubdate"]}-01".to_date : @book["pubdate"].to_date,
         raw_data: @book
       }
+    end
+
+    def prefetch_tags
+      %w(互联网 程序员)
     end
 end

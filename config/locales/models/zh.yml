@@ -22,12 +22,7 @@ zh:
         product:
           attributes:
             price:
-              blank: "价格不能为空"
               not_a_number: "价格需要是有效数字"
-            summary:
-              blank: "书籍简介不能为空"
-            tags:
-              blank: "书籍标签不能为空"
 
     state_machines:
       order:
@@ -56,6 +51,7 @@ zh:
         tags: 书籍标签
         price: 售卖价格
         summary: 书籍简介
+        category_list: 书籍分类
 
       order:
         province_id: 所在省

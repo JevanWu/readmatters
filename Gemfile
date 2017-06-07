@@ -94,6 +94,8 @@ gem 'rqrcode', '~>0.10'
 
 gem 'whenever', :require => false
 
+gem 'acts-as-taggable-on', '~> 5.0'
+
 gem 'chinese_pinyin'
 
 gem 'sitemap_generator'

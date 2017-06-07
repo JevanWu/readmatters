@@ -12,7 +12,7 @@ class Product < ApplicationRecord
 
   alias :owner :user
 
-  validates :price, :tags, :summary, presence: true
+  validates :price, :summary, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
 
   enumerize :status, in: [:normal, :locked, :sold, :withdrawn], default: :normal, scope: true
@@ -20,9 +20,7 @@ class Product < ApplicationRecord
   # has_attached_file :cover, :default_url => "/images/:style/missing.png"
   # validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
 
-  delegate :author_intro, :catalog, to: :book
-  delegate :cover, to: :book
-  delegate :original_cover, to: :book
+  delegate :author_intro, :cover, :original_cover, :category_list, :catalog, to: :book
 
   scope :available, -> { with_status(:normal) }
   scope :locked, -> { with_status(:locked) }

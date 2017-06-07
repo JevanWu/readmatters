@@ -104,7 +104,7 @@ class OrdersController < ApplicationController
     end
 
     def set_order
-      @order = Order.find_by(identifier: params[:id])
+      @order = Order.find_by!(identifier: params[:id])
     end
 
     def check_order_owner

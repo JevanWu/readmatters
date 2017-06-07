@@ -7,7 +7,10 @@
 
 .jumbotron
   .slogan
-    - if current_user.present?
+    - if params[:action] == "personal_books" && @user.present?
+      h1
+        = "#{t("books_of", name: @user.name, scope: :page_title)}"
+    - elsif current_user.present?
       h1
         = "让有故事的书籍拥有更多故事"
     - else

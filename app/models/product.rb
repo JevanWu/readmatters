@@ -42,7 +42,7 @@ class Product < ApplicationRecord
   end
 
   def book_price
-    self.price || book&.price
+    self.book&.price
   end
 
   def book_summary

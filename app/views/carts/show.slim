@@ -7,11 +7,12 @@
 
     - @line_item_grouped_hash.each_with_index do |(key, value), index|
       - id, name = key.split(",")
+      - user = User.find id
       table.table.table-striped.text-center
         caption
           = "正在购买的#{name}的书籍"
           = " "
-          = link_to "查看#{name}发布的其他书籍", owner_path(id), class: "theme-link"
+          = link_to "查看#{name}发布的其他书籍", personal_books_path(user), class: "theme-link", target: "_blank"
         thead
           tr
             th.col-md-3.text-center
@@ -48,6 +49,6 @@
               = "#{@total_prices[index]} (合计)"
             td
               = link_to "自行联系持书人", create_free_orders_path(seller_id: id), class: "btn btn-theme", method: :post
-              = link_to "直接去下单", new_order_path(seller_id: id), class: "btn theme-link"
+              = link_to "直接去下单", new_orders_path(seller_id: id), class: "btn theme-link", method: :post
 
 

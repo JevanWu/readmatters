@@ -1,8 +1,8 @@
 $ ->
   categories = new Bloodhound(
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('tag')
-    queryTokenizer: Bloodhound.tokenizers.whitespace
-    prefetch: "prefetch_category_tags.json"
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('tag'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: "prefetch_category_tags.json",
     remote: {
       url: "fetch_category_tags?keyword=%QUERY",
       wildcard: '%QUERY'
@@ -19,3 +19,4 @@ $ ->
       source: categories.ttAdapter()
     }
   )
+    # confirmKeys: [13, 32],

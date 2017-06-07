@@ -6,10 +6,11 @@ class ProductsController < ApplicationController
 
   def book_links
     begin
-      redirect_to book_name_products_path if params[:book_name].nil?
+      return redirect_to book_name_products_path if params[:book_name].nil?
       _response = RestClient.get("https://api.douban.com/v2/book/search", params: { q: params[:book_name]}) # , fields: "title,url,id,image"
-      redirect_to book_name_products_path unless _response.code == 200
+      return redirect_to book_name_products_path unless _response.code == 200
       response = JSON.parse _response
+      return redirect_to book_name_products_path, flash: { alert: "搜索不到该书籍，请换其他关键词重试" } if response["count"] == 0
       book_count = Redis::Value.new("book_count_#{current_user.id}")
       @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)
       book_count.clear
@@ -206,6 +207,6 @@ class ProductsController < ApplicationController
     end
 
     def prefetch_tags
-      %w(互联网 程序员)
+      %w(文学 小说 传记 经济管理 投资理财 历史 哲学与宗教 心理学 健身与保健 考试 英语 计算机 艺术与摄影 教材 互联网 程序员)
     end
 end

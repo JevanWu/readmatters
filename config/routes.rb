@@ -51,7 +51,7 @@ Rails.application.routes.draw do
 
   resources :books
 
-  resources :orders, except: [:index] do
+  resources :orders, except: [:index, :new] do
     member do
       post "ship", as: :ship
       post "confirm", as: :confirm
@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     collection do
       post "inspect"
       post "create_free", as: :create_free
+      post "new", as: :new
     end
   end
 
@@ -81,7 +82,6 @@ Rails.application.routes.draw do
   get 'checkout/:id' => 'orders#checkout', as: :checkout
 
   get '/search' => 'pages#search', as: :search
-  get '/owner/:id' => 'pages#owner', as: :owner
 
 
   # Example resource route with options:

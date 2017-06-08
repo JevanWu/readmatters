@@ -1,6 +1,6 @@
 - if current_cart.present?
   - cache "cart_#{current_user.id}_#{current_cart.number_of_items}"
-    = link_to cart_path(current_cart) do
+    = link_to cart_path do
       #cart.hidden-xs data-toggle="popover" data-placement="bottom" title="Your cart"
         = fa_icon("shopping-cart")
         .number-of-items#cart-counter data-turbolinks-permanent=""

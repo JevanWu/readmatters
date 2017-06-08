@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   enumerize :current_location, in: [:beijing, :shanghai, :shenzhen, :guangzhou, :hangzhou, :chengdu]
 
-  has_attached_file :avatar, :styles => {:thumb => "260x260#" },
+  has_attached_file :avatar, :styles => {:original => "260x260#" },
                              :default_url => "default_image.png",
                              :path => Figaro.env.paperclip_storage_path,
                              :url => Figaro.env.paperclip_storage_url

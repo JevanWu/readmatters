@@ -104,7 +104,7 @@
                 i.fa.fa-linkedin
       .owner-frame
         .owner-image
-          = image_tag @product.user.avatar.url(:thumb)
+          = image_tag @product.user.avatar.url
         .owner-info
           .owner-name
             = @product.user.name
@@ -115,3 +115,6 @@
 - content_for :page_css
   = stylesheet_link_tag "products/show"
   = stylesheet_link_tag "products/upload_photo"
+
+- content_for :page_js
+  = javascript_include_tag "products/show"

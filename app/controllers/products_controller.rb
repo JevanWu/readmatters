@@ -97,6 +97,7 @@ class ProductsController < ApplicationController
     if book.present?
       if params[:category_list].present?
         book.category_list.add(params[:category_list], parse: true)
+        book.save
       else
         @product.errors.add(:category_list, :blank)
       end

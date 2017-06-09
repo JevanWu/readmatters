@@ -13,10 +13,10 @@ $ ->
 
   $('#category_list').tagsinput(
     trimValue: true,
+    confirmKeys: [13, 32],
     typeaheadjs: {
       displayKey: 'tag',
       valueKey: 'tag',
       source: categories.ttAdapter()
     }
   )
-    # confirmKeys: [13, 32],

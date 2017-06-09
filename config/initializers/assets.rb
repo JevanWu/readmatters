@@ -12,4 +12,11 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( devise_layout.css products/* pages/* books/* orders/* bootstrap-tagsinput/dist/bootstrap-tagsinput.min typeahead.js/dist/typeahead.jquery.min typeahead.js/dist/bloodhound.min bootstrap-tagsinput/dist/bootstrap-tagsinput)
+Rails.application.config.assets.precompile += %w(
+                                                  devise_layout.css products/*
+                                                  pages/*
+                                                  books/*
+                                                  orders/*
+                                                  bootstrap-tagsinput/dist/bootstrap-tagsinput.min
+                                                  typeahead.js/dist/typeahead.bundle.min.js
+                                                )

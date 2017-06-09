@@ -22,6 +22,5 @@
 //= require timeline
 //= require jquery-fileupload/basic
 //= require magnific-popup
-//= require_directory ./products/
 //= require_directory .
 

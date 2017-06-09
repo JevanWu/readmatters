@@ -158,30 +158,30 @@
   <body class="plain error-page-wrapper background-color background-image">
     <div class="content-container">
 	<div class="head-line secondary-text-color">
-		500
+		404
 	</div>
 	<div class="subheader primary-text-color">
-    额，不好意思<br>
-    好像我们的服务器出问题了。
+		Oops, the page you're <br>
+		looking for does not exist.
 	</div>
-    <hr>
-    <div class="clearfix"></div>
-    <div class="context primary-text-color">
-
+	<hr>
+	<div class="clearfix"></div>
+	<div class="context primary-text-color">
+		<!-- doesn't use context_content because it's ALWAYS the same thing -->
     <p>
-      您可以给我们反馈问题，谢谢。
+      You may want to head back to the homepage.<br />
+      If you think something is broken, report a problem.
     </p>
-
-
-    </div>
+	</div>
 	<div class="buttons-container">
-		<a class="border-button" href="mailto:admin@readmatters.com" target="_blank">反馈问题</a>
+		<a class="border-button" href="https://readmatters.com" target="_blank">Go To Homepage</a>
+		<a class="border-button" href="mailto:admin@readmatters.com" target="_blank">Report A Problem</a>
 	</div>
 </div>
 
     <!-- <script> -->
     <!--  -->
-    <!--   var ep = new ErrorPage('body', "503", "plain"); -->
+    <!--   var ep = new ErrorPage('body', "404", "plain"); -->
     <!--   ep.initialize(); -->
     <!--  -->
     <!--   // hack to make sure content stays centered >_< -->

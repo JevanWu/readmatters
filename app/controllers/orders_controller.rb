@@ -5,12 +5,15 @@ class OrdersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:inspect]
 
   def new
-    @order = current_user.bought_orders.build if current_user.present?
     @seller_id = params[:seller_id]
+    redirect_to cart_path if @seller_id.blank?
+    @order = current_user.bought_orders.build if current_user.present?
     @line_items = current_cart.line_items.eager_load(:product).where("products.user_id = ? and products.status = ?", @seller_id, "normal")
   end
 
   def create_free
+    @seller_id = params[:seller_id]
+    redirect_to cart_path if @seller_id.blank?
     ActiveRecord::Base.transaction do
       @order = current_user.bought_orders.new(seller_id: params[:seller_id])
       # 加入商品

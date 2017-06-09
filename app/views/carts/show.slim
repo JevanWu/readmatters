@@ -48,7 +48,11 @@
             td
               = "#{@total_prices[index]} (合计)"
             td
-              = link_to "自行联系持书人", create_free_orders_path(seller_id: id), class: "btn btn-theme", method: :post
-              = link_to "直接去下单", new_orders_path(seller_id: id), class: "btn theme-link", method: :post
+              = form_tag create_free_orders_path, class: "inline-block"
+                = text_field_tag "seller_id", id, class: "hidden"
+                = submit_tag "自行联系持书人", class: "btn btn-theme"
+              = form_tag new_orders_path, class: "inline-block"
+                = text_field_tag "seller_id", id, class: "hidden"
+                = submit_tag "委托下单", class: "theme-link btn", style: "background-color: transparent; height: auto;"
 
 

@@ -17,7 +17,7 @@ module OrdersHelper
     when %(refunded)
       "已退款"
     when %(free)
-      link_to "委托交易并付款", checkout_path(order), class: "btn btn-theme"
+      # link_to "委托交易并付款", checkout_path(order), class: "btn btn-theme"
     end
   end
 

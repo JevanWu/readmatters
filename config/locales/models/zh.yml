@@ -1,6 +1,8 @@
 zh:
   activerecord:
     errors:
+      messages:
+        record_invalid: "无效的记录"
       models:
         user:
           attributes:

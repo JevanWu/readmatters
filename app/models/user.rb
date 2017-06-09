@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :sold_orders, class_name: "Order", foreign_key: "seller_id"
   has_many :messages
   has_many :orders
+  has_one :cart
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

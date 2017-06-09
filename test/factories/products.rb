@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :product do
-    tags "创业, 商业, 管理, 互联网, 经管, 思维, 本·霍洛维茨, 美国"
     price 30
     status "normal"
     summary "本·霍洛维茨，硅谷顶级投资人，与网景之父马克·安德森联手合作18年，有着丰富的创业和管理经验。2009年创立风险投资公司A16Z，被外媒誉为“硅谷最牛的50个天使投资人”之一，先后在初期投资了Facebook、Twitter、Groupon、Skype，是诸多硅谷新贵的创业导师。

@@ -10,6 +10,7 @@ FactoryGirl.define do
     author "本·霍洛维茨 Ben Horowitz"
     author_intro "本·霍洛维茨，硅谷资深创业者，1999年与网景之父马克·安德森共同创立Loudcloud公司（后转型为Opsware公司），在互联网泡沫的恶劣大环境下，数次带领公司起死回生，并最终成功以16亿美元的高价将公司出售给惠普。2009年再次与马克·安德森联手创立了风险投资公司Andreessen Horowitz，公司在成立短短三年时间里，就跻身成为硅谷最顶尖的风投公司之一，经过三轮融资获得了高达 27 亿美元的资金，投资了包括 Skype, Facebook, Instagram, Twitter, Foursquare, Pinterest, Airbnb, Fab, Groupon等众多知名互联网企业。本·霍洛维茨也被外媒誉为“硅谷最牛的50个天使投资人”之一"
     original_cover "https://img5.doubanio.com/mpic/s28007966.jpg"
+    category_list "创业, 商业, 管理, 互联网, 经管, 思维, 本·霍洛维茨, 美国"
     publisher "中信出版社"
   end
 end

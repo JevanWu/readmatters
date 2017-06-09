@@ -3,7 +3,7 @@
   #container
     - @book_list.each_with_index do |book, index|
       .item
-        = link_to new_product_path(book_id: index), class: "transparent-mask" do
+        = link_to new_product_path(book_id: index), class: "transparent-mask", data: {turbolinks: false} do
           .btn.btn-theme.col-md-12
             = t(".right_the_book")
         .cover

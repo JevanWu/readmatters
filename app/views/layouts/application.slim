@@ -16,8 +16,6 @@ html
     - if content_for :page_css
       = yield :page_css
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    - if content_for :page_js
-      = yield :page_js
     = csrf_meta_tags
     = favicon_link_tag 'favicon.ico'
 
@@ -27,8 +25,12 @@ html
       = yield
     = render_footer
 
-  - if Rails.env.production?
-    = render 'shared/ga'
-    = render 'shared/zhuge_io'
-  - unless content_for?(:get_ride_of_customer_service)
-    = render 'shared/meiqia'
+    - if content_for :page_js
+      = yield :page_js
+
+    - if Rails.env.production?
+      = render 'shared/ga'
+      = render 'shared/zhuge_io'
+    - unless content_for?(:get_ride_of_customer_service)
+      = render 'shared/meiqia'
+

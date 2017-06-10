@@ -1,5 +1,5 @@
 class Mailer < ActionMailer::Base
-  default from: "Readmatters <no-reply@readmatters.com>"
+  default from: "ReadMatters <no-reply@readmatters.com>"
 
   def welcome_email#(user)
     # @user = user

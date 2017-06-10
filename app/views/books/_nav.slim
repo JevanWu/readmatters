@@ -1,6 +1,6 @@
 .profile-nav
   .cover
-    = image_tag @book.cover.url(:thumb)
+    = image_tag @book.original_cover
   input#book_cover name="book[cover]" type="file" style="display:none"
 
 javascript:

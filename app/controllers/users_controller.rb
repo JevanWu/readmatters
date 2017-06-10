@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  # def timeline 
+  # def timeline
   #   @partial = "timeline"
   #   respond_to do |format|
   #     format.html
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       format.js { render "update_partial", layout: false }
     end
   end
-  
+
   def sold_books
     @partial = "sold_books"
     respond_to do |format|
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   def update_avatar
     current_user.update_attribute(:avatar, params[:user][:avatar])
     respond_to do |format|
-      format.json { render json: {image: current_user.avatar.url(:thumb)}, status: :ok }
+      format.json { render json: {image: current_user.avatar.url}, status: :ok }
     end
   end
 

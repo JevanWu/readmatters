@@ -26,3 +26,7 @@ end
 
 every :day, :at => "10 am" do
 end
+
+every :day, :at => '11:00 pm' do
+  rake "-s sitemap:refresh"
+end

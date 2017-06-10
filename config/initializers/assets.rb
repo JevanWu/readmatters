@@ -17,6 +17,7 @@ Rails.application.config.assets.precompile += %w(
                                                   pages/*
                                                   books/*
                                                   orders/*
+                                                  bootstrap-tagsinput/dist/bootstrap-tagsinput.css
                                                   bootstrap-tagsinput/dist/bootstrap-tagsinput.min
                                                   typeahead.js/dist/typeahead.bundle.min.js
                                                 )

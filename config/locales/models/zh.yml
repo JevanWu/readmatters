@@ -7,9 +7,10 @@ zh:
         user:
           attributes:
             password:
-              too_short: "密码至少需8位"
+              too_short: "密码至少需6位"
               blank: "密码不能够为空"
             email:
+              taken: "邮箱已被注册"
               blank: "邮箱不能为空"
               invalid: "请填写正确格式的邮箱"
             name:

@@ -7,6 +7,8 @@
 
 = render "shared/jumbotron", content: @product.name
 
+- owner = @product.user
+
 .grey-division
   .container.product-container
     - cache @product do
@@ -103,7 +105,6 @@
               .col-md-4.text-center.social
                 i.fa.fa-linkedin
       .owner-frame
-        - owner = @product.user
         .owner-image
           = link_to image_tag(owner.avatar.url), personal_books_path(owner)
         .owner-info

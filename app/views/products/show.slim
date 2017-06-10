@@ -103,13 +103,14 @@
               .col-md-4.text-center.social
                 i.fa.fa-linkedin
       .owner-frame
+        - owner = @product.user
         .owner-image
-          = image_tag @product.user.avatar.url
+          = link_to image_tag(owner.avatar.url), personal_books_path(owner)
         .owner-info
           .owner-name
-            = @product.user.name
+            = link_to owner.name, personal_books_path(owner), class: "theme-link"
           .owner-location
-            = @product.user.current_location_text
+            = owner.current_location_text
 
 
 - content_for :page_css

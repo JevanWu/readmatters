@@ -1,14 +1,14 @@
 = simple_form_for @order do |f|
-  = f.input :receiver_name, required: false, input_html: { value: current_user.name }
-  = f.input :receiver_phone, required: false, input_html: { value: current_user.phone }
+  = f.input :receiver_name, required: false, input_html: { value: current_user.name }, label_html: { class: "input-required" }
+  = f.input :receiver_phone, required: false, input_html: { value: current_user.phone }, label_html: { class: "input-required" }
   .row
     .col-md-4
-      = f.input :province, as: :region, collection: Province.select('id, name'), sub_region: :city, input_html: { class: "form-control"}
+      = f.input :province, as: :region, collection: Province.select('id, name'), sub_region: :city, input_html: { class: "form-control"}, label_html: { class: "input-required" }
     .col-md-4
-      = f.input :city, as: :region, sub_region: :district, input_html: { class: "form-control"}
+      = f.input :city, as: :region, sub_region: :district, input_html: { class: "form-control"}, label_html: { class: "input-required" }
     .col-md-4
-      = f.input :district, as: :region, input_html: { class: "form-control"}
-  = f.input :street, required: false
+      = f.input :district, as: :region, input_html: { class: "form-control"}, label_html: { class: "input-required" }
+  = f.input :street, required: false, label_html: { class: "input-required" }
   = f.input :seller_id, as: :hidden, input_html: { value: @seller_id }
   = china_region_fu_js
   /.form-group.get-options

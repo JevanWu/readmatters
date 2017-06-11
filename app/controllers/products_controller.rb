@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
       @book_list = Redis::List.new("book_list_#{current_user.id}", :marshal => true)
       new_book = @book_list[params[:book_id]]
       isbn = new_book["isbn13"] || new_book["isbn10"]
-      @book = Book.find_or_create_by(isbn: isbn)
+      @book = Book.find_or_initialize_by(isbn: isbn)
       tags = new_book["tags"].map{ |tag| tag["name"] }.join(", ")
       @book.update(
                     isbn: isbn,

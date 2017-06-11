@@ -51,7 +51,7 @@ Rails.application.routes.draw do
 
   resources :books
 
-  resources :orders, except: [:index, :new] do
+  resources :orders, except: [:index] do
     member do
       post "ship", as: :ship
       post "confirm", as: :confirm

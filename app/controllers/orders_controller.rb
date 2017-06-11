@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
 
   def new
     @seller_id = params[:seller_id]
-    redirect_to cart_path if @seller_id.blank?
+    redirect_to cart_path, flash: { alert: "请重新点击下单" } if @seller_id.blank?
     @order = current_user.bought_orders.build if current_user.present?
     @line_items = current_cart.line_items.eager_load(:product).where("products.user_id = ? and products.status = ?", @seller_id, "normal")
   end

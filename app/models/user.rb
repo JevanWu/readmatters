@@ -59,7 +59,7 @@ class User < ApplicationRecord
     end
   end
 
-  def to_param
-    personal_link
-  end
+  # def to_param
+  #   personal_link
+  # end
 end

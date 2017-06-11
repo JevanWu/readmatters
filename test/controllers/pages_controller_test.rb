@@ -15,7 +15,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get personal_books" do
-    get personal_books_path(@user)
+    get personal_books_path(personal_link: @user.personal_link)
     assert_response :success
   end
 

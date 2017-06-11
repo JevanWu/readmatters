@@ -156,7 +156,7 @@ class ProductsController < ApplicationController
 
   def withdraw
     @product.update(status: "withdrawn")
-    redirect_to personal_books_path(current_user), flash: { notice: "《#{@product.name}》下架成功" }
+    redirect_to personal_books_path(personal_link: current_user.personal_link), flash: { notice: "《#{@product.name}》下架成功" }
   end
 
   def prefetch_category_tags

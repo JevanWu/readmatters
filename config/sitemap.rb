@@ -35,6 +35,6 @@ SitemapGenerator::Sitemap.create do
   end
 
   User.where.not(personal_link: nil).find_each do |user|
-    add personal_books_path(user), priority: 0.9
+    add personal_books_path(personal_link: user.personal_link), priority: 0.9
   end
 end

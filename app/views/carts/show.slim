@@ -12,7 +12,7 @@
         caption
           = "正在购买的#{name}的书籍"
           = " "
-          = link_to "查看#{name}发布的其他书籍", personal_books_path(user), class: "theme-link", target: "_blank"
+          = link_to "查看#{name}发布的其他书籍", personal_books_path(personal_link: user.personal_link), class: "theme-link", target: "_blank"
         thead
           tr
             th.col-md-3.text-center

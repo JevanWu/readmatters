@@ -5,6 +5,9 @@ $ ->
   $(document).on "click", "#more-photo", ->
     $("#upload-photo").click()
 
+  $(".open-survey").click ->
+    window.open("http://readmatters.mikecrm.com/tXRG1hE", "_blank")
+
   $("#upload-photo").fileupload
     url: "/products/create_photo"
     dataType: "json"

@@ -45,6 +45,10 @@ class User < ApplicationRecord
     conversation.messages.where(user: sender).update_all(read_at: Time.current)
   end
 
+  def should_take_survey?
+    self.products.count <= 1
+  end
+
   def set_personal_link
     if self.name.present? && self.personal_link.blank?
       link = Pinyin.t(self.name, splitter: '-')&.downcase

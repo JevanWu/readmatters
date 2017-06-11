@@ -3,6 +3,9 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:more_info]
 
   def home
+    if params[:finish_survey]
+      flash[:notice] = "非常感谢填写问卷！你可以继续浏览书籍"
+    end
     @cart = current_cart
     if current_user.present?
       @products = Product.available.eager_load(:book).eager_load(:user).where.not(user_id: current_user.id, book_id: nil)

@@ -143,7 +143,7 @@ class ProductsController < ApplicationController
 
   def show
     if params[:published]
-      flash[:notice] = "恭喜您发布书籍成功！您可以通过分享您的该书籍让更多人知道"
+      flash[:notice] = "恭喜您发布书籍成功！您可以通过分享您的该书籍让更多人知道。您可以在「我发布的书籍」中看到所有您所发布的书籍"
     end
     @product = Product.where(id: params[:id]).includes(:book, :photos, :user).take
 

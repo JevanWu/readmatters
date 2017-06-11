@@ -28,9 +28,9 @@
       - if current_user.sold_orders.present?
         li
           = link_to t(:sold_orders), sold_orders_path
-      - if current_user.products.present?
-        li
-          = link_to t(".my_books"), personal_books_path(current_user)
+      /- if current_user.products.present?
+      /  li
+      /    = link_to t(".my_books"), personal_books_path(current_user)
       /li
       /  = link_to t(:profile), bought_books_path
       li

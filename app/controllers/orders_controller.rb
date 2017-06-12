@@ -111,7 +111,7 @@ class OrdersController < ApplicationController
     end
 
     def check_order_owner
-      @order = Order.find_by(identifier: params[:id])
+      @order = Order.find_by!(identifier: params[:id])
       if current_user.blank? || (current_user.id != @order.seller_id && current_user.id != @order.buyer_id)
         redirect_to bought_orders_path, flash: { alert: "无权操作" }
       end

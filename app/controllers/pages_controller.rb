@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_action :check_infomation_completeness, except: [:more_info, :update_more_info]
-  before_action :authenticate_user!, only: [:more_info]
+  before_action :authenticate_user!, only: [:more_info, :fetch_more_books]
 
   def home
     if params[:finish_survey]
@@ -8,12 +8,22 @@ class PagesController < ApplicationController
     end
     @cart = current_cart
     if current_user.present?
-      @products = Product.available.eager_load(:book).eager_load(:user).where.not(user_id: current_user.id, book_id: nil)
-      @products = @products.sort_by{|product| product.user.current_location == current_user.current_location ? -1 : 1}
+      @products = Product.select("case users.current_location when '#{current_user.current_location}' then 1 else 2 end as user_location").available.eager_load(:book).eager_load(:user).where.not(user_id: current_user.id, book_id: nil).order("user_location desc").take(20)
+      # @products = @products.sort_by{|product| product.user.current_location == current_user.current_location ? -1 : 1}
     else
       @products = Product.available.eager_load(:book).where.not(book_id: nil)
     end
     #@products = Product.available.eager_load(:book).eager_load(:user).where("users.current_location = ?", current_user.current_location).where.not(user_id: current_user.id)
+  end
+
+  def fetch_more_books
+    skip_num = params[:skip] || 20
+    products = Product.select("case users.current_location when '#{current_user.current_location}' then 1 else 2 end as user_location").available.eager_load(:book).eager_load(:user).where.not(user_id: current_user.id, book_id: nil).order("user_location desc").offset(skip_num).take(10)
+    more_books_html = ""
+    products.each do |product|
+      more_books_html << render_to_string(partial: 'product_partial', locals: { product: product })
+    end
+    render json: { html: more_books_html }, satuts: :ok
   end
 
   def personal_books

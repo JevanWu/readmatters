@@ -8,17 +8,19 @@ class PagesController < ApplicationController
     end
     @cart = current_cart
     if current_user.present?
-      @products = Product.select("case users.current_location when '#{current_user.current_location}' then 1 else 2 end as user_location").available.eager_load(:book).eager_load(:user).where.not(user_id: current_user.id, book_id: nil).order("user_location desc").take(20)
-      # @products = @products.sort_by{|product| product.user.current_location == current_user.current_location ? -1 : 1}
+      @products = Product.select("case users.current_location when '#{current_user.current_location}' then 1 else 2 end as user_location").available.eager_load(:book).eager_load(:user).where.not(user_id: current_user.id, book_id: nil).order("user_location asc").take(35)
     else
-      @products = Product.available.eager_load(:book).where.not(book_id: nil)
+      @products = Product.available.eager_load(:book).where.not(book_id: nil).take(35)
     end
-    #@products = Product.available.eager_load(:book).eager_load(:user).where("users.current_location = ?", current_user.current_location).where.not(user_id: current_user.id)
   end
 
   def fetch_more_books
-    skip_num = params[:skip] || 20
-    products = Product.select("case users.current_location when '#{current_user.current_location}' then 1 else 2 end as user_location").available.eager_load(:book).eager_load(:user).where.not(user_id: current_user.id, book_id: nil).order("user_location desc").offset(skip_num).take(10)
+    last_id = params[:last_id]
+    if current_user.present?
+      products = Product.select("case users.current_location when '#{current_user.current_location}' then 1 else 2 end as user_location").available.eager_load(:book).eager_load(:user).where.not(user_id: current_user.id, book_id: nil).order("user_location asc").where("products.id > ?", last_id).take(21)
+    else
+      products = Product.available.eager_load(:book).where.not(book_id: nil).where("products.id > ?", last_id).take(21)
+    end
     more_books_html = ""
     products.each do |product|
       more_books_html << render_to_string(partial: 'product_partial', locals: { product: product })

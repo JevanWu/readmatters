@@ -29,7 +29,7 @@ class PagesController < ApplicationController
   end
 
   def personal_books
-    @user = User.find_by(personal_link: params[:personal_link])
+    @user = User.find_by!(personal_link: params[:personal_link])
     @products = Product.available.eager_load(:book).where(user_id: @user.id).where.not(book_id: nil)
     render "home"
   end

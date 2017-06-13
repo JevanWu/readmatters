@@ -1,11 +1,12 @@
 document.addEventListener("turbolinks:load", ->
+  load_over = false
   container = $("#container")
   container.imagesLoaded( ->
     container.masonry({ itemSelector: '.item', isFitWidth: true })
   )
 
   $(document).scroll ->
-    if $(window).scrollTop() + $(window).height() >= $(document).height() - 100
+    if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) && !load_over
       last_id = $(".item").last().data("id")
       $.ajax(
         url: "/fetch_more_books"
@@ -13,7 +14,10 @@ document.addEventListener("turbolinks:load", ->
         dataType: "json"
         method: "get"
         success: (ret) ->
-          $items= $(ret.html)
-          container.append($items).masonry('appended', $items, true)
+          if ret.html.length == 0
+            load_over = true
+          else
+            $items = $(ret.html)
+            container.append($items).masonry('appended', $items, true)
       )
 )

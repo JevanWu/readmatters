@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_action :check_infomation_completeness, except: [:more_info, :update_more_info]
-  before_action :authenticate_user!, only: [:more_info, :fetch_more_books]
+  before_action :authenticate_user!, only: [:more_info]
 
   def home
     if params[:finish_survey]

@@ -17,14 +17,14 @@ class Order < ApplicationRecord
 
   default_scope { order(created_at: :desc) }
 
-  validates :province_id, :city_id, :district_id, :street, :receiver_name, :receiver_phone, presence: true, if: Proc.new{ !self.free? }
+  validates :province_id, :city_id, :district_id, :street, :receiver_name, :receiver_phone, presence: true, if: Proc.new{ !self.free? && !self.failure? }
   validates :total_price, numericality: { greater_than_or_equal_to: 0 }
 
   #order_state (wait_pay, failure, wait_ship, wait_confirm, success, wait_refund, refunded)
   state_machine :state, initial: :wait_pay do
 
     after_transition [:wait_pay, :free] => :wait_ship, :do => :change_product_to_sold
-    after_transition :wait_pay => :failure, :do => :unlock_products
+    after_transition [:wait_pay, :free] => :failure, :do => :unlock_products
 
     after_transition :wait_pay => :wait_ship, :do => :send_buyer_paid_notification
     after_transition :wait_pay => :wait_ship, :do => :send_seller_ship_notification
@@ -46,7 +46,7 @@ class Order < ApplicationRecord
     end
 
     event :failure do
-      transition :wait_pay => :failure
+      transition [:wait_pay, :free] => :failure
     end
 
     event :cancel do

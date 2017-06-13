@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:inspect]
-  before_action :check_order_owner, only: [:ship, :confirm]
+  before_action :check_order_owner, only: [:ship, :confirm, :cancel]
   before_action :set_order, only: [:show]
   skip_before_action :verify_authenticity_token, only: [:inspect]
 
@@ -97,6 +97,14 @@ class OrdersController < ApplicationController
       redirect_to sold_orders_path
     elsif @order.buyer_id == current_user.id
       redirect_to bought_orders_path
+    end
+  end
+
+  def cancel
+    @order.failure if @order.present?
+    respond_to do |format|
+      format.html { redirect_to sold_orders_path, flash: { notice: "状态更新成功"} }
+      format.js { render "update_order_item", layout: false }
     end
   end
 

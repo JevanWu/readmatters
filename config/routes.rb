@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     member do
       post "ship", as: :ship
       post "confirm", as: :confirm
+      post "cancel", as: :cancel
     end
 
     collection do

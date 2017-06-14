@@ -13,3 +13,16 @@
       a
         color: #444444
         text-decoration: none
+      &.wechat
+        position: relative
+        .wechat-image
+          display: none
+          position: absolute
+          top: -100px
+          left: -14px
+          img
+            width: 100px
+            height: 100px
+        &:hover
+          .wechat-image
+            display: block

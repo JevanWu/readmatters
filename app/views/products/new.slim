@@ -33,7 +33,7 @@
             span.theme-text
               | （精准的书籍分类标签能更有效地帮您找到买家）
           .category-input
-            = text_field_tag 'category_list', nil, data: {role: "tagsinput"}, class: "form-control", placeholder: "请以空格或回车确认，例：文学，小说，互联网，创业"
+            = text_field_tag 'category_list', nil, data: {role: "tagsinput"}, class: "form-control", placeholder: "例：文学，小说，互联网，创业，请以空格或回车分隔"
 
         /.form-group.string.optional.product_tags
         /  label.string.optional.control-label for="product_tags"

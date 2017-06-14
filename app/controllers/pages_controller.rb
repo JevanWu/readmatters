@@ -8,18 +8,18 @@ class PagesController < ApplicationController
     end
     @cart = current_cart
     if current_user.present?
-      @products = Product.select("case users.current_location when '#{current_user.current_location}' then 1 else 2 end as user_location").available.eager_load(:book).eager_load(:user).where.not(user_id: current_user.id, book_id: nil).order("user_location asc").take(35)
+      @products = Product.available.eager_load(:book, :user).where.not(user_id: current_user.id, book_id: nil).sort_by_location(current_user.current_location).take(35)
     else
       @products = Product.available.eager_load(:book).where.not(book_id: nil).take(35)
     end
   end
 
   def fetch_more_books
-    last_id = params[:last_id]
+    offset = params[:offset]
     if current_user.present?
-      products = Product.select("case users.current_location when '#{current_user.current_location}' then 1 else 2 end as user_location").available.eager_load(:book).eager_load(:user).where.not(user_id: current_user.id, book_id: nil).order("user_location asc").where("products.id > ?", last_id).take(21)
+      products = Product.available.eager_load(:book, :user).where.not(user_id: current_user.id, book_id: nil).sort_by_location(current_user.current_location).offset(offset).take(21)
     else
-      products = Product.available.eager_load(:book).where.not(book_id: nil).where("products.id > ?", last_id).take(21)
+      products = Product.available.eager_load(:book).where.not(book_id: nil).offset(offset).take(21)
     end
     more_books_html = ""
     products.each do |product|

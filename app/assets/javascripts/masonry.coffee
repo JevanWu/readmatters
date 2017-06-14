@@ -7,10 +7,10 @@ document.addEventListener("turbolinks:load", ->
 
   $(document).scroll ->
     if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) && !load_over
-      last_id = $(".item").last().data("id")
+      offset_num = $(".item").length
       $.ajax(
         url: "/fetch_more_books"
-        data: { last_id: last_id }
+        data: { offset: offset_num }
         dataType: "json"
         method: "get"
         success: (ret) ->

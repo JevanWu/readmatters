@@ -3,7 +3,7 @@ default: &default
   encoding: unicode
   pool: 5
   username:
-  password: 
+  password:
   # timeout: 5000
 
 development:
@@ -16,4 +16,4 @@ test:
 
 production:
   <<: *default
-  database: readfavor_production
+  database: readmatters_production

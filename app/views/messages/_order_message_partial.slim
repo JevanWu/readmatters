@@ -7,7 +7,7 @@ p
     = image_tag book.original_cover, class: "mg3"
 p
   = "我已生成订单，你可在"
-  = link_to "订单列表", "/orders/#{order.identifier}"
+  = link_to "订单列表", "/orders/#{order.identifier}", target: "_blank"
   = "中查询到相应的信息，请确认。"
 p
   = "期待你的回复!"

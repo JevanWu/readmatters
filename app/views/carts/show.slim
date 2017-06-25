@@ -50,9 +50,9 @@
             td
               = form_tag create_free_orders_path, class: "inline-block"
                 = text_field_tag "seller_id", id, class: "hidden"
-                = submit_tag "自行联系卖书人", class: "btn btn-theme", title: "自行联系卖书人进行交易"
-              = form_tag new_orders_path, class: "inline-block"
-                = text_field_tag "seller_id", id, class: "hidden"
-                = submit_tag "委托下单", class: "theme-link btn", title: "委托ReadMatters下单交易。当您收到书籍后，卖书人才会收到您所支付的费用", style: "background-color: transparent; height: auto;"
+                = submit_tag "联系该转让人", class: "btn btn-theme", title: "自行联系卖书人进行交易"
+              /= form_tag new_orders_path, class: "inline-block"
+              /  = text_field_tag "seller_id", id, class: "hidden"
+              /  = submit_tag "委托下单", class: "theme-link btn", title: "委托ReadMatters下单交易。当您收到书籍后，卖书人才会收到您所支付的费用", style: "background-color: transparent; height: auto;"
 
 

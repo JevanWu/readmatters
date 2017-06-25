@@ -23,7 +23,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       format.js { render "create", layout: false }
-      format.html { redirect_to cart_path(current_cart) }
+      format.html { redirect_to cart_path }
     end
   end
 end

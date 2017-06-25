@@ -17,3 +17,12 @@ $ ->
 
   $(document).on 'click', '.alert .close', ->
     $(this).parent().hide()
+
+  lastScrollTop = 0
+  $(document).scroll ->
+    st = $(this).scrollTop()
+    if st > lastScrollTop
+      $(".footer").css("height", "0px")
+    else
+      $(".footer").css("height", "55px")
+    lastScrollTop = st

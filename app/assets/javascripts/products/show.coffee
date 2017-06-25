@@ -21,3 +21,4 @@ $ ->
     else
       $(".js-buy-it").removeClass("fixed")
       $(".owner-frame").removeClass("hidden")
+

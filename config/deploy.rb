@@ -36,7 +36,7 @@ set :keep_assets, 1
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, 'config/database.yml', 'config/secrets.yml', 'config/application.yml'
+append :linked_files, 'config/database.yml', 'config/secrets.yml', 'config/application.yml', 'public/404.en.html', 'public/404.html', 'public/422.html', 'public/500.en.html', 'public/500.html', 'public/503.en.html', 'public/503.html', 'public/maintenance.html'
 
 # Default value for linked_dirs is []
 # append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'

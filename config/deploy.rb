@@ -6,7 +6,7 @@ set :repo_url, 'git@bitbucket.org:readmatters/readmatters.git'
 
 set :rails_env, 'production'
 
-set :linked_dirs, %w{log tmp/cache tmp/sockets tmp/pids}
+set :linked_dirs, %w{log tmp/cache tmp/sockets tmp/pids public/images}
 
 # rbenv
 set :rvm_type, :user                     # Defaults to: :auto

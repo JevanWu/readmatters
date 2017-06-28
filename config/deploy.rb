@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 # lock '3.8.0'
 
-set :application, 'readfavor'
+set :application, 'readmatters'
 set :repo_url, 'git@bitbucket.org:readmatters/readmatters.git'
 
 set :rails_env, 'production'

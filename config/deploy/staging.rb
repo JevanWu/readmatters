@@ -7,8 +7,8 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
-set :application, 'readmatters'
-server '106.15.199.128', user: 'root', roles: %w{app db web}
+set :application, 'readfavor'
+server '188.166.233.84', user: 'root', roles: %w{app db web}
 
 set :rails_env, "production"
 

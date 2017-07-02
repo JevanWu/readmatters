@@ -4,9 +4,11 @@
 
 .container
   .sign-in-form
-    .logo-text.text-center.mb20
-      = link_to image_tag("readmatters.png"), root_path, class: "logo"
-    = simple_form_for(resource, as: resource_name, url: session_path(resource_name), wrapper: :sign_in_horizontal_form, html: {class: "col-sm-offset-3 col-sm-6 clear-fix"} ) do |f|
+    /.logo-text.text-center.mb20
+    /  = link_to image_tag("readmatters.png"), root_path, class: "logo"
+    h3.text-center
+      = t("signin")
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name), wrapper: :sign_in_horizontal_form, html: {class: "col-sm-offset-3 col-sm-6 sign-form clear-fix"} ) do |f|
       = f.error_notification
       = f.input :email, required: false, autofocus: true, label: false, placeholder: t('.email_placeholder')
       = f.input :password, required: false, label: false, placeholder: t('.password_placeholder')

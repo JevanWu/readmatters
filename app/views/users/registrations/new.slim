@@ -4,8 +4,10 @@
 
 .container
   .sign-in-form
-    .logo-text.text-center.mb20
-      = link_to image_tag("readmatters.png"), root_path, class: "logo"
+    /.logo-text.text-center.mb20
+      /= link_to image_tag("readmatters.png"), root_path, class: "logo"
+    h3.text-center
+      = t("signup")
 
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: :sign_in_horizontal_form, html: {class: "col-sm-offset-3 col-sm-6 clear-fix"} ) do |f|
 
@@ -15,7 +17,7 @@
       /= f.input :password_confirmation, required: true, label: false, placeholder: t('.password_confrimation_placeholder', minimum_password_length: @minimum_password_length)
       .form-group
         .col-sm-offset-2.col-sm-8
-          = f.button :submit, t(:signup), class: "btn btn-theme form-submit", id: "signup"
+          = f.button :submit, t(:submit), class: "btn btn-theme form-submit", id: "signup"
       .form-group
         .col-sm-offset-2.col-sm-8
           = render "/users/shared/links"

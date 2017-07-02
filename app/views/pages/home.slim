@@ -11,6 +11,12 @@
     - if params[:action] == "personal_books" && @user.present?
       h1
         = "#{t("books_of", name: @user.name, scope: :page_title)}"
+      - if current_user.blank?
+        .mt20
+        .publish-action#publish-book
+          = link_to "发布您的书籍", new_user_registration_path, class: "btn btn-default emphasis-btn"
+      h5
+        = "加入优雅的二手书转让社区"
     - elsif current_user.present?
       h1
         = "让有故事的书籍拥有更多故事"

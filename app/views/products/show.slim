@@ -109,7 +109,7 @@
           .owner-name
             = link_to @product.user.name, personal_books_path(personal_link: @product.user.personal_link), class: "theme-link"
           .owner-location
-            = @product.user.current_location_text
+            = @product.user.current_city_text
 
 
 - content_for :page_css

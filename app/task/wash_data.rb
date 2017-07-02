@@ -10,4 +10,15 @@ class WashData
       book.save
     end
   end
+
+  def move_current_location_to_province_and_city
+    mapping = {
+      'beijing' => '110000',
+      'shanghai' => '310000',
+      'guangzhou' => '',
+      'shenzhen' => '',
+      'hangzhou' => '',
+      'chengdu' => ''
+    }
+  end
 end

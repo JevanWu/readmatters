@@ -100,6 +100,9 @@ GEM
       puma (>= 2.6)
     childprocess (0.7.0)
       ffi (~> 1.0, >= 1.0.11)
+    china_city (0.0.4)
+      jquery-rails
+      rails (>= 3.1.0)
     china_region_fu (0.1.0)
       activesupport (>= 4.0)
       httparty (~> 0.14.0)
@@ -449,6 +452,7 @@ DEPENDENCIES
   capistrano-rvm
   capistrano-sidekiq (~> 0.10)
   capistrano3-puma (~> 1.2)
+  china_city
   china_region_fu (~> 0.1)
   chinese_pinyin
   coffee-rails (~> 4.2)

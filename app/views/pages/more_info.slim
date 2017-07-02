@@ -4,7 +4,26 @@
     .narrow-form.mg-auto.mt20
       = simple_form_for @user, url: update_more_info_url do |f|
         = f.input :name, label_html: { class: "input-required" }
-        = f.input :current_location, label_html: { class: "input-required" }
+        .form-group.string.optional.user_current_location
+          label.control-label.string.optional.input-required
+            | 所在地
+          .city-group
+            select.city-select name="user[province]"
+              option --省份--
+              = options_for_select(ChinaCity.list, @user.province)
+            select.city-select name="user[city]"
+              option --城市--
+              = options_for_select(ChinaCity.list(@user.province), @user.city)
+            select.city-select name="user[district]"
+              option --地区--
+              = options_for_select(ChinaCity.list(@user.city), @user.district)
+          /select.city-select
+          /  option --街道--
+        /= select_tag :hello_test, options_for_select(['hello', 'world'], 'hello')
+        /= f.input :current_location, label_html: { class: "input-required" }
         = f.input :phone, placeholder: "例：18512341234", label_html: { class: "input-required" }
         .form-group
           = f.submit t(".submit"), class: "btn btn-default btn-theme"
+
+- content_for :page_js
+  = javascript_include_tag "china_city/jquery.china_city"

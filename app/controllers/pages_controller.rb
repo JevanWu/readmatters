@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     end
     @cart = current_cart
     if current_user.present?
-      @products = Product.available.eager_load(:book, :user).where.not(user_id: current_user.id, book_id: nil).sort_by_location(current_user.current_location).take(35)
+      @products = Product.available.eager_load(:book, :user).where.not(user_id: current_user.id, book_id: nil).sort_by_location(current_user.city).take(35)
     else
       @products = Product.available.eager_load(:book).where.not(book_id: nil).take(35)
     end
@@ -17,7 +17,7 @@ class PagesController < ApplicationController
   def fetch_more_books
     offset = params[:offset]
     if current_user.present?
-      products = Product.available.eager_load(:book, :user).where.not(user_id: current_user.id, book_id: nil).sort_by_location(current_user.current_location).offset(offset).take(21)
+      products = Product.available.eager_load(:book, :user).where.not(user_id: current_user.id, book_id: nil).sort_by_location(current_user.city).offset(offset).take(21)
     else
       products = Product.available.eager_load(:book).where.not(book_id: nil).offset(offset).take(21)
     end
@@ -58,13 +58,15 @@ class PagesController < ApplicationController
     if @user.save(context: :more_info)
       redirect_to root_path
     else
-      redirect_back(fallback_location: root_url, flash: { alert: combine_error_message(@user.errors.messages, "user") })
+      # flash[:alert] = combine_error_message(@user.errors.messages, "user")
+      render "more_info"
+      # redirect_back(fallback_location: root_url, flash: { alert: combine_error_message(@user.errors.messages, "user") })
     end
   end
 
   private
 
   def more_info_params
-    params.require(:user).permit(:name, :current_location, :phone)
+    params.require(:user).permit(:name, :phone, :province, :city, :district)
   end
 end

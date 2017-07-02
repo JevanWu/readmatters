@@ -12,7 +12,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  enumerize :current_location, in: [:beijing, :shanghai, :shenzhen, :guangzhou, :hangzhou, :chengdu]
+  # enumerize :current_location, in: [:beijing, :shanghai, :shenzhen, :guangzhou, :hangzhou, :chengdu]
 
   has_attached_file :avatar, :styles => {:original => "260x260#" },
                              :default_url => "default_image.png",
@@ -24,7 +24,7 @@ class User < ApplicationRecord
   before_save :set_personal_link
 
   validates :email, presence: true, on: :create
-  validates :name, :current_location, :phone, presence: true, on: :more_info
+  validates :name, :province, :city, :district, :phone, presence: true, on: :more_info
   validates_format_of :name, with: /[^0-9]+/, on: :more_info #/\A[\u4E00-\u9FA5]{1,4}\z/
   validates_format_of :phone, with: /\A[0-9]{11}\z/, on: :more_info
 
@@ -61,6 +61,13 @@ class User < ApplicationRecord
       end
       self.personal_link = final_link
     end
+  end
+
+  #TODO delete all deprecated current_location related code
+  def current_city_text
+    city = ChinaCity.get(self.city)
+    city = ChinaCity.get(self.province) if %w(市辖区 县).include?(city)
+    city
   end
 
   # def to_param

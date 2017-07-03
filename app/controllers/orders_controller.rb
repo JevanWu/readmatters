@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     @seller_id = params[:seller_id]
     redirect_to cart_path if @seller_id.blank?
     ActiveRecord::Base.transaction do
-      @order = current_user.bought_orders.new(seller_id: params[:seller_id])
+      @order = current_user.bought_orders.new(seller_id: @seller_id)
       # 加入商品
       @order.add_items_from_cart(current_cart)
       # 计算价格

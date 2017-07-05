@@ -24,7 +24,7 @@ class Product < ApplicationRecord
 
   scope :available, -> { with_status(:normal) }
   scope :locked, -> { with_status(:locked) }
-  scope :sort_by_location, -> (location) { select("case users.current_location when '#{location}' then 1 else 2 end as user_location").order("user_location asc") }
+  scope :sort_by_location, -> (city) { select("case users.city when '#{city}' then 1 else 2 end as user_city").order("user_city asc") }
 
   def cover_from_url
     self.cover = open(cover_url)

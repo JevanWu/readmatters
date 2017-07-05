@@ -85,7 +85,7 @@ Rails.application.routes.draw do
 
   get '/search' => 'pages#search', as: :search
 
-
+  mount ChinaCity::Engine => '/china_city'
   # Example resource route with options:
   #   resources :products do
   #     member do

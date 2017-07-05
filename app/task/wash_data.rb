@@ -11,7 +11,7 @@ class WashData
     end
   end
 
-  def move_current_location_to_province_and_city
+  def self.move_current_location_to_province_and_city
     User.where(current_location: "beijing").update_all(province: '110000', city: '110100', district: '110101')
     User.where(current_location: "shanghai").update_all(province: '310000', city: '310100', district: '310115')
     User.where(current_location: "guangzhou").update_all(province: '440000', city: '440100', district: '440101')

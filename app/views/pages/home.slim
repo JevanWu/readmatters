@@ -14,9 +14,9 @@
       - if current_user.blank?
         .mt20
         .publish-action#publish-book
-          = link_to "发布您的书籍", new_user_registration_path, class: "btn btn-default emphasis-btn"
-      h5
-        = "加入优雅的二手书转让社区"
+          = link_to "开始发布书籍", new_user_registration_path, class: "btn btn-default emphasis-btn"
+        h5
+          = "加入优雅的二手书转让社区"
     - elsif current_user.present?
       h1
         = "让有故事的书籍拥有更多故事"
@@ -30,6 +30,10 @@
     #container
       - @products.each do |product|
         = render "product_partial", product: product
+
+    .more.text-center.mt50
+      - if params[:action] == "personal_books"
+        = link_to "查看更多书籍", root_path, class: "btn emphasis-btn"
 
 - content_for :page_css
   = stylesheet_link_tag "pages/home"

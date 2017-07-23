@@ -13,10 +13,12 @@
               = options_for_select(ChinaCity.list, @user.province)
             select.city-select name="user[city]"
               option --城市--
-              = options_for_select(ChinaCity.list(@user.province), @user.city)
+              - if @user.city.present? && @user.city != "--城市--"
+                = options_for_select(ChinaCity.list(@user.province), @user.city)
             select.city-select name="user[district]"
               option --地区--
-              = options_for_select(ChinaCity.list(@user.city), @user.district)
+              - if @user.district.present? && @user.district != "--地区--"
+                = options_for_select(ChinaCity.list(@user.city), @user.district)
           /select.city-select
           /  option --街道--
         /= select_tag :hello_test, options_for_select(['hello', 'world'], 'hello')

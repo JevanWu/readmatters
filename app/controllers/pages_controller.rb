@@ -55,6 +55,16 @@ class PagesController < ApplicationController
   def update_more_info
     @user = current_user
     @user.assign_attributes(more_info_params)
+    if @user.province.to_i == 0
+      @user.province = nil
+    end
+    if @user.city.to_i == 0
+      @user.city = nil
+    end
+    if @user.district.to_i == 0
+      @user.district = nil
+    end
+
     if @user.save(context: :more_info)
       redirect_to root_path
     else
